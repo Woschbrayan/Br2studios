@@ -8,16 +8,16 @@
 
 // Configurações do WhatsApp
 $whatsapp_number = '554141410093';
-$default_message = 'Olá! Gostaria de saber mais sobre os investimentos da Br2Studios';
+$default_message = 'Olá! Gostaria de saber mais sobre os investimentos da Br2Studios em Curitiba';
 
 // Mensagem personalizada por página
 $page_messages = [
-    'home' => 'Olá! Gostaria de saber mais sobre os investimentos da Br2Studios',
-    'imoveis' => 'Olá! Vi os imóveis no site e gostaria de mais informações',
-    'contato' => 'Olá! Vim pelo site e gostaria de falar com um especialista',
-    'corretores' => 'Olá! Gostaria de falar com um corretor especialista',
-    'regioes' => 'Olá! Gostaria de saber sobre investimentos na região',
-    'sobre' => 'Olá! Gostaria de conhecer melhor a Br2Studios',
+    'home' => 'Olá! Gostaria de saber mais sobre os investimentos da Br2Studios em Curitiba',
+    'imoveis' => 'Olá! Vi os imóveis em Curitiba no site e gostaria de mais informações',
+    'contato' => 'Olá! Vim pelo site e gostaria de falar com um especialista em Curitiba',
+    'corretores' => 'Olá! Gostaria de falar com um corretor especialista em Curitiba',
+    'regioes' => 'Olá! Gostaria de saber sobre investimentos em Curitiba',
+    'sobre' => 'Olá! Gostaria de conhecer melhor a Br2Studios em Curitiba',
     'produto' => isset($imovel_data) ? 'Olá! Gostaria de saber mais sobre: ' . $imovel_data['titulo'] : 'Olá! Gostaria de saber mais sobre este imóvel'
 ];
 

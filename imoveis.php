@@ -53,7 +53,7 @@ try {
 
 <?php 
 $current_page = 'imoveis';
-$page_title = 'Imóveis - Br2Studios';
+$page_title = 'Imóveis em Curitiba - Br2Studios';
 $page_css = 'assets/css/imoveis.css';
 include 'includes/header.php'; 
 ?>
@@ -64,15 +64,15 @@ include 'includes/header.php';
             <div class="banner-content">
                 <div class="banner-text">
                     <h1>Portfólio de Imóveis</h1>
-                    <p>Descubra os melhores imóveis em todo o Brasil</p>
+                    <p>Descubra os melhores imóveis em Curitiba e região metropolitana</p>
                     <div class="banner-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo count($imoveis); ?>+</span>
                             <span class="stat-label">Imóveis</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">6</span>
-                            <span class="stat-label">Estados</span>
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Regiões</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">98%</span>
@@ -102,7 +102,7 @@ include 'includes/header.php';
                     </span>
                     <span class="quick-stat">
                         <i class="fas fa-map-marker-alt"></i>
-                        6 Estados
+                        4 Regiões
                     </span>
                 </div>
             </div>

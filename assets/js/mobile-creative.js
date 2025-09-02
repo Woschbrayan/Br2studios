@@ -435,9 +435,143 @@ class MobileFilters {
     }
 }
 
+// Testimonials Slider (Desktop e Mobile)
+class TestimonialsSlider {
+    constructor(isMobile = false) {
+        this.isMobile = isMobile;
+        this.selector = isMobile ? 'mobile' : 'desktop';
+        this.slides = document.querySelectorAll(`.testimonial-slide-${this.selector}`);
+        this.dots = document.querySelectorAll(`.testimonial-dot-${this.selector}`);
+        this.prevBtn = document.querySelector(`.testimonial-prev-${this.selector}`);
+        this.nextBtn = document.querySelector(`.testimonial-next-${this.selector}`);
+        this.currentIndex = 0;
+        this.autoPlayInterval = null;
+        this.init();
+    }
+    
+    init() {
+        if (this.slides.length === 0) return;
+        
+        this.bindEvents();
+        this.startAutoPlay();
+    }
+    
+    bindEvents() {
+        // Botões de navegação
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => {
+                this.previousSlide();
+                this.resetAutoPlay();
+            });
+        }
+        
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => {
+                this.nextSlide();
+                this.resetAutoPlay();
+            });
+        }
+        
+        // Dots de navegação
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                this.goToSlide(index);
+                this.resetAutoPlay();
+            });
+        });
+        
+        // Touch events para mobile
+        if (this.isMobile) {
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+            
+            const container = document.querySelector('.testimonials-track-mobile');
+            if (container) {
+                container.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    this.pauseAutoPlay();
+                });
+                
+                container.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                });
+                
+                container.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    
+                    const diffX = currentX - startX;
+                    
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            this.previousSlide();
+                        } else {
+                            this.nextSlide();
+                        }
+                    }
+                    
+                    isDragging = false;
+                    this.resetAutoPlay();
+                });
+            }
+        }
+    }
+    
+    nextSlide() {
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+        this.updateSlides();
+    }
+    
+    previousSlide() {
+        this.currentIndex = this.currentIndex === 0 ? this.slides.length - 1 : this.currentIndex - 1;
+        this.updateSlides();
+    }
+    
+    goToSlide(index) {
+        this.currentIndex = index;
+        this.updateSlides();
+    }
+    
+    updateSlides() {
+        this.slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === this.currentIndex) {
+                slide.classList.add('active');
+            }
+        });
+        
+        this.dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+        });
+    }
+    
+    startAutoPlay() {
+        this.autoPlayInterval = setInterval(() => {
+            this.nextSlide();
+        }, 5000); // 5 segundos
+    }
+    
+    pauseAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+        }
+    }
+    
+    resetAutoPlay() {
+        this.pauseAutoPlay();
+        this.startAutoPlay();
+    }
+}
+
 // Inicialização quando DOM carregado
 document.addEventListener('DOMContentLoaded', () => {
-    // Verificar se está em mobile
+    // Inicializar sliders de depoimentos
+    new TestimonialsSlider(false); // Desktop
+    new TestimonialsSlider(true);  // Mobile
+    
+    // Verificar se está em mobile para outras funcionalidades
     if (window.innerWidth <= 768) {
         new PropertyStack();
         new CitiesSwiper();

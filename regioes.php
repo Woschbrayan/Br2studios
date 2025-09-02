@@ -5,45 +5,45 @@ $imovel = new Imovel();
 $regiao = $_GET['regiao'] ?? '';
 
 $regioes = [
-    'sao-paulo' => [
-        'nome' => 'São Paulo',
-        'estado' => 'SP',
-        'imagem' => 'assets/images/Mapas/Sao_paulo-SP.png',
-        'descricao' => 'Capital financeira do Brasil, centro de oportunidades e investimentos',
-        'imoveis' => 15,
-        'valorizacao' => 'Alta',
-        'destaque' => 'Centro financeiro e empresarial',
-        'cidades' => ['São Paulo', 'Campinas', 'Santos', 'São José dos Campos']
-    ],
-    'rio-janeiro' => [
-        'nome' => 'Rio de Janeiro',
-        'estado' => 'RJ',
-        'imagem' => 'assets/images/Mapas/Rio_De_Janeiro-RJ.png',
-        'descricao' => 'Cidade maravilhosa com potencial turístico e residencial',
-        'imoveis' => 12,
-        'valorizacao' => 'Média-Alta',
-        'destaque' => 'Turismo e praias',
-        'cidades' => ['Rio de Janeiro', 'Niterói', 'Petrópolis', 'Angra dos Reis']
-    ],
-    'curitiba' => [
-        'nome' => 'Curitiba',
+    'centro' => [
+        'nome' => 'Centro',
         'estado' => 'PR',
         'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
-        'descricao' => 'Capital verde com qualidade de vida e desenvolvimento sustentável',
-        'imoveis' => 8,
-        'valorizacao' => 'Média',
-        'destaque' => 'Qualidade de vida',
-        'cidades' => ['Curitiba', 'Londrina', 'Maringá', 'Ponta Grossa']
+        'descricao' => 'Região central de Curitiba com infraestrutura completa e fácil acesso',
+        'imoveis' => 15,
+        'valorizacao' => 'Alta',
+        'destaque' => 'Centro histórico e comercial',
+        'cidades' => ['Centro', 'Centro Cívico', 'Batel', 'Água Verde']
     ],
-    'fortaleza' => [
-        'nome' => 'Fortaleza',
-        'estado' => 'CE',
-        'imagem' => 'assets/images/Mapas/Fortaleza-CE.png',
-        'descricao' => 'Terra da luz com potencial turístico e crescimento econômico',
+    'bairro-alto' => [
+        'nome' => 'Bairro Alto',
+        'estado' => 'PR',
+        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
+        'descricao' => 'Região nobre com excelente infraestrutura e valorização constante',
+        'imoveis' => 12,
+        'valorizacao' => 'Alta',
+        'destaque' => 'Região nobre e valorizada',
+        'cidades' => ['Bairro Alto', 'Seminário', 'Cristo Rei', 'Juvevê']
+    ],
+    'agua-verde' => [
+        'nome' => 'Água Verde',
+        'estado' => 'PR',
+        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
+        'descricao' => 'Bairro residencial com ótima localização e crescimento imobiliário',
+        'imoveis' => 8,
+        'valorizacao' => 'Média-Alta',
+        'destaque' => 'Residencial e bem localizado',
+        'cidades' => ['Água Verde', 'Rebouças', 'Portão', 'Guabirotuba']
+    ],
+    'regiao-metropolitana' => [
+        'nome' => 'Região Metropolitana',
+        'estado' => 'PR',
+        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
+        'descricao' => 'Cidades da região metropolitana com potencial de crescimento',
         'imoveis' => 6,
         'valorizacao' => 'Média',
-        'destaque' => 'Turismo e praias',
-        'cidades' => ['Fortaleza', 'Caucaia', 'Maracanaú', 'Sobral']
+        'destaque' => 'Crescimento e oportunidades',
+        'cidades' => ['São José dos Pinhais', 'Pinhais', 'Colombo', 'Araucária']
     ]
 ];
 
@@ -85,7 +85,7 @@ try {
 
 <?php 
 $current_page = 'regioes';
-$page_title = 'Regiões - Br2Studios';
+$page_title = 'Regiões de Curitiba - Br2Studios';
 $page_css = 'assets/css/regioes.css';
 include 'includes/header.php'; 
 ?>
@@ -95,8 +95,8 @@ include 'includes/header.php';
         <div class="container">
             <div class="banner-content">
                 <div class="banner-text">
-                    <h1>Investindo em Todo o Brasil</h1>
-                    <p>Descubra as melhores oportunidades de investimento em imóveis em todas as regiões do país</p>
+                    <h1>Investindo em Curitiba</h1>
+                    <p>Descubra as melhores oportunidades de investimento em imóveis na capital paranaense e região metropolitana</p>
                     <div class="banner-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo count($regioes); ?></span>
@@ -130,7 +130,7 @@ include 'includes/header.php';
         <div class="container">
             <div class="header-mobile-content">
                 <h1>Nossas Regiões</h1>
-                <p>Investimentos em <?php echo count($regioes); ?> regiões estratégicas</p>
+                <p>Investimentos em <?php echo count($regioes); ?> regiões de Curitiba</p>
                 <div class="quick-stats-mobile">
                     <span class="quick-stat">
                         <i class="fas fa-map-marker-alt"></i>
@@ -206,8 +206,8 @@ include 'includes/header.php';
     <!-- Regiões Mobile - Cards Simples -->
     <section class="regioes-mobile mobile-only">
         <div class="section-header">
-            <h2>Onde Investir</h2>
-            <p>Escolha sua região estratégica</p>
+            <h2>Regiões de Curitiba</h2>
+            <p>Escolha seu bairro ideal</p>
         </div>
         <div class="regioes-grid-mobile">
             <?php foreach ($regioes as $key => $regiao_item): ?>

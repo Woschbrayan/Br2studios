@@ -88,7 +88,7 @@ $corretor_filtro = $_GET['corretor'] ?? '';
 
 <?php 
 $current_page = 'corretores';
-$page_title = 'Corretores Credenciados - Br2Studios';
+$page_title = 'Corretores em Curitiba - Br2Studios';
 $page_css = 'assets/css/corretores.css';
 include 'includes/header.php'; 
 ?>
@@ -99,7 +99,7 @@ include 'includes/header.php';
             <div class="banner-content">
                 <div class="banner-text">
                     <h1>Corretores Credenciados</h1>
-                    <p>Nossa equipe de especialistas está pronta para encontrar o imóvel perfeito para você em todo o Brasil</p>
+                    <p>Nossa equipe de especialistas está pronta para encontrar o imóvel perfeito para você em Curitiba e região</p>
                     <div class="banner-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo count($corretores); ?></span>

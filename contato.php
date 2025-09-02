@@ -24,7 +24,7 @@ if ($_POST) {
 
 <?php 
 $current_page = 'contato';
-$page_title = 'Contato - Br2Studios';
+$page_title = 'Contato - Br2Studios Curitiba';
 $page_css = 'assets/css/contato.css';
 include 'includes/header.php'; 
 ?>
@@ -42,12 +42,12 @@ include 'includes/header.php';
     <div class="hero-content">
         <div class="container">
             <h1 class="hero-title">Entre em Contato</h1>
-            <p class="hero-subtitle">Nossa equipe está pronta para encontrar o investimento perfeito para você</p>
+            <p class="hero-subtitle">Nossa equipe está pronta para encontrar o investimento perfeito em Curitiba para você</p>
         
         <div class="hero-slides">
             <div class="hero-slide active">
                 <h2>Atendimento Especializado</h2>
-                <p>Equipe de especialistas prontos para atender suas necessidades de investimento imobiliário com excelência.</p>
+                <p>Equipe de especialistas em Curitiba prontos para atender suas necessidades de investimento imobiliário com excelência.</p>
             </div>
         </div>
         

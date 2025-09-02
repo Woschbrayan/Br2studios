@@ -135,7 +135,7 @@ $diferenciais = [
 
 <?php 
 $current_page = 'sobre';
-$page_title = 'Sobre Nós - Br2Studios';
+$page_title = 'Sobre Nós - Br2Studios Curitiba';
 $page_css = 'assets/css/sobre.css';
 include 'includes/header.php'; 
 ?>
@@ -146,7 +146,7 @@ include 'includes/header.php';
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Nossa História</h1>
-                    <p>Uma jornada de paixão, inovação e compromisso com o sucesso dos nossos clientes no mercado imobiliário brasileiro. Desde 2017, transformando sonhos em investimentos lucrativos.</p>
+                    <p>Uma jornada de paixão, inovação e compromisso com o sucesso dos nossos clientes no mercado imobiliário de Curitiba. Desde 2017, transformando sonhos em investimentos lucrativos.</p>
                     <div class="hero-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo $estatisticas['anos_experiencia']; ?>+</span>
@@ -207,7 +207,7 @@ include 'includes/header.php';
                     <i class="fas fa-bullseye"></i>
                 </div>
                 <h3>Nossa Missão</h3>
-                <p>Conectar investidores às melhores oportunidades do mercado imobiliário brasileiro</p>
+                <p>Conectar investidores às melhores oportunidades do mercado imobiliário de Curitiba</p>
             </div>
             
             <div class="about-card-mobile">
@@ -215,7 +215,7 @@ include 'includes/header.php';
                     <i class="fas fa-eye"></i>
                 </div>
                 <h3>Nossa Visão</h3>
-                <p>Ser referência nacional em investimentos imobiliários de alta rentabilidade</p>
+                <p>Ser referência em Curitiba em investimentos imobiliários de alta rentabilidade</p>
             </div>
             
             <div class="about-highlights-mobile">

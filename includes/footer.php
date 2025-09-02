@@ -10,7 +10,7 @@
                         <span class="footer-logo-text">Br2Imóveis</span>
                     </div>
                     <p class="footer-description">
-                        Especialistas em imóveis de qualidade em todo o Brasil. CRECI 10.007 - Sua confiança, nosso compromisso.
+                        Especialistas em imóveis de qualidade em Curitiba e região metropolitana. CRECI 10.007 - Sua confiança, nosso compromisso.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Facebook">

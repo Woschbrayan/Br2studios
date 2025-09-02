@@ -66,8 +66,8 @@ include 'includes/header.php';
                     <p>Projetos em construção oferecem excelente potencial de valorização até a entrega, maximizando os ganhos do investidor.</p>
                 </div>
                 <div class="hero-slide">
-                    <h2>Investimentos Seguros em Todo o Brasil</h2>
-                    <p>Portfólio selecionado de empreendimentos em regiões estratégicas, garantindo liquidez e segurança ao investidor.</p>
+                    <h2>Investimentos Seguros em Curitiba</h2>
+                    <p>Portfólio selecionado de empreendimentos na região metropolitana de Curitiba, garantindo liquidez e segurança ao investidor.</p>
                 </div>
                 <div class="hero-slide">
                     <h2>Studios de Alta Rentabilidade</h2>
@@ -89,8 +89,8 @@ include 'includes/header.php';
                     <span class="stat-label">Imóveis Vendidos</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">12</span>
-                    <span class="stat-label">Estados</span>
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Regiões</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">98%</span>
@@ -350,41 +350,41 @@ include 'includes/header.php';
     <!-- Cities Mobile - Cards Simples -->
     <section class="cities-mobile mobile-only">
         <div class="section-header">
-            <h2>Regiões Atendidas</h2>
-            <p>Investimentos em todo o Brasil</p>
+            <h2>Regiões de Curitiba</h2>
+            <p>Investimentos na capital paranaense</p>
         </div>
         <div class="cities-grid-mobile">
             <div class="city-card-mobile">
                 <div class="city-icon-mobile">
                     <i class="fas fa-building"></i>
                 </div>
-                <h3>São Paulo</h3>
-                <p>Capital financeira</p>
-                <span class="city-count">3 Imóveis</span>
+                <h3>Centro</h3>
+                <p>Região central</p>
+                <span class="city-count">15 Imóveis</span>
             </div>
             <div class="city-card-mobile">
                 <div class="city-icon-mobile">
-                    <i class="fas fa-beach"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <h3>Rio de Janeiro</h3>
-                <p>Cidade maravilhosa</p>
-                <span class="city-count">1 Imóvel</span>
+                <h3>Bairro Alto</h3>
+                <p>Região nobre</p>
+                <span class="city-count">12 Imóveis</span>
             </div>
             <div class="city-card-mobile">
                 <div class="city-icon-mobile">
                     <i class="fas fa-tree"></i>
                 </div>
-                <h3>Curitiba</h3>
-                <p>Capital verde</p>
-                <span class="city-count">1 Imóvel</span>
+                <h3>Água Verde</h3>
+                <p>Residencial</p>
+                <span class="city-count">8 Imóveis</span>
             </div>
             <div class="city-card-mobile">
                 <div class="city-icon-mobile">
-                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-home"></i>
                 </div>
-                <h3>Fortaleza</h3>
-                <p>Terra da luz</p>
-                <span class="city-count">1 Imóvel</span>
+                <h3>Região Metropolitana</h3>
+                <p>Crescimento</p>
+                <span class="city-count">6 Imóveis</span>
             </div>
         </div>
         <div style="text-align: center; margin-top: 30px;">
@@ -396,8 +396,8 @@ include 'includes/header.php';
     <section class="cities-section desktop-only">
         <div class="container">
             <div class="section-header">
-                <h2>Investindo em Todo o Brasil</h2>
-                <p>Descubra as melhores oportunidades em diferentes regiões do país</p>
+                <h2>Investindo em Curitiba e Região</h2>
+                <p>Descubra as melhores oportunidades na região metropolitana de Curitiba</p>
             </div>
             
             <div class="cities-grid">
@@ -690,89 +690,150 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Testimonials Mobile - Cards Simples -->
+    <!-- Testimonials Mobile - Slider -->
     <section class="testimonials-mobile mobile-only">
         <div class="section-header">
             <h2>Depoimentos</h2>
             <p>O que nossos clientes dizem</p>
         </div>
-        <div class="testimonials-grid-mobile">
-            <div class="testimonial-card-mobile">
-                <div class="testimonial-avatar-mobile">
-                    <i class="fas fa-user"></i>
+        <div class="testimonials-slider-mobile">
+            <div class="testimonials-track-mobile">
+                <div class="testimonial-slide-mobile active">
+                    <div class="testimonial-content-mobile">
+                        <div class="testimonial-avatar-mobile">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-rating-mobile">
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                        </div>
+                        <div class="testimonial-text-mobile">"Investir em Curitiba com a Br2Studios foi a melhor decisão. Meu studio valorizou 35% em 2 anos!"</div>
+                        <div class="testimonial-author-mobile">Carlos Mendes</div>
+                        <div class="testimonial-role-mobile">Investidor - Água Verde</div>
+                    </div>
                 </div>
-                <div class="testimonial-rating-mobile">
-                    <i class="fas fa-star star-mobile"></i>
-                    <i class="fas fa-star star-mobile"></i>
-                    <i class="fas fa-star star-mobile"></i>
-                    <i class="fas fa-star star-mobile"></i>
-                    <i class="fas fa-star star-mobile"></i>
+                
+                <div class="testimonial-slide-mobile">
+                    <div class="testimonial-content-mobile">
+                        <div class="testimonial-avatar-mobile">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-rating-mobile">
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                        </div>
+                        <div class="testimonial-text-mobile">"Equipe profissional em Curitiba. Encontrei o imóvel perfeito no Centro com excelente assessoria."</div>
+                        <div class="testimonial-author-mobile">Ana Paula Costa</div>
+                        <div class="testimonial-role-mobile">Investidora - Centro</div>
+                    </div>
                 </div>
-                <div class="testimonial-text-mobile">A Br2Studios transformou meu investimento em um negócio lucrativo. Excelente retorno!</div>
-                <div class="testimonial-author-mobile">Carlos Mendes</div>
-                <div class="testimonial-role-mobile">Investidor</div>
+                
+                <div class="testimonial-slide-mobile">
+                    <div class="testimonial-content-mobile">
+                        <div class="testimonial-avatar-mobile">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-rating-mobile">
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                            <i class="fas fa-star star-mobile"></i>
+                        </div>
+                        <div class="testimonial-text-mobile">"Excelente retorno no Bairro Alto. A Br2Studios conhece muito bem o mercado de Curitiba."</div>
+                        <div class="testimonial-author-mobile">Roberto Almeida</div>
+                        <div class="testimonial-role-mobile">Empresário - Bairro Alto</div>
+                    </div>
+                </div>
             </div>
-            <div class="testimonial-card-mobile">
-                <div class="testimonial-avatar-mobile">
-                    <i class="fas fa-user"></i>
+            
+            <div class="testimonials-controls-mobile">
+                <button class="testimonial-prev-mobile">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="testimonials-dots-mobile">
+                    <span class="testimonial-dot-mobile active" data-slide="0"></span>
+                    <span class="testimonial-dot-mobile" data-slide="1"></span>
+                    <span class="testimonial-dot-mobile" data-slide="2"></span>
                 </div>
-                <div class="testimonial-rating-mobile">
-                    <i class="fas fa-star star-mobile"></i>
-                    <i class="fas fa-star star-mobile"></i>
-                    <i class="fas fa-star star-mobile"></i>
-                    <i class="fas fa-star star-mobile"></i>
-                    <i class="fas fa-star star-mobile"></i>
-                </div>
-                <div class="testimonial-text-mobile">Equipe profissional e transparente. Consegui o imóvel perfeito para investimento.</div>
-                <div class="testimonial-author-mobile">Ana Paula Costa</div>
-                <div class="testimonial-role-mobile">Investidora</div>
+                <button class="testimonial-next-mobile">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section Desktop -->
+    <!-- Testimonials Section Desktop - Slider -->
     <section class="testimonials desktop-only">
         <div class="container">
             <div class="section-header">
                 <h2>O que nossos clientes dizem</h2>
-                <p>Depoimentos reais de investidores que confiaram na Br2Studios</p>
+                <p>Depoimentos reais de investidores que confiaram na Br2Studios em Curitiba</p>
             </div>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">A Br2Studios transformou meu investimento em um negócio lucrativo. O studio que comprei valorizou 40% em apenas 2 anos!</p>
-                    <div class="testimonial-author">
-                        <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Carlos Mendes - Investidor">
-                        <div class="author-info">
-                            <h4>Carlos Mendes</h4>
-                            <p>Investidor</p>
+            <div class="testimonials-slider-desktop">
+                <div class="testimonials-track-desktop">
+                    <div class="testimonial-slide-desktop active">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">Investir em Curitiba com a Br2Studios foi a melhor decisão. Meu studio no Água Verde valorizou 35% em apenas 2 anos!</p>
+                            <div class="testimonial-author">
+                                <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Carlos Mendes - Investidor">
+                                <div class="author-info">
+                                    <h4>Carlos Mendes</h4>
+                                    <p>Investidor - Água Verde</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide-desktop">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">Equipe profissional e transparente em Curitiba. Consegui encontrar o imóvel perfeito no Centro com toda a assessoria necessária.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/images/imoveis/imovel-2.jpeg" alt="Ana Paula Costa - Investidora">
+                                <div class="author-info">
+                                    <h4>Ana Paula Costa</h4>
+                                    <p>Investidora - Centro</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide-desktop">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">Excelente retorno no Bairro Alto. A Br2Studios realmente entende do mercado imobiliário de Curitiba e oferece as melhores oportunidades.</p>
+                            <div class="testimonial-author">
+                                <img src="assets/images/imoveis/imovel-3.jpeg" alt="Roberto Almeida - Empresário">
+                                <div class="author-info">
+                                    <h4>Roberto Almeida</h4>
+                                    <p>Empresário - Bairro Alto</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">Equipe profissional e transparente. Consegui encontrar o imóvel perfeito para investimento com toda a assessoria necessária.</p>
-                    <div class="testimonial-author">
-                        <img src="assets/images/imoveis/imovel-2.jpeg" alt="Ana Paula Costa - Investidora">
-                        <div class="author-info">
-                            <h4>Ana Paula Costa</h4>
-                            <p>Investidora</p>
-                        </div>
+                <div class="testimonials-controls-desktop">
+                    <button class="testimonial-prev-desktop">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="testimonials-dots-desktop">
+                        <span class="testimonial-dot-desktop active" data-slide="0"></span>
+                        <span class="testimonial-dot-desktop" data-slide="1"></span>
+                        <span class="testimonial-dot-desktop" data-slide="2"></span>
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">Excelente retorno sobre investimento. A Br2Studios realmente entende do mercado e oferece as melhores oportunidades.</p>
-                    <div class="testimonial-author">
-                        <img src="assets/images/imoveis/imovel-3.jpeg" alt="Roberto Almeida - Empresário">
-                        <div class="author-info">
-                            <h4>Roberto Almeida</h4>
-                            <p>Empresário</p>
-                        </div>
-                    </div>
+                    <button class="testimonial-next-desktop">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
