@@ -1,0 +1,10 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#e8f5e8"/>
+  <rect x="50" y="50" width="300" height="200" fill="#c8e6c9" stroke="#333" stroke-width="2"/>
+  <rect x="70" y="70" width="100" height="70" fill="#a5d6a7" stroke="#333" stroke-width="1"/>
+  <rect x="190" y="70" width="100" height="70" fill="#a5d6a7" stroke="#333" stroke-width="1"/>
+  <rect x="70" y="160" width="220" height="70" fill="#a5d6a7" stroke="#333" stroke-width="1"/>
+  <rect x="310" y="160" width="30" height="70" fill="#81c784" stroke="#333" stroke-width="1"/>
+  <circle cx="320" cy="90" r="15" fill="#4caf50"/>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="16" fill="#333">Studio Bahia</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f8f0e8"/>
+  <rect x="50" y="50" width="300" height="200" fill="#f0e0d0" stroke="#333" stroke-width="2"/>
+  <rect x="70" y="70" width="90" height="60" fill="#e8d0c0" stroke="#333" stroke-width="1"/>
+  <rect x="180" y="70" width="90" height="60" fill="#e8d0c0" stroke="#333" stroke-width="1"/>
+  <rect x="290" y="70" width="50" height="60" fill="#e8d0c0" stroke="#333" stroke-width="1"/>
+  <rect x="70" y="150" width="130" height="80" fill="#e8d0c0" stroke="#333" stroke-width="1"/>
+  <rect x="220" y="150" width="120" height="80" fill="#e8d0c0" stroke="#333" stroke-width="1"/>
+  <rect x="320" y="150" width="20" height="80" fill="#d0c0b0" stroke="#333" stroke-width="1"/>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="16" fill="#333">Studio Executivo</text>
+</svg>

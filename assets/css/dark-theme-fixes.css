@@ -1,0 +1,249 @@
+/* ===== CORREÇÕES DO TEMA ESCURO - BR2STUDIOS ===== */
+
+/* REGRA PRINCIPAL - TODOS OS TÍTULOS DAS SEÇÕES DEVEM SER BRANCOS NO TEMA ESCURO */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: #ffffff !important;
+}
+
+/* Títulos específicos das seções principais da página inicial */
+[data-theme="dark"] .featured-properties .section-header h2,
+[data-theme="dark"] .cities-section .section-header h2,
+[data-theme="dark"] .property-types .section-header h2,
+[data-theme="dark"] .meet-agents .section-header h2,
+[data-theme="dark"] .testimonials .section-header h2,
+[data-theme="dark"] .cta-section .section-header h2,
+[data-theme="dark"] .partners .section-header h2 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}
+
+/* Títulos das seções com especificidade máxima */
+html body[data-theme="dark"] .section-header h2,
+html body[data-theme="dark"] .section-header h1,
+html body[data-theme="dark"] .section-header h3 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}
+
+/* Títulos específicos de seções da página inicial - MAIOR ESPECIFICIDADE */
+body[data-theme="dark"] .section-header h2,
+body[data-theme="dark"] .section-header h1,
+body[data-theme="dark"] .section-header h3,
+body[data-theme="dark"] .section-header h4,
+body[data-theme="dark"] .section-header h5,
+body[data-theme="dark"] .section-header h6 {
+    color: #ffffff !important;
+}
+
+/* Títulos específicos de seções da página inicial com especificidade máxima */
+html body[data-theme="dark"] .section-header h2,
+html body[data-theme="dark"] .section-header h1,
+html body[data-theme="dark"] .section-header h3,
+html body[data-theme="dark"] .section-header h4,
+html body[data-theme="dark"] .section-header h5,
+html body[data-theme="dark"] .section-header h6 {
+    color: #ffffff !important;
+}
+
+/* Títulos específicos de seções */
+[data-theme="dark"] .features h2,
+[data-theme="dark"] .featured-properties h2,
+[data-theme="dark"] .cities-section h2,
+[data-theme="dark"] .property-types h2,
+[data-theme="dark"] .meet-agents h2,
+[data-theme="dark"] .testimonials h2,
+[data-theme="dark"] .cta-section h2,
+[data-theme="dark"] .partners h2,
+[data-theme="dark"] .hero-section h2,
+[data-theme="dark"] .about-section h2,
+[data-theme="dark"] .services-section h2,
+[data-theme="dark"] .contact-section h2,
+[data-theme="dark"] .footer-section h2 {
+    color: #ffffff !important;
+}
+
+/* Títulos de cards e elementos específicos */
+[data-theme="dark"] .card-title,
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card h4,
+[data-theme="dark"] .card h5,
+[data-theme="dark"] .card h6,
+[data-theme="dark"] .feature-card h3,
+[data-theme="dark"] .property-card h3,
+[data-theme="dark"] .agent-card h3,
+[data-theme="dark"] .testimonial-card h3,
+[data-theme="dark"] .city-card h3,
+[data-theme="dark"] .type-card h3,
+[data-theme="dark"] .partner-card h3 {
+    color: #ffffff !important;
+}
+
+/* Títulos de seções específicas por página */
+[data-theme="dark"] .search-header h2,
+[data-theme="dark"] .banner-text h1,
+[data-theme="dark"] .banner-text h2,
+[data-theme="dark"] .banner-text h3,
+[data-theme="dark"] .hero-text h1,
+[data-theme="dark"] .hero-text h2,
+[data-theme="dark"] .hero-text h3,
+[data-theme="dark"] .about-text h2,
+[data-theme="dark"] .mission-text h2,
+[data-theme="dark"] .cta-text h2,
+[data-theme="dark"] .strategy-text h3,
+[data-theme="dark"] .region-content h4,
+[data-theme="dark"] .analysis-card h3,
+[data-theme="dark"] .value-card h3,
+[data-theme="dark"] .member-info h3,
+[data-theme="dark"] .achievement-content h3,
+[data-theme="dark"] .team-card h3,
+[data-theme="dark"] .method-card h3,
+[data-theme="dark"] .form-header h2,
+[data-theme="dark"] .faq-question h3,
+[data-theme="dark"] .property-header h3,
+[data-theme="dark"] .benefit-card h3,
+[data-theme="dark"] .highlight-card h3,
+[data-theme="dark"] .author-info h4,
+[data-theme="dark"] .partner-logo h3 {
+    color: #ffffff !important;
+}
+
+/* Títulos de formulários e inputs */
+[data-theme="dark"] .form-label,
+[data-theme="dark"] .form-group label,
+[data-theme="dark"] .input-group label {
+    color: #ffffff !important;
+}
+
+/* Títulos de modais e popups */
+[data-theme="dark"] .modal-title,
+[data-theme="dark"] .modal-header h5,
+[data-theme="dark"] .modal-header h4,
+[data-theme="dark"] .modal-header h3,
+[data-theme="dark"] .popup-title,
+[data-theme="dark"] .tooltip-title {
+    color: #ffffff !important;
+}
+
+/* Títulos de navegação e menus */
+[data-theme="dark"] .nav-title,
+[data-theme="dark"] .menu-title,
+[data-theme="dark"] .sidebar-title,
+[data-theme="dark"] .footer-title {
+    color: #ffffff !important;
+}
+
+/* Títulos de listas e tabelas */
+[data-theme="dark"] .list-title,
+[data-theme="dark"] .table-title,
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .content-title {
+    color: #ffffff !important;
+}
+
+/* Títulos de elementos específicos da página inicial */
+[data-theme="dark"] .features .section-header h2,
+[data-theme="dark"] .featured-properties .section-header h2,
+[data-theme="dark"] .cities-section .section-header h2,
+[data-theme="dark"] .property-types .section-header h2,
+[data-theme="dark"] .meet-agents .section-header h2,
+[data-theme="dark"] .testimonials .section-header h2,
+[data-theme="dark"] .cta-section .section-header h2,
+[data-theme="dark"] .partners .section-header h2 {
+    color: #ffffff !important;
+}
+
+/* Parágrafos das seções no tema escuro */
+[data-theme="dark"] .section-header p,
+[data-theme="dark"] .features .section-header p,
+[data-theme="dark"] .featured-properties .section-header p,
+[data-theme="dark"] .cities-section .section-header p,
+[data-theme="dark"] .property-types .section-header p,
+[data-theme="dark"] .meet-agents .section-header p,
+[data-theme="dark"] .testimonials .section-header p,
+[data-theme="dark"] .cta-section .section-header p,
+[data-theme="dark"] .partners .section-header p {
+    color: #cccccc !important;
+}
+
+/* Linha decorativa após os títulos */
+[data-theme="dark"] .section-header h2::after,
+[data-theme="dark"] .section-header h1::after,
+[data-theme="dark"] .section-header h3::after {
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%) !important;
+}
+
+/* Hover nos títulos */
+[data-theme="dark"] .section-header h2:hover,
+[data-theme="dark"] .section-header h1:hover,
+[data-theme="dark"] .section-header h3:hover {
+    color: #ffffff !important;
+}
+
+/* Garantir que os títulos das seções principais sejam brancos */
+[data-theme="dark"] .section-header h2,
+[data-theme="dark"] .section-header h1 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+}
+
+/* Sobrescrever qualquer gradiente ou background nos títulos */
+[data-theme="dark"] .section-header h2,
+[data-theme="dark"] .section-header h1 {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-clip: unset !important;
+}
+
+/* Garantir que os títulos das seções específicas sejam brancos */
+[data-theme="dark"] .features .section-header h2,
+[data-theme="dark"] .featured-properties .section-header h2,
+[data-theme="dark"] .cities-section .section-header h2,
+[data-theme="dark"] .property-types .section-header h2 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}
+
+/* Títulos das seções com especificidade máxima */
+html body[data-theme="dark"] .section-header h2,
+html body[data-theme="dark"] .section-header h1,
+html body[data-theme="dark"] .features .section-header h2,
+html body[data-theme="dark"] .featured-properties .section-header h2,
+html body[data-theme="dark"] .cities-section .section-header h2,
+html body[data-theme="dark"] .property-types .section-header h2 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}
+
+/* REGRA FINAL - FORÇAR TODOS OS TÍTULOS A SEREM BRANCOS NO TEMA ESCURO */
+html body[data-theme="dark"] * h1,
+html body[data-theme="dark"] * h2,
+html body[data-theme="dark"] * h3,
+html body[data-theme="dark"] * h4,
+html body[data-theme="dark"] * h5,
+html body[data-theme="dark"] * h6 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}

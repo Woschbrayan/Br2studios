@@ -1,0 +1,10 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f0f0f0"/>
+  <rect x="50" y="50" width="300" height="200" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+  <rect x="70" y="70" width="80" height="60" fill="#d0d0d0" stroke="#333" stroke-width="1"/>
+  <rect x="170" y="70" width="80" height="60" fill="#d0d0d0" stroke="#333" stroke-width="1"/>
+  <rect x="270" y="70" width="60" height="60" fill="#d0d0d0" stroke="#333" stroke-width="1"/>
+  <rect x="70" y="150" width="120" height="80" fill="#d0d0d0" stroke="#333" stroke-width="1"/>
+  <rect x="210" y="150" width="120" height="80" fill="#d0d0d0" stroke="#333" stroke-width="1"/>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="16" fill="#333">Studio Moderno</text>
+</svg>
