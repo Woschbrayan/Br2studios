@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="<?php echo $page_css; ?>">
     <?php endif; ?>
     <link rel="stylesheet" href="assets/css/mobile-enhancements.css">
+    <link rel="stylesheet" href="assets/css/mobile-creative.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/dark-theme-fixes.css">
 </head>

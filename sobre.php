@@ -140,8 +140,8 @@ $page_css = 'assets/css/sobre.css';
 include 'includes/header.php'; 
 ?>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
+    <!-- Hero Section Desktop -->
+    <section class="hero-section desktop-only">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -175,7 +175,67 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Header Mobile Simples -->
+    <section class="sobre-header-mobile mobile-only">
+        <div class="container">
+            <div class="header-mobile-content">
+                <h1>Sobre Nós</h1>
+                <p>Especialistas em investimentos imobiliários desde 2017</p>
+                <div class="quick-stats-mobile">
+                    <span class="quick-stat">
+                        <i class="fas fa-calendar"></i>
+                        <?php echo $estatisticas['anos_experiencia']; ?>+ Anos
+                    </span>
+                    <span class="quick-stat">
+                        <i class="fas fa-home"></i>
+                        <?php echo $estatisticas['imoveis_vendidos']; ?>+ Vendidos
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Mobile - Cards Simples -->
+    <section class="about-mobile mobile-only">
+        <div class="section-header">
+            <h2>Quem Somos</h2>
+            <p>Nossa essência e propósito</p>
+        </div>
+        <div class="about-content-mobile">
+            <div class="about-card-mobile">
+                <div class="about-icon-mobile">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Nossa Missão</h3>
+                <p>Conectar investidores às melhores oportunidades do mercado imobiliário brasileiro</p>
+            </div>
+            
+            <div class="about-card-mobile">
+                <div class="about-icon-mobile">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Nossa Visão</h3>
+                <p>Ser referência nacional em investimentos imobiliários de alta rentabilidade</p>
+            </div>
+            
+            <div class="about-highlights-mobile">
+                <div class="highlight-mobile">
+                    <i class="fas fa-award"></i>
+                    <span>Certificada</span>
+                </div>
+                <div class="highlight-mobile">
+                    <i class="fas fa-users"></i>
+                    <span>Especializada</span>
+                </div>
+                <div class="highlight-mobile">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Resultados</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section Desktop -->
     <section class="about-section">
         <div class="container">
             <div class="about-content">
@@ -228,6 +288,25 @@ include 'includes/header.php';
                     </div>
                 <?php endforeach; ?>
             </div>
+        </div>
+    </section>
+
+    <!-- Values Mobile - Cards Simples -->
+    <section class="values-mobile mobile-only">
+        <div class="section-header">
+            <h2>Nossos Valores</h2>
+            <p>O que nos move</p>
+        </div>
+        <div class="values-grid-mobile">
+            <?php foreach ($valores as $valor): ?>
+                <div class="value-card-mobile">
+                    <div class="value-icon-mobile">
+                        <i class="<?php echo $valor['icone']; ?>"></i>
+                    </div>
+                    <h3><?php echo $valor['titulo']; ?></h3>
+                    <p><?php echo $valor['descricao']; ?></p>
+                </div>
+            <?php endforeach; ?>
         </div>
     </section>
 
@@ -377,3 +456,5 @@ include 'includes/header.php';
 
 <?php include 'includes/whatsapp.php'; ?>
 <?php include 'includes/footer.php'; ?>
+
+<script src="assets/js/mobile-creative.js"></script>

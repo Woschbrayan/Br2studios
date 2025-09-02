@@ -58,8 +58,8 @@ $page_css = 'assets/css/imoveis.css';
 include 'includes/header.php'; 
 ?>
 
-    <!-- Page Banner -->
-    <section class="page-banner">
+    <!-- Page Banner Desktop -->
+    <section class="page-banner desktop-only">
         <div class="container">
             <div class="banner-content">
                 <div class="banner-text">
@@ -84,6 +84,26 @@ include 'includes/header.php';
                     <div class="banner-image">
                         <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Studio Premium">
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Header Mobile Simples -->
+    <section class="imoveis-header-mobile mobile-only">
+        <div class="container">
+            <div class="header-mobile-content">
+                <h1>Nossos Imóveis</h1>
+                <p><?php echo count($imoveis); ?> oportunidades disponíveis</p>
+                <div class="quick-stats-mobile">
+                    <span class="quick-stat">
+                        <i class="fas fa-home"></i>
+                        <?php echo count($imoveis); ?> Imóveis
+                    </span>
+                    <span class="quick-stat">
+                        <i class="fas fa-map-marker-alt"></i>
+                        6 Estados
+                    </span>
                 </div>
             </div>
         </div>
@@ -142,6 +162,56 @@ include 'includes/header.php';
                         <a href="imoveis.php" class="btn-clear">Limpar Filtros</a>
                     </div>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros Mobile Simplificados -->
+    <section class="filters-mobile mobile-only">
+        <div class="container">
+            <div class="filters-mobile-container">
+                <button class="filters-toggle-btn" id="filters-toggle">
+                    <i class="fas fa-filter"></i>
+                    Filtros
+                    <span class="filters-count" style="display: none;">0</span>
+                </button>
+                
+                <div class="filters-mobile-panel" id="filters-panel" style="display: none;">
+                    <form method="GET" class="filters-form-mobile">
+                        <div class="filter-row-mobile">
+                            <label>Tipo</label>
+                            <select name="tipo" class="filter-select-mobile">
+                                <option value="">Todos</option>
+                                <option value="studio" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'studio') ? 'selected' : ''; ?>>Studio</option>
+                                <option value="apartamento" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'apartamento') ? 'selected' : ''; ?>>Apartamento</option>
+                                <option value="casa" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'casa') ? 'selected' : ''; ?>>Casa</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-row-mobile">
+                            <label>Cidade</label>
+                            <select name="cidade" class="filter-select-mobile">
+                                <option value="">Todas</option>
+                                <?php foreach ($cidades as $cidade): ?>
+                                    <option value="<?php echo htmlspecialchars($cidade); ?>" <?php echo (isset($_GET['cidade']) && $_GET['cidade'] == $cidade) ? 'selected' : ''; ?>>
+                                        <?php echo htmlspecialchars($cidade); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-actions-mobile">
+                            <button type="submit" class="btn-apply-filters">
+                                <i class="fas fa-search"></i>
+                                Aplicar
+                            </button>
+                            <a href="imoveis.php" class="btn-clear-filters">
+                                <i class="fas fa-times"></i>
+                                Limpar
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -304,3 +374,5 @@ include 'includes/header.php';
 
 <?php include 'includes/whatsapp.php'; ?>
 <?php include 'includes/footer.php'; ?>
+
+<script src="assets/js/mobile-creative.js"></script>

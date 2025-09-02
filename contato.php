@@ -29,8 +29,8 @@ $page_css = 'assets/css/contato.css';
 include 'includes/header.php'; 
 ?>
 
-<!-- Hero Section -->
-<section class="hero">
+<!-- Hero Section Desktop -->
+<section class="hero desktop-only">
     <div class="hero-slider">
         <div class="slide active">
             <img src="assets/images/hero-2.jpg" alt="Contato BR2Studios">
@@ -84,8 +84,79 @@ include 'includes/header.php';
     </div>
 </section>
 
-<!-- Contact Methods -->
-<section class="features">
+<!-- Header Mobile Simples -->
+<section class="contato-header-mobile mobile-only">
+    <div class="container">
+        <div class="header-mobile-content">
+            <h1>Fale Conosco</h1>
+            <p>Entre em contato com nossos especialistas</p>
+            <div class="quick-contact-mobile">
+                <a href="https://wa.me/554141410093" class="quick-contact-btn whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="tel:+554141410093" class="quick-contact-btn phone">
+                    <i class="fas fa-phone"></i>
+                    <span>Ligar</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Methods Mobile -->
+<section class="contact-methods-mobile mobile-only">
+    <div class="section-header">
+        <h2>Como Falar Conosco</h2>
+        <p>Escolha sua forma preferida</p>
+    </div>
+    <div class="contact-methods-grid-mobile">
+        <div class="contact-method-mobile">
+            <div class="method-icon-mobile whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="method-info-mobile">
+                <h3>WhatsApp</h3>
+                <p>Resposta imediata</p>
+                <span class="method-detail">24/7 disponível</span>
+            </div>
+            <a href="https://wa.me/554141410093" class="method-action-mobile" target="_blank">
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="contact-method-mobile">
+            <div class="method-icon-mobile phone">
+                <i class="fas fa-phone"></i>
+            </div>
+            <div class="method-info-mobile">
+                <h3>Telefone</h3>
+                <p>Atendimento direto</p>
+                <span class="method-detail">(41) 4141-0093</span>
+            </div>
+            <a href="tel:+554141410093" class="method-action-mobile">
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="contact-method-mobile">
+            <div class="method-icon-mobile email">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="method-info-mobile">
+                <h3>E-mail</h3>
+                <p>Mensagem detalhada</p>
+                <span class="method-detail">Resposta em 2h</span>
+            </div>
+            <a href="mailto:contato@br2studios.com.br" class="method-action-mobile">
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Methods Desktop -->
+<section class="features desktop-only">
     <div class="container">
         <div class="section-header">
             <h2>Formas de Contato</h2>

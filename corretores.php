@@ -93,8 +93,8 @@ $page_css = 'assets/css/corretores.css';
 include 'includes/header.php'; 
 ?>
 
-    <!-- Page Banner -->
-    <section class="page-banner">
+    <!-- Page Banner Desktop -->
+    <section class="page-banner desktop-only">
         <div class="container">
             <div class="banner-content">
                 <div class="banner-text">
@@ -144,7 +144,33 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Search and Filters -->
+    <!-- Header Mobile Simples -->
+    <section class="corretores-header-mobile mobile-only">
+        <div class="container">
+            <div class="header-mobile-content">
+                <h1>Nossa Equipe</h1>
+                <p><?php 
+                    $total_corretores = 0;
+                    foreach ($corretores as $estado) {
+                        $total_corretores += count($estado['corretores']);
+                    }
+                    echo $total_corretores;
+                ?> especialistas certificados</p>
+                <div class="quick-stats-mobile">
+                    <span class="quick-stat">
+                        <i class="fas fa-users"></i>
+                        <?php echo $total_corretores; ?> Corretores
+                    </span>
+                    <span class="quick-stat">
+                        <i class="fas fa-award"></i>
+                        Certificados
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filters Desktop -->
     <section class="search-section">
         <div class="container">
             <div class="search-content">
@@ -194,8 +220,65 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Brokers Grid -->
-    <section class="brokers-section">
+    <!-- Corretores Mobile - Cards Simples -->
+    <section class="corretores-mobile mobile-only">
+        <div class="section-header">
+            <h2>Nossos Especialistas</h2>
+            <p>Entre em contato direto</p>
+        </div>
+        <div class="corretores-grid-mobile">
+            <?php foreach ($corretores as $sigla => $estado): ?>
+                <?php foreach ($estado['corretores'] as $corretor): ?>
+                    <div class="corretor-card-mobile">
+                        <div class="corretor-avatar-mobile">
+                            <?php if (isset($corretor['imagem']) && !empty($corretor['imagem'])): ?>
+                                <img src="<?php echo htmlspecialchars($corretor['imagem']); ?>" 
+                                     alt="<?php echo htmlspecialchars($corretor['nome']); ?>"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="avatar-fallback-mobile" style="display: none;">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                            <?php else: ?>
+                                <div class="avatar-fallback-mobile">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="corretor-info-mobile">
+                            <h3><?php echo htmlspecialchars($corretor['nome']); ?></h3>
+                            <div class="corretor-location-mobile">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <?php echo htmlspecialchars($corretor['cidade'] . ', ' . $sigla); ?>
+                            </div>
+                            <div class="corretor-creci-mobile">
+                                <i class="fas fa-certificate"></i>
+                                CRECI: <?php echo htmlspecialchars($corretor['creci'] ?: 'Em processo'); ?>
+                            </div>
+                            <div class="corretor-stats-mobile">
+                                <span class="corretor-stat-mobile">
+                                    <i class="fas fa-star"></i>
+                                    <?php echo $corretor['avaliacao']; ?>
+                                </span>
+                                <span class="corretor-stat-mobile">
+                                    <i class="fas fa-handshake"></i>
+                                    <?php echo $corretor['vendas']; ?>+ vendas
+                                </span>
+                            </div>
+                        </div>
+                        <div class="corretor-contact-mobile">
+                            <a href="https://wa.me/55<?php echo preg_replace('/[^0-9]/', '', $corretor['whatsapp']); ?>?text=Olá <?php echo urlencode($corretor['nome']); ?>! Vi seu perfil no site da Br2Studios e gostaria de conversar sobre imóveis." 
+                               class="btn-whatsapp-corretor" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <!-- Brokers Grid Desktop -->
+    <section class="brokers-section desktop-only">
         <div class="container">
             <div class="brokers-grid" id="brokers-grid">
                 <?php foreach ($corretores as $sigla => $estado): ?>
@@ -381,3 +464,5 @@ include 'includes/header.php';
 
 <?php include 'includes/whatsapp.php'; ?>
 <?php include 'includes/footer.php'; ?>
+
+<script src="assets/js/mobile-creative.js"></script>

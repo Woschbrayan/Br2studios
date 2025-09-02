@@ -1118,3 +1118,39 @@ body {
         justify-content: center;
     }
 }
+
+/* ===== LINKS ADMIN NO FOOTER ===== */
+.admin-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.03);
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: var(--text-secondary);
+}
+
+.admin-link:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateX(5px);
+}
+
+.admin-link i {
+    font-size: 0.9rem;
+    width: 16px;
+    text-align: center;
+}
+
+[data-theme="dark"] .admin-link {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .admin-link:hover {
+    background: var(--color-primary);
+    color: white;
+}

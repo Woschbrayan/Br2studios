@@ -90,8 +90,8 @@ $page_css = 'assets/css/regioes.css';
 include 'includes/header.php'; 
 ?>
 
-    <!-- Page Banner -->
-    <section class="page-banner">
+    <!-- Page Banner Desktop -->
+    <section class="page-banner desktop-only">
         <div class="container">
             <div class="banner-content">
                 <div class="banner-text">
@@ -120,6 +120,26 @@ include 'includes/header.php';
                         <i class="fas fa-map-marked-alt"></i>
                         <span>Cobertura Nacional</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Header Mobile Simples -->
+    <section class="regioes-header-mobile mobile-only">
+        <div class="container">
+            <div class="header-mobile-content">
+                <h1>Nossas Regiões</h1>
+                <p>Investimentos em <?php echo count($regioes); ?> regiões estratégicas</p>
+                <div class="quick-stats-mobile">
+                    <span class="quick-stat">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <?php echo count($regioes); ?> Regiões
+                    </span>
+                    <span class="quick-stat">
+                        <i class="fas fa-home"></i>
+                        41+ Imóveis
+                    </span>
                 </div>
             </div>
         </div>
@@ -180,6 +200,45 @@ include 'includes/header.php';
                     </div>
                 <?php endforeach; ?>
             </div>
+        </div>
+    </section>
+
+    <!-- Regiões Mobile - Cards Simples -->
+    <section class="regioes-mobile mobile-only">
+        <div class="section-header">
+            <h2>Onde Investir</h2>
+            <p>Escolha sua região estratégica</p>
+        </div>
+        <div class="regioes-grid-mobile">
+            <?php foreach ($regioes as $key => $regiao_item): ?>
+                <div class="regiao-card-mobile" onclick="exploreRegion('<?php echo $key; ?>', '<?php echo $regiao_item['nome']; ?>')">
+                    <div class="regiao-icon-mobile">
+                        <i class="fas fa-<?php 
+                            echo $key === 'sao_paulo' ? 'building' : 
+                                ($key === 'rio_janeiro' ? 'beach' : 
+                                ($key === 'curitiba' ? 'tree' : 'sun')); 
+                        ?>"></i>
+                    </div>
+                    <div class="regiao-info-mobile">
+                        <h3><?php echo $regiao_item['nome']; ?></h3>
+                        <span class="regiao-state-mobile"><?php echo $regiao_item['estado']; ?></span>
+                        <p><?php echo $regiao_item['destaque']; ?></p>
+                        <div class="regiao-stats-mobile">
+                            <span class="regiao-stat-mobile">
+                                <i class="fas fa-home"></i>
+                                <?php echo $regiao_item['imoveis']; ?> imóveis
+                            </span>
+                            <span class="regiao-stat-mobile">
+                                <i class="fas fa-chart-line"></i>
+                                <?php echo $regiao_item['valorizacao']; ?>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="regiao-arrow-mobile">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </section>
 
@@ -363,3 +422,5 @@ include 'includes/header.php';
 
 <?php include 'includes/whatsapp.php'; ?>
 <?php include 'includes/footer.php'; ?>
+
+<script src="assets/js/mobile-creative.js"></script>

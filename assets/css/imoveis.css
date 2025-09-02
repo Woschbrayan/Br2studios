@@ -578,10 +578,138 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Hero/Banner Mobile */
+    .page-banner {
+        margin-top: 70px;
+        padding: 80px 0 60px;
+    }
+    
     .banner-content {
         grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
+        gap: 30px;
+        text-align: left;
+        padding: 0 20px;
+    }
+    
+    .banner-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .banner-text p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    /* Filtros Mobile */
+    .filters-container {
+        padding: 20px;
+        margin: 0 15px;
+        border-radius: 15px;
+    }
+    
+    .filters-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filter-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .filter-group label {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    
+    .filter-group select,
+    .filter-group input {
+        padding: 12px 15px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+    
+    .filter-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-filter {
+        padding: 14px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+    
+    /* Grid de Imóveis Mobile */
+    .properties-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+        margin-top: 30px;
+    }
+    
+    .property-card {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .property-image {
+        height: 250px;
+        position: relative;
+    }
+    
+    .property-badge {
+        top: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-radius: 20px;
+    }
+    
+    .property-info {
+        padding: 25px 20px;
+    }
+    
+    .property-title {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+    
+    .property-location {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .property-features {
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px 0;
+    }
+    
+    .property-feature {
+        min-width: auto;
+        padding: 8px 12px;
+        background: rgba(0, 0, 0, 0.03);
+        border-radius: 8px;
+        font-size: 0.85rem;
+    }
+    
+    .property-price {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .property-actions {
+        gap: 12px;
+    }
+    
+    .btn-primary,
+    .btn-whatsapp {
+        padding: 14px 20px;
+        font-size: 0.9rem;
+        border-radius: 12px;
     }
     
     .banner-text h1 {

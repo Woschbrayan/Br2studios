@@ -1397,7 +1397,171 @@ body {
 
 @media (max-width: 768px) {
     .product-hero {
-        padding: 100px 0 80px;
+        padding: 120px 0 80px;
+        margin-top: 70px;
+    }
+    
+    .product-hero .container {
+        padding: 0 20px;
+    }
+    
+    .product-hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+    
+    .product-hero p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    /* Galeria Mobile */
+    .product-gallery {
+        margin: 0 -20px;
+        border-radius: 0;
+    }
+    
+    .gallery-main img {
+        height: 300px;
+        object-fit: cover;
+    }
+    
+    .gallery-thumbnails {
+        padding: 15px 20px;
+        gap: 10px;
+        overflow-x: auto;
+    }
+    
+    .thumbnail {
+        min-width: 80px;
+        height: 80px;
+        border-radius: 10px;
+    }
+    
+    /* Detalhes Mobile */
+    .product-details {
+        padding: 30px 20px;
+        margin: 0 15px;
+        border-radius: 20px;
+    }
+    
+    .product-header {
+        margin-bottom: 25px;
+    }
+    
+    .product-header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .product-location {
+        font-size: 0.95rem;
+    }
+    
+    .product-price {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+    
+    .price-per-m2 {
+        font-size: 0.9rem;
+    }
+    
+    /* Especificações Mobile */
+    .product-specs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin: 25px 0;
+    }
+    
+    .spec-item {
+        background: rgba(0, 0, 0, 0.03);
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+    }
+    
+    .spec-value {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+    
+    .spec-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-top: 5px;
+    }
+    
+    /* Características Mobile */
+    .product-features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 25px 0;
+    }
+    
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.03);
+        border-radius: 8px;
+        font-size: 0.85rem;
+    }
+    
+    .feature-item i {
+        font-size: 0.9rem;
+        color: var(--color-primary);
+        width: 16px;
+    }
+    
+    /* Contato do Corretor Mobile */
+    .contact-agent {
+        position: sticky;
+        bottom: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        margin: 30px -20px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .agent-info {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .agent-avatar {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+    }
+    
+    .agent-name {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+    
+    .agent-role {
+        font-size: 0.9rem;
+    }
+    
+    .contact-actions {
+        display: flex;
+        gap: 12px;
+    }
+    
+    .contact-actions .btn {
+        flex: 1;
+        padding: 15px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+        justify-content: center;
     }
     
     .product-info h1 {

@@ -182,6 +182,99 @@ include 'includes/header.php';
         align-items: center;
     }
 }
+
+/* Mobile 404 */
+@media (max-width: 768px) {
+    .error-page {
+        padding: 50px 0;
+        margin-top: 70px;
+        min-height: 60vh;
+    }
+    
+    .error-content {
+        padding: 0 20px;
+        text-align: center;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    .error-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    
+    .error-content h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+    
+    .error-content h2 {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+    
+    .error-content p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .error-actions .btn-primary,
+    .error-actions .btn-secondary {
+        padding: 16px 25px;
+        font-size: 1rem;
+        border-radius: 12px;
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .error-help {
+        background: var(--bg-card);
+        padding: 25px 20px;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .error-help h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .error-help p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .contact-item {
+        padding: 14px 20px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+}
 </style>
 
 <?php include 'includes/footer.php'; ?>

@@ -109,10 +109,39 @@ include 'includes/header.php';
         </div> 
     </section>
 
-   
+    <!-- Features Section Mobile - Limpa e Organizada -->
+    <section class="features-mobile mobile-only">
+        <div class="section-header">
+            <h2>Por que escolher a Br2Studios?</h2>
+            <p>Especialistas em investimentos imobiliários</p>
+        </div>
+        <div class="features-grid-mobile">
+            <div class="feature-card-mobile">
+                <div class="feature-icon-mobile">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Investimentos Seguros</h3>
+                <p>Portfólio selecionado em regiões estratégicas com alta liquidez</p>
+            </div>
+            <div class="feature-card-mobile">
+                <div class="feature-icon-mobile">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Alta Rentabilidade</h3>
+                <p>Consultoria especializada para maximizar seus rendimentos</p>
+            </div>
+            <div class="feature-card-mobile">
+                <div class="feature-icon-mobile">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Valorização Acelerada</h3>
+                <p>Projetos com excelente potencial de valorização</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- Featured Properties Section -->
-    <section class="featured-properties">
+    <!-- Featured Properties Section Desktop -->
+    <section class="featured-properties desktop-only">
         <div class="container">
             <div class="section-header">
                 <h2>Imóveis em Destaque</h2>
@@ -236,8 +265,135 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Cities Section -->
-    <section class="cities-section">
+    <!-- Properties Mobile - Carousel Limpo -->
+    <section class="properties-mobile mobile-only">
+        <div class="section-header">
+            <h2>Imóveis em Destaque</h2>
+            <p>Deslize para ver nossas oportunidades</p>
+        </div>
+        <div class="properties-carousel-mobile">
+            <?php if (!empty($imoveis_destaque)): ?>
+                <?php foreach ($imoveis_destaque as $imovel): ?>
+                    <div class="property-card-mobile">
+                        <div class="property-image-mobile" style="background-image: url('<?php echo $imovel['imagem_principal'] ?: 'assets/images/imoveis/Imovel-1.jpeg'; ?>');">
+                            <div class="property-badge-mobile">DESTAQUE</div>
+                        </div>
+                        <div class="property-info-mobile">
+                            <h3 class="property-title-mobile"><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
+                            <div class="property-location-mobile">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <?php echo htmlspecialchars($imovel['cidade'] . ', ' . $imovel['estado']); ?>
+                            </div>
+                            <div class="property-price-mobile">R$ <?php echo number_format($imovel['preco'], 0, ',', '.'); ?></div>
+                            <div class="property-features-mobile">
+                                <?php if (!empty($imovel['area'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-ruler"></i> <?php echo $imovel['area']; ?>m²</span>
+                                <?php endif; ?>
+                                <?php if (!empty($imovel['quartos'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-bed"></i> <?php echo $imovel['quartos']; ?></span>
+                                <?php endif; ?>
+                                <?php if (!empty($imovel['banheiros'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-bath"></i> <?php echo $imovel['banheiros']; ?></span>
+                                <?php endif; ?>
+                            </div>
+                            <a href="produto.php?id=<?php echo $imovel['id']; ?>" class="property-action-mobile">Ver Detalhes</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <!-- Exemplo se não houver dados -->
+                <div class="property-card-mobile">
+                    <div class="property-image-mobile" style="background-image: url('assets/images/imoveis/Imovel-1.jpeg');">
+                        <div class="property-badge-mobile">DESTAQUE</div>
+                    </div>
+                    <div class="property-info-mobile">
+                        <h3 class="property-title-mobile">Studio Moderno Centro</h3>
+                        <div class="property-location-mobile">
+                            <i class="fas fa-map-marker-alt"></i>
+                            São Paulo, SP
+                        </div>
+                        <div class="property-price-mobile">R$ 180.000</div>
+                        <div class="property-features-mobile">
+                            <span class="property-feature-mobile"><i class="fas fa-ruler"></i> 35m²</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bed"></i> 1</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bath"></i> 1</span>
+                        </div>
+                        <a href="produto.php" class="property-action-mobile">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="property-card-mobile">
+                    <div class="property-image-mobile" style="background-image: url('assets/images/imoveis/imovel-2.jpeg');">
+                        <div class="property-badge-mobile">DESTAQUE</div>
+                    </div>
+                    <div class="property-info-mobile">
+                        <h3 class="property-title-mobile">Studio Vista Mar</h3>
+                        <div class="property-location-mobile">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Rio de Janeiro, RJ
+                        </div>
+                        <div class="property-price-mobile">R$ 250.000</div>
+                        <div class="property-features-mobile">
+                            <span class="property-feature-mobile"><i class="fas fa-ruler"></i> 42m²</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bed"></i> 1</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bath"></i> 1</span>
+                        </div>
+                        <a href="produto.php" class="property-action-mobile">Ver Detalhes</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="imoveis.php" class="btn-primary btn-large">Ver Todos os Imóveis</a>
+        </div>
+    </section>
+
+    <!-- Cities Mobile - Cards Simples -->
+    <section class="cities-mobile mobile-only">
+        <div class="section-header">
+            <h2>Regiões Atendidas</h2>
+            <p>Investimentos em todo o Brasil</p>
+        </div>
+        <div class="cities-grid-mobile">
+            <div class="city-card-mobile">
+                <div class="city-icon-mobile">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>São Paulo</h3>
+                <p>Capital financeira</p>
+                <span class="city-count">3 Imóveis</span>
+            </div>
+            <div class="city-card-mobile">
+                <div class="city-icon-mobile">
+                    <i class="fas fa-beach"></i>
+                </div>
+                <h3>Rio de Janeiro</h3>
+                <p>Cidade maravilhosa</p>
+                <span class="city-count">1 Imóvel</span>
+            </div>
+            <div class="city-card-mobile">
+                <div class="city-icon-mobile">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3>Curitiba</h3>
+                <p>Capital verde</p>
+                <span class="city-count">1 Imóvel</span>
+            </div>
+            <div class="city-card-mobile">
+                <div class="city-icon-mobile">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3>Fortaleza</h3>
+                <p>Terra da luz</p>
+                <span class="city-count">1 Imóvel</span>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="regioes.php" class="btn-secondary btn-large">Explorar Regiões</a>
+        </div>
+    </section>
+
+    <!-- Cities Section Desktop -->
+    <section class="cities-section desktop-only">
         <div class="container">
             <div class="section-header">
                 <h2>Investindo em Todo o Brasil</h2>
@@ -297,8 +453,8 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Property Types Section -->
-    <section class="property-types">
+    <!-- Property Types Section Desktop -->
+    <section class="property-types desktop-only">
         <div class="container">
             <div class="section-header">
                 <h2>Tipos de Imóveis</h2>
@@ -356,8 +512,8 @@ include 'includes/header.php';
             </div>
         </div>
     </section>
- <!-- Features Section -->
- <section class="features">
+     <!-- Features Section Desktop -->
+    <section class="features desktop-only">
         <div class="container">
             <div class="section-header">
                 <h2>Por que escolher a Br2Studios?</h2>
@@ -409,8 +565,67 @@ include 'includes/header.php';
             </div>
         </div>
     </section>
-    <!-- Meet Our Agents Section -->
-    <section class="meet-agents">
+    <!-- Agents Mobile - Cards Simples -->
+    <section class="agents-mobile mobile-only">
+        <div class="section-header">
+            <h2>Nossa Equipe</h2>
+            <p>Especialistas em investimentos</p>
+        </div>
+        <div class="agents-grid-mobile">
+            <div class="agent-card-mobile">
+                <div class="agent-avatar-mobile">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>João Silva</h3>
+                <div class="agent-role-mobile">Especialista em Investimentos</div>
+                <div class="agent-stats-mobile">
+                    <div class="agent-stat-mobile">
+                        <span class="agent-stat-number">150+</span>
+                        <span>Vendas</span>
+                    </div>
+                    <div class="agent-stat-mobile">
+                        <span class="agent-stat-number">4.9</span>
+                        <span>Avaliação</span>
+                    </div>
+                </div>
+                <div class="agent-contact-mobile">
+                    <a href="https://wa.me/554141410093" class="btn-whatsapp-mobile" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="agent-card-mobile">
+                <div class="agent-avatar-mobile">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Maria Santos</h3>
+                <div class="agent-role-mobile">Consultora de Mercado</div>
+                <div class="agent-stats-mobile">
+                    <div class="agent-stat-mobile">
+                        <span class="agent-stat-number">120+</span>
+                        <span>Vendas</span>
+                    </div>
+                    <div class="agent-stat-mobile">
+                        <span class="agent-stat-number">4.8</span>
+                        <span>Avaliação</span>
+                    </div>
+                </div>
+                <div class="agent-contact-mobile">
+                    <a href="https://wa.me/554141410093" class="btn-whatsapp-mobile" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="corretores.php" class="btn-secondary btn-large">Ver Todos os Corretores</a>
+        </div>
+    </section>
+
+    <!-- Meet Our Agents Section Desktop -->
+    <section class="meet-agents desktop-only">
         <div class="container">
             <div class="section-header">
                 <h2>Conheça Nossos Especialistas</h2>
@@ -475,8 +690,48 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
+    <!-- Testimonials Mobile - Cards Simples -->
+    <section class="testimonials-mobile mobile-only">
+        <div class="section-header">
+            <h2>Depoimentos</h2>
+            <p>O que nossos clientes dizem</p>
+        </div>
+        <div class="testimonials-grid-mobile">
+            <div class="testimonial-card-mobile">
+                <div class="testimonial-avatar-mobile">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-rating-mobile">
+                    <i class="fas fa-star star-mobile"></i>
+                    <i class="fas fa-star star-mobile"></i>
+                    <i class="fas fa-star star-mobile"></i>
+                    <i class="fas fa-star star-mobile"></i>
+                    <i class="fas fa-star star-mobile"></i>
+                </div>
+                <div class="testimonial-text-mobile">A Br2Studios transformou meu investimento em um negócio lucrativo. Excelente retorno!</div>
+                <div class="testimonial-author-mobile">Carlos Mendes</div>
+                <div class="testimonial-role-mobile">Investidor</div>
+            </div>
+            <div class="testimonial-card-mobile">
+                <div class="testimonial-avatar-mobile">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-rating-mobile">
+                    <i class="fas fa-star star-mobile"></i>
+                    <i class="fas fa-star star-mobile"></i>
+                    <i class="fas fa-star star-mobile"></i>
+                    <i class="fas fa-star star-mobile"></i>
+                    <i class="fas fa-star star-mobile"></i>
+                </div>
+                <div class="testimonial-text-mobile">Equipe profissional e transparente. Consegui o imóvel perfeito para investimento.</div>
+                <div class="testimonial-author-mobile">Ana Paula Costa</div>
+                <div class="testimonial-role-mobile">Investidora</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section Desktop -->
+    <section class="testimonials desktop-only">
         <div class="container">
             <div class="section-header">
                 <h2>O que nossos clientes dizem</h2>
@@ -575,5 +830,6 @@ include 'includes/header.php';
     <?php include 'includes/footer.php'; ?>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/mobile-creative.js"></script>
 </body>
 </html>

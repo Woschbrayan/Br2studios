@@ -4,11 +4,11 @@
  * Sistema Br2Studios
  */
 
-// Configurações do MySQL
-define('DB_HOST', 'localhost:3308');      // Porta específica do XAMPP
-define('DB_NAME', 'br2studios');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+// Configurações do MySQL para Hostgator
+define('DB_HOST', 'localhost:3306');
+define('DB_NAME', 'brun3811_br2studios');
+define('DB_USERNAME', 'brun3811_brand');
+define('DB_PASSWORD', 'Br2studio!');
 
 // Configurações de timezone
 date_default_timezone_set('America/Sao_Paulo');
@@ -25,6 +25,6 @@ define('LOGIN_LOCKOUT_TIME', 900); // 15 minutos
 // Configurações da aplicação
 define('APP_NAME', 'Br2Studios');
 define('APP_VERSION', '1.0.0');
-define('APP_URL', 'http://localhost/br2studios');
+define('APP_URL', 'https://br2studios.online');
 define('ADMIN_EMAIL', 'admin@br2studios.com.br');
 ?>

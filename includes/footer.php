@@ -36,12 +36,35 @@
                         <li><a href="imoveis.php">Imóveis</a></li>
                         <li><a href="regioes.php">Regiões</a></li>
                         <li><a href="corretores.php">Corretores</a></li>
+                        <li><a href="contato.php">Contato</a></li>
                         <li><a href="sobre.php">Sobre Nós</a></li>
-                        
+                    </ul>
+                </div>
+                
+                <!-- Coluna 3: Área Administrativa -->
+                <div class="footer-col">
+                    <h4>Área Administrativa</h4>
+                    <ul class="footer-links">
+                        <li><a href="admin/" class="admin-link">
+                            <i class="fas fa-user-shield"></i>
+                            Painel Administrativo
+                        </a></li>
+                        <li><a href="admin/dashboard.php" class="admin-link">
+                            <i class="fas fa-chart-dashboard"></i>
+                            Dashboard
+                        </a></li>
+                        <li><a href="admin/imoveis.php" class="admin-link">
+                            <i class="fas fa-home"></i>
+                            Gerenciar Imóveis
+                        </a></li>
+                        <li><a href="admin/corretores.php" class="admin-link">
+                            <i class="fas fa-users"></i>
+                            Gerenciar Corretores
+                        </a></li>
                     </ul>
                 </div>
 
-                <!-- Coluna 3: Serviços -->
+                <!-- Coluna 4: Serviços -->
                 <div class="footer-col">
                     <h4>Nossos Serviços</h4>
                     <ul class="footer-links">

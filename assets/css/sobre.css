@@ -876,10 +876,81 @@
 
 /* Responsividade */
 @media (max-width: 768px) {
+    /* Hero Mobile */
+    .hero {
+        margin-top: 70px;
+        padding-top: 20px;
+    }
+    
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
+        text-align: left;
+        padding: 0 20px;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    /* Seções Mobile */
+    .about-intro,
+    .mission-vision,
+    .team-section,
+    .achievements,
+    .timeline-section {
+        padding: 60px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+    
+    /* Grid Mobile */
+    .values-grid,
+    .team-grid,
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+        margin-top: 30px;
+    }
+    
+    /* Cards Mobile */
+    .value-card,
+    .team-card,
+    .achievement-card {
+        padding: 25px 20px;
+        border-radius: 20px;
         text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .value-icon,
+    .achievement-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+        margin: 0 auto 20px;
+    }
+    
+    .value-card h3,
+    .achievement-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+    
+    .value-card p,
+    .achievement-card p {
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
     
     .hero-stats {
