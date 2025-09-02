@@ -47,9 +47,39 @@ $regioes = [
     ]
 ];
 
+// Buscar imóveis reais do banco de dados para cada região
+require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/classes/Database.php';
+require_once __DIR__ . '/classes/Imovel.php';
+
 $imoveis_regiao = [];
-if ($regiao && isset($regioes[$regiao])) {
-    $imoveis_regiao = $imovel->getImoveisByRegiao($regioes[$regiao]['nome']);
+try {
+    $imovel = new Imovel();
+    
+    if ($regiao && isset($regioes[$regiao])) {
+        // Buscar imóveis da região selecionada
+        $filtros_regiao = [
+            'cidade' => $regioes[$regiao]['nome'],
+            'status' => 'disponivel'
+        ];
+        $resultado = $imovel->listarTodos($filtros_regiao);
+        if (is_array($resultado) && isset($resultado['imoveis'])) {
+            $imoveis_regiao = $resultado['imoveis'];
+        }
+    }
+    
+    // Atualizar contadores de imóveis por região baseado nos dados reais
+    foreach ($regioes as $key => &$regiao_data) {
+        $filtros_contagem = [
+            'cidade' => $regiao_data['nome'],
+            'status' => 'disponivel'
+        ];
+        $resultado_contagem = $imovel->listarTodos($filtros_contagem);
+        $regiao_data['imoveis'] = (is_array($resultado_contagem) && isset($resultado_contagem['imoveis'])) ? count($resultado_contagem['imoveis']) : 0;
+    }
+    
+} catch (Exception $e) {
+    error_log("Erro ao buscar imóveis da região: " . $e->getMessage());
 }
 ?>
 
@@ -66,7 +96,7 @@ include 'includes/header.php';
             <div class="banner-content">
                 <div class="banner-text">
                     <h1>Investindo em Todo o Brasil</h1>
-                    <p>Descubra as melhores oportunidades de investimento em studios em todas as regiões do país</p>
+                    <p>Descubra as melhores oportunidades de investimento em imóveis em todas as regiões do país</p>
                     <div class="banner-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo count($regioes); ?></span>

@@ -7,10 +7,10 @@
                 <div class="footer-col">
                     <div class="footer-logo-container">
                         <i class="fas fa-building footer-logo-icon"></i>
-                        <span class="footer-logo-text">Br2Studios</span>
+                        <span class="footer-logo-text">Br2Imóveis</span>
                     </div>
                     <p class="footer-description">
-                        Transformando sonhos em investimentos lucrativos. Especialistas em studios de alta rentabilidade em todo o Brasil.
+                        Especialistas em imóveis de qualidade em todo o Brasil. CRECI 10.007 - Sua confiança, nosso compromisso.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Facebook">
@@ -60,19 +60,19 @@
                     <div class="contact-info-footer">
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>(800) 987 6543</span>
+                            <span>(41) 4141-0093</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>contato@br2studios.com</span>
+                            <span>contato@br2imoveis.com.br</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>São Paulo, SP - Brasil</span>
+                            <span>Travessa Rafael Francisco Greca, nº. 41-B, Bairro Água Verde, Curitiba - PR</span>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Seg-Sex: 9h às 18h</span>
+                            <i class="fas fa-certificate"></i>
+                            <span>CRECI 10.007</span>
                         </div>
                     </div>
 
@@ -94,7 +94,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="footer-bottom-content">
-                <p>&copy; 2024 Br2Studios. Todos os direitos reservados.</p>
+                <p>&copy; 2024 - Br2Imóveis - CRECI 10.007. Todos os direitos reservados.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Política de Privacidade</a>
                     <a href="#">Termos de Uso</a>

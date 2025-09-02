@@ -11,7 +11,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
 <aside class="sidebar">
     <div class="sidebar-header">
         <div class="logo">
-               <h2>Br2Studios</h2>
+               <h2>Br2Imóveis</h2>
         </div>
         <div class="user-info">
             <div class="user-avatar">
@@ -51,7 +51,10 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
                 <i class="fas fa-users"></i>
                 Especialistas
             </a>
-      
+            <a href="categorias.php" class="nav-item <?php echo $current_page === 'categorias' ? 'active' : ''; ?>">
+                <i class="fas fa-tags"></i>
+                Categorias
+            </a>
         </div>
       
         

@@ -30,6 +30,7 @@ body {
     --color-success: #666666;
     --color-warning: #999999;
     --color-info: #888888;
+    --whatsapp-color: #25d366;
     --color-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
     --color-gradient-secondary: linear-gradient(135deg, #333333 0%, #666666 100%);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);

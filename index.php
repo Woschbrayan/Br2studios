@@ -29,7 +29,7 @@ try {
 }
 
 $current_page = 'home';
-$page_title = 'Br2Studios - Investimentos Imobiliários Inteligentes';
+$page_title = 'Br2Imóveis - Imóveis de Qualidade em Todo o Brasil';
 $page_css = 'assets/css/home-sections.css';
 include 'includes/header.php'; 
 ?>
@@ -156,10 +156,16 @@ include 'includes/header.php';
                                     </p>
                                     <div class="property-details">
                                         <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
-                                            <span><i class="fas fa-home"></i> <?php echo $imovel_item['area']; ?>m²</span>
+                                            <span><i class="fas fa-ruler-combined"></i> <?php echo $imovel_item['area']; ?>m²</span>
+                                        <?php endif; ?>
+                                        <?php if (!empty($imovel_item['quartos'])): ?>
+                                            <span><i class="fas fa-bed"></i> <?php echo $imovel_item['quartos']; ?></span>
                                         <?php endif; ?>
                                         <?php if (!empty($imovel_item['banheiros'])): ?>
                                             <span><i class="fas fa-bath"></i> <?php echo $imovel_item['banheiros']; ?></span>
+                                        <?php endif; ?>
+                                        <?php if (!empty($imovel_item['vagas'])): ?>
+                                            <span><i class="fas fa-car"></i> <?php echo $imovel_item['vagas']; ?></span>
                                         <?php endif; ?>
                                         <span class="property-type"><?php echo strtoupper($imovel_item['tipo']); ?></span>
                                     </div>
@@ -185,8 +191,10 @@ include 'includes/header.php';
                                 <h3>Studio Moderno no Centro</h3>
                                 <p class="property-location"><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
                                 <div class="property-details">
-                                    <span><i class="fas fa-home"></i> 35m²</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 35m²</span>
+                                    <span><i class="fas fa-bed"></i> 1</span>
                                     <span><i class="fas fa-bath"></i> 1</span>
+                                    <span><i class="fas fa-car"></i> 1</span>
                                     <span class="property-type">STUDIO</span>
                                 </div>
                                 <a href="#" class="btn-view-property">Ver Detalhes</a>
@@ -209,8 +217,10 @@ include 'includes/header.php';
                                 <h3>Studio com Vista para o Mar</h3>
                                 <p class="property-location"><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, RJ</p>
                                 <div class="property-details">
-                                    <span><i class="fas fa-home"></i> 42m²</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 42m²</span>
+                                    <span><i class="fas fa-bed"></i> 1</span>
                                     <span><i class="fas fa-bath"></i> 1</span>
+                                    <span><i class="fas fa-car"></i> 1</span>
                                     <span class="property-type">STUDIO</span>
                                 </div>
                                 <a href="#" class="btn-view-property">Ver Detalhes</a>
@@ -563,7 +573,7 @@ include 'includes/header.php';
 
     <!-- WhatsApp Button -->
     <div class="whatsapp-button">
-        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os studios da Br2Studios" target="_blank">
+        <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre os imóveis da Br2Imóveis" target="_blank">
             <i class="fas fa-whatsapp"></i>
         </a>
     </div>

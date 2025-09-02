@@ -1,5 +1,60 @@
 /* Seções da Home - Design Moderno */
 
+/* Mensagem quando não há imóveis em destaque */
+.no-properties-message {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 2px dashed var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.no-properties-content {
+    text-align: center;
+    padding: 40px;
+    max-width: 400px;
+}
+
+.no-properties-content i {
+    font-size: 3rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+.no-properties-content h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.no-properties-content p {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.no-properties-content .btn-view-all {
+    display: inline-block;
+    background: var(--color-gradient);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.no-properties-content .btn-view-all:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
 /* Features Section - Melhorada */
 .features {
     padding: 80px 0;
@@ -398,10 +453,12 @@
     padding: 20px 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .property-details span {
-    color: var(--color-text-light);
+    color: var(--text-secondary);
     font-size: 0.95rem;
     display: flex;
     align-items: center;
@@ -1244,81 +1301,67 @@
     }
 }
 
-/* Responsividade */
+/* Responsividade Melhorada para Cards */
+@media (max-width: 1200px) {
+    .properties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+}
+
 @media (max-width: 768px) {
-    .properties-grid,
-    .cities-grid,
-    .types-grid,
-    .agents-grid,
-    .testimonials-grid {
+    .properties-grid {
         grid-template-columns: 1fr;
         gap: 30px;
+        max-width: 500px;
+        margin: 0 auto 50px auto;
     }
     
-    .cta-content h2 {
-        font-size: 2.8rem;
+    .property-info {
+        padding: 25px;
     }
     
-    .cta-actions {
+    .property-image {
+        height: 250px;
+    }
+    
+    .property-details {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        gap: 12px;
     }
     
-    .partners-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    
-    .section-header h2 {
-        font-size: 2.8rem;
-    }
-    
-    .feature-card,
-    .property-info,
-    .agent-card,
-    .testimonial-card {
-        padding: 40px 30px;
-    }
-    
-    .city-overlay,
-    .type-overlay {
-        padding: 30px 25px;
+    .property-details span {
+        width: 100%;
+        justify-content: flex-start;
     }
 }
 
 @media (max-width: 480px) {
-    .property-info,
-    .agent-card,
-    .testimonial-card {
-        padding: 30px 25px;
-    }
-    
-    .city-overlay,
-    .type-overlay {
-        padding: 25px 20px;
-    }
-    
-    .cta-content h2 {
-        font-size: 2.5rem;
-    }
-    
-    .section-header h2 {
-        font-size: 2.5rem;
-    }
-    
-    .whatsapp-button {
-        bottom: 20px;
-        right: 20px;
-    }
-    
-    .whatsapp-button a {
-        width: 60px;
-        height: 60px;
-        font-size: 1.8rem;
-    }
-    
-    .partners-grid {
-        grid-template-columns: 1fr;
+    .properties-grid {
         gap: 25px;
+        padding: 0 15px;
+    }
+    
+    .property-info {
+        padding: 20px;
+    }
+    
+    .property-image {
+        height: 220px;
+    }
+    
+    .property-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .property-details {
+        padding: 15px 0;
+        gap: 10px;
+    }
+    
+    .btn-view-property {
+        padding: 14px 24px;
+        font-size: 14px;
     }
 }

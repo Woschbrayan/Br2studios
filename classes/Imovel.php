@@ -61,6 +61,11 @@ class Imovel {
             $id = $this->db->insert($sql, $params);
             
             if ($id) {
+                // Processar categorias se fornecidas
+                if (!empty($dados['categorias']) && is_array($dados['categorias'])) {
+                    $this->atualizarCategorias($id, $dados['categorias']);
+                }
+                
                 return [
                     'success' => true,
                     'message' => 'Imóvel cadastrado com sucesso!',
@@ -116,6 +121,11 @@ class Imovel {
             $rows = $this->db->update($sql, $params);
             
             if ($rows > 0) {
+                // Processar categorias se fornecidas
+                if (isset($dados['categorias'])) {
+                    $this->atualizarCategorias($id, $dados['categorias']);
+                }
+                
                 return [
                     'success' => true,
                     'message' => 'Imóvel atualizado com sucesso!'
@@ -133,12 +143,35 @@ class Imovel {
     }
     
     /**
+     * Atualiza as categorias de um imóvel
+     */
+    private function atualizarCategorias($imovel_id, $categorias_ids) {
+        try {
+            require_once __DIR__ . '/CategoriaImovel.php';
+            $categoria = new CategoriaImovel();
+            return $categoria->atualizarCategoriasImovel($imovel_id, $categorias_ids);
+        } catch (Exception $e) {
+            error_log("Erro ao atualizar categorias do imóvel: " . $e->getMessage());
+            throw $e;
+        }
+    }
+    
+    /**
      * Busca imóvel por ID
      */
     public function buscarPorId($id) {
         try {
             $sql = "SELECT * FROM {$this->table} WHERE id = :id";
-            return $this->db->fetchOne($sql, [':id' => $id]);
+            $imovel = $this->db->fetchOne($sql, [':id' => $id]);
+            
+            if ($imovel) {
+                // Buscar categorias do imóvel
+                require_once __DIR__ . '/CategoriaImovel.php';
+                $categoria = new CategoriaImovel();
+                $imovel['categorias'] = $categoria->buscarPorImovel($id);
+            }
+            
+            return $imovel;
         } catch (Exception $e) {
             error_log("Erro ao buscar imóvel por ID: " . $e->getMessage());
             return false;
@@ -188,6 +221,11 @@ class Imovel {
             if (!empty($filtros['preco_max'])) {
                 $where[] = "preco <= :preco_max";
                 $params[':preco_max'] = $filtros['preco_max'];
+            }
+            
+            if (isset($filtros['destaque'])) {
+                $where[] = "destaque = :destaque";
+                $params[':destaque'] = $filtros['destaque'];
             }
             
             if (!empty($where)) {

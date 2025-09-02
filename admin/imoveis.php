@@ -14,6 +14,7 @@ require_once '../config/php_limits.php';
 require_once '../classes/Database.php';
 require_once '../classes/Imovel.php';
 require_once '../classes/FileUpload.php';
+require_once '../classes/CategoriaImovel.php';
 
 $mensagem = '';
 $tipo_mensagem = '';
@@ -21,6 +22,7 @@ $tipo_mensagem = '';
 try {
     $imovel = new Imovel();
     $file_upload = new FileUpload();
+    $categoria = new CategoriaImovel();
 } catch (Exception $e) {
     $mensagem = "Erro ao inicializar classes: " . $e->getMessage();
     $tipo_mensagem = 'error';
@@ -46,7 +48,8 @@ if ($_POST) {
             'tipo' => trim($_POST['tipo'] ?? ''),
             'status' => trim($_POST['status'] ?? 'disponivel'),
             'caracteristicas' => trim($_POST['caracteristicas'] ?? ''),
-            'destaque' => isset($_POST['destaque']) ? 1 : 0
+            'destaque' => isset($_POST['destaque']) ? 1 : 0,
+            'categorias' => isset($_POST['categorias']) ? $_POST['categorias'] : []
         ];
         
         // Processar upload de imagem principal
@@ -156,33 +159,32 @@ if ($action === 'excluir' && isset($_GET['id'])) {
 // Buscar dados para edição
 $imovel_edicao = null;
 if ($action === 'editar' && isset($_GET['id'])) {
-    try {
-        $imovel_edicao = $imovel->buscarPorId($_GET['id']);
-        if (!$imovel_edicao) {
-            $mensagem = "Imóvel não encontrado";
-            $tipo_mensagem = 'error';
-            $action = 'listar';
-        }
-    } catch (Exception $e) {
-        $mensagem = "Erro ao buscar imóvel: " . $e->getMessage();
+    $id = $_GET['id'];
+    $imovel_edicao = $imovel->buscarPorId($id);
+    
+    if (!$imovel_edicao) {
+        $mensagem = "Imóvel não encontrado";
         $tipo_mensagem = 'error';
         $action = 'listar';
     }
 }
 
-// Buscar lista de imóveis
-$imoveis = [];
+// Buscar categorias disponíveis
+try {
+    $categorias_disponiveis = $categoria->listarTodas(true);
+} catch (Exception $e) {
+    $categorias_disponiveis = [];
+    error_log("Erro ao buscar categorias: " . $e->getMessage());
+}
+
+// Buscar imóveis para listagem
 if ($action === 'listar') {
     try {
-        $imoveis_result = $imovel->listarTodos();
-        if (is_array($imoveis_result) && isset($imoveis_result['imoveis'])) {
-            $imoveis = $imoveis_result;
-        } elseif (is_array($imoveis_result)) {
-            $imoveis = ['imoveis' => $imoveis_result];
-        }
+        $imoveis = $imovel->listarTodos();
     } catch (Exception $e) {
         $mensagem = "Erro ao buscar imóveis: " . $e->getMessage();
         $tipo_mensagem = 'error';
+        $imoveis = ['imoveis' => []];
     }
 }
 
@@ -258,6 +260,7 @@ include 'includes/header.php';
                             <th>Tipo</th>
                             <th>Preço</th>
                             <th>Localização</th>
+                            <th>Categorias</th>
                             <th>Status</th>
                             <th>Data Cadastro</th>
                             <th>Ações</th>
@@ -301,6 +304,34 @@ include 'includes/header.php';
                                         echo '<span style="color: #999;">Não informado</span>';
                                     }
                                     ?>
+                                </td>
+                                <td>
+                                    <?php 
+                                    // Buscar categorias do imóvel para exibição
+                                    $categorias_imovel = [];
+                                    try {
+                                        $categorias_imovel = $categoria->buscarPorImovel($imovel_item['id']);
+                                    } catch (Exception $e) {
+                                        // Ignorar erro silenciosamente
+                                    }
+                                    
+                                    if (!empty($categorias_imovel)): ?>
+                                        <div style="display: flex; flex-wrap: wrap; gap: 4px; max-width: 200px;">
+                                            <?php foreach (array_slice($categorias_imovel, 0, 3) as $cat): ?>
+                                                <span style="background: #e3f2fd; color: #1976d2; padding: 2px 6px; border-radius: 12px; font-size: 0.7rem; white-space: nowrap;">
+                                                    <i class="<?php echo htmlspecialchars($cat['icone']); ?>" style="margin-right: 4px;"></i>
+                                                    <?php echo htmlspecialchars($cat['nome']); ?>
+                                                </span>
+                                            <?php endforeach; ?>
+                                            <?php if (count($categorias_imovel) > 3): ?>
+                                                <span style="background: #f5f5f5; color: #666; padding: 2px 6px; border-radius: 12px; font-size: 0.7rem;">
+                                                    +<?php echo count($categorias_imovel) - 3; ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php else: ?>
+                                        <span style="color: #999; font-size: 0.8rem;">Nenhuma categoria</span>
+                                    <?php endif; ?>
                                 </td>
                                 <td>
                                     <span class="status-badge status-<?php echo $imovel_item['status']; ?>" 
@@ -479,6 +510,44 @@ include 'includes/header.php';
                     <label for="caracteristicas" class="form-label">Características</label>
                     <textarea id="caracteristicas" name="caracteristicas" class="form-control form-textarea" rows="3"
                               placeholder="Liste as características do imóvel..."><?php echo htmlspecialchars($imovel_edicao['caracteristicas'] ?? ''); ?></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="categorias" class="form-label">Categorias/Características do Imóvel</label>
+                    <div class="categorias-container" style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 15px; background: #f9f9f9;">
+                        <?php if (!empty($categorias_disponiveis)): ?>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+                                <?php 
+                                $categorias_atuais = [];
+                                if ($action === 'editar' && !empty($imovel_edicao['categorias'])) {
+                                    foreach ($imovel_edicao['categorias'] as $cat) {
+                                        $categorias_atuais[] = $cat['id'];
+                                    }
+                                }
+                                ?>
+                                <?php foreach ($categorias_disponiveis as $cat): ?>
+                                    <label style="display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 6px; cursor: pointer; transition: background 0.2s; <?php echo in_array($cat['id'], $categorias_atuais) ? 'background: #e3f2fd; border: 1px solid #2196f3;' : ''; ?>">
+                                        <input type="checkbox" name="categorias[]" value="<?php echo $cat['id']; ?>" 
+                                               <?php echo in_array($cat['id'], $categorias_atuais) ? 'checked' : ''; ?>
+                                               style="margin: 0;">
+                                        <i class="<?php echo htmlspecialchars($cat['icone']); ?>" style="color: #666; width: 16px;"></i>
+                                        <span style="font-size: 0.9rem;"><?php echo htmlspecialchars($cat['nome']); ?></span>
+                                    </label>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php else: ?>
+                            <p style="color: #666; text-align: center; margin: 20px 0;">
+                                <i class="fas fa-info-circle"></i>
+                                Nenhuma categoria disponível. 
+                                <a href="categorias.php" style="color: #007bff; text-decoration: none;">
+                                    Cadastre categorias primeiro
+                                </a>
+                            </p>
+                        <?php endif; ?>
+                    </div>
+                    <small style="color: #666; margin-top: 5px; display: block;">
+                        Selecione as características que este imóvel possui. Você pode selecionar múltiplas opções.
+                    </small>
                 </div>
                 
                 <div class="form-group">

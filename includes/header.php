@@ -23,7 +23,7 @@
                 <div class="logo">
                     <div class="logo-container">
                         <i class="fas fa-building logo-icon"></i>
-                        <span class="logo-text">Br2Studios</span>
+                        <span class="logo-text">Br2Imóveis</span>
                     </div>
                 </div>
                 
@@ -42,7 +42,7 @@
                 <div class="header-actions">
                     <div class="contact-info">
                         <i class="fas fa-phone"></i>
-                        <span>(800) 987 6543</span>
+                        <span>(41) 4141-0093</span>
                     </div>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
                         <i class="fas fa-moon" id="theme-icon"></i>

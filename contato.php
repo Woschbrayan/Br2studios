@@ -33,27 +33,27 @@ include 'includes/header.php';
 <section class="page-banner">
     <div class="container">
         <div class="banner-content">
-            <div class="banner-text">
-                <h1>Entre em Contato</h1>
-                <p>Nossa equipe está pronta para transformar seus sonhos em investimentos lucrativos</p>
+                            <div class="banner-text">
+                    <h1>Entre em Contato</h1>
+                    <p>Nossa equipe está pronta para encontrar o imóvel perfeito para você em todo o Brasil</p>
                 <div class="banner-stats">
                     <div class="stat-item">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Suporte</span>
+                        <span class="stat-number">CRECI</span>
+                        <span class="stat-label">10.007</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">< 2h</span>
-                        <span class="stat-label">Resposta</span>
+                        <span class="stat-number">(41)</span>
+                        <span class="stat-label">4141-0093</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Satisfação</span>
+                        <span class="stat-number">Curitiba</span>
+                        <span class="stat-label">PR</span>
                     </div>
                 </div>
             </div>
             <div class="banner-visual">
                 <div class="banner-image">
-                    <img src="assets/images/hero-1.jpg" alt="Equipe Br2Studios">
+                    <img src="assets/images/hero-2.jpg" alt="Equipe Br2Studios">
                 </div>
                 <div class="banner-badge">
                     <i class="fas fa-headset"></i>
@@ -89,7 +89,7 @@ include 'includes/header.php';
                         <span>Resposta Imediata</span>
                     </div>
                 </div>
-                <a href="https://wa.me/5511999999999" class="btn-method" target="_blank">
+                <a href="https://wa.me/554141410093" class="btn-method" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     Conversar Agora
                 </a>
@@ -303,8 +303,8 @@ include 'includes/header.php';
                 <p class="team-role">Especialista em Studios</p>
                 <p class="team-description">8 anos de experiência no mercado imobiliário, especializada em investimentos de alto retorno.</p>
                 <div class="team-contact">
-                    <a href="https://wa.me/5511999999999" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
+                        <i class="fas fa-whatsapp"></i>
                         WhatsApp
                     </a>
                 </div>
@@ -318,8 +318,8 @@ include 'includes/header.php';
                 <p class="team-role">Consultor de Investimentos</p>
                 <p class="team-description">12 anos de experiência, especializado em análise de mercado e estratégias de investimento.</p>
                 <div class="team-contact">
-                    <a href="https://wa.me/5511999999999" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
+                        <i class="fas fa-whatsapp"></i>
                         WhatsApp
                     </a>
                 </div>
@@ -333,8 +333,8 @@ include 'includes/header.php';
                 <p class="team-role">Gerente de Relacionamento</p>
                 <p class="team-description">6 anos de experiência, focada em atendimento personalizado e satisfação do cliente.</p>
                 <div class="team-contact">
-                    <a href="https://wa.me/5511999999999" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
+                        <i class="fas fa-whatsapp"></i>
                         WhatsApp
                     </a>
                 </div>

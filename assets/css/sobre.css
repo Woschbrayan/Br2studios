@@ -1,24 +1,14 @@
 /* ===== SOBRE PAGE STYLES ===== */
 
-/* Hero Section - PERFEITA */
+/* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+    background: #ffffff;
     padding: 253px 0 80px;
     margin-top: 80px;
     position: relative;
     overflow: hidden;
     min-height: 60vh;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hex" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23hex)"/></svg>');
-    opacity: 0.5;
+    transition: all 0.3s ease;
 }
 
 .hero-content {
@@ -26,8 +16,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
-    position: relative;
-    z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -36,22 +24,25 @@
 .hero-text h1 {
     font-size: 3rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: #000000;
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    transition: color 0.3s ease;
 }
 
 .hero-text p {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: #333333;
     margin-bottom: 2.5rem;
     line-height: 1.6;
     max-width: 500px;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .hero-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
 
@@ -63,15 +54,18 @@
     display: block;
     font-size: 2.2rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: #000000;
     margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
 }
 
 .stat-label {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: #333333;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .hero-visual {
@@ -83,23 +77,25 @@
 .hero-image {
     width: 180px;
     height: 180px;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .hero-image i {
     font-size: 3.5rem;
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
-/* About Section - PERFEITA */
+/* About Section */
 .about-section {
     padding: 80px 0;
-    background: var(--bg-secondary);
+    background: #f8f8f8;
+    transition: background 0.3s ease;
 }
 
 .about-content {
@@ -115,15 +111,42 @@
 .about-text h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #000000;
     margin-bottom: 2rem;
+    transition: color 0.3s ease;
 }
 
 .about-text p {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: #333333;
     margin-bottom: 1.5rem;
     line-height: 1.7;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.about-features {
+    margin-top: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item i {
+    color: #000000;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.feature-item span {
+    color: #333333;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .about-visual {
@@ -135,23 +158,25 @@
 .about-image {
     width: 150px;
     height: 150px;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .about-image i {
     font-size: 3rem;
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
-/* Values Section - PERFEITA */
+/* Values Section */
 .values-section {
     padding: 80px 0;
-    background: var(--bg-primary);
+    background: #ffffff;
+    transition: background 0.3s ease;
 }
 
 .section-header {
@@ -166,15 +191,18 @@
 .section-header h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #000000;
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
 }
 
 .section-header p {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: #333333;
     max-width: 600px;
     margin: 0 auto;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .values-grid {
@@ -187,60 +215,122 @@
 }
 
 .value-card {
-    background: var(--bg-secondary);
+    background: #f8f8f8;
     padding: 2.5rem 2rem;
     border-radius: 20px;
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.value-card.animate-in {
-    opacity: 1;
-    transform: translateY(0);
+    border: 1px solid #e0e0e0;
 }
 
 .value-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent-primary);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #000000;
 }
 
 .value-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
 }
 
 .value-icon i {
     font-size: 2rem;
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 .value-card h3 {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #000000;
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
 }
 
 .value-card p {
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: #333333;
     line-height: 1.6;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* Team Section - PERFEITA */
+/* Diferenciais Section */
+.diferenciais-section {
+    padding: 80px 0;
+    background: #f8f8f8;
+    transition: background 0.3s ease;
+}
+
+.diferenciais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.diferencial-card {
+    background: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.diferencial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #000000;
+}
+
+.diferencial-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #333333 0%, #666666 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.diferencial-icon i {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.diferencial-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.diferencial-card p {
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.6;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Team Section */
 .team-section {
     padding: 80px 0;
-    background: var(--bg-secondary);
+    background: #ffffff;
+    transition: background 0.3s ease;
 }
 
 .team-grid {
@@ -253,42 +343,36 @@
 }
 
 .team-card {
-    background: var(--bg-primary);
+    background: #f8f8f8;
     padding: 2rem;
     border-radius: 20px;
     display: flex;
     gap: 1.5rem;
     transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.team-card.animate-in {
-    opacity: 1;
-    transform: translateY(0);
+    border: 1px solid #e0e0e0;
 }
 
 .team-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent-primary);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #000000;
 }
 
 .member-photo {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
 .member-photo i {
     font-size: 2rem;
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 .member-info {
@@ -298,25 +382,29 @@
 .member-info h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #000000;
     margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
 }
 
 .member-role {
     display: block;
     font-size: 0.9rem;
-    color: var(--accent-primary);
+    color: #000000;
     font-weight: 500;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transition: color 0.3s ease;
 }
 
 .member-info p {
     font-size: 0.95rem;
-    color: var(--text-secondary);
+    color: #333333;
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .member-social {
@@ -325,28 +413,28 @@
 }
 
 .social-link {
-    width: 35px;
-    height: 35px;
-    background: var(--bg-secondary);
+    width: 40px;
+    height: 40px;
+    background: #000000;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: #ffffff;
+    text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
 }
 
 .social-link:hover {
-    background: var(--accent-primary);
-    color: var(--text-primary);
+    background: #333333;
     transform: translateY(-2px);
 }
 
-/* Achievements Section - PERFEITA */
+/* Achievements Section */
 .achievements-section {
     padding: 80px 0;
-    background: var(--bg-primary);
+    background: #f8f8f8;
+    transition: background 0.3s ease;
 }
 
 .achievements-grid {
@@ -359,55 +447,57 @@
 }
 
 .achievement-card {
-    background: var(--bg-secondary);
+    background: #ffffff;
     padding: 2rem;
     border-radius: 20px;
-    text-align: center;
+    display: flex;
+    gap: 1.5rem;
     transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.achievement-card.animate-in {
-    opacity: 1;
-    transform: translateY(0);
+    border: 1px solid #e0e0e0;
 }
 
 .achievement-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent-primary);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #000000;
 }
 
 .achievement-year {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-    color: var(--text-primary);
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
 }
 
 .achievement-content h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
+    color: #000000;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
 }
 
 .achievement-content p {
-    font-size: 1rem;
-    color: var(--text-secondary);
+    font-size: 0.95rem;
+    color: #333333;
     line-height: 1.6;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* Mission Section - PERFEITA */
+/* Mission Section */
 .mission-section {
     padding: 80px 0;
-    background: var(--bg-secondary);
+    background: #ffffff;
+    transition: background 0.3s ease;
 }
 
 .mission-content {
@@ -423,15 +513,18 @@
 .mission-text h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #000000;
     margin-bottom: 2rem;
+    transition: color 0.3s ease;
 }
 
 .mission-text p {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: #333333;
     margin-bottom: 2rem;
     line-height: 1.7;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .mission-points {
@@ -444,25 +537,19 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    opacity: 0;
-    transform: translateX(-30px);
-}
-
-.mission-point.animate-in {
-    opacity: 1;
-    transform: translateX(0);
 }
 
 .mission-point i {
-    color: var(--accent-primary);
+    color: #000000;
     font-size: 1.2rem;
-    flex-shrink: 0;
+    transition: color 0.3s ease;
 }
 
 .mission-point span {
+    color: #333333;
     font-size: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .mission-visual {
@@ -474,23 +561,25 @@
 .mission-image {
     width: 150px;
     height: 150px;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .mission-image i {
     font-size: 3rem;
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
-/* CTA Section - PERFEITA */
+/* CTA Section */
 .cta-section {
     padding: 80px 0;
-    background: var(--bg-primary);
+    background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+    transition: background 0.3s ease;
 }
 
 .cta-content {
@@ -503,15 +592,18 @@
 .cta-text h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #000000;
     margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
 }
 
 .cta-text p {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: #333333;
     margin-bottom: 2.5rem;
     line-height: 1.6;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .cta-actions {
@@ -534,31 +626,266 @@
 }
 
 .btn-primary {
-    background: var(--accent-primary);
-    color: var(--text-primary);
+    background: #000000;
+    color: #ffffff;
 }
 
 .btn-primary:hover {
-    background: var(--accent-secondary);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--text-primary);
-    border-color: var(--accent-primary);
+    color: #000000;
+    border-color: #000000;
 }
 
 .btn-secondary:hover {
-    background: var(--accent-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: #000000;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design - PERFEITO */
-@media (max-width: 1024px) {
-    .hero-content,
+/* ===== TEMA DARK ===== */
+[data-theme="dark"] .hero-section {
+    background: #0f0f0f;
+}
+
+[data-theme="dark"] .hero-text h1 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .hero-text p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .stat-number {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .stat-label {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .hero-image {
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+}
+
+[data-theme="dark"] .hero-image i {
+    color: #000000;
+}
+
+[data-theme="dark"] .about-section {
+    background: #1a1a1a;
+}
+
+[data-theme="dark"] .about-text h2 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .about-text p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .feature-item i {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .feature-item span {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .about-image {
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+}
+
+[data-theme="dark"] .about-image i {
+    color: #000000;
+}
+
+[data-theme="dark"] .values-section {
+    background: #0f0f0f;
+}
+
+[data-theme="dark"] .section-header h2 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .section-header p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .value-card {
+    background: #1a1a1a;
+    border-color: #404040;
+}
+
+[data-theme="dark"] .value-card h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .value-card p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .value-icon {
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+}
+
+[data-theme="dark"] .value-icon i {
+    color: #000000;
+}
+
+[data-theme="dark"] .diferenciais-section {
+    background: #1a1a1a;
+}
+
+[data-theme="dark"] .diferencial-card {
+    background: #0f0f0f;
+    border-color: #404040;
+}
+
+[data-theme="dark"] .diferencial-card h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .diferencial-card p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .diferencial-icon {
+    background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
+}
+
+[data-theme="dark"] .diferencial-icon i {
+    color: #000000;
+}
+
+[data-theme="dark"] .team-section {
+    background: #0f0f0f;
+}
+
+[data-theme="dark"] .team-card {
+    background: #1a1a1a;
+    border-color: #404040;
+}
+
+[data-theme="dark"] .team-card h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .team-card .member-role {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .team-card p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .member-photo {
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+}
+
+[data-theme="dark"] .member-photo i {
+    color: #000000;
+}
+
+[data-theme="dark"] .social-link {
+    background: #ffffff;
+    color: #000000;
+}
+
+[data-theme="dark"] .social-link:hover {
+    background: #cccccc;
+}
+
+[data-theme="dark"] .achievements-section {
+    background: #1a1a1a;
+}
+
+[data-theme="dark"] .achievement-card {
+    background: #0f0f0f;
+    border-color: #404040;
+}
+
+[data-theme="dark"] .achievement-content h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .achievement-content p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .achievement-year {
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+    color: #000000;
+}
+
+[data-theme="dark"] .mission-section {
+    background: #0f0f0f;
+}
+
+[data-theme="dark"] .mission-text h2 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .mission-text p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .mission-point i {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .mission-point span {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .mission-image {
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+}
+
+[data-theme="dark"] .mission-image i {
+    color: #000000;
+}
+
+[data-theme="dark"] .cta-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+[data-theme="dark"] .cta-text h2 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .cta-text p {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .btn-secondary {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .about-content,
     .mission-content {
         grid-template-columns: 1fr;
@@ -566,51 +893,11 @@
         text-align: center;
     }
     
-    .hero-text p {
-        margin: 0 auto 2.5rem;
-    }
-    
-    .hero-stats {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 80px 0 60px;
-        margin-top: 60px;
-    }
-    
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-text p {
-        font-size: 1rem;
-    }
-    
-    .hero-stats {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .stat-number {
-        font-size: 2rem;
-    }
-    
-    .section-header h2 {
-        font-size: 2rem;
-    }
-    
     .values-grid,
+    .diferenciais-grid,
     .team-grid,
     .achievements-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .team-card {
-        flex-direction: column;
-        text-align: center;
     }
     
     .cta-actions {
@@ -618,71 +905,34 @@
         align-items: center;
     }
     
-    .btn-primary, .btn-secondary {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
+    .hero-text h1,
+    .about-text h2,
+    .section-header h2,
+    .mission-text h2,
+    .cta-text h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-text p,
+    .about-text p,
+    .section-header p,
+    .mission-text p,
+    .cta-text p {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-section {
-        padding: 60px 0 40px;
-        margin-top: 50px;
+    .hero-stats {
+        grid-template-columns: 1fr;
     }
     
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-text p {
-        font-size: 1rem;
-    }
-    
-    .hero-image {
-        width: 150px;
-        height: 150px;
-    }
-    
-    .hero-image i {
-        font-size: 3rem;
-    }
-    
-    .section-header h2 {
+    .stat-number {
         font-size: 1.8rem;
     }
     
-    .about-section,
-    .values-section,
-    .team-section,
-    .achievements-section,
-    .mission-section,
-    .cta-section {
-        padding: 60px 0;
+    .btn-primary, .btn-secondary {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
     }
-}
-
-/* Dark Theme Adjustments - PERFEITO */
-[data-theme="dark"] .hero-section::before {
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hex" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23hex)"/></svg>');
-}
-
-[data-theme="dark"] .section-header h2,
-[data-theme="dark"] .about-text h2,
-[data-theme="dark"] .mission-text h2,
-[data-theme="dark"] .cta-text h2 {
-    color: #ffffff;
-}
-
-[data-theme="dark"] .value-card,
-[data-theme="dark"] .team-card,
-[data-theme="dark"] .achievement-card {
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .value-card:hover,
-[data-theme="dark"] .team-card:hover,
-[data-theme="dark"] .achievement-card:hover {
-    border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }

@@ -58,55 +58,13 @@ try {
         }
     }
     
-    // Se não há corretores válidos no banco, usar dados de exemplo
-    if (empty($corretores)) {
-        $corretores = [
-            'SP' => [
-                'estado' => 'São Paulo',
-                'corretores' => [
-                    [
-                        'nome' => 'Ana Silva',
-                        'cidade' => 'São Paulo',
-                        'creci' => '123456-F',
-                        'whatsapp' => '(11) 99999-1111',
-                        'email' => 'ana.silva@br2studios.com.br',
-                        'especialidade' => 'Studios e Apartamentos',
-                        'experiencia' => '8 anos',
-                        'imagem' => 'assets/images/corretores/ana-silva.jpg',
-                        'destaque' => true,
-                        'avaliacao' => 4.9,
-                        'vendas' => 156
-                    ]
-                ]
-            ]
-        ];
-    }
+    // Se não há corretores válidos no banco, manter array vazio
+    // O sistema irá exibir uma mensagem apropriada na interface
     
 } catch (Exception $e) {
-    // Em caso de erro, usar dados de exemplo
+    // Em caso de erro, usar array vazio
     error_log("Erro ao buscar corretores: " . $e->getMessage());
-    
-    // Dados de exemplo para demonstração
-    $corretores = [
-        'SP' => [
-            'estado' => 'São Paulo',
-            'corretores' => [
-                [
-                    'nome' => 'Ana Silva',
-                    'cidade' => 'São Paulo',
-                    'creci' => '123456-F',
-                    'whatsapp' => '(11) 99999-1111',
-                    'email' => 'ana.silva@br2studios.com.br',
-                    'especialidade' => 'Studios e Apartamentos',
-                    'experiencia' => '8 anos',
-                    'imagem' => 'assets/images/corretores/ana-silva.jpg',
-                    'destaque' => true,
-                    'avaliacao' => 4.9,
-                    'vendas' => 156
-                ]
-            ]
-        ]
-    ];
+    $corretores = [];
 }
 
 // Função para obter nome do estado
@@ -141,7 +99,7 @@ include 'includes/header.php';
             <div class="banner-content">
                 <div class="banner-text">
                     <h1>Corretores Credenciados</h1>
-                    <p>Nossa equipe de especialistas está pronta para encontrar o investimento perfeito para você</p>
+                    <p>Nossa equipe de especialistas está pronta para encontrar o imóvel perfeito para você em todo o Brasil</p>
                     <div class="banner-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo count($corretores); ?></span>

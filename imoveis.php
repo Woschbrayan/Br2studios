@@ -42,42 +42,10 @@ try {
     }
     
 } catch (Exception $e) {
-    // Em caso de erro, usar dados de exemplo
+    // Em caso de erro, usar arrays vazios
     error_log("Erro ao buscar imóveis: " . $e->getMessage());
     $imoveis = [];
-    $cidades = ['São Paulo', 'Rio de Janeiro', 'Curitiba', 'Belo Horizonte'];
-    
-    // Dados de exemplo para demonstração
-    $imoveis = [
-        [
-            'id' => 1,
-            'titulo' => 'Studio Premium Centro',
-            'tipo' => 'studio',
-            'cidade' => 'São Paulo',
-            'estado' => 'SP',
-            'preco' => 450000,
-            'area' => 35,
-            'quartos' => 1,
-            'banheiros' => 1,
-            'status' => 'disponivel',
-            'imagem_principal' => 'assets/images/imoveis/Imovel-1.jpeg',
-            'destaque' => true
-        ],
-        [
-            'id' => 2,
-            'titulo' => 'Studio Vista Parque',
-            'tipo' => 'studio',
-            'cidade' => 'São Paulo',
-            'estado' => 'SP',
-            'preco' => 380000,
-            'area' => 32,
-            'quartos' => 1,
-            'banheiros' => 1,
-            'status' => 'disponivel',
-            'imagem_principal' => 'assets/images/imoveis/imovel-2.jpeg',
-            'destaque' => false
-        ]
-    ];
+    $cidades = [];
 }
 
 
@@ -96,7 +64,7 @@ include 'includes/header.php';
             <div class="banner-content">
                 <div class="banner-text">
                     <h1>Portfólio de Imóveis</h1>
-                    <p>Descubra os melhores investimentos em studios em todo o Brasil</p>
+                    <p>Descubra os melhores imóveis em todo o Brasil</p>
                     <div class="banner-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo count($imoveis); ?>+</span>
@@ -248,11 +216,11 @@ include 'includes/header.php';
                                 </div>
                                 
                                 <div class="property-actions">
-                                    <a href="contato.php?imovel=<?php echo $imovel_item['id']; ?>" class="btn-primary">
+                                    <a href="produto.php?id=<?php echo $imovel_item['id']; ?>" class="btn-primary">
                                         <i class="fas fa-info-circle"></i>
-                                        Mais Informações
+                                        Ver Detalhes
                                     </a>
-                                    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre o imóvel <?php echo urlencode($imovel_item['titulo']); ?>" class="btn-whatsapp" target="_blank">
+                                    <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre o imóvel <?php echo urlencode($imovel_item['titulo']); ?>" class="btn-whatsapp" target="_blank">
                                         <i class="fab fa-whatsapp"></i>
                                         WhatsApp
                                     </a>

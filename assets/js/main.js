@@ -317,6 +317,26 @@ class LazyLoading {
     }
 }
 
+// Função para animar elementos quando entram na viewport
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.value-card, .diferencial-card, .team-card, .achievement-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
 // Inicialização quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();

@@ -26,10 +26,10 @@ Sistema web profissional para imobiliária Br2Studios, desenvolvido em PHP com b
 ```
 
 ### **2. Download e Configuração**
-```bash
+   ```bash
 # Clone o projeto
-git clone [url-do-repositorio]
-cd br2studios
+   git clone [url-do-repositorio]
+   cd br2studios
 
 # Configure permissões
 chmod 755 uploads/
@@ -53,10 +53,10 @@ php scripts/verify_tables.php
 ```
 
 ### **4. Configuração**
-```php
+   ```php
 # Edite config/database.php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'br2studios');
+   define('DB_HOST', 'localhost');
+   define('DB_NAME', 'br2studios');
 define('DB_USERNAME', 'seu_usuario');
 define('DB_PASSWORD', 'sua_senha');
 ```
@@ -137,7 +137,7 @@ memory_limit = 256M
 ### **Passo 4: Configurar .htaccess**
 
 #### **Verificar se está funcionando:**
-```bash
+   ```bash
 # Teste se o mod_rewrite está ativo
 # Acesse: http://localhost/br2studios/test_connection.php
 # Deve mostrar "✅ Conectado com sucesso!"

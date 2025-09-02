@@ -3,7 +3,7 @@
 /* Page Banner */
 .page-banner {
     background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
-    padding: 80px 0;
+    padding: 136px 86px;
     position: relative;
     overflow: hidden;
 }
@@ -952,7 +952,7 @@
 
 @media (max-width: 480px) {
     .page-banner {
-        padding: 60px 0;
+        padding: 136px 86px;
     }
     
     .banner-text h1 {
