@@ -12,6 +12,7 @@
     <?php if (isset($page_css)): ?>
         <link rel="stylesheet" href="<?php echo $page_css; ?>">
     <?php endif; ?>
+    <link rel="stylesheet" href="assets/css/mobile-enhancements.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/dark-theme-fixes.css">
 </head>
@@ -47,11 +48,11 @@
                     <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
                         <i class="fas fa-moon" id="theme-icon"></i>
                     </button>
-                    <div class="mobile-menu-toggle">
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>

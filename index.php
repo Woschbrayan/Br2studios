@@ -571,14 +571,8 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- WhatsApp Button -->
-    <div class="whatsapp-button">
-        <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre os imóveis da Br2Imóveis" target="_blank">
-            <i class="fas fa-whatsapp"></i>
-        </a>
-    </div>
-
-<?php include 'includes/footer.php'; ?>
+        <?php include 'includes/whatsapp.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 
     <script src="assets/js/main.js"></script>
 </body>

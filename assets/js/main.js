@@ -189,7 +189,21 @@ class AnimatedCounter {
     }
     
     animateCounter(counter) {
-        const target = parseInt(counter.textContent.replace(/\D/g, ''));
+        const originalText = counter.textContent;
+        const numbers = originalText.match(/\d+/g);
+        
+        // Se não há números ou é texto, não animar
+        if (!numbers || numbers.length === 0) {
+            return;
+        }
+        
+        const target = parseInt(numbers.join(''));
+        
+        // Se o número é muito pequeno ou inválido, não animar
+        if (isNaN(target) || target <= 0 || target > 10000) {
+            return;
+        }
+        
         const duration = 2000;
         const step = target / (duration / 16);
         let current = 0;
@@ -201,8 +215,13 @@ class AnimatedCounter {
                 clearInterval(timer);
             }
             
-            const suffix = counter.textContent.replace(/\d/g, '');
-            counter.textContent = Math.floor(current) + suffix;
+            // Manter o texto original se não for um número puro
+            if (originalText.match(/^\d+$/)) {
+                counter.textContent = Math.floor(current);
+            } else {
+                // Para textos como "CRECI", "(41)", manter original
+                counter.textContent = originalText;
+            }
         }, 16);
     }
 }
@@ -256,7 +275,7 @@ class ThemeManager {
 // Menu mobile responsivo
 class MobileMenu {
     constructor() {
-        this.menuToggle = document.querySelector('.menu-toggle');
+        this.menuToggle = document.querySelector('.mobile-menu-toggle');
         this.nav = document.querySelector('.nav');
         this.init();
     }
@@ -266,12 +285,40 @@ class MobileMenu {
             this.menuToggle.addEventListener('click', () => {
                 this.toggleMenu();
             });
+            
+            // Fechar menu ao clicar em um link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    this.closeMenu();
+                });
+            });
+            
+            // Fechar menu ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (!this.nav.contains(e.target) && !this.menuToggle.contains(e.target)) {
+                    this.closeMenu();
+                }
+            });
         }
     }
     
     toggleMenu() {
-        this.nav.classList.toggle('active');
+        this.nav.classList.toggle('mobile-active');
         this.menuToggle.classList.toggle('active');
+        
+        // Prevenir scroll quando menu estiver aberto
+        if (this.nav.classList.contains('mobile-active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+    
+    closeMenu() {
+        this.nav.classList.remove('mobile-active');
+        this.menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
     }
 }
 

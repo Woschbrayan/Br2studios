@@ -361,4 +361,5 @@ include 'includes/header.php';
         </div>
     </section>
 
+<?php include 'includes/whatsapp.php'; ?>
 <?php include 'includes/footer.php'; ?>

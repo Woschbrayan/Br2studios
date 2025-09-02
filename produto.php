@@ -694,13 +694,6 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- WhatsApp Button -->
-    <div class="whatsapp-button">
-        <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data ? $imovel_data['titulo'] : 'o Studio Premium'); ?>" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-    </div>
-
     <!-- Theme Toggle Button -->
     <div class="theme-toggle">
         <button id="theme-toggle-btn" class="theme-toggle-btn">
@@ -708,6 +701,7 @@ include 'includes/header.php';
         </button>
     </div>
 
+    <?php include 'includes/whatsapp.php'; ?>
     <?php include 'includes/footer.php'; ?>
 
     <script src="assets/js/main.js"></script>

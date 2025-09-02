@@ -1,0 +1,761 @@
+/* ===== MELHORIAS ESPECÍFICAS PARA MOBILE - BR2STUDIOS ===== */
+
+/* Layout Mobile Diferenciado e Criativo */
+
+/* ===== HEADER MOBILE MELHORADO ===== */
+@media (max-width: 768px) {
+    .header {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .header-content {
+        padding: 0 20px;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    
+    .mobile-menu-toggle {
+        padding: 5px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Menu Mobile com Design Diferenciado */
+    .nav.mobile-active {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav.mobile-active .nav-list {
+        padding: 30px 0;
+    }
+    
+    .nav.mobile-active .nav-link {
+        padding: 18px 30px;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .nav.mobile-active .nav-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--color-primary);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+    
+    .nav.mobile-active .nav-link:hover::before,
+    .nav.mobile-active .nav-link.active::before {
+        transform: scaleY(1);
+    }
+    
+    .nav.mobile-active .nav-link:hover {
+        background: rgba(0, 0, 0, 0.05);
+        padding-left: 40px;
+    }
+}
+
+/* ===== HERO SECTION MOBILE CRIATIVO ===== */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 70vh;
+        margin-top: 80px;
+    }
+    
+    .hero-content {
+        padding: 40px 20px;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+        line-height: 1.1;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        opacity: 0.9;
+    }
+    
+    .hero-slide h2 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+    
+    .hero-slide p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .hero-stats {
+        justify-content: flex-start;
+        gap: 25px;
+        margin-bottom: 30px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .stat-item {
+        min-width: 80px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px 10px;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+        margin-top: 3px;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .btn-large {
+        padding: 18px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 15px;
+        justify-content: center;
+    }
+}
+
+/* ===== CARDS MOBILE DIFERENCIADOS ===== */
+@media (max-width: 768px) {
+    .features-grid,
+    .properties-grid,
+    .agents-grid,
+    .cities-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .feature-card,
+    .property-card,
+    .agent-card,
+    .city-card {
+        padding: 25px 20px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover,
+    .property-card:hover,
+    .agent-card:hover,
+    .city-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* Ícones maiores e mais atrativos em mobile */
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .feature-card h3,
+    .property-card h3,
+    .agent-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+    
+    .feature-card p,
+    .property-card p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}
+
+/* ===== FORMULÁRIOS MOBILE ===== */
+@media (max-width: 768px) {
+    .contact-form,
+    .form-content {
+        padding: 30px 20px;
+        border-radius: 20px;
+        margin: 0 10px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 16px;
+        font-size: 16px; /* Evita zoom no iOS */
+        border-radius: 12px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-actions button {
+        padding: 16px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+}
+
+/* ===== SEÇÕES ESPECÍFICAS MOBILE ===== */
+@media (max-width: 768px) {
+    /* Seções com padding otimizado */
+    .features,
+    .properties,
+    .agents,
+    .cities,
+    .testimonials,
+    .cta,
+    .about-intro,
+    .contact-methods {
+        padding: 60px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .section-header h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+        opacity: 0.8;
+    }
+    
+    /* CTA Section Mobile */
+    .cta-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .cta-text h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .cta-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .cta-visual {
+        order: -1; /* Mover visual para cima em mobile */
+    }
+    
+    .cta-illustration {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+}
+
+/* ===== FOOTER MOBILE OTIMIZADO ===== */
+@media (max-width: 768px) {
+    .footer {
+        padding: 50px 0 30px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        text-align: center;
+    }
+    
+    .footer-col h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 25px;
+    }
+    
+    .social-links {
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        gap: 12px;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .newsletter-form input {
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 16px;
+    }
+    
+    .footer-bottom {
+        margin-top: 40px;
+        padding-top: 30px;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+/* ===== ANIMAÇÕES MOBILE ESPECÍFICAS ===== */
+@media (max-width: 768px) {
+    /* Animação de entrada para cards */
+    .feature-card,
+    .property-card,
+    .agent-card,
+    .city-card {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slideInUp 0.6s ease forwards;
+    }
+    
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    .feature-card:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes slideInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Efeito de touch feedback */
+    .btn-primary:active,
+    .btn-secondary:active,
+    .btn-whatsapp:active {
+        transform: scale(0.98);
+    }
+    
+    .feature-card:active,
+    .property-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* ===== MELHORIAS ESPECÍFICAS POR PÁGINA ===== */
+
+/* Home Mobile */
+@media (max-width: 768px) {
+    .hero-actions .btn-large {
+        min-height: 55px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    .hero-actions .btn-primary {
+        background: linear-gradient(135deg, #000000 0%, #333333 100%);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-actions .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Imóveis Mobile */
+@media (max-width: 768px) {
+    .property-card {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    
+    .property-image {
+        height: 220px;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    
+    .property-info {
+        padding: 20px 15px;
+    }
+    
+    .property-price {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--color-primary);
+    }
+    
+    .property-features {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.02);
+        border-radius: 10px;
+    }
+    
+    .property-feature {
+        text-align: center;
+        font-size: 0.85rem;
+    }
+}
+
+/* Produto/Detalhes Mobile */
+@media (max-width: 768px) {
+    .property-gallery {
+        margin: 0 -20px;
+        border-radius: 0;
+    }
+    
+    .property-details {
+        padding: 30px 20px;
+    }
+    
+    .property-header h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+    
+    .property-specs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin: 25px 0;
+    }
+    
+    .spec-item {
+        background: rgba(0, 0, 0, 0.02);
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+    }
+    
+    .contact-agent {
+        position: sticky;
+        bottom: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        margin: 0 -20px;
+    }
+}
+
+/* Corretores Mobile */
+@media (max-width: 768px) {
+    .agent-card {
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .agent-image {
+        margin-bottom: 20px;
+    }
+    
+    .agent-placeholder {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        margin: 0 auto;
+    }
+    
+    .agent-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .agent-role {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    
+    .agent-contact {
+        margin-top: 20px;
+    }
+    
+    .btn-whatsapp {
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+}
+
+/* ===== ELEMENTOS INTERATIVOS MOBILE ===== */
+@media (max-width: 768px) {
+    /* Swipe indicators para galerias */
+    .gallery-container {
+        position: relative;
+    }
+    
+    .swipe-indicator {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        backdrop-filter: blur(10px);
+    }
+    
+    /* Floating Action Buttons */
+    .floating-actions {
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 999;
+    }
+    
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .floating-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* ===== TOAST NOTIFICATIONS MOBILE ===== */
+@media (max-width: 768px) {
+    .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: var(--color-primary);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(100px);
+        transition: transform 0.3s ease;
+        z-index: 1001;
+    }
+    
+    .toast.show {
+        transform: translateY(0);
+    }
+    
+    .toast-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .toast-icon {
+        font-size: 1.2rem;
+    }
+    
+    .toast-text {
+        flex: 1;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+}
+
+/* ===== MELHORIAS DE PERFORMANCE MOBILE ===== */
+@media (max-width: 768px) {
+    /* Reduzir animações complexas em mobile */
+    .floating-element,
+    .parallax-element {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    /* Otimizar imagens para mobile */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    /* Smooth scroll otimizado */
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Touch targets maiores */
+    button,
+    .btn,
+    .nav-link,
+    .social-link {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* ===== TEMA DARK MOBILE ===== */
+@media (max-width: 768px) {
+    [data-theme="dark"] .nav.mobile-active {
+        background: rgba(20, 20, 20, 0.95);
+        border-top-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    [data-theme="dark"] .nav.mobile-active .nav-link {
+        border-bottom-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    [data-theme="dark"] .nav.mobile-active .nav-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    [data-theme="dark"] .stat-item {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    [data-theme="dark"] .floating-btn {
+        background: rgba(40, 40, 40, 0.9);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+    
+    [data-theme="dark"] .contact-agent {
+        background: var(--bg-card);
+        border-top: 1px solid var(--border-color);
+    }
+}
+
+/* ===== MICRO-INTERAÇÕES MOBILE ===== */
+@media (max-width: 768px) {
+    /* Vibração visual ao tocar */
+    @keyframes tapFeedback {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.98); }
+        100% { transform: scale(1); }
+    }
+    
+    .btn:active,
+    .card:active {
+        animation: tapFeedback 0.2s ease;
+    }
+    
+    /* Loading states */
+    .loading {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .loading::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        animation: loading-shimmer 1.5s infinite;
+    }
+    
+    @keyframes loading-shimmer {
+        100% {
+            left: 100%;
+        }
+    }
+}
+
+/* ===== ACESSIBILIDADE MOBILE ===== */
+@media (max-width: 768px) {
+    /* Foco melhorado para navegação por teclado */
+    *:focus {
+        outline: 3px solid rgba(0, 0, 0, 0.3);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    
+    /* Texto legível */
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    /* Contraste melhorado */
+    .text-secondary {
+        opacity: 0.8;
+    }
+}
