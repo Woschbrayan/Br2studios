@@ -559,6 +559,75 @@ class PartnersCarousel {
     }
 }
 
+// Carrossel de Cidades Mobile
+class CitiesCarousel {
+    constructor() {
+        this.track = document.querySelector('.cities-track');
+        this.slides = document.querySelectorAll('.city-slide');
+        this.currentPosition = 0;
+        this.slideWidth = 0;
+        this.autoPlayInterval = null;
+        this.autoPlayDelay = 40; // 40ms para movimento suave
+        
+        this.init();
+    }
+    
+    init() {
+        if (this.track && this.slides.length > 0) {
+            console.log('CitiesCarousel: Inicializando com', this.slides.length, 'slides');
+            this.calculateSlideWidth();
+            this.startAutoPlay();
+            this.bindResizeEvent();
+        } else {
+            console.log('CitiesCarousel: Elementos não encontrados');
+        }
+    }
+    
+    bindResizeEvent() {
+        window.addEventListener('resize', () => {
+            this.calculateSlideWidth();
+        });
+    }
+    
+    calculateSlideWidth() {
+        if (this.slides.length > 0) {
+            const firstSlide = this.slides[0];
+            let gap = 20; // Gap padrão
+            
+            if (window.innerWidth <= 480) {
+                gap = 8;
+            } else if (window.innerWidth <= 768) {
+                gap = 10;
+            }
+            
+            this.slideWidth = firstSlide.offsetWidth + gap;
+        }
+    }
+    
+    startAutoPlay() {
+        this.autoPlayInterval = setInterval(() => {
+            this.moveCarousel();
+        }, this.autoPlayDelay);
+    }
+    
+    moveCarousel() {
+        this.currentPosition -= 1; // Move 1px por vez para movimento suave
+        
+        // Reset quando chegar ao final
+        if (Math.abs(this.currentPosition) >= this.slideWidth * (this.slides.length / 2)) {
+            this.currentPosition = 0;
+        }
+        
+        this.track.style.transform = `translateX(${this.currentPosition}px)`;
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+        }
+    }
+}
+
 // Inicialização quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();
@@ -571,6 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new LazyLoading();
     new TestimonialsCarousel();
     new PartnersCarousel();
+    new CitiesCarousel();
     
     // Adicionar classe para animações CSS
     document.body.classList.add('loaded');

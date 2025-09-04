@@ -348,46 +348,99 @@ include 'includes/header.php';
     </section>
 
 
-    <!-- Cities Mobile - Cards Simples -->
-    <section class="cities-mobile mobile-only">
+    <!-- Cities Carousel - Mobile e Desktop -->
+    <section class="cities-mobile">
         <div class="section-header">
             <h2>Regiões de Curitiba</h2>
             <p>Investimentos na capital paranaense</p>
         </div>
-        <div class="cities-grid-mobile">
-            <div class="city-card-mobile">
-                <div class="city-icon-mobile">
-                    <i class="fas fa-building"></i>
+        
+        <div class="cities-carousel-wrapper">
+            <div class="cities-track">
+                <!-- Primeira linha de cidades -->
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Centro</h3>
+                        <p>Região central</p>
+                        <span class="city-count">15 Imóveis</span>
+                    </div>
                 </div>
-                <h3>Centro</h3>
-                <p>Região central</p>
-                <span class="city-count">15 Imóveis</span>
-            </div>
-            <div class="city-card-mobile">
-                <div class="city-icon-mobile">
-                    <i class="fas fa-star"></i>
+                
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Bairro Alto</h3>
+                        <p>Região nobre</p>
+                        <span class="city-count">12 Imóveis</span>
+                    </div>
                 </div>
-                <h3>Bairro Alto</h3>
-                <p>Região nobre</p>
-                <span class="city-count">12 Imóveis</span>
-            </div>
-            <div class="city-card-mobile">
-                <div class="city-icon-mobile">
-                    <i class="fas fa-tree"></i>
+                
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Água Verde</h3>
+                        <p>Residencial</p>
+                        <span class="city-count">8 Imóveis</span>
+                    </div>
                 </div>
-                <h3>Água Verde</h3>
-                <p>Residencial</p>
-                <span class="city-count">8 Imóveis</span>
-            </div>
-            <div class="city-card-mobile">
-                <div class="city-icon-mobile">
-                    <i class="fas fa-home"></i>
+                
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Região Metropolitana</h3>
+                        <p>Crescimento</p>
+                        <span class="city-count">6 Imóveis</span>
+                    </div>
                 </div>
-                <h3>Região Metropolitana</h3>
-                <p>Crescimento</p>
-                <span class="city-count">6 Imóveis</span>
+                
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Batel</h3>
+                        <p>Comercial</p>
+                        <span class="city-count">10 Imóveis</span>
+                    </div>
+                </div>
+                
+                <!-- Segunda linha de cidades (duplicada para loop infinito) -->
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Centro</h3>
+                        <p>Região central</p>
+                        <span class="city-count">15 Imóveis</span>
+                    </div>
+                </div>
+                
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Bairro Alto</h3>
+                        <p>Região nobre</p>
+                        <span class="city-count">12 Imóveis</span>
+                    </div>
+                </div>
+                
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Água Verde</h3>
+                        <p>Residencial</p>
+                        <span class="city-count">8 Imóveis</span>
+                    </div>
+                </div>
+                
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Região Metropolitana</h3>
+                        <p>Crescimento</p>
+                        <span class="city-count">6 Imóveis</span>
+                    </div>
+                </div>
+                
+                <div class="city-slide">
+                    <div class="city-card-mobile">
+                        <h3>Batel</h3>
+                        <p>Comercial</p>
+                        <span class="city-count">10 Imóveis</span>
+                    </div>
+                </div>
             </div>
         </div>
+        
         <div style="text-align: center; margin-top: 30px;">
             <a href="regioes.php" class="btn-secondary btn-large">Explorar Regiões</a>
         </div>
