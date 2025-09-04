@@ -12,6 +12,14 @@ class CategoriaImovel {
      */
     public function cadastrar($nome, $descricao = '', $icone = 'fas fa-check') {
         try {
+            // Verificar se já existe uma categoria com este nome
+            $sql_check = "SELECT id FROM categorias_imoveis WHERE nome = :nome AND ativo = 1";
+            $existing = $this->db->fetchOne($sql_check, [':nome' => $nome]);
+            
+            if ($existing) {
+                throw new Exception("Já existe uma categoria com o nome '$nome'. Escolha um nome diferente.");
+            }
+            
             $sql = "INSERT INTO categorias_imoveis (nome, descricao, icone) VALUES (:nome, :descricao, :icone)";
             $params = [
                 ':nome' => $nome,
@@ -172,6 +180,36 @@ class CategoriaImovel {
         } catch (Exception $e) {
             error_log("Erro ao buscar categorias por nome: " . $e->getMessage());
             throw $e;
+        }
+    }
+    
+    /**
+     * Sugerir nome único para categoria
+     */
+    public function sugerirNomeUnico($nome_base) {
+        try {
+            $nome_sugerido = $nome_base;
+            $contador = 1;
+            
+            while (true) {
+                $sql = "SELECT id FROM categorias_imoveis WHERE nome = :nome AND ativo = 1";
+                $existing = $this->db->fetchOne($sql, [':nome' => $nome_sugerido]);
+                
+                if (!$existing) {
+                    return $nome_sugerido;
+                }
+                
+                $contador++;
+                $nome_sugerido = $nome_base . ' ' . $contador;
+                
+                // Evitar loop infinito
+                if ($contador > 100) {
+                    return $nome_base . ' - ' . date('Y-m-d H:i:s');
+                }
+            }
+        } catch (Exception $e) {
+            error_log("Erro ao sugerir nome único: " . $e->getMessage());
+            return $nome_base . ' - ' . date('Y-m-d H:i:s');
         }
     }
 }

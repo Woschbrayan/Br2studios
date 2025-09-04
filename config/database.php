@@ -5,10 +5,10 @@
  */
 
 // Configurações do MySQL para Hostgator
-define('DB_HOST', 'localhost:3306');
-define('DB_NAME', 'brun3811_br2studios');
-define('DB_USERNAME', 'brun3811_brand');
-define('DB_PASSWORD', 'Br2studio!');
+define('DB_HOST', 'localhost:3308');
+define('DB_NAME', 'br2studios');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
 
 // Configurações de timezone
 date_default_timezone_set('America/Sao_Paulo');

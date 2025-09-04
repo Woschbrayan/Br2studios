@@ -245,19 +245,15 @@ include 'includes/header.php';
                                 ?>
                                 <img src="<?php echo htmlspecialchars($imagem); ?>" alt="<?php echo htmlspecialchars($imovel_item['titulo']); ?>">
                                 
-                                <div class="property-labels">
-                                    <?php if (isset($imovel_item['destaque']) && $imovel_item['destaque']): ?>
-                                        <span class="label-featured">DESTAQUE</span>
-                                    <?php endif; ?>
-                                    <span class="label-status">À VENDA</span>
+                                <div class="property-price-overlay">
+                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
                                 </div>
                                 
-                                <div class="property-price">
-                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
-                                    <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
-                                        <span class="price-per-sqft">R$ <?php echo number_format($imovel_item['preco'] / $imovel_item['area'], 0, ',', '.'); ?>/m²</span>
-                                    <?php endif; ?>
-                                </div>
+                                <?php if (!empty($imovel_item['ano_entrega'])): ?>
+                                    <div class="property-badge">
+                                        Entrega <?php echo $imovel_item['ano_entrega']; ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             
                             <div class="property-info">
@@ -279,7 +275,6 @@ include 'includes/header.php';
                                     <?php if (!empty($imovel_item['vagas'])): ?>
                                         <span><i class="fas fa-car"></i> <?php echo $imovel_item['vagas']; ?></span>
                                     <?php endif; ?>
-                                    <span class="property-type"><?php echo strtoupper($imovel_item['tipo']); ?></span>
                                 </div>
                                 <a href="produto.php?id=<?php echo $imovel_item['id']; ?>" class="btn-view-property">Ver Detalhes</a>
                             </div>

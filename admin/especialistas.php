@@ -1,4 +1,8 @@
 <?php
+// Incluir configurações antes de iniciar a sessão
+require_once '../config/php_limits.php';
+require_once '../config/database.php';
+
 session_start();
 
 // Verificar se está logado
@@ -6,9 +10,6 @@ if (!isset($_SESSION['admin_logado']) || $_SESSION['admin_logado'] !== true) {
     header('Location: login.php');
     exit;
 }
-
-// Incluir configurações
-require_once '../config/database.php';
 require_once '../classes/Database.php';
 require_once '../classes/Especialista.php';
 require_once '../classes/FileUpload.php';

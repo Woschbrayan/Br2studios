@@ -18,9 +18,11 @@ function configurePHPLimits() {
     ini_set('max_input_time', '300');
     ini_set('memory_limit', '256M');
     
-    // Configurações de sessão
-    ini_set('session.gc_maxlifetime', '3600');
-    ini_set('session.cookie_lifetime', '3600');
+    // Configurações de sessão (apenas se a sessão não estiver ativa)
+    if (session_status() === PHP_SESSION_NONE) {
+        ini_set('session.gc_maxlifetime', '3600');
+        ini_set('session.cookie_lifetime', '3600');
+    }
     
     // Configurações de erro para produção
     ini_set('display_errors', '0');

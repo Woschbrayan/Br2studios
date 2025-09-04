@@ -235,218 +235,79 @@ include 'includes/header.php';
                         </div>
                     </div>
                     
-                    <!-- Características Principais -->
+                    <!-- Características -->
                     <div class="details-section main-features">
-                        <div class="section-header">
-                            <h3><i class="fas fa-home"></i> Características Principais</h3>
-                            <p>Dados técnicos e estruturais do imóvel</p>
-                        </div>
+                        <h3>Características</h3>
                         
-                        <div class="features-container">
-                            <div class="features-grid">
-                                <?php if ($imovel_data): ?>
-                                    <?php if (!empty($imovel_data['area'])): ?>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-ruler-combined"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value"><?php echo number_format($imovel_data['area'], 0, ',', '.'); ?>m²</span>
-                                            <span class="feature-label">Área Total</span>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
-                                    
-                                    <?php if (!empty($imovel_data['quartos'])): ?>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-bed"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value"><?php echo $imovel_data['quartos']; ?></span>
-                                            <span class="feature-label">Quarto<?php echo $imovel_data['quartos'] > 1 ? 's' : ''; ?></span>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
-                                    
-                                    <?php if (!empty($imovel_data['banheiros'])): ?>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-bath"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value"><?php echo $imovel_data['banheiros']; ?></span>
-                                            <span class="feature-label">Banheiro<?php echo $imovel_data['banheiros'] > 1 ? 's' : ''; ?></span>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
-                                    
-                                    <?php if (!empty($imovel_data['vagas'])): ?>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-car"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value"><?php echo $imovel_data['vagas']; ?></span>
-                                            <span class="feature-label">Vaga<?php echo $imovel_data['vagas'] > 1 ? 's' : ''; ?></span>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
-                                    
-                                    <?php if (!empty($imovel_data['tipo'])): ?>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-tag"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value"><?php echo ucfirst($imovel_data['tipo']); ?></span>
-                                            <span class="feature-label">Tipo</span>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
-                                    
-                                    <?php if (!empty($imovel_data['status'])): ?>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-info-circle"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value"><?php echo ucfirst($imovel_data['status']); ?></span>
-                                            <span class="feature-label">Status</span>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
-                                <?php else: ?>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-ruler-combined"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value">40m²</span>
-                                            <span class="feature-label">Área Total</span>
-                                        </div>
-                                    </div>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-bed"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value">1</span>
-                                            <span class="feature-label">Quarto</span>
-                                        </div>
-                                    </div>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-bath"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value">1</span>
-                                            <span class="feature-label">Banheiro</span>
-                                        </div>
-                                    </div>
-                                    <div class="feature-card">
-                                        <div class="feature-icon">
-                                            <i class="fas fa-car"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-value">1</span>
-                                            <span class="feature-label">Vaga</span>
-                                        </div>
-                                    </div>
+                        <div class="features-simple">
+                            <?php if ($imovel_data): ?>
+                                <?php if (!empty($imovel_data['area'])): ?>
+                                <div class="feature-simple">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span><?php echo number_format($imovel_data['area'], 0, ',', '.'); ?>m²</span>
+                                </div>
                                 <?php endif; ?>
-                            </div>
+                                
+                                <?php if (!empty($imovel_data['quartos'])): ?>
+                                <div class="feature-simple">
+                                    <i class="fas fa-bed"></i>
+                                    <span><?php echo $imovel_data['quartos']; ?> quarto<?php echo $imovel_data['quartos'] > 1 ? 's' : ''; ?></span>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <?php if (!empty($imovel_data['banheiros'])): ?>
+                                <div class="feature-simple">
+                                    <i class="fas fa-bath"></i>
+                                    <span><?php echo $imovel_data['banheiros']; ?> banheiro<?php echo $imovel_data['banheiros'] > 1 ? 's' : ''; ?></span>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <?php if (!empty($imovel_data['vagas'])): ?>
+                                <div class="feature-simple">
+                                    <i class="fas fa-car"></i>
+                                    <span><?php echo $imovel_data['vagas']; ?> vaga<?php echo $imovel_data['vagas'] > 1 ? 's' : ''; ?></span>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <?php if (!empty($imovel_data['ano_entrega'])): ?>
+                                <div class="feature-simple">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Entrega <?php echo $imovel_data['ano_entrega']; ?></span>
+                                </div>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <div class="feature-simple">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>40m²</span>
+                                </div>
+                                <div class="feature-simple">
+                                    <i class="fas fa-bed"></i>
+                                    <span>1 quarto</span>
+                                </div>
+                                <div class="feature-simple">
+                                    <i class="fas fa-bath"></i>
+                                    <span>1 banheiro</span>
+                                </div>
+                                <div class="feature-simple">
+                                    <i class="fas fa-car"></i>
+                                    <span>1 vaga</span>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     
-                    <!-- Características e Amenidades -->
+                    <!-- Amenidades -->
                     <?php if ($imovel_data && !empty($imovel_data['categorias']) && is_array($imovel_data['categorias'])): ?>
                     <div class="details-section amenities-section">
-                        <div class="section-header">
-                            <h3><i class="fas fa-star"></i> Características e Amenidades</h3>
-                            <p>Descubra todas as comodidades que este imóvel oferece</p>
-                        </div>
+                        <h3>Amenidades</h3>
                         
-                        <div class="amenities-container">
-                            <div class="amenities-grid">
-                                <?php 
-                                // Organizar categorias por grupos
-                                $grupos = [
-                                    'areas_comuns' => ['Academia', 'Piscina', 'Churrasqueira', 'Salão de Festas', 'Jardim', 'Playground', 'Espaço Gourmet', 'Lavanderia', 'Spa', 'Quadra Esportiva', 'Sala de Jogos', 'Biblioteca'],
-                                    'infraestrutura' => ['Elevador', 'Portaria 24h', 'Segurança 24h', 'Vagas de Garagem', 'Estacionamento', 'Condomínio Fechado', 'Câmeras de Segurança', 'Alarme', 'Interfone'],
-                                    'caracteristicas' => ['Home Office', 'Varanda Gourmet', 'Sacada', 'Aceita Pets', 'Mobiliado', 'Ar Condicionado', 'Aquecimento', 'Internet', 'TV a Cabo'],
-                                    'outros' => ['Acessibilidade', 'Área Verde']
-                                ];
-                                
-                                $categorias_organizadas = [];
-                                foreach ($grupos as $grupo => $nomes) {
-                                    $categorias_organizadas[$grupo] = [];
-                                    foreach ($imovel_data['categorias'] as $categoria) {
-                                        if (in_array($categoria['nome'], $nomes)) {
-                                            $categorias_organizadas[$grupo][] = $categoria;
-                                        }
-                                    }
-                                }
-                                
-                                // Adicionar categorias não classificadas ao grupo "outros"
-                                foreach ($imovel_data['categorias'] as $categoria) {
-                                    $encontrada = false;
-                                    foreach ($grupos as $grupo => $nomes) {
-                                        if (in_array($categoria['nome'], $nomes)) {
-                                            $encontrada = true;
-                                            break;
-                                        }
-                                    }
-                                    if (!$encontrada) {
-                                        $categorias_organizadas['outros'][] = $categoria;
-                                    }
-                                }
-                                
-                                $grupo_titulos = [
-                                    'areas_comuns' => ['Áreas Comuns', 'fas fa-building', '#3498db'],
-                                    'infraestrutura' => ['Infraestrutura', 'fas fa-cogs', '#e74c3c'],
-                                    'caracteristicas' => ['Características', 'fas fa-home', '#f39c12'],
-                                    'outros' => ['Outros', 'fas fa-plus-circle', '#9b59b6']
-                                ];
-                                
-                                foreach ($categorias_organizadas as $grupo => $categorias):
-                                    if (!empty($categorias)):
-                                        $grupo_info = $grupo_titulos[$grupo];
-                                ?>
-                                    <div class="amenity-group" data-group="<?php echo $grupo; ?>">
-                                        <div class="group-header" style="border-left-color: <?php echo $grupo_info[2]; ?>;">
-                                            <div class="group-icon" style="background: <?php echo $grupo_info[2]; ?>;">
-                                                <i class="<?php echo $grupo_info[1]; ?>"></i>
-                                            </div>
-                                            <div class="group-title">
-                                                <h4><?php echo $grupo_info[0]; ?></h4>
-                                                <span class="group-count"><?php echo count($categorias); ?> item<?php echo count($categorias) > 1 ? 's' : ''; ?></span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="group-items">
-                                            <?php foreach ($categorias as $categoria): ?>
-                                                <div class="amenity-item" title="<?php echo htmlspecialchars($categoria['descricao'] ?: $categoria['nome']); ?>">
-                                                    <div class="amenity-icon" style="background: <?php echo $grupo_info[2]; ?>;">
-                                                        <i class="<?php echo htmlspecialchars($categoria['icone']); ?>"></i>
-                                                    </div>
-                                                    <div class="amenity-info">
-                                                        <span class="amenity-name"><?php echo htmlspecialchars($categoria['nome']); ?></span>
-                                                        <?php if (!empty($categoria['descricao'])): ?>
-                                                            <small class="amenity-desc"><?php echo htmlspecialchars($categoria['descricao']); ?></small>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                    <div class="amenity-badge">
-                                                        <i class="fas fa-check"></i>
-                                                    </div>
-                                                </div>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
-                                <?php 
-                                    endif;
-                                endforeach; 
-                                ?>
-                            </div>
+                        <div class="amenities-simple">
+                            <?php foreach ($imovel_data['categorias'] as $categoria): ?>
+                                <div class="amenity-simple">
+                                    <i class="fas fa-check"></i>
+                                    <span><?php echo htmlspecialchars($categoria['nome']); ?></span>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <?php endif; ?>
@@ -465,124 +326,31 @@ include 'includes/header.php';
                     </div>
                     <?php endif; ?>
                     
-                    <!-- Localização e Acessos -->
+                    <!-- Localização -->
                     <div class="details-section location-section">
-                        <div class="section-header">
-                            <h3><i class="fas fa-map-marker-alt"></i> Localização e Acessos</h3>
-                            <p>Informações sobre a localização e facilidades próximas</p>
-                        </div>
+                        <h3>Localização</h3>
                         
-                        <div class="location-container">
-                            <!-- Endereço Principal -->
+                        <div class="location-simple">
                             <?php if ($imovel_data): ?>
-                            <div class="location-main-info">
                                 <?php if (!empty($imovel_data['endereco'])): ?>
-                                <div class="location-main-card">
-                                    <div class="location-main-icon">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div class="location-main-content">
-                                        <span class="location-main-label">Endereço</span>
-                                        <span class="location-main-value"><?php echo htmlspecialchars($imovel_data['endereco']); ?></span>
-                                    </div>
+                                <div class="location-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span><?php echo htmlspecialchars($imovel_data['endereco']); ?></span>
                                 </div>
                                 <?php endif; ?>
                                 
                                 <?php if (!empty($imovel_data['cidade']) && !empty($imovel_data['estado'])): ?>
-                                <div class="location-main-card">
-                                    <div class="location-main-icon">
-                                        <i class="fas fa-city"></i>
-                                    </div>
-                                    <div class="location-main-content">
-                                        <span class="location-main-label">Localização</span>
-                                        <span class="location-main-value"><?php echo htmlspecialchars($imovel_data['cidade'] . ' - ' . $imovel_data['estado']); ?></span>
-                                    </div>
+                                <div class="location-item">
+                                    <i class="fas fa-city"></i>
+                                    <span><?php echo htmlspecialchars($imovel_data['cidade'] . ' - ' . $imovel_data['estado']); ?></span>
                                 </div>
                                 <?php endif; ?>
-                                
-                                <?php if (!empty($imovel_data['cep'])): ?>
-                                <div class="location-main-card">
-                                    <div class="location-main-icon">
-                                        <i class="fas fa-mail-bulk"></i>
-                                    </div>
-                                    <div class="location-main-content">
-                                        <span class="location-main-label">CEP</span>
-                                        <span class="location-main-value"><?php echo htmlspecialchars($imovel_data['cep']); ?></span>
-                                    </div>
+                            <?php else: ?>
+                                <div class="location-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Vila Madalena, São Paulo - SP</span>
                                 </div>
-                                <?php endif; ?>
-                            </div>
                             <?php endif; ?>
-                            
-                            <!-- Facilidades Próximas -->
-                            <div class="location-facilities">
-                                <h4 class="facilities-title">
-                                    <i class="fas fa-star"></i>
-                                    Facilidades Próximas
-                                </h4>
-                                
-                                <div class="facilities-grid">
-                                    <div class="facility-card">
-                                        <div class="facility-icon">
-                                            <i class="fas fa-subway"></i>
-                                        </div>
-                                        <div class="facility-content">
-                                            <span class="facility-label">Transporte</span>
-                                            <span class="facility-value">Metrô e ônibus próximos</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="facility-card">
-                                        <div class="facility-icon">
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <div class="facility-content">
-                                            <span class="facility-label">Comércio</span>
-                                            <span class="facility-value">Shopping e serviços próximos</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="facility-card">
-                                        <div class="facility-icon">
-                                            <i class="fas fa-hospital"></i>
-                                        </div>
-                                        <div class="facility-content">
-                                            <span class="facility-label">Saúde</span>
-                                            <span class="facility-value">Hospitais e clínicas na região</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="facility-card">
-                                        <div class="facility-icon">
-                                            <i class="fas fa-utensils"></i>
-                                        </div>
-                                        <div class="facility-content">
-                                            <span class="facility-label">Gastronomia</span>
-                                            <span class="facility-value">Restaurantes e bares próximos</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="facility-card">
-                                        <div class="facility-icon">
-                                            <i class="fas fa-graduation-cap"></i>
-                                        </div>
-                                        <div class="facility-content">
-                                            <span class="facility-label">Educação</span>
-                                            <span class="facility-value">Escolas e universidades na região</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="facility-card">
-                                        <div class="facility-icon">
-                                            <i class="fas fa-leaf"></i>
-                                        </div>
-                                        <div class="facility-content">
-                                            <span class="facility-label">Lazer</span>
-                                            <span class="facility-value">Parques e áreas de recreação</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

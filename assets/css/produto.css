@@ -1217,6 +1217,25 @@ body {
     
     .amenities-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .amenity-item {
+        padding: 12px 15px;
+        gap: 12px;
+    }
+    
+    .amenity-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .amenity-icon i {
+        font-size: 14px;
+    }
+    
+    .amenity-name {
+        font-size: 0.9rem;
     }
     
     .benefits-grid {
@@ -1629,20 +1648,40 @@ body {
         font-size: 1.8rem;
     }
     
-    .features-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
+    .features-simple {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
     }
     
-    .feature-card {
-        padding: 20px;
-        gap: 15px;
+    .feature-simple {
+        padding: 12px;
+        gap: 10px;
     }
     
-    .feature-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
+    .feature-simple i {
+        font-size: 14px;
+    }
+    
+    .feature-simple span {
+        font-size: 0.9rem;
+    }
+    
+    .amenities-simple {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+    }
+    
+    .amenity-simple {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+    
+    .amenity-simple i {
+        font-size: 12px;
+    }
+    
+    .amenity-simple span {
+        font-size: 0.85rem;
     }
     
     .location-grid {
@@ -1719,26 +1758,87 @@ body {
         font-size: 1.5rem;
     }
     
-    .features-grid {
+    .features-simple {
         grid-template-columns: 1fr;
+        gap: 10px;
     }
     
-    .feature-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 25px 20px;
+    .feature-simple {
+        padding: 15px;
+        gap: 12px;
     }
     
-    .feature-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
+    .feature-simple i {
+        font-size: 16px;
+    }
+    
+    .feature-simple span {
+        font-size: 0.95rem;
+    }
+    
+    .amenities-simple {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .amenity-simple {
+        padding: 12px 15px;
+        gap: 12px;
+    }
+    
+    .amenity-simple i {
+        font-size: 14px;
+    }
+    
+    .amenity-simple span {
+        font-size: 0.9rem;
+    }
+    
+    .location-simple {
+        gap: 12px;
+    }
+    
+    .location-item {
+        padding: 12px 15px;
+        gap: 12px;
+    }
+    
+    .location-item i {
+        font-size: 16px;
+    }
+    
+    .location-item span {
+        font-size: 0.9rem;
     }
     
     .main-features .features-container,
+    .amenities-container,
     .location-section .location-container,
     .description-section .description-content {
         padding: 20px;
+    }
+    
+    .amenities-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .amenity-item {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .amenity-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .amenity-icon i {
+        font-size: 16px;
+    }
+    
+    .amenity-name {
+        font-size: 0.95rem;
     }
     
     .sidebar-section .section-header {
@@ -1748,6 +1848,192 @@ body {
     .actions-section .actions-grid {
         padding: 20px;
     }
+}
+
+/* ===== CARACTERÍSTICAS SIMPLIFICADAS ===== */
+.main-features {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.main-features h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-features h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: #333;
+    border-radius: 2px;
+}
+
+.features-simple {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.feature-simple {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.feature-simple:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.feature-simple i {
+    font-size: 16px;
+    color: #333;
+    width: 20px;
+    text-align: center;
+}
+
+.feature-simple span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* ===== AMENIDADES SIMPLIFICADAS ===== */
+.amenities-section {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.amenities-section h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amenities-section h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: #333;
+    border-radius: 2px;
+}
+
+.amenities-simple {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+}
+
+.amenity-simple {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.amenity-simple:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.amenity-simple i {
+    font-size: 14px;
+    color: #28a745;
+    width: 20px;
+    text-align: center;
+}
+
+.amenity-simple span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* ===== LOCALIZAÇÃO SIMPLIFICADA ===== */
+.location-section {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.location-section h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.location-section h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: #333;
+    border-radius: 2px;
+}
+
+.location-simple {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.location-item:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.location-item i {
+    font-size: 16px;
+    color: #333;
+    width: 20px;
+    text-align: center;
+}
+
+.location-item span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
 }
 
 /* Seção de Localização */

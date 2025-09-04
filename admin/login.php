@@ -1,13 +1,14 @@
 <?php
+// Incluir configurações antes de iniciar a sessão
+require_once '../config/php_limits.php';
+require_once '../config/database.php';
+
 session_start();
 
 // Ativar exibição de erros para debug
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-// Incluir configurações
-require_once '../config/database.php';
 
 // Log de tentativas de login
 function logLoginAttempt($email, $success, $message) {

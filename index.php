@@ -121,6 +121,11 @@ include 'includes/header.php';
                     <div class="property-card-mobile">
                         <div class="property-image-mobile" style="background-image: url('<?php echo $imovel['imagem_principal'] ?: 'assets/images/imoveis/Imovel-1.jpeg'; ?>');">
                             <div class="property-badge-mobile">DESTAQUE</div>
+                            <?php if (!empty($imovel['ano_entrega'])): ?>
+                                <div class="property-delivery-mobile" style="position: absolute; top: 10px; right: 10px; background: #dc3545; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">
+                                    ENTREGA <?php echo $imovel['ano_entrega']; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="property-info-mobile">
                             <h3 class="property-title-mobile"><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
@@ -248,7 +253,11 @@ include 'includes/header.php';
                                         <?php if ($imovel_item['destaque']): ?>
                                             <span class="label-featured">DESTAQUE</span>
                                         <?php endif; ?>
-                                        <span class="label-status">À VENDA</span>
+                                        <?php if (!empty($imovel_item['ano_entrega'])): ?>
+                                            <span class="label-delivery" style="background: #dc3545; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">
+                                                ENTREGA <?php echo $imovel_item['ano_entrega']; ?>
+                                            </span>
+                                        <?php endif; ?>
                                     </div>
                                     
                                     <div class="property-price">
@@ -278,8 +287,14 @@ include 'includes/header.php';
                                         <?php if (!empty($imovel_item['vagas'])): ?>
                                             <span><i class="fas fa-car"></i> <?php echo $imovel_item['vagas']; ?></span>
                                         <?php endif; ?>
-                                        <span class="property-type"><?php echo strtoupper($imovel_item['tipo']); ?></span>
                                     </div>
+                                    
+                                    <?php if (!empty($imovel_item['ano_entrega'])): ?>
+                                        <div class="property-delivery">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <span>Entrega <?php echo $imovel_item['ano_entrega']; ?></span>
+                                        </div>
+                                    <?php endif; ?>
                                     <a href="produto.php?id=<?php echo $imovel_item['id']; ?>" class="btn-view-property">Ver Detalhes</a>
                                 </div>
                             </div>
@@ -291,7 +306,6 @@ include 'includes/header.php';
                                 <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Studio Moderno no Centro - São Paulo">
                                 <div class="property-labels">
                                     <span class="label-featured">DESTAQUE</span>
-                                    <span class="label-status">À VENDA</span>
                                 </div>
                                 <div class="property-price">
                                     <span class="price">R$ 180.000</span>
@@ -306,7 +320,11 @@ include 'includes/header.php';
                                     <span><i class="fas fa-bed"></i> 1</span>
                                     <span><i class="fas fa-bath"></i> 1</span>
                                     <span><i class="fas fa-car"></i> 1</span>
-                                    <span class="property-type">STUDIO</span>
+                                </div>
+                                
+                                <div class="property-delivery">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Entrega 2025</span>
                                 </div>
                                 <a href="#" class="btn-view-property">Ver Detalhes</a>
                             </div>
@@ -317,7 +335,6 @@ include 'includes/header.php';
                                 <img src="assets/images/imoveis/imovel-2.jpeg" alt="Studio com Vista para o Mar - Rio de Janeiro">
                                 <div class="property-labels">
                                     <span class="label-featured">DESTAQUE</span>
-                                    <span class="label-status">À VENDA</span>
                                 </div>
                                 <div class="property-price">
                                     <span class="price">R$ 250.000</span>
@@ -332,7 +349,11 @@ include 'includes/header.php';
                                     <span><i class="fas fa-bed"></i> 1</span>
                                     <span><i class="fas fa-bath"></i> 1</span>
                                     <span><i class="fas fa-car"></i> 1</span>
-                                    <span class="property-type">STUDIO</span>
+                                </div>
+                                
+                                <div class="property-delivery">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Entrega 2025</span>
                                 </div>
                                 <a href="#" class="btn-view-property">Ver Detalhes</a>
                             </div>
