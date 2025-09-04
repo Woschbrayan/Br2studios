@@ -39,23 +39,18 @@ try {
 $valores = [
     [
         'icone' => 'fas fa-shield-alt',
-        'titulo' => 'Transparência',
-        'descricao' => 'Trabalhamos com total transparência em todos os processos, desde a seleção dos imóveis até a finalização da negociação.'
+        'titulo' => 'Transparência acima de tudo',
+        'descricao' => 'Cada decisão é guiada pela clareza. Trabalhamos com informações reais e objetivas para que nossos clientes invistam com confiança e previsibilidade.'
     ],
     [
-        'icone' => 'fas fa-handshake',
-        'titulo' => 'Confiança',
-        'descricao' => 'Construímos relacionamentos duradouros baseados na confiança mútua e resultados consistentes.'
+        'icone' => 'fas fa-chart-line',
+        'titulo' => 'Compromisso com resultados',
+        'descricao' => 'Mais do que vender imóveis, nosso foco está em construir histórias de sucesso. Buscamos constantemente oportunidades que proporcionem rentabilidade e valorização para cada investidor.'
     ],
     [
-        'icone' => 'fas fa-lightbulb',
-        'titulo' => 'Inovação',
-        'descricao' => 'Sempre buscamos as melhores soluções e tecnologias para otimizar seus investimentos imobiliários.'
-    ],
-    [
-        'icone' => 'fas fa-heart',
-        'titulo' => 'Paixão',
-        'descricao' => 'Somos apaixonados por conectar pessoas aos melhores investimentos e realizar sonhos.'
+        'icone' => 'fas fa-users',
+        'titulo' => 'Atendimento humano e especializado',
+        'descricao' => 'Cada cliente é único. Por isso, oferecemos um atendimento consultivo, próximo e personalizado, para entender seu perfil e indicar os investimentos mais adequados.'
     ]
 ];
 
@@ -111,24 +106,19 @@ $conquistas = [
 
 $diferenciais = [
     [
-        'icone' => 'fas fa-chart-line',
-        'titulo' => 'Análise de Mercado',
-        'descricao' => 'Equipe especializada em análise de mercado e tendências imobiliárias para maximizar seus retornos.'
+        'icone' => 'fas fa-home',
+        'titulo' => 'Foco exclusivo em estúdios',
+        'descricao' => 'Não somos uma imobiliária genérica. Nosso trabalho é totalmente dedicado ao mercado de estúdios, permitindo análises profundas e decisões mais assertivas.'
     ],
     [
-        'icone' => 'fas fa-gavel',
-        'titulo' => 'Assessoria Jurídica',
-        'descricao' => 'Suporte jurídico completo em todas as etapas da negociação, garantindo segurança e conformidade.'
+        'icone' => 'fas fa-brain',
+        'titulo' => 'Inteligência de investimento',
+        'descricao' => 'Nossa equipe é treinada para ir além da venda. Entregamos estudos detalhados sobre valorização, rentabilidade e potencial de cada oportunidade.'
     ],
     [
-        'icone' => 'fas fa-calculator',
-        'titulo' => 'Planejamento Financeiro',
-        'descricao' => 'Assessoria financeira personalizada para otimizar seus investimentos e planejamento patrimonial.'
-    ],
-    [
-        'icone' => 'fas fa-headset',
-        'titulo' => 'Suporte 24/7',
-        'descricao' => 'Atendimento personalizado e suporte contínuo para todas as suas necessidades imobiliárias.'
+        'icone' => 'fas fa-handshake',
+        'titulo' => 'Suporte completo',
+        'descricao' => 'Do primeiro contato até o pós-compra, você conta com nossa consultoria integral — cuidamos de cada etapa para que seu investimento seja seguro e descomplicado.'
     ]
 ];
 ?>
@@ -145,8 +135,9 @@ include 'includes/header.php';
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Nossa História</h1>
-                    <p>Uma jornada de paixão, inovação e compromisso com o sucesso dos nossos clientes no mercado imobiliário de Curitiba. Desde 2017, transformando sonhos em investimentos lucrativos.</p>
+                    <h1>Sobre a BR2 Estúdios</h1>
+                    <p class="hero-subtitle">Especialistas em estúdios, especialistas em investimentos.</p>
+                    <p class="hero-description">Localizada no coração de Curitiba, a BR2 Estúdios nasceu com um propósito claro: transformar o investimento em imóveis em uma experiência segura, rentável e estratégica. Nossa atuação é 100% focada em estúdios, um dos segmentos mais promissores do mercado imobiliário.</p>
                     <div class="hero-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo $estatisticas['anos_experiencia']; ?>+</span>
@@ -154,21 +145,37 @@ include 'includes/header.php';
                         </div>
                         <div class="stat-item">
                             <span class="stat-number"><?php echo $estatisticas['imoveis_vendidos']; ?>+</span>
-                            <span class="stat-label">Imóveis Vendidos</span>
+                            <span class="stat-label">Estúdios Vendidos</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number"><?php echo $estatisticas['clientes_satisfeitos']; ?>+</span>
-                            <span class="stat-label">Clientes Satisfeitos</span>
+                            <span class="stat-label">Investidores Satisfeitos</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number"><?php echo $estatisticas['corretores_credenciados']; ?>+</span>
-                            <span class="stat-label">Corretores Credenciados</span>
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Foco em Estúdios</span>
                         </div>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="contato.php" class="btn-primary">
+                            <i class="fas fa-phone"></i>
+                            Falar com Especialista
+                        </a>
+                        <a href="imoveis.php" class="btn-secondary">
+                            <i class="fas fa-chart-line"></i>
+                            Ver Oportunidades
+                        </a>
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <div class="hero-image">
-                        <i class="fas fa-building"></i>
+                    <div class="hero-image-container">
+                        <div class="hero-image">
+                            <img src="assets/images/imoveis/imovel-2.jpeg" alt="Studio Premium Curitiba">
+                        </div>
+                        <div class="hero-badge">
+                            <i class="fas fa-award"></i>
+                            <span>Especialistas em Estúdios</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -179,8 +186,9 @@ include 'includes/header.php';
     <section class="sobre-header-mobile mobile-only">
         <div class="container">
             <div class="header-mobile-content">
-                <h1>Sobre Nós</h1>
-                <p>Especialistas em investimentos imobiliários desde 2017</p>
+                <h1>Sobre a BR2 Estúdios</h1>
+                <p class="mobile-subtitle">Especialistas em estúdios, especialistas em investimentos.</p>
+                <p class="mobile-description">Localizada no coração de Curitiba, transformamos investimentos em imóveis em uma experiência segura, rentável e estratégica.</p>
                 <div class="quick-stats-mobile">
                     <span class="quick-stat">
                         <i class="fas fa-calendar"></i>
@@ -188,7 +196,11 @@ include 'includes/header.php';
                     </span>
                     <span class="quick-stat">
                         <i class="fas fa-home"></i>
-                        <?php echo $estatisticas['imoveis_vendidos']; ?>+ Vendidos
+                        <?php echo $estatisticas['imoveis_vendidos']; ?>+ Estúdios
+                    </span>
+                    <span class="quick-stat">
+                        <i class="fas fa-chart-line"></i>
+                        100% Foco
                     </span>
                 </div>
             </div>
@@ -198,38 +210,38 @@ include 'includes/header.php';
     <!-- About Mobile - Cards Simples -->
     <section class="about-mobile mobile-only">
         <div class="section-header">
-            <h2>Quem Somos</h2>
-            <p>Nossa essência e propósito</p>
+            <h2>Nossa Especialização</h2>
+            <p>Foco exclusivo em estúdios</p>
         </div>
         <div class="about-content-mobile">
             <div class="about-card-mobile">
                 <div class="about-icon-mobile">
-                    <i class="fas fa-bullseye"></i>
+                    <i class="fas fa-home"></i>
                 </div>
-                <h3>Nossa Missão</h3>
-                <p>Conectar investidores às melhores oportunidades do mercado imobiliário de Curitiba</p>
+                <h3>Foco em Estúdios</h3>
+                <p>100% dedicados ao mercado de estúdios, com análises profundas e decisões assertivas</p>
             </div>
             
             <div class="about-card-mobile">
                 <div class="about-icon-mobile">
-                    <i class="fas fa-eye"></i>
+                    <i class="fas fa-brain"></i>
                 </div>
-                <h3>Nossa Visão</h3>
-                <p>Ser referência em Curitiba em investimentos imobiliários de alta rentabilidade</p>
+                <h3>Inteligência de Investimento</h3>
+                <p>Estudos detalhados sobre valorização, rentabilidade e potencial de cada oportunidade</p>
             </div>
             
             <div class="about-highlights-mobile">
                 <div class="highlight-mobile">
-                    <i class="fas fa-award"></i>
-                    <span>Certificada</span>
-                </div>
-                <div class="highlight-mobile">
-                    <i class="fas fa-users"></i>
-                    <span>Especializada</span>
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Transparência</span>
                 </div>
                 <div class="highlight-mobile">
                     <i class="fas fa-chart-line"></i>
                     <span>Resultados</span>
+                </div>
+                <div class="highlight-mobile">
+                    <i class="fas fa-users"></i>
+                    <span>Especializado</span>
                 </div>
             </div>
         </div>
@@ -240,29 +252,32 @@ include 'includes/header.php';
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Como Tudo Começou</h2>
-                    <p>Em 2017, um grupo de visionários apaixonados por imóveis decidiu revolucionar o mercado de investimentos imobiliários no Brasil. Identificamos uma oportunidade única no mercado de studios e apartamentos compactos.</p>
-                    <p>Fundada com a missão de democratizar o acesso a investimentos imobiliários de qualidade, a Br2Studios começou focando em studios na cidade de São Paulo, onde identificamos o maior potencial de valorização.</p>
-                    <p>Hoje, nossa presença se estende por todo o Brasil, levando nossa expertise e metodologia comprovada para todas as regiões do país, sempre focando na qualidade e rentabilidade dos investimentos.</p>
+                    <h2>Nossa Especialização</h2>
+                    <p>Aqui, cada detalhe é pensado para investidores que buscam oportunidades reais de valorização e retorno. Nossa equipe é formada por profissionais altamente treinados para analisar cenários, identificar tendências e indicar as melhores opções de estúdios na região central de Curitiba.</p>
+                    <p>Com suporte completo em todas as etapas do processo, oferecemos confiança, transparência e resultados sólidos — para que você invista com segurança e colha o melhor que o mercado imobiliário pode oferecer.</p>
                     
                     <div class="about-features">
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>Especialização em studios e apartamentos compactos</span>
+                            <span>Foco exclusivo em estúdios</span>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>Análise criteriosa de mercado e localização</span>
+                            <span>Análise profunda de mercado e localização</span>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>Suporte completo em todo o processo</span>
+                            <span>Suporte completo em todas as etapas</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Consultoria especializada em investimentos</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-visual">
                     <div class="about-image">
-                        <i class="fas fa-chart-line"></i>
+                        <img src="assets/images/imoveis/imovel-3.jpeg" alt="Studio Premium Curitiba">
                     </div>
                 </div>
             </div>
