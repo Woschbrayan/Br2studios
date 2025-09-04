@@ -130,7 +130,11 @@
 </footer>
 
 <!-- Scripts -->
-<script src="assets/js/main.js"></script>
+<?php 
+// Versionamento para forçar atualização do cache
+$version = '1.0.0';
+?>
+<script src="assets/js/main.js?v=<?php echo $version; ?>"></script>
 
 <!-- Script para Newsletter -->
 <script>

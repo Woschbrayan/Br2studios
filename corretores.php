@@ -465,4 +465,8 @@ include 'includes/header.php';
 <?php include 'includes/whatsapp.php'; ?>
 <?php include 'includes/footer.php'; ?>
 
-<script src="assets/js/mobile-creative.js"></script>
+<?php 
+// Versionamento para forçar atualização do cache
+$version = '1.0.0';
+?>
+<script src="assets/js/mobile-creative.js?v=<?php echo $version; ?>"></script>

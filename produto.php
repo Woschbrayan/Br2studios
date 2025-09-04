@@ -704,7 +704,11 @@ include 'includes/header.php';
     <?php include 'includes/whatsapp.php'; ?>
     <?php include 'includes/footer.php'; ?>
 
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/produto.js"></script>
+    <?php 
+    // Versionamento para forçar atualização do cache
+    $version = '1.0.0';
+    ?>
+    <script src="assets/js/main.js?v=<?php echo $version; ?>"></script>
+    <script src="assets/js/produto.js?v=<?php echo $version; ?>"></script>
 </body>
 </html>

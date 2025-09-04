@@ -8,16 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <?php 
+    // Versionamento para forçar atualização do cache
+    $version = '1.0.0';
+    ?>
+    <link rel="stylesheet" href="assets/css/style.css?v=<?php echo $version; ?>">
     <?php if (isset($page_css)): ?>
-        <link rel="stylesheet" href="<?php echo $page_css; ?>">
+        <link rel="stylesheet" href="<?php echo $page_css; ?>?v=<?php echo $version; ?>">
     <?php endif; ?>
-    <link rel="stylesheet" href="assets/css/mobile-enhancements.css">
-    <link rel="stylesheet" href="assets/css/mobile-creative.css">
+    <link rel="stylesheet" href="assets/css/mobile-enhancements.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/mobile-creative.css?v=<?php echo $version; ?>">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/dark-theme-fixes.css">
-    <link rel="stylesheet" href="assets/css/scroll-fix.css">
-    <link rel="stylesheet" href="assets/css/hero-mobile-fixes.css">
+    <link rel="stylesheet" href="assets/css/dark-theme-fixes.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/scroll-fix.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/hero-mobile-fixes.css?v=<?php echo $version; ?>">
 </head>
 <body>
     <!-- Header -->
