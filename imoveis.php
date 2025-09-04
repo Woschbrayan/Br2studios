@@ -7,8 +7,8 @@ $imovel = new Imovel();
 
 // Filtros
 $filters = [];
-if (isset($_GET['tipo']) && !empty($_GET['tipo'])) {
-    $filters['tipo'] = $_GET['tipo'];
+if (isset($_GET['status_construcao']) && !empty($_GET['status_construcao'])) {
+    $filters['status_construcao'] = $_GET['status_construcao'];
 }
 if (isset($_GET['cidade']) && !empty($_GET['cidade'])) {
     $filters['cidade'] = $_GET['cidade'];
@@ -115,19 +115,17 @@ include 'includes/header.php';
             <div class="search-container">
                 <div class="search-header">
                     <h2>Encontre seu Investimento</h2>
-                    <p>Filtre por tipo, localização e faixa de preço</p>
+                    <p>Filtre por status de construção, localização e faixa de preço</p>
                 </div>
                 
                 <form class="search-form" method="GET">
                     <div class="search-filters">
                         <div class="filter-group">
-                            <label for="tipo">Tipo de Imóvel</label>
-                            <select name="tipo" id="tipo" class="filter-select">
-                                <option value="">Todos os tipos</option>
-                                <option value="studio" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'studio') ? 'selected' : ''; ?>>Studio</option>
-                                <option value="apartamento" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'apartamento') ? 'selected' : ''; ?>>Apartamento</option>
-                                <option value="casa" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'casa') ? 'selected' : ''; ?>>Casa</option>
-                                <option value="comercial" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'comercial') ? 'selected' : ''; ?>>Comercial</option>
+                            <label for="status_construcao">Status de Construção</label>
+                            <select name="status_construcao" id="status_construcao" class="filter-select">
+                                <option value="">Todos os status</option>
+                                <option value="pronto" <?php echo (isset($_GET['status_construcao']) && $_GET['status_construcao'] == 'pronto') ? 'selected' : ''; ?>>Imóvel Pronto</option>
+                                <option value="na_planta" <?php echo (isset($_GET['status_construcao']) && $_GET['status_construcao'] == 'na_planta') ? 'selected' : ''; ?>>Na Planta</option>
                             </select>
                         </div>
                         
@@ -179,12 +177,11 @@ include 'includes/header.php';
                 <div class="filters-mobile-panel" id="filters-panel" style="display: none;">
                     <form method="GET" class="filters-form-mobile">
                         <div class="filter-row-mobile">
-                            <label>Tipo</label>
-                            <select name="tipo" class="filter-select-mobile">
+                            <label>Status</label>
+                            <select name="status_construcao" class="filter-select-mobile">
                                 <option value="">Todos</option>
-                                <option value="studio" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'studio') ? 'selected' : ''; ?>>Studio</option>
-                                <option value="apartamento" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'apartamento') ? 'selected' : ''; ?>>Apartamento</option>
-                                <option value="casa" <?php echo (isset($_GET['tipo']) && $_GET['tipo'] == 'casa') ? 'selected' : ''; ?>>Casa</option>
+                                <option value="pronto" <?php echo (isset($_GET['status_construcao']) && $_GET['status_construcao'] == 'pronto') ? 'selected' : ''; ?>>Pronto</option>
+                                <option value="na_planta" <?php echo (isset($_GET['status_construcao']) && $_GET['status_construcao'] == 'na_planta') ? 'selected' : ''; ?>>Na Planta</option>
                             </select>
                         </div>
                         
@@ -225,14 +222,16 @@ include 'includes/header.php';
             </div>
             
             <?php if (empty($imoveis)): ?>
-                <div class="no-results" style="text-align: center; padding: 80px 20px;">
-                    <i class="fas fa-search" style="font-size: 4rem; color: #ccc; margin-bottom: 20px;"></i>
-                    <h3 style="font-size: 1.8rem; color: #666; margin-bottom: 15px;">Nenhum imóvel encontrado</h3>
-                    <p style="color: #999; margin-bottom: 30px;">Tente ajustar os filtros de busca ou entre em contato conosco.</p>
-                    <a href="contato.php" class="btn-primary" style="display: inline-flex; padding: 15px 30px;">
-                        <i class="fas fa-phone"></i>
-                        Falar com Corretor
-                    </a>
+                <div class="no-properties-message">
+                    <div class="no-properties-content">
+                        <i class="fas fa-search"></i>
+                        <h3>Nenhum imóvel encontrado</h3>
+                        <p>Tente ajustar os filtros de busca ou entre em contato conosco para mais informações.</p>
+                        <a href="contato.php" class="btn-view-all">
+                         
+                            Falar com Corretor
+                        </a>
+                    </div>
                 </div>
             <?php else: ?>
                 <div class="properties-grid">
@@ -242,59 +241,47 @@ include 'includes/header.php';
                                 <?php 
                                 $imagem = isset($imovel_item['imagem_principal']) && !empty($imovel_item['imagem_principal']) 
                                     ? $imovel_item['imagem_principal'] 
-                                    : 'assets/images/imoveis/Imovel-1.jpeg'; // Imagem padrão
+                                    : 'assets/images/imoveis/Imovel-1.jpeg';
                                 ?>
                                 <img src="<?php echo htmlspecialchars($imagem); ?>" alt="<?php echo htmlspecialchars($imovel_item['titulo']); ?>">
-                                <?php if (isset($imovel_item['destaque']) && $imovel_item['destaque']): ?>
-                                    <div class="property-badge">
-                                        <i class="fas fa-star"></i>
-                                        <span>Destaque</span>
-                                    </div>
-                                <?php endif; ?>
+                                
+                                <div class="property-labels">
+                                    <?php if (isset($imovel_item['destaque']) && $imovel_item['destaque']): ?>
+                                        <span class="label-featured">DESTAQUE</span>
+                                    <?php endif; ?>
+                                    <span class="label-status">À VENDA</span>
+                                </div>
+                                
                                 <div class="property-price">
                                     <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
-                                    <span class="price-per-sqft">R$ <?php echo number_format($imovel_item['preco'] / $imovel_item['area'], 0, ',', '.'); ?>/m²</span>
+                                    <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
+                                        <span class="price-per-sqft">R$ <?php echo number_format($imovel_item['preco'] / $imovel_item['area'], 0, ',', '.'); ?>/m²</span>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             
-                            <div class="property-content">
-                                <div class="property-header">
-                                    <h3><?php echo htmlspecialchars($imovel_item['titulo']); ?></h3>
-                                    <div class="property-location">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span><?php echo htmlspecialchars($imovel_item['cidade']); ?>, <?php echo htmlspecialchars($imovel_item['estado']); ?></span>
-                                    </div>
-                                </div>
-                                
+                            <div class="property-info">
+                                <h3><?php echo htmlspecialchars($imovel_item['titulo']); ?></h3>
+                                <p class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    <?php echo htmlspecialchars($imovel_item['cidade'] . ', ' . $imovel_item['estado']); ?>
+                                </p>
                                 <div class="property-details">
-                                    <div class="detail-item">
-                                        <i class="fas fa-ruler-combined"></i>
-                                        <span><?php echo $imovel_item['area']; ?>m²</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <i class="fas fa-bed"></i>
-                                        <span><?php echo $imovel_item['quartos']; ?> quarto</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <i class="fas fa-bath"></i>
-                                        <span><?php echo $imovel_item['banheiros']; ?> banheiro</span>
-                                    </div>
+                                    <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
+                                        <span><i class="fas fa-ruler-combined"></i> <?php echo $imovel_item['area']; ?>m²</span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($imovel_item['quartos'])): ?>
+                                        <span><i class="fas fa-bed"></i> <?php echo $imovel_item['quartos']; ?></span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($imovel_item['banheiros'])): ?>
+                                        <span><i class="fas fa-bath"></i> <?php echo $imovel_item['banheiros']; ?></span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($imovel_item['vagas'])): ?>
+                                        <span><i class="fas fa-car"></i> <?php echo $imovel_item['vagas']; ?></span>
+                                    <?php endif; ?>
+                                    <span class="property-type"><?php echo strtoupper($imovel_item['tipo']); ?></span>
                                 </div>
-                                
-                                <div class="property-type">
-                                    <span class="type-tag"><?php echo ucfirst(htmlspecialchars($imovel_item['tipo'])); ?></span>
-                                </div>
-                                
-                                <div class="property-actions">
-                                    <a href="produto.php?id=<?php echo $imovel_item['id']; ?>" class="btn-primary">
-                                        <i class="fas fa-info-circle"></i>
-                                        Ver Detalhes
-                                    </a>
-                                    <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre o imóvel <?php echo urlencode($imovel_item['titulo']); ?>" class="btn-whatsapp" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                        WhatsApp
-                                    </a>
-                                </div>
+                                <a href="produto.php?id=<?php echo $imovel_item['id']; ?>" class="btn-view-property">Ver Detalhes</a>
                             </div>
                         </div>
                     <?php endforeach; ?>

@@ -30,11 +30,11 @@ class Imovel {
             
             $sql = "INSERT INTO {$this->table} (
                 titulo, descricao, preco, area, quartos, 
-                banheiros, vagas, endereco, cidade, estado, cep, tipo, status, 
+                banheiros, vagas, endereco, cidade, estado, cep, tipo, status_construcao, status, 
                 imagem_principal, imagens, caracteristicas, destaque
             ) VALUES (
                 :titulo, :descricao, :preco, :area, :quartos,
-                :banheiros, :vagas, :endereco, :cidade, :estado, :cep, :tipo, :status,
+                :banheiros, :vagas, :endereco, :cidade, :estado, :cep, :tipo, :status_construcao, :status,
                 :imagem_principal, :imagens, :caracteristicas, :destaque
             )";
             
@@ -51,6 +51,7 @@ class Imovel {
                 ':estado' => $dados['estado'],
                 ':cep' => $dados['cep'] ?? null,
                 ':tipo' => $dados['tipo'],
+                ':status_construcao' => $dados['status_construcao'] ?? 'pronto',
                 ':status' => $dados['status'] ?? 'disponivel',
                 ':imagem_principal' => $dados['imagem_principal'] ?? null,
                 ':imagens' => $dados['imagens'] ?? null,
@@ -99,7 +100,7 @@ class Imovel {
             }
             
             // Preparar dados para atualização
-            $campos = ['titulo', 'descricao', 'preco', 'area', 'quartos', 'banheiros', 'vagas', 'endereco', 'cidade', 'estado', 'cep', 'tipo', 'status', 'imagem_principal', 'imagens', 'caracteristicas', 'destaque'];
+            $campos = ['titulo', 'descricao', 'preco', 'area', 'quartos', 'banheiros', 'vagas', 'endereco', 'cidade', 'estado', 'cep', 'tipo', 'status_construcao', 'status', 'imagem_principal', 'imagens', 'caracteristicas', 'destaque'];
             $sets = [];
             $params = [':id' => $id];
             
@@ -196,6 +197,11 @@ class Imovel {
             if (!empty($filtros['tipo'])) {
                 $where[] = "tipo = :tipo";
                 $params[':tipo'] = $filtros['tipo'];
+            }
+            
+            if (!empty($filtros['status_construcao'])) {
+                $where[] = "status_construcao = :status_construcao";
+                $params[':status_construcao'] = $filtros['status_construcao'];
             }
             
             if (!empty($filtros['status'])) {
@@ -423,6 +429,11 @@ class Imovel {
             if (!empty($filtros['tipo'])) {
                 $where[] = "tipo = :tipo";
                 $params[':tipo'] = $filtros['tipo'];
+            }
+            
+            if (!empty($filtros['status_construcao'])) {
+                $where[] = "status_construcao = :status_construcao";
+                $params[':status_construcao'] = $filtros['status_construcao'];
             }
             
             if (!empty($filtros['status'])) {
