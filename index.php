@@ -770,71 +770,159 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Testimonials Section Desktop - Slider -->
-    <section class="testimonials desktop-only">
+    <!-- Testimonials Section Desktop - Carrossel Melhorado -->
+    <section class="testimonials-desktop desktop-only">
         <div class="container">
             <div class="section-header">
                 <h2>O que nossos clientes dizem</h2>
-                <p>Depoimentos reais de investidores que confiaram na Br2Studios em Curitiba</p>
+                <p>Depoimentos reais de investidores que confiaram na Br2Studios</p>
             </div>
             
-            <div class="testimonials-slider-desktop">
-                <div class="testimonials-track-desktop">
-                    <div class="testimonial-slide-desktop active">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">"</div>
-                            <p class="testimonial-text">Investir em Curitiba com a Br2Studios foi a melhor decisão. Meu studio no Água Verde valorizou 35% em apenas 2 anos!</p>
-                            <div class="testimonial-author">
-                                <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Carlos Mendes - Investidor">
-                                <div class="author-info">
-                                    <h4>Carlos Mendes</h4>
-                                    <p>Investidor - Água Verde</p>
+            <div class="testimonials-carousel-desktop">
+                <div class="testimonials-wrapper">
+                    <div class="testimonials-track">
+                        <!-- Depoimento 1 -->
+                        <div class="testimonial-slide active">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="testimonial-text">
+                                        "Investir em Curitiba com a Br2Studios foi a melhor decisão que tomei. 
+                                        Meu studio no Água Verde valorizou 35% em apenas 2 anos! A equipe é 
+                                        extremamente profissional e transparente."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Carlos Mendes">
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Carlos Mendes</h4>
+                                            <p>Investidor - Água Verde</p>
+                                            <span class="author-location">Curitiba, PR</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="testimonial-slide-desktop">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">"</div>
-                            <p class="testimonial-text">Equipe profissional e transparente em Curitiba. Consegui encontrar o imóvel perfeito no Centro com toda a assessoria necessária.</p>
-                            <div class="testimonial-author">
-                                <img src="assets/images/imoveis/imovel-2.jpeg" alt="Ana Paula Costa - Investidora">
-                                <div class="author-info">
-                                    <h4>Ana Paula Costa</h4>
-                                    <p>Investidora - Centro</p>
+                        
+                        <!-- Depoimento 2 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="testimonial-text">
+                                        "Equipe profissional e transparente. Consegui encontrar o imóvel perfeito 
+                                        no Centro com toda a assessoria necessária. Recomendo para quem busca 
+                                        investimentos seguros e rentáveis."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <img src="assets/images/imoveis/imovel-2.jpeg" alt="Ana Paula Costa">
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Ana Paula Costa</h4>
+                                            <p>Investidora - Centro</p>
+                                            <span class="author-location">Curitiba, PR</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="testimonial-slide-desktop">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">"</div>
-                            <p class="testimonial-text">Excelente retorno no Bairro Alto. A Br2Studios realmente entende do mercado imobiliário de Curitiba e oferece as melhores oportunidades.</p>
-                            <div class="testimonial-author">
-                                <img src="assets/images/imoveis/imovel-3.jpeg" alt="Roberto Almeida - Empresário">
-                                <div class="author-info">
-                                    <h4>Roberto Almeida</h4>
-                                    <p>Empresário - Bairro Alto</p>
+                        
+                        <!-- Depoimento 3 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="testimonial-text">
+                                        "Excelente retorno no Bairro Alto. A Br2Studios realmente entende do 
+                                        mercado imobiliário de Curitiba e oferece as melhores oportunidades. 
+                                        Superou todas as minhas expectativas!"
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <img src="assets/images/imoveis/imovel-3.jpeg" alt="Roberto Almeida">
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Roberto Almeida</h4>
+                                            <p>Empresário - Bairro Alto</p>
+                                            <span class="author-location">Curitiba, PR</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Depoimento 4 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="testimonial-text">
+                                        "Atendimento excepcional desde o primeiro contato. A Br2Studios me ajudou 
+                                        a encontrar o investimento perfeito na região metropolitana. 
+                                        Retorno garantido e processo muito transparente."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <img src="assets/images/imoveis/imovel-4.jpeg" alt="Mariana Silva">
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Mariana Silva</h4>
+                                            <p>Investidora - Região Metropolitana</p>
+                                            <span class="author-location">São José dos Pinhais, PR</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonials-controls-desktop">
-                    <button class="testimonial-prev-desktop">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="testimonials-dots-desktop">
-                        <span class="testimonial-dot-desktop active" data-slide="0"></span>
-                        <span class="testimonial-dot-desktop" data-slide="1"></span>
-                        <span class="testimonial-dot-desktop" data-slide="2"></span>
+                <!-- Controles do Carrossel -->
+                <div class="carousel-controls">
+                    <div class="carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
                     </div>
-                    <button class="testimonial-next-desktop">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -854,35 +942,117 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Partners Section -->
-    <section class="partners">
+    <!-- Partners Section - Carrossel Automático -->
+    <section class="partners-carousel">
         <div class="container">
             <div class="section-header">
                 <h2>Nossos Parceiros</h2>
                 <p>Empresas que confiam na nossa expertise</p>
             </div>
             
-            <div class="partners-grid">
-                <div class="partner-logo">
-                    <h3>WILDRIDGE</h3>
-                    <i class="fas fa-leaf"></i>
-                </div>
-                <div class="partner-logo">
-                    <h3>HILLSTROM REAL ESTATE</h3>
-                    <i class="fas fa-tree"></i>
-                </div>
-                <div class="partner-logo">
-                    <h3>HORIZON HOMES</h3>
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="partner-logo">
-                    <h3>HOME Real Estate</h3>
-                    <p>SEU PROFISSIONAL IMOBILIÁRIO</p>
-                    <i class="fas fa-building"></i>
-                </div>
-                <div class="partner-logo">
-                    <h3>CHARLES BENTLEY</h3>
-                    <i class="fas fa-mountain"></i>
+            <div class="partners-carousel-wrapper">
+                <div class="partners-track">
+                    <!-- Primeira linha de parceiros -->
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h3>WILDRIDGE</h3>
+                            <p>Desenvolvimento Sustentável</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <h3>HILLSTROM REAL ESTATE</h3>
+                            <p>Consultoria Imobiliária</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>HORIZON HOMES</h3>
+                            <p>Construção Residencial</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3>HOME Real Estate</h3>
+                            <p>SEU PROFISSIONAL IMOBILIÁRIO</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <h3>CHARLES BENTLEY</h3>
+                            <p>Investimentos de Luxo</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Segunda linha de parceiros (duplicada para loop infinito) -->
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h3>WILDRIDGE</h3>
+                            <p>Desenvolvimento Sustentável</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <h3>HILLSTROM REAL ESTATE</h3>
+                            <p>Consultoria Imobiliária</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>HORIZON HOMES</h3>
+                            <p>Construção Residencial</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3>HOME Real Estate</h3>
+                            <p>SEU PROFISSIONAL IMOBILIÁRIO</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <div class="partner-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <h3>CHARLES BENTLEY</h3>
+                            <p>Investimentos de Luxo</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
