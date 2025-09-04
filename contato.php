@@ -30,111 +30,27 @@ include 'includes/header.php';
 ?>
 
 <!-- Hero Section Desktop -->
-<section class="contact-hero desktop-only">
-    <div class="hero-background">
-        <div class="hero-image">
-            <img src="assets/images/hero-2.jpg" alt="Contato BR2Studios">
-        </div>
+<section class="contact-hero-simple desktop-only">
+    <div class="hero-bg">
+        <img src="assets/images/hero-2.jpg" alt="Contato BR2Studios">
         <div class="hero-overlay"></div>
-        <div class="hero-pattern"></div>
     </div>
     
     <div class="hero-content">
         <div class="container">
-            <div class="hero-main">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <i class="fas fa-headset"></i>
-                        <span>Atendimento Especializado</span>
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        <span class="title-highlight">Fale Conosco</span>
-                        <br>e Transforme seu Investimento
-                    </h1>
-                    
-                    <p class="hero-description">
-                        Nossa equipe de especialistas em estúdios está pronta para guiar você em cada etapa do seu investimento imobiliário em Curitiba. Consultoria gratuita e personalizada.
-                    </p>
-                    
-                    <div class="hero-features">
-                        <div class="feature-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Resposta em até 2 horas</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Consultoria gratuita</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Análise de mercado</span>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-actions">
-                        <a href="https://wa.me/554141410093" class="btn-whatsapp-hero" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            <div class="btn-text">
-                                <span class="btn-title">WhatsApp Direto</span>
-                                <span class="btn-subtitle">Resposta imediata</span>
-                            </div>
-                        </a>
-                        <a href="#contato-form" class="btn-form-hero">
-                            <i class="fas fa-envelope"></i>
-                            <div class="btn-text">
-                                <span class="btn-title">Formulário</span>
-                                <span class="btn-subtitle">Mensagem detalhada</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <div class="hero-text">
+                <h1>Fale Conosco</h1>
+                <p>Nossa equipe de especialistas em estúdios está pronta para ajudar você a encontrar o investimento perfeito em Curitiba.</p>
                 
-                <div class="hero-visual">
-                    <div class="contact-cards">
-                        <div class="contact-card whatsapp-card">
-                            <div class="card-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div class="card-content">
-                                <h3>WhatsApp Business</h3>
-                                <p>Atendimento 24/7</p>
-                                <div class="card-status">
-                                    <span class="status-dot online"></span>
-                                    <span>Online agora</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-card form-card">
-                            <div class="card-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="card-content">
-                                <h3>Formulário</h3>
-                                <p>Resposta em 2h</p>
-                                <div class="card-status">
-                                    <span class="status-dot"></span>
-                                    <span>Disponível</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Clientes Atendidos</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Disponibilidade</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Satisfação</div>
-                        </div>
-                    </div>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                    <a href="#contato-form" class="btn-form">
+                        <i class="fas fa-envelope"></i>
+                        Formulário
+                    </a>
                 </div>
             </div>
         </div>
@@ -142,7 +58,7 @@ include 'includes/header.php';
 </section>
 
 <!-- Hero Mobile -->
-<section class="contact-hero-mobile mobile-only">
+<section class="contact-hero-mobile-simple mobile-only">
     <div class="hero-mobile-bg">
         <img src="assets/images/hero-2.jpg" alt="Contato BR2Studios">
         <div class="hero-mobile-overlay"></div>
@@ -150,65 +66,18 @@ include 'includes/header.php';
     
     <div class="hero-mobile-content">
         <div class="container">
-            <div class="hero-mobile-badge">
-                <i class="fas fa-headset"></i>
-                <span>Atendimento Especializado</span>
-            </div>
+            <h1>Fale Conosco</h1>
+            <p>Especialistas em estúdios prontos para ajudar seu investimento em Curitiba.</p>
             
-            <h1 class="hero-mobile-title">
-                <span class="title-highlight">Fale Conosco</span>
-                <br>e Transforme seu Investimento
-            </h1>
-            
-            <p class="hero-mobile-description">
-                Especialistas em estúdios prontos para guiar seu investimento em Curitiba. Consultoria gratuita e personalizada.
-            </p>
-            
-            <div class="hero-mobile-features">
-                <div class="feature-mobile">
-                    <i class="fas fa-clock"></i>
-                    <span>Resposta em 2h</span>
-                </div>
-                <div class="feature-mobile">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Consultoria gratuita</span>
-                </div>
-                <div class="feature-mobile">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Análise de mercado</span>
-                </div>
-            </div>
-            
-            <div class="hero-mobile-actions">
+            <div class="hero-mobile-buttons">
                 <a href="https://wa.me/554141410093" class="btn-mobile-whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    <div class="btn-mobile-text">
-                        <span class="btn-mobile-title">WhatsApp</span>
-                        <span class="btn-mobile-subtitle">Resposta imediata</span>
-                    </div>
+                    WhatsApp
                 </a>
                 <a href="#contato-form" class="btn-mobile-form">
                     <i class="fas fa-envelope"></i>
-                    <div class="btn-mobile-text">
-                        <span class="btn-mobile-title">Formulário</span>
-                        <span class="btn-mobile-subtitle">Mensagem detalhada</span>
-                    </div>
+                    Formulário
                 </a>
-            </div>
-            
-            <div class="hero-mobile-stats">
-                <div class="stat-mobile">
-                    <span class="stat-mobile-number">500+</span>
-                    <span class="stat-mobile-label">Clientes</span>
-                </div>
-                <div class="stat-mobile">
-                    <span class="stat-mobile-number">24/7</span>
-                    <span class="stat-mobile-label">Atendimento</span>
-                </div>
-                <div class="stat-mobile">
-                    <span class="stat-mobile-number">100%</span>
-                    <span class="stat-mobile-label">Satisfação</span>
-                </div>
             </div>
         </div>
     </div>
