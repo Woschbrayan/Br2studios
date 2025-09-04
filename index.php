@@ -109,6 +109,88 @@ include 'includes/header.php';
         </div> 
     </section>
 
+    <!-- Properties Mobile - Carousel Limpo -->
+    <section class="properties-mobile mobile-only">
+        <div class="section-header">
+            <h2>Imóveis em Destaque</h2>
+            <p>Deslize para ver nossas oportunidades</p>
+        </div>
+        <div class="properties-carousel-mobile">
+            <?php if (!empty($imoveis_destaque)): ?>
+                <?php foreach ($imoveis_destaque as $imovel): ?>
+                    <div class="property-card-mobile">
+                        <div class="property-image-mobile" style="background-image: url('<?php echo $imovel['imagem_principal'] ?: 'assets/images/imoveis/Imovel-1.jpeg'; ?>');">
+                            <div class="property-badge-mobile">DESTAQUE</div>
+                        </div>
+                        <div class="property-info-mobile">
+                            <h3 class="property-title-mobile"><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
+                            <div class="property-location-mobile">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <?php echo htmlspecialchars($imovel['cidade'] . ', ' . $imovel['estado']); ?>
+                            </div>
+                            <div class="property-price-mobile">R$ <?php echo number_format($imovel['preco'], 0, ',', '.'); ?></div>
+                            <div class="property-features-mobile">
+                                <?php if (!empty($imovel['area'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-ruler"></i> <?php echo $imovel['area']; ?>m²</span>
+                                <?php endif; ?>
+                                <?php if (!empty($imovel['quartos'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-bed"></i> <?php echo $imovel['quartos']; ?></span>
+                                <?php endif; ?>
+                                <?php if (!empty($imovel['banheiros'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-bath"></i> <?php echo $imovel['banheiros']; ?></span>
+                                <?php endif; ?>
+                            </div>
+                            <a href="produto.php?id=<?php echo $imovel['id']; ?>" class="property-action-mobile">Ver Detalhes</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <!-- Exemplo se não houver dados -->
+                <div class="property-card-mobile">
+                    <div class="property-image-mobile" style="background-image: url('assets/images/imoveis/Imovel-1.jpeg');">
+                        <div class="property-badge-mobile">DESTAQUE</div>
+                    </div>
+                    <div class="property-info-mobile">
+                        <h3 class="property-title-mobile">Studio Moderno Centro</h3>
+                        <div class="property-location-mobile">
+                            <i class="fas fa-map-marker-alt"></i>
+                            São Paulo, SP
+                        </div>
+                        <div class="property-price-mobile">R$ 180.000</div>
+                        <div class="property-features-mobile">
+                            <span class="property-feature-mobile"><i class="fas fa-ruler"></i> 35m²</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bed"></i> 1</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bath"></i> 1</span>
+                        </div>
+                        <a href="produto.php" class="property-action-mobile">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="property-card-mobile">
+                    <div class="property-image-mobile" style="background-image: url('assets/images/imoveis/imovel-2.jpeg');">
+                        <div class="property-badge-mobile">DESTAQUE</div>
+                    </div>
+                    <div class="property-info-mobile">
+                        <h3 class="property-title-mobile">Studio Vista Mar</h3>
+                        <div class="property-location-mobile">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Rio de Janeiro, RJ
+                        </div>
+                        <div class="property-price-mobile">R$ 250.000</div>
+                        <div class="property-features-mobile">
+                            <span class="property-feature-mobile"><i class="fas fa-ruler"></i> 42m²</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bed"></i> 1</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bath"></i> 1</span>
+                        </div>
+                        <a href="produto.php" class="property-action-mobile">Ver Detalhes</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="imoveis.php" class="btn-primary btn-large">Ver Todos os Imóveis</a>
+        </div>
+    </section>
+
     <!-- Features Section Mobile - Limpa e Organizada -->
     <section class="features-mobile mobile-only">
         <div class="section-header">
@@ -265,87 +347,6 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Properties Mobile - Carousel Limpo -->
-    <section class="properties-mobile mobile-only">
-        <div class="section-header">
-            <h2>Imóveis em Destaque</h2>
-            <p>Deslize para ver nossas oportunidades</p>
-        </div>
-        <div class="properties-carousel-mobile">
-            <?php if (!empty($imoveis_destaque)): ?>
-                <?php foreach ($imoveis_destaque as $imovel): ?>
-                    <div class="property-card-mobile">
-                        <div class="property-image-mobile" style="background-image: url('<?php echo $imovel['imagem_principal'] ?: 'assets/images/imoveis/Imovel-1.jpeg'; ?>');">
-                            <div class="property-badge-mobile">DESTAQUE</div>
-                        </div>
-                        <div class="property-info-mobile">
-                            <h3 class="property-title-mobile"><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
-                            <div class="property-location-mobile">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <?php echo htmlspecialchars($imovel['cidade'] . ', ' . $imovel['estado']); ?>
-                            </div>
-                            <div class="property-price-mobile">R$ <?php echo number_format($imovel['preco'], 0, ',', '.'); ?></div>
-                            <div class="property-features-mobile">
-                                <?php if (!empty($imovel['area'])): ?>
-                                    <span class="property-feature-mobile"><i class="fas fa-ruler"></i> <?php echo $imovel['area']; ?>m²</span>
-                                <?php endif; ?>
-                                <?php if (!empty($imovel['quartos'])): ?>
-                                    <span class="property-feature-mobile"><i class="fas fa-bed"></i> <?php echo $imovel['quartos']; ?></span>
-                                <?php endif; ?>
-                                <?php if (!empty($imovel['banheiros'])): ?>
-                                    <span class="property-feature-mobile"><i class="fas fa-bath"></i> <?php echo $imovel['banheiros']; ?></span>
-                                <?php endif; ?>
-                            </div>
-                            <a href="produto.php?id=<?php echo $imovel['id']; ?>" class="property-action-mobile">Ver Detalhes</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <!-- Exemplo se não houver dados -->
-                <div class="property-card-mobile">
-                    <div class="property-image-mobile" style="background-image: url('assets/images/imoveis/Imovel-1.jpeg');">
-                        <div class="property-badge-mobile">DESTAQUE</div>
-                    </div>
-                    <div class="property-info-mobile">
-                        <h3 class="property-title-mobile">Studio Moderno Centro</h3>
-                        <div class="property-location-mobile">
-                            <i class="fas fa-map-marker-alt"></i>
-                            São Paulo, SP
-                        </div>
-                        <div class="property-price-mobile">R$ 180.000</div>
-                        <div class="property-features-mobile">
-                            <span class="property-feature-mobile"><i class="fas fa-ruler"></i> 35m²</span>
-                            <span class="property-feature-mobile"><i class="fas fa-bed"></i> 1</span>
-                            <span class="property-feature-mobile"><i class="fas fa-bath"></i> 1</span>
-                        </div>
-                        <a href="produto.php" class="property-action-mobile">Ver Detalhes</a>
-                    </div>
-                </div>
-                <div class="property-card-mobile">
-                    <div class="property-image-mobile" style="background-image: url('assets/images/imoveis/imovel-2.jpeg');">
-                        <div class="property-badge-mobile">DESTAQUE</div>
-                    </div>
-                    <div class="property-info-mobile">
-                        <h3 class="property-title-mobile">Studio Vista Mar</h3>
-                        <div class="property-location-mobile">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Rio de Janeiro, RJ
-                        </div>
-                        <div class="property-price-mobile">R$ 250.000</div>
-                        <div class="property-features-mobile">
-                            <span class="property-feature-mobile"><i class="fas fa-ruler"></i> 42m²</span>
-                            <span class="property-feature-mobile"><i class="fas fa-bed"></i> 1</span>
-                            <span class="property-feature-mobile"><i class="fas fa-bath"></i> 1</span>
-                        </div>
-                        <a href="produto.php" class="property-action-mobile">Ver Detalhes</a>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="imoveis.php" class="btn-primary btn-large">Ver Todos os Imóveis</a>
-        </div>
-    </section>
 
     <!-- Cities Mobile - Cards Simples -->
     <section class="cities-mobile mobile-only">
