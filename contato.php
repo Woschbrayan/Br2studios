@@ -71,9 +71,9 @@ include 'includes/header.php';
                 <i class="fab fa-whatsapp"></i>
                 WhatsApp Direto
             </a>
-            <a href="tel:+554141410093" class="btn-secondary btn-large">
-                <i class="fas fa-phone"></i>
-                Ligar Agora
+            <a href="#contato-form" class="btn-secondary btn-large">
+                <i class="fas fa-envelope"></i>
+                Enviar Mensagem
             </a>
         </div>
         
@@ -95,161 +95,104 @@ include 'includes/header.php';
                     <i class="fab fa-whatsapp"></i>
                     <span>WhatsApp</span>
                 </a>
-                <a href="tel:+554141410093" class="quick-contact-btn phone">
-                    <i class="fas fa-phone"></i>
-                    <span>Ligar</span>
+                <a href="#contato-form" class="quick-contact-btn form">
+                    <i class="fas fa-envelope"></i>
+                    <span>Formulário</span>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Contact Methods Mobile -->
-<section class="contact-methods-mobile mobile-only">
+<!-- WhatsApp Highlight Mobile -->
+<section class="whatsapp-highlight-mobile mobile-only">
     <div class="section-header">
-        <h2>Como Falar Conosco</h2>
-        <p>Escolha sua forma preferida</p>
+        <h2>Fale Conosco Agora</h2>
+        <p>Resposta imediata via WhatsApp</p>
     </div>
-    <div class="contact-methods-grid-mobile">
-        <div class="contact-method-mobile">
-            <div class="method-icon-mobile whatsapp">
-                <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="method-info-mobile">
-                <h3>WhatsApp</h3>
-                <p>Resposta imediata</p>
-                <span class="method-detail">24/7 disponível</span>
-            </div>
-            <a href="https://wa.me/554141410093" class="method-action-mobile" target="_blank">
-                <i class="fas fa-arrow-right"></i>
-            </a>
+    <div class="whatsapp-card-mobile">
+        <div class="whatsapp-icon-mobile">
+            <i class="fab fa-whatsapp"></i>
         </div>
-        
-        <div class="contact-method-mobile">
-            <div class="method-icon-mobile phone">
-                <i class="fas fa-phone"></i>
+        <div class="whatsapp-info-mobile">
+            <h3>WhatsApp Business</h3>
+            <p>Atendimento especializado em investimentos imobiliários</p>
+            <div class="whatsapp-features-mobile">
+                <span class="feature-tag">24/7 Disponível</span>
+                <span class="feature-tag">Resposta Imediata</span>
+                <span class="feature-tag">Consultoria Gratuita</span>
             </div>
-            <div class="method-info-mobile">
-                <h3>Telefone</h3>
-                <p>Atendimento direto</p>
-                <span class="method-detail">(41) 4141-0093</span>
-            </div>
-            <a href="tel:+554141410093" class="method-action-mobile">
-                <i class="fas fa-arrow-right"></i>
-            </a>
         </div>
-        
-        <div class="contact-method-mobile">
-            <div class="method-icon-mobile email">
-                <i class="fas fa-envelope"></i>
-            </div>
-            <div class="method-info-mobile">
-                <h3>E-mail</h3>
-                <p>Mensagem detalhada</p>
-                <span class="method-detail">Resposta em 2h</span>
-            </div>
-            <a href="mailto:contato@br2studios.com.br" class="method-action-mobile">
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
+        <a href="https://wa.me/554141410093" class="whatsapp-btn-mobile" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            Conversar Agora
+        </a>
     </div>
 </section>
 
-<!-- Contact Methods Desktop -->
-<section class="features desktop-only">
+<!-- Contact Options Desktop -->
+<section class="contact-options desktop-only">
     <div class="container">
         <div class="section-header">
-            <h2>Formas de Contato</h2>
-            <p>Escolha a forma mais conveniente para você entrar em contato conosco</p>
+            <h2>Como Podemos Ajudar</h2>
+            <p>Escolha a forma mais conveniente para falar conosco</p>
         </div>
         
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
+        <div class="contact-options-grid">
+            <div class="contact-option-card whatsapp-card">
+                <div class="option-icon">
                     <i class="fab fa-whatsapp"></i>
                 </div>
-                <h3>WhatsApp</h3>
-                <p>Resposta instantânea para suas dúvidas sobre investimentos imobiliários</p>
-                <div class="feature-details">
-                    <div class="detail-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Disponível 24/7</span>
+                <div class="option-content">
+                    <h3>WhatsApp Business</h3>
+                    <p>Resposta instantânea para suas dúvidas sobre investimentos imobiliários em Curitiba</p>
+                    <div class="option-features">
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Disponível 24/7</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-reply"></i>
+                            <span>Resposta Imediata</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Consultoria Gratuita</span>
+                        </div>
                     </div>
-                    <div class="detail-item">
-                        <i class="fas fa-reply"></i>
-                        <span>Resposta Imediata</span>
-                    </div>
+                    <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Conversar Agora
+                    </a>
                 </div>
-                <a href="https://wa.me/554141410093" class="btn-primary" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    Conversar Agora
-                </a>
             </div>
             
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-phone"></i>
-                </div>
-                <h3>Telefone</h3>
-                <p>Atendimento personalizado com consultores especializados em investimentos</p>
-                <div class="feature-details">
-                    <div class="detail-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Seg-Sex: 9h às 18h</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-user-tie"></i>
-                        <span>Consultores Especializados</span>
-                    </div>
-                </div>
-                <a href="tel:+554141410093" class="btn-secondary">
-                    <i class="fas fa-phone"></i>
-                    Ligar Agora
-                </a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
+            <div class="contact-option-card form-card">
+                <div class="option-icon">
                     <i class="fas fa-envelope"></i>
                 </div>
-                <h3>E-mail</h3>
-                <p>Envie sua mensagem detalhada sobre oportunidades de investimento</p>
-                <div class="feature-details">
-                    <div class="detail-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Resposta em até 2h</span>
+                <div class="option-content">
+                    <h3>Formulário de Contato</h3>
+                    <p>Envie sua mensagem detalhada sobre oportunidades de investimento</p>
+                    <div class="option-features">
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Resposta em até 2h</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Informações Detalhadas</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Consultoria Personalizada</span>
+                        </div>
                     </div>
-                    <div class="detail-item">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Documentos Anexos</span>
-                    </div>
+                    <a href="#contato-form" class="btn-form">
+                        <i class="fas fa-envelope"></i>
+                        Enviar Mensagem
+                    </a>
                 </div>
-                <a href="mailto:contato@br2studios.com.br" class="btn-primary">
-                    <i class="fas fa-envelope"></i>
-                    Enviar E-mail
-                </a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <h3>Escritório</h3>
-                <p>Visite nosso escritório em Curitiba para uma consultoria presencial</p>
-                <div class="feature-details">
-                    <div class="detail-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Seg-Sex: 9h às 18h</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-coffee"></i>
-                        <span>Consultoria Presencial</span>
-                    </div>
-                </div>
-                <a href="#contato-form" class="btn-secondary">
-                    <i class="fas fa-calendar"></i>
-                    Agendar Visita
-                </a>
             </div>
         </div>
     </div>
