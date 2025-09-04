@@ -101,7 +101,7 @@ if ($_POST) {
         $dados = [
             'titulo' => trim($_POST['titulo'] ?? ''),
             'descricao' => trim($_POST['descricao'] ?? ''),
-            'preco' => floatval($_POST['preco'] ?? 0),
+            'preco' => floatval(str_replace(',', '.', $_POST['preco'] ?? 0)),
             'area' => floatval($_POST['area'] ?? 0),
             'quartos' => intval($_POST['quartos'] ?? 0),
             'banheiros' => intval($_POST['banheiros'] ?? 0),
@@ -599,8 +599,9 @@ include 'includes/header.php';
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
                             <label for="preco" class="form-label">Preço (R$) *</label>
-                            <input type="number" id="preco" name="preco" class="form-control" step="0.01" min="0" required
-                                   value="<?php echo htmlspecialchars($imovel_edicao['preco'] ?? ''); ?>">
+                            <input type="number" id="preco" name="preco" class="form-control" step="1" min="0" required
+                                   value="<?php echo htmlspecialchars($imovel_edicao['preco'] ?? ''); ?>"
+                                   placeholder="Ex: 280000">
                         </div>
                         
                         <div class="form-group">
