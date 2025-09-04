@@ -105,7 +105,7 @@ class HeaderScroll {
     }
 }
 
-// Animações de entrada
+// Animações de entrada - DESABILITADAS para evitar conflitos
 class ScrollAnimations {
     constructor() {
         this.animatedElements = document.querySelectorAll('.feature-card, .property-card, .city-card, .type-card, .agent-card, .testimonial-card');
@@ -113,28 +113,16 @@ class ScrollAnimations {
     }
     
     init() {
-        this.observeElements();
+        // Desabilitar animações que podem causar espaçamento
+        this.animatedElements.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.transition = 'none';
+        });
     }
     
     observeElements() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-        
-        this.animatedElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        // Método vazio para evitar animações
     }
 }
 
@@ -410,30 +398,34 @@ window.addEventListener('load', () => {
     }
 });
 
-// Parallax effect para o hero
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    }
-});
+// Parallax effect para o hero - DESABILITADO para evitar espaçamento
+// window.addEventListener('scroll', () => {
+//     const scrolled = window.pageYOffset;
+//     const hero = document.querySelector('.hero');
+//     if (hero) {
+//         // Aplicar parallax apenas nas imagens de fundo, não na seção inteira
+//         const heroSlides = hero.querySelectorAll('.slide img');
+//         heroSlides.forEach(slide => {
+//             const rate = scrolled * -0.3; // Reduzido para efeito mais sutil
+//             slide.style.transform = `translateY(${rate}px) scale(1.05)`;
+//         });
+//     }
+// });
 
-// Efeito de hover nos cards
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.feature-card, .property-card, .city-card, .type-card, .agent-card, .testimonial-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
+// Efeito de hover nos cards - DESABILITADO para evitar conflitos
+// document.addEventListener('DOMContentLoaded', () => {
+//     const cards = document.querySelectorAll('.feature-card, .property-card, .city-card, .type-card, .agent-card, .testimonial-card');
+//     
+//     cards.forEach(card => {
+//         card.addEventListener('mouseenter', function() {
+//             this.style.transform = 'translateY(-10px) scale(1.02)';
+//         });
+//         
+//         card.addEventListener('mouseleave', function() {
+//             this.style.transform = 'translateY(0) scale(1)';
+//         });
+//     });
+// });
 
 // WhatsApp button com animação
 const whatsappButton = document.querySelector('.whatsapp-button');

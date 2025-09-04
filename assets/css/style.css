@@ -328,6 +328,28 @@ body {
     min-height: 600px;
     overflow: hidden;
     margin-top: 70px;
+    /* Garantir que a seção hero não seja afetada por transformações de scroll */
+    transform: none !important;
+    will-change: auto;
+}
+
+/* Garantir que não haja espaçamento entre seções */
+.hero + section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Forçar todas as seções a não terem espaçamento extra */
+section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Garantir que o hero não seja afetado por transformações */
+.hero,
+.hero * {
+    transform: none !important;
+    will-change: auto !important;
 }
 
 .hero-slider {
@@ -355,6 +377,9 @@ body {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.7);
+    /* Preparar para efeito parallax suave */
+    will-change: transform;
+    transform-origin: center center;
 }
 
 .hero-overlay {

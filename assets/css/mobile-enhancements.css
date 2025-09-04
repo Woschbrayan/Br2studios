@@ -315,11 +315,12 @@
         padding-bottom: 60px;
     }
     
-    /* Primeira seção após hero precisa de mais espaço */
+    /* Primeira seção após hero - espaçamento controlado */
     .hero + .features,
     .hero + .properties,
     .hero + section {
-        padding-top: 80px;
+        padding-top: 40px;
+        margin-top: 0;
     }
     
     .feature-card,

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/mobile-creative.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/dark-theme-fixes.css">
+    <link rel="stylesheet" href="assets/css/scroll-fix.css">
 </head>
 <body>
     <!-- Header -->
@@ -46,9 +47,7 @@
                         <i class="fas fa-phone"></i>
                         <span>(41) 4141-0093</span>
                     </div>
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
-                        <i class="fas fa-moon" id="theme-icon"></i>
-                    </button>
+             
                     <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
                         <span></span>
                         <span></span>

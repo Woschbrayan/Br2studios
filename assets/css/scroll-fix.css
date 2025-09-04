@@ -1,0 +1,115 @@
+/* ===== CORREÇÃO DEFINITIVA DO PROBLEMA DE ESPAÇAMENTO NO SCROLL ===== */
+
+/* Garantir que o hero não seja afetado por nenhuma transformação */
+.hero {
+    transform: none !important;
+    will-change: auto !important;
+    position: relative !important;
+    margin-top: 70px !important;
+}
+
+/* Garantir que todas as seções não tenham espaçamento extra */
+section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    transform: none !important;
+}
+
+/* Especificamente para a primeira seção após o hero */
+.hero + section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    transform: none !important;
+}
+
+/* Garantir que as imagens do hero não causem problemas */
+.hero .slide img {
+    transform: none !important;
+    will-change: auto !important;
+}
+
+/* Garantir que os cards não tenham transformações que causem espaçamento */
+.feature-card,
+.property-card,
+.city-card,
+.type-card,
+.agent-card,
+.testimonial-card {
+    transform: none !important;
+    will-change: auto !important;
+}
+
+/* Garantir que não haja animações que causem espaçamento */
+* {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Manter apenas transições essenciais para hover */
+.feature-card:hover,
+.property-card:hover,
+.city-card:hover,
+.type-card:hover,
+.agent-card:hover,
+.testimonial-card:hover {
+    transition: box-shadow 0.3s ease !important;
+}
+
+/* Garantir que o body não tenha overflow que cause problemas */
+body {
+    overflow-x: hidden !important;
+    position: relative !important;
+}
+
+/* Garantir que o container principal não tenha problemas */
+.container {
+    transform: none !important;
+    will-change: auto !important;
+}
+
+/* Garantir que as seções específicas não tenham problemas */
+.features,
+.featured-properties,
+.cities-section,
+.property-types,
+.meet-agents,
+.testimonials,
+.cta-section,
+.partners {
+    transform: none !important;
+    will-change: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Garantir que não haja parallax ou efeitos de scroll */
+.hero-slider,
+.hero-content,
+.hero-overlay {
+    transform: none !important;
+    will-change: auto !important;
+}
+
+/* Garantir que os elementos mobile não causem problemas */
+@media (max-width: 768px) {
+    .hero {
+        margin-top: 70px !important;
+        transform: none !important;
+    }
+    
+    .hero + section {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .features-mobile,
+    .properties-mobile,
+    .cities-mobile,
+    .agents-mobile,
+    .testimonials-mobile {
+        transform: none !important;
+        will-change: auto !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
