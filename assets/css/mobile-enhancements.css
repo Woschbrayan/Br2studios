@@ -215,12 +215,16 @@
 @media (max-width: 768px) {
     .hero {
         min-height: 70vh;
-        margin-top: 70px;
-        padding-top: 20px;
+        margin-top: 70px !important;
+        padding-top: 0px;
+        position: relative;
+        overflow: hidden;
     }
     
     .hero-content {
-        padding: 40px 20px;
+        padding: 0px 20px;
+        top: 25%;
+
     }
     
     .hero-title {
