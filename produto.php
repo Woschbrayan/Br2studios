@@ -603,7 +603,8 @@ include 'includes/header.php';
 
     <?php 
     // Versionamento para forçar atualização do cache
-    $version = '1.0.0';
+    require_once __DIR__ . '/config/version.php';
+    $version = getAssetsVersion();
     ?>
     <script src="assets/js/main.js?v=<?php echo $version; ?>"></script>
     <script src="assets/js/produto.js?v=<?php echo $version; ?>"></script>

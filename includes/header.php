@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <?php 
-    // Versionamento para forçar atualização do cache
-    $version = '1.0.0';
+    // Versionamento centralizado para forçar atualização do cache
+    require_once __DIR__ . '/../config/version.php';
+    $version = getAssetsVersion();
     ?>
     <link rel="stylesheet" href="assets/css/style.css?v=<?php echo $version; ?>">
     <?php if (isset($page_css)): ?>
