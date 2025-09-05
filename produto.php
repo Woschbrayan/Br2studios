@@ -57,9 +57,16 @@ include 'includes/header.php';
     <section class="product-hero">
         <div class="container">
             <div class="product-hero-content">
+                <!-- Título separado para reordenação no mobile -->
+                <?php if ($imovel_data): ?>
+                    <h1 class="product-title-mobile"><?php echo htmlspecialchars($imovel_data['titulo']); ?></h1>
+                <?php else: ?>
+                    <h1 class="product-title-mobile">Studio Premium em São Paulo</h1>
+                <?php endif; ?>
+                
                 <div class="product-info">
                     <?php if ($imovel_data): ?>
-                        <h1><?php echo htmlspecialchars($imovel_data['titulo']); ?></h1>
+                        <h1 class="product-title-desktop"><?php echo htmlspecialchars($imovel_data['titulo']); ?></h1>
                         <p class="product-subtitle"><?php echo htmlspecialchars($imovel_data['descricao'] ?: 'Investimento com excelente potencial de valorização'); ?></p>
                         
                         <div class="product-highlights">
@@ -122,7 +129,7 @@ include 'includes/header.php';
                             </a>
                         </div>
                     <?php else: ?>
-                        <h1>Studio Premium em São Paulo</h1>
+                        <h1 class="product-title-desktop">Studio Premium em São Paulo</h1>
                         <p class="product-subtitle">Investimento com potencial de 25% de valorização em 18 meses</p>
                         
                         <div class="product-highlights">
@@ -211,6 +218,128 @@ include 'includes/header.php';
                             <div class="thumbnail">
                                 <img src="assets/images/imoveis/studio-4.jpg.svg" alt="Studio Premium - Vista 4">
                             </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                
+                <!-- Descrição Mobile (aparece após a galeria) -->
+                <div class="mobile-description-section">
+                    <?php if ($imovel_data): ?>
+                        <div class="mobile-description">
+                            <p><?php echo htmlspecialchars($imovel_data['descricao'] ?: 'Investimento com excelente potencial de valorização'); ?></p>
+                        </div>
+                    <?php else: ?>
+                        <div class="mobile-description">
+                            <p>Investimento com potencial de 25% de valorização em 18 meses</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                
+                <!-- Características Mobile (aparece após a descrição) -->
+                <div class="mobile-highlights-section">
+                    <?php if ($imovel_data): ?>
+                        <div class="product-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Excelente Valorização</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span><?php echo $imovel_data['status'] === 'disponivel' ? 'Disponível' : ucfirst($imovel_data['status']); ?></span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><?php echo htmlspecialchars($imovel_data['cidade'] . ' - ' . $imovel_data['estado']); ?></span>
+                            </div>
+                            <?php if (!empty($imovel_data['tipo'])): ?>
+                            <div class="highlight-item">
+                                <i class="fas fa-home"></i>
+                                <span><?php echo htmlspecialchars(ucfirst($imovel_data['tipo'])); ?></span>
+                            </div>
+                            <?php endif; ?>
+                            <?php if (!empty($imovel_data['area'])): ?>
+                            <div class="highlight-item">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span><?php echo $imovel_data['area']; ?>m²</span>
+                            </div>
+                            <?php endif; ?>
+                            <?php if (!empty($imovel_data['quartos'])): ?>
+                            <div class="highlight-item">
+                                <i class="fas fa-bed"></i>
+                                <span><?php echo $imovel_data['quartos']; ?> quarto<?php echo $imovel_data['quartos'] > 1 ? 's' : ''; ?></span>
+                            </div>
+                            <?php endif; ?>
+                            <?php if (!empty($imovel_data['banheiros'])): ?>
+                            <div class="highlight-item">
+                                <i class="fas fa-bath"></i>
+                                <span><?php echo $imovel_data['banheiros']; ?> banheiro<?php echo $imovel_data['banheiros'] > 1 ? 's' : ''; ?></span>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="product-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>25% de Valorização</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-clock"></i>
+                                <span>18 Meses</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Vila Madalena</span>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                
+                <!-- Preço Mobile (aparece após as características) -->
+                <div class="mobile-price-section">
+                    <?php if ($imovel_data): ?>
+                        <div class="product-price">
+                            <div class="price-main">
+                                <span class="price-label">Preço</span>
+                                <span class="price-value">R$ <?php echo number_format($imovel_data['preco'], 0, ',', '.'); ?></span>
+                            </div>
+                            <div class="price-details">
+                                <?php if (!empty($imovel_data['area']) && $imovel_data['area'] > 0): ?>
+                                    <span class="price-per-sqm">R$ <?php echo number_format($imovel_data['preco'] / $imovel_data['area'], 0, ',', '.'); ?>/m²</span>
+                                <?php endif; ?>
+                                <span class="price-financing">Financiamento disponível</span>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <div class="product-price">
+                            <div class="price-main">
+                                <span class="price-label">Preço</span>
+                                <span class="price-value">R$ 280.000</span>
+                            </div>
+                            <div class="price-details">
+                                <span class="price-per-sqm">R$ 7.000/m²</span>
+                                <span class="price-financing">Financiamento a partir de R$ 56.000</span>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                
+                <!-- Ações Mobile (aparece por último) -->
+                <div class="mobile-actions-section">
+                    <?php if ($imovel_data): ?>
+                        <div class="product-actions">
+                            <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
+                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                Falar no WhatsApp
+                            </a>
+                        </div>
+                    <?php else: ?>
+                        <div class="product-actions">
+                            <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
+                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                Falar no WhatsApp
+                            </a>
                         </div>
                     <?php endif; ?>
                 </div>

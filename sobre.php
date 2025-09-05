@@ -130,32 +130,32 @@ $page_css = 'assets/css/sobre.css';
 include 'includes/header.php'; 
 ?>
 
+
+<style>
+    .hero-content {
+    top: 14%;
+    display: grid
+;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+}
+
+</style>
     <!-- Hero Section Desktop -->
     <section class="hero-section desktop-only">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                   
                     <h1>Sobre a BR2 Estúdios</h1>
                     <p class="hero-subtitle">Especialistas em estúdios, especialistas em investimentos.</p>
                     <p class="hero-description">Localizada no coração de Curitiba, a BR2 Estúdios nasceu com um propósito claro: transformar o investimento em imóveis em uma experiência segura, rentável e estratégica. Nossa atuação é 100% focada em estúdios, um dos segmentos mais promissores do mercado imobiliário.</p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number"><?php echo $estatisticas['anos_experiencia']; ?>+</span>
-                            <span class="stat-label">Anos de Experiência</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number"><?php echo $estatisticas['imoveis_vendidos']; ?>+</span>
-                            <span class="stat-label">Estúdios Vendidos</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number"><?php echo $estatisticas['clientes_satisfeitos']; ?>+</span>
-                            <span class="stat-label">Investidores Satisfeitos</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Foco em Estúdios</span>
-                        </div>
-                    </div>
+                    
                     <div class="hero-actions">
                         <a href="contato.php" class="btn-primary">
                             <i class="fas fa-phone"></i>
@@ -167,14 +167,11 @@ include 'includes/header.php';
                         </a>
                     </div>
                 </div>
+                
                 <div class="hero-visual">
                     <div class="hero-image-container">
                         <div class="hero-image">
-                            <img src="assets/images/imoveis/imovel-2.jpeg" alt="Studio Premium Curitiba">
-                        </div>
-                        <div class="hero-badge">
-                            <i class="fas fa-award"></i>
-                            <span>Especialistas em Estúdios</span>
+                            <img src="assets/images/sobre/3d66012d-6623-4178-9e1a-f33bb2896ac1.jpeg" alt="BR2 Studios - Especialistas em Estúdios">
                         </div>
                     </div>
                 </div>
@@ -277,7 +274,7 @@ include 'includes/header.php';
                 </div>
                 <div class="about-visual">
                     <div class="about-image">
-                        <img src="assets/images/imoveis/imovel-3.jpeg" alt="Studio Premium Curitiba">
+                        <img src="assets/images/sobre/66b9df37-63c3-462f-8666-25c431c03d99.jpeg" alt="BR2 Studios - Nossa Especialização">
                     </div>
                 </div>
             </div>
@@ -347,61 +344,6 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nossa Equipe Executiva</h2>
-                <p>Conheça os líderes experientes e dedicados que fazem a Br2Studios acontecer e garantem o sucesso dos nossos clientes</p>
-            </div>
-            
-            <div class="team-grid">
-                <?php foreach ($equipe as $membro): ?>
-                    <div class="team-card">
-                        <div class="member-photo">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <div class="member-info">
-                            <h3><?php echo $membro['nome']; ?></h3>
-                            <span class="member-role"><?php echo $membro['cargo']; ?></span>
-                            <p><?php echo $membro['descricao']; ?></p>
-                            <div class="member-social">
-                                <a href="<?php echo $membro['linkedin']; ?>" class="social-link" title="LinkedIn">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="mailto:<?php echo $membro['email']; ?>" class="social-link" title="E-mail">
-                                    <i class="fas fa-envelope"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section class="achievements-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nossas Conquistas</h2>
-                <p>Marcos importantes na nossa jornada de sucesso e crescimento no mercado imobiliário brasileiro</p>
-            </div>
-            
-            <div class="achievements-grid">
-                <?php foreach ($conquistas as $conquista): ?>
-                    <div class="achievement-card">
-                        <div class="achievement-year"><?php echo $conquista['ano']; ?></div>
-                        <div class="achievement-content">
-                            <h3><?php echo $conquista['titulo']; ?></h3>
-                            <p><?php echo $conquista['descricao']; ?></p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
     <!-- Mission Section -->
     <section class="mission-section">
         <div class="container">
@@ -436,12 +378,14 @@ include 'includes/header.php';
                 
                 <div class="mission-visual">
                     <div class="mission-image">
-                        <i class="fas fa-bullseye"></i>
+                        <img src="assets/images/sobre/92ade89f-f371-4e34-98a6-85bd35e113d6.jpeg" alt="BR2 Studios - Nossa Missão">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+ 
 
     <!-- CTA Section -->
     <section class="cta-section">

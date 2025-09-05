@@ -1195,30 +1195,49 @@
     box-shadow: var(--shadow-lg);
 }
 
-/* Partners Section */
-.partners {
+/* Partners Section - Carrossel Automático */
+.partners-carousel {
     padding: 70px 0;
     background: white;
+    overflow: hidden;
 }
 
-[data-theme="dark"] .partners {
+[data-theme="dark"] .partners-carousel {
     background: var(--bg-partners);
 }
 
-.partners-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px;
+.partners-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.partners-track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    gap: 30px;
     align-items: center;
+}
+
+.partner-slide {
+    flex: 0 0 auto;
+    min-width: 200px;
 }
 
 .partner-logo {
     text-align: center;
-    padding: 35px 25px;
-    border-radius: 20px;
+    padding: 20px;
+    border-radius: 15px;
     transition: all 0.4s ease;
     border: 2px solid var(--color-border);
     background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 [data-theme="dark"] .partner-logo {
@@ -1227,45 +1246,84 @@
 }
 
 .partner-logo:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
     border-color: var(--color-accent);
 }
 
-.partner-logo h3 {
-    color: var(--color-text);
-    font-weight: 700;
-    margin-bottom: 12px;
-    font-size: 1.2rem;
+.partner-logo img {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
 }
 
-[data-theme="dark"] .partner-logo h3 {
-    color: #ffffff;
+.partner-logo:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
-.partner-logo p {
-    color: var(--color-text-light);
-    font-size: 0.9rem;
-    margin-bottom: 18px;
-    font-weight: 500;
+/* Animação do carrossel */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
-[data-theme="dark"] .partner-logo p {
-    color: #cccccc;
+/* Pausar animação no hover */
+.partners-carousel-wrapper:hover .partners-track {
+    animation-play-state: paused;
 }
 
-.partner-logo i {
-    font-size: 2.5rem;
-    color: var(--color-accent);
-    transition: transform 0.3s ease;
+/* Responsividade para carrossel de parceiros */
+@media (max-width: 768px) {
+    .partners-carousel {
+        padding: 50px 0;
+    }
+    
+    .partner-slide {
+        min-width: 150px;
+    }
+    
+    .partner-logo {
+        padding: 15px;
+        min-height: 100px;
+        max-width: 150px;
+    }
+    
+    .partner-logo img {
+        max-height: 60px;
+    }
+    
+    .partners-track {
+        gap: 20px;
+    }
 }
 
-[data-theme="dark"] .partner-logo i {
-    color: var(--color-accent);
-}
-
-.partner-logo:hover i {
-    transform: scale(1.1);
+@media (max-width: 480px) {
+    .partner-slide {
+        min-width: 120px;
+    }
+    
+    .partner-logo {
+        padding: 12px;
+        min-height: 80px;
+        max-width: 120px;
+    }
+    
+    .partner-logo img {
+        max-height: 50px;
+    }
+    
+    .partners-track {
+        gap: 15px;
+    }
 }
 
 /* WhatsApp Button */
@@ -1371,5 +1429,612 @@
     .btn-view-property {
         padding: 14px 24px;
         font-size: 14px;
+    }
+}
+
+/* ===== IMÓVEIS DE MAIOR VALORIZAÇÃO ===== */
+.valorizacao-properties {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+}
+
+[data-theme="dark"] .valorizacao-properties {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.valorizacao-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.valorizacao-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #28a745, #20c997);
+    z-index: 2;
+}
+
+.label-valorizacao {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+}
+
+/* ===== SEÇÃO MOBILE DE VALORIZAÇÃO ===== */
+.valorizacao-mobile {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 60px 0;
+    display: block !important;
+}
+
+[data-theme="dark"] .valorizacao-mobile {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.valorizacao-card-mobile {
+    position: relative;
+    overflow: hidden;
+}
+
+.valorizacao-card-mobile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #28a745, #20c997);
+    z-index: 2;
+}
+
+.valorizacao-badge {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+}
+
+/* Garantir que a seção mobile de valorização seja sempre visível */
+@media (max-width: 768px) {
+    .valorizacao-mobile {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .valorizacao-mobile .section-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 0 20px;
+    }
+    
+    .valorizacao-mobile .section-header h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+    }
+    
+    .valorizacao-mobile .section-header p {
+        font-size: 1rem;
+        color: var(--text-secondary);
+    }
+    
+    .valorizacao-mobile .properties-carousel-mobile {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 0 20px 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .valorizacao-mobile .properties-carousel-mobile::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .valorizacao-mobile .property-card-mobile {
+        min-width: 300px;
+        background: var(--bg-card);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--border-color);
+        scroll-snap-align: start;
+        transition: all 0.3s ease;
+    }
+    
+    .valorizacao-mobile .property-card-mobile:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .valorizacao-mobile .property-image-mobile {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    
+    .valorizacao-mobile .property-badges-mobile {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        z-index: 3;
+    }
+    
+    .valorizacao-mobile .property-badge-mobile {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 10px;
+        border-radius: 15px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    
+    .valorizacao-mobile .badge-valorizacao-mobile {
+        background: linear-gradient(135deg, #28a745, #20c997) !important;
+        color: white !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+    }
+    
+    .valorizacao-mobile .property-info-mobile {
+        padding: 20px;
+    }
+    
+    .valorizacao-mobile .property-title-mobile {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    
+    .valorizacao-mobile .property-location-mobile {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .valorizacao-mobile .property-price-mobile {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 15px;
+    }
+    
+    .valorizacao-mobile .property-features-mobile {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .valorizacao-mobile .property-feature-mobile {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .valorizacao-mobile .property-action-mobile {
+        background: var(--color-gradient);
+        color: white;
+        padding: 12px;
+        border-radius: 12px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: block;
+        transition: all 0.3s ease;
+    }
+    
+    .valorizacao-mobile .property-action-mobile:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* ===== TICKETS MELHORADOS PARA CARDS DE IMÓVEIS ===== */
+
+/* Container dos tickets */
+.property-labels {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 3;
+}
+
+/* Tickets base */
+.property-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.property-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.property-badge i {
+    font-size: 0.8rem;
+}
+
+/* Ticket de Destaque */
+.badge-destaque {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.badge-destaque:hover {
+    background: linear-gradient(135deg, #e55a2b, #e0841a);
+}
+
+/* Ticket de Valorização */
+.badge-valorizacao {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-valorizacao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.badge-valorizacao:hover::before {
+    left: 100%;
+}
+
+.badge-valorizacao:hover {
+    background: linear-gradient(135deg, #218838, #1ea085);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+/* Ticket de Entrega */
+.badge-entrega {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.badge-entrega:hover {
+    background: linear-gradient(135deg, #c82333, #bd2130);
+}
+
+/* Tickets Mobile */
+.property-badges-mobile {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 3;
+}
+
+.property-badge-mobile {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.property-badge-mobile i {
+    font-size: 0.7rem;
+}
+
+/* Tickets Mobile específicos */
+.badge-destaque-mobile {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.badge-valorizacao-mobile {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.badge-entrega-mobile {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .property-labels {
+        top: 12px;
+        left: 12px;
+        gap: 6px;
+    }
+    
+    .property-badge {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+        border-radius: 15px;
+    }
+    
+    .property-badge i {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .property-labels {
+        top: 10px;
+        left: 10px;
+        gap: 4px;
+    }
+    
+    .property-badge {
+        padding: 5px 8px;
+        font-size: 0.65rem;
+        border-radius: 12px;
+    }
+    
+    .property-badge i {
+        font-size: 0.65rem;
+    }
+}
+
+/* ===== REGIÕES DE CURITIBA - CARDS EM 2 COLUNAS ===== */
+.regioes-curitiba {
+    padding: 80px 0;
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .regioes-curitiba {
+    background: var(--bg-features);
+}
+
+.regioes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.regiao-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .regiao-card {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.regiao-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.regiao-card:hover::before {
+    left: 100%;
+}
+
+.regiao-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.regiao-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--color-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    color: white;
+    font-size: 32px;
+    transition: all 0.3s ease;
+}
+
+.regiao-card:hover .regiao-icon {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.regiao-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.regiao-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.regiao-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .regiao-stats {
+    background: var(--bg-features);
+    border-color: var(--border-color);
+}
+
+.regiao-count {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+}
+
+.regiao-valorizacao {
+    font-weight: 600;
+    color: #28a745;
+    font-size: 0.85rem;
+    background: rgba(40, 167, 69, 0.1);
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.regiao-link {
+    display: inline-block;
+    background: var(--color-gradient);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.regiao-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    color: white;
+}
+
+/* Responsividade para Regiões */
+@media (max-width: 768px) {
+    .regioes-curitiba {
+        padding: 60px 0;
+    }
+    
+    .regioes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+    
+    .regiao-card {
+        padding: 25px 20px;
+    }
+    
+    .regiao-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .regiao-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .regiao-stats {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .regioes-grid {
+        gap: 15px;
+    }
+    
+    .regiao-card {
+        padding: 20px 15px;
+    }
+    
+    .regiao-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .regiao-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .regiao-link {
+        padding: 10px 20px;
+        font-size: 0.8rem;
     }
 }

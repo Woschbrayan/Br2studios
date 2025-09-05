@@ -31,11 +31,11 @@ class Imovel {
             $sql = "INSERT INTO {$this->table} (
                 titulo, descricao, preco, area, quartos, 
                 banheiros, vagas, endereco, cidade, estado, cep, tipo, status_construcao, ano_entrega, status, 
-                imagem_principal, imagens, caracteristicas, destaque
+                imagem_principal, imagens, caracteristicas, destaque, maior_valorizacao
             ) VALUES (
                 :titulo, :descricao, :preco, :area, :quartos,
                 :banheiros, :vagas, :endereco, :cidade, :estado, :cep, :tipo, :status_construcao, :ano_entrega, :status,
-                :imagem_principal, :imagens, :caracteristicas, :destaque
+                :imagem_principal, :imagens, :caracteristicas, :destaque, :maior_valorizacao
             )";
             
             $params = [
@@ -57,7 +57,8 @@ class Imovel {
                 ':imagem_principal' => $dados['imagem_principal'] ?? null,
                 ':imagens' => $dados['imagens'] ?? null,
                 ':caracteristicas' => $dados['caracteristicas'] ?? null,
-                ':destaque' => $dados['destaque'] ?? 0
+                ':destaque' => $dados['destaque'] ?? 0,
+                ':maior_valorizacao' => $dados['maior_valorizacao'] ?? 0
             ];
             
             $id = $this->db->insert($sql, $params);
@@ -101,7 +102,7 @@ class Imovel {
             }
             
             // Preparar dados para atualização
-            $campos = ['titulo', 'descricao', 'preco', 'area', 'quartos', 'banheiros', 'vagas', 'endereco', 'cidade', 'estado', 'cep', 'tipo', 'status_construcao', 'ano_entrega', 'status', 'imagem_principal', 'imagens', 'caracteristicas', 'destaque'];
+            $campos = ['titulo', 'descricao', 'preco', 'area', 'quartos', 'banheiros', 'vagas', 'endereco', 'cidade', 'estado', 'cep', 'tipo', 'status_construcao', 'ano_entrega', 'status', 'imagem_principal', 'imagens', 'caracteristicas', 'destaque', 'maior_valorizacao'];
             $sets = [];
             $params = [':id' => $id];
             
@@ -235,6 +236,11 @@ class Imovel {
                 $params[':destaque'] = $filtros['destaque'];
             }
             
+            if (isset($filtros['maior_valorizacao'])) {
+                $where[] = "maior_valorizacao = :maior_valorizacao";
+                $params[':maior_valorizacao'] = $filtros['maior_valorizacao'];
+            }
+            
             if (!empty($where)) {
                 $sql .= " WHERE " . implode(' AND ', $where);
             }
@@ -308,6 +314,13 @@ class Imovel {
      */
     public function listarDestaques() {
         return $this->listarTodos(['destaque' => 1]);
+    }
+    
+    /**
+     * Lista imóveis de maior valorização
+     */
+    public function listarMaiorValorizacao() {
+        return $this->listarTodos(['maior_valorizacao' => 1]);
     }
     
     /**

@@ -5,6 +5,7 @@ require_once __DIR__ . '/classes/Database.php';
 require_once __DIR__ . '/classes/Imovel.php';
 
 $imoveis_destaque = [];
+$imoveis_valorizacao = [];
 
 try {
     $imovel = new Imovel();
@@ -23,9 +24,24 @@ try {
     // Limitar a 4 imóveis para a seção de destaque
     $imoveis_destaque = array_slice($imoveis_destaque, 0, 4);
     
+    // Buscar imóveis de maior valorização (status = 'disponivel' e maior_valorizacao = 1)
+    $filtros_valorizacao = ['maior_valorizacao' => 1, 'status' => 'disponivel'];
+    $imoveis_valorizacao_result = $imovel->listarTodos($filtros_valorizacao);
+    
+    // A classe retorna um array com chave 'imoveis'
+    if (is_array($imoveis_valorizacao_result) && isset($imoveis_valorizacao_result['imoveis'])) {
+        $imoveis_valorizacao = $imoveis_valorizacao_result['imoveis'];
+    } else {
+        $imoveis_valorizacao = [];
+    }
+    
+    // Limitar a 4 imóveis para a seção de valorização
+    $imoveis_valorizacao = array_slice($imoveis_valorizacao, 0, 4);
+    
 } catch (Exception $e) {
-    error_log("Erro ao buscar imóveis em destaque: " . $e->getMessage());
+    error_log("Erro ao buscar imóveis: " . $e->getMessage());
     $imoveis_destaque = [];
+    $imoveis_valorizacao = [];
 }
 
 $current_page = 'home';
@@ -33,7 +49,143 @@ $page_title = 'Br2Imóveis - Imóveis de Qualidade em Todo o Brasil';
 $page_css = 'assets/css/home-sections.css';
 include 'includes/header.php'; 
 ?>
-
+<style>
+    /* Hero Content - Desktop */
+    .hero-content {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        transform: translateY(-50%);
+        text-align: left;
+        color: white;
+        z-index: 2;
+        width: 100%;
+        max-width: 600px;
+        padding: 0px 24px;
+    }
+    
+    /* Hero Mobile Responsive */
+    @media (max-width: 768px) {
+        .hero {
+            height: 100vh !important;
+            min-height: 600px !important;
+        }
+        
+        .hero-content {
+            top: 50% !important;
+            left: 5% !important;
+            max-width: 90% !important;
+            transform: translateY(-50%) !important;
+            padding: 0 20px !important;
+        }
+        
+        .hero-title {
+            font-size: 2.8rem !important;
+            margin-bottom: 15px !important;
+            line-height: 1.1 !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem !important;
+            margin-bottom: 20px !important;
+            max-width: 100% !important;
+        }
+        
+        .hero-slides {
+            margin-bottom: 25px !important;
+        }
+        
+        .hero-slide h2 {
+            font-size: 1.2rem !important;
+            margin-bottom: 8px !important;
+        }
+        
+        .hero-slide p {
+            font-size: 0.9rem !important;
+            max-width: 100% !important;
+            line-height: 1.4 !important;
+        }
+        
+        .hero-stats {
+            gap: 20px !important;
+            margin-top: 20px !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+        }
+        
+        .stat-item {
+            min-width: 80px !important;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem !important;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero {
+            height: 100vh !important;
+            min-height: 500px !important;
+        }
+        
+        .hero-content {
+            top: 50% !important;
+            left: 3% !important;
+            max-width: 94% !important;
+            transform: translateY(-50%) !important;
+            padding: 0 15px !important;
+        }
+        
+        .hero-title {
+            font-size: 2.2rem !important;
+            margin-bottom: 12px !important;
+            line-height: 1.1 !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem !important;
+            margin-bottom: 18px !important;
+        }
+        
+        .hero-slides {
+            margin-bottom: 20px !important;
+        }
+        
+        .hero-slide h2 {
+            font-size: 1.1rem !important;
+            margin-bottom: 6px !important;
+        }
+        
+        .hero-slide p {
+            font-size: 0.85rem !important;
+            line-height: 1.3 !important;
+        }
+        
+        .hero-stats {
+            flex-direction: row !important;
+            gap: 15px !important;
+            margin-top: 15px !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+        }
+        
+        .stat-item {
+            min-width: 70px !important;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem !important;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem !important;
+        }
+    }
+</style>
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-slider">
@@ -120,12 +272,26 @@ include 'includes/header.php';
                 <?php foreach ($imoveis_destaque as $imovel): ?>
                     <div class="property-card-mobile">
                         <div class="property-image-mobile" style="background-image: url('<?php echo $imovel['imagem_principal'] ?: 'assets/images/imoveis/Imovel-1.jpeg'; ?>');">
-                            <div class="property-badge-mobile">DESTAQUE</div>
-                            <?php if (!empty($imovel['ano_entrega'])): ?>
-                                <div class="property-delivery-mobile" style="position: absolute; top: 10px; right: 10px; background: #dc3545; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">
-                                    ENTREGA <?php echo $imovel['ano_entrega']; ?>
-                                </div>
-                            <?php endif; ?>
+                            <div class="property-badges-mobile">
+                                <?php if ($imovel['destaque']): ?>
+                                    <div class="property-badge-mobile badge-destaque-mobile">
+                                        <i class="fas fa-star"></i>
+                                        DESTAQUE
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($imovel['maior_valorizacao']): ?>
+                                    <div class="property-badge-mobile badge-valorizacao-mobile">
+                                        <i class="fas fa-chart-line"></i>
+                                        VALORIZAÇÃO
+                                    </div>
+                                <?php endif; ?>
+                                <?php if (!empty($imovel['ano_entrega'])): ?>
+                                    <div class="property-badge-mobile badge-entrega-mobile">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        ENTREGA <?php echo $imovel['ano_entrega']; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                         <div class="property-info-mobile">
                             <h3 class="property-title-mobile"><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
@@ -196,6 +362,88 @@ include 'includes/header.php';
         </div>
     </section>
 
+    <!-- Imóveis de Maior Valorização Mobile -->
+    <section class="properties-mobile valorizacao-mobile mobile-only">
+        <div class="section-header">
+            <h2>Maior Valorização</h2>
+            <p>Oportunidades com excelente potencial</p>
+        </div>
+        <div class="properties-carousel-mobile">
+            <?php if (!empty($imoveis_valorizacao)): ?>
+                <?php foreach ($imoveis_valorizacao as $imovel_valorizacao): ?>
+                    <div class="property-card-mobile valorizacao-card-mobile">
+                        <div class="property-image-mobile" style="background-image: url('<?php echo $imovel_valorizacao['imagem_principal'] ?: 'assets/images/imoveis/Imovel-1.jpeg'; ?>');">
+                            <div class="property-badges-mobile">
+                                <?php if ($imovel_valorizacao['destaque']): ?>
+                                    <div class="property-badge-mobile badge-destaque-mobile">
+                                        <i class="fas fa-star"></i>
+                                        DESTAQUE
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($imovel_valorizacao['maior_valorizacao']): ?>
+                                    <div class="property-badge-mobile badge-valorizacao-mobile">
+                                        <i class="fas fa-chart-line"></i>
+                                        VALORIZAÇÃO
+                                    </div>
+                                <?php endif; ?>
+                                <?php if (!empty($imovel_valorizacao['ano_entrega'])): ?>
+                                    <div class="property-badge-mobile badge-entrega-mobile">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        ENTREGA <?php echo $imovel_valorizacao['ano_entrega']; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="property-info-mobile">
+                            <h3 class="property-title-mobile"><?php echo htmlspecialchars($imovel_valorizacao['titulo']); ?></h3>
+                            <div class="property-location-mobile">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <?php echo htmlspecialchars($imovel_valorizacao['cidade'] . ', ' . $imovel_valorizacao['estado']); ?>
+                            </div>
+                            <div class="property-price-mobile">R$ <?php echo number_format($imovel_valorizacao['preco'], 0, ',', '.'); ?></div>
+                            <div class="property-features-mobile">
+                                <?php if (!empty($imovel_valorizacao['area'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-ruler"></i> <?php echo $imovel_valorizacao['area']; ?>m²</span>
+                                <?php endif; ?>
+                                <?php if (!empty($imovel_valorizacao['quartos'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-bed"></i> <?php echo $imovel_valorizacao['quartos']; ?></span>
+                                <?php endif; ?>
+                                <?php if (!empty($imovel_valorizacao['banheiros'])): ?>
+                                    <span class="property-feature-mobile"><i class="fas fa-bath"></i> <?php echo $imovel_valorizacao['banheiros']; ?></span>
+                                <?php endif; ?>
+                            </div>
+                            <a href="produto.php?id=<?php echo $imovel_valorizacao['id']; ?>" class="property-action-mobile">Ver Detalhes</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <!-- Exemplo se não houver dados -->
+                <div class="property-card-mobile valorizacao-card-mobile">
+                    <div class="property-image-mobile" style="background-image: url('assets/images/imoveis/Imovel-1.jpeg');">
+                        <div class="property-badge-mobile valorizacao-badge">VALORIZAÇÃO</div>
+                    </div>
+                    <div class="property-info-mobile">
+                        <h3 class="property-title-mobile">Studio de Alto Potencial</h3>
+                        <div class="property-location-mobile">
+                            <i class="fas fa-map-marker-alt"></i>
+                            São Paulo, SP
+                        </div>
+                        <div class="property-price-mobile">R$ 220.000</div>
+                        <div class="property-features-mobile">
+                            <span class="property-feature-mobile"><i class="fas fa-ruler"></i> 40m²</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bed"></i> 1</span>
+                            <span class="property-feature-mobile"><i class="fas fa-bath"></i> 1</span>
+                        </div>
+                        <a href="produto.php" class="property-action-mobile">Ver Detalhes</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="imoveis.php?filtro=valorizacao" class="btn-primary btn-large">Ver Todos os Imóveis de Valorização</a>
+        </div>
+    </section>
+
     <!-- Features Section Mobile - Limpa e Organizada -->
     <section class="features-mobile mobile-only">
         <div class="section-header">
@@ -251,10 +499,20 @@ include 'includes/header.php';
                                     
                                     <div class="property-labels">
                                         <?php if ($imovel_item['destaque']): ?>
-                                            <span class="label-featured">DESTAQUE</span>
+                                            <span class="property-badge badge-destaque">
+                                                <i class="fas fa-star"></i>
+                                                DESTAQUE
+                                            </span>
+                                        <?php endif; ?>
+                                        <?php if ($imovel_item['maior_valorizacao']): ?>
+                                            <span class="property-badge badge-valorizacao">
+                                                <i class="fas fa-chart-line"></i>
+                                                VALORIZAÇÃO
+                                            </span>
                                         <?php endif; ?>
                                         <?php if (!empty($imovel_item['ano_entrega'])): ?>
-                                            <span class="label-delivery" style="background: #dc3545; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">
+                                            <span class="property-badge badge-entrega">
+                                                <i class="fas fa-calendar-alt"></i>
                                                 ENTREGA <?php echo $imovel_item['ano_entrega']; ?>
                                             </span>
                                         <?php endif; ?>
@@ -368,102 +626,190 @@ include 'includes/header.php';
         </div>
     </section>
 
-
-    <!-- Cities Carousel - Mobile e Desktop -->
-    <section class="cities-mobile">
-        <div class="section-header">
-            <h2>Regiões de Curitiba</h2>
-            <p>Investimentos na capital paranaense</p>
+    <!-- Imóveis de Maior Valorização Section Desktop -->
+    <section class="featured-properties valorizacao-properties desktop-only">
+        <div class="container">
+            <div class="section-header">
+                <h2>Imóveis de Maior Valorização</h2>
+                <p>Oportunidades com excelente potencial de crescimento e retorno sobre investimento</p>
+            </div>
+            
+            <div class="properties-carousel">
+                <div class="properties-grid">
+                    <?php if (!empty($imoveis_valorizacao)): ?>
+                        <?php foreach ($imoveis_valorizacao as $imovel_valorizacao): ?>
+                            <div class="property-card valorizacao-card">
+                                <div class="property-image">
+                                    <?php if (!empty($imovel_valorizacao['imagem_principal'])): ?>
+                                        <img src="<?php echo htmlspecialchars($imovel_valorizacao['imagem_principal']); ?>" 
+                                             alt="<?php echo htmlspecialchars($imovel_valorizacao['titulo']); ?>">
+                                    <?php else: ?>
+                                        <img src="assets/images/imoveis/Imovel-1.jpeg" 
+                                             alt="Imóvel sem imagem">
+                                    <?php endif; ?>
+                                    
+                                    <div class="property-labels">
+                                        <?php if ($imovel_valorizacao['destaque']): ?>
+                                            <span class="property-badge badge-destaque">
+                                                <i class="fas fa-star"></i>
+                                                DESTAQUE
+                                            </span>
+                                        <?php endif; ?>
+                                        <?php if ($imovel_valorizacao['maior_valorizacao']): ?>
+                                            <span class="property-badge badge-valorizacao">
+                                                <i class="fas fa-chart-line"></i>
+                                                VALORIZAÇÃO
+                                            </span>
+                                        <?php endif; ?>
+                                        <?php if (!empty($imovel_valorizacao['ano_entrega'])): ?>
+                                            <span class="property-badge badge-entrega">
+                                                <i class="fas fa-calendar-alt"></i>
+                                                ENTREGA <?php echo $imovel_valorizacao['ano_entrega']; ?>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+                                    
+                                    <div class="property-price">
+                                        <span class="price">R$ <?php echo number_format($imovel_valorizacao['preco'], 0, ',', '.'); ?></span>
+                                        <?php if (!empty($imovel_valorizacao['area']) && $imovel_valorizacao['area'] > 0): ?>
+                                            <span class="price-per-sqft">R$ <?php echo number_format($imovel_valorizacao['preco'] / $imovel_valorizacao['area'], 0, ',', '.'); ?>/m²</span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                
+                                <div class="property-info">
+                                    <h3><?php echo htmlspecialchars($imovel_valorizacao['titulo']); ?></h3>
+                                    <p class="property-location">
+                                        <i class="fas fa-map-marker-alt"></i> 
+                                        <?php echo htmlspecialchars($imovel_valorizacao['cidade'] . ', ' . $imovel_valorizacao['estado']); ?>
+                                    </p>
+                                    <div class="property-details">
+                                        <?php if (!empty($imovel_valorizacao['area']) && $imovel_valorizacao['area'] > 0): ?>
+                                            <span><i class="fas fa-ruler-combined"></i> <?php echo $imovel_valorizacao['area']; ?>m²</span>
+                                        <?php endif; ?>
+                                        <?php if (!empty($imovel_valorizacao['quartos'])): ?>
+                                            <span><i class="fas fa-bed"></i> <?php echo $imovel_valorizacao['quartos']; ?></span>
+                                        <?php endif; ?>
+                                        <?php if (!empty($imovel_valorizacao['banheiros'])): ?>
+                                            <span><i class="fas fa-bath"></i> <?php echo $imovel_valorizacao['banheiros']; ?></span>
+                                        <?php endif; ?>
+                                        <?php if (!empty($imovel_valorizacao['vagas'])): ?>
+                                            <span><i class="fas fa-car"></i> <?php echo $imovel_valorizacao['vagas']; ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                    
+                                    <?php if (!empty($imovel_valorizacao['ano_entrega'])): ?>
+                                        <div class="property-delivery">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <span>Entrega <?php echo $imovel_valorizacao['ano_entrega']; ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                    <a href="produto.php?id=<?php echo $imovel_valorizacao['id']; ?>" class="btn-view-property">Ver Detalhes</a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <!-- Imóveis de exemplo caso não haja dados no banco -->
+                        <div class="property-card valorizacao-card">
+                            <div class="property-image">
+                                <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Studio de Alto Potencial - São Paulo">
+                                <div class="property-labels">
+                                    <span class="label-valorizacao">MAIOR VALORIZAÇÃO</span>
+                                </div>
+                                <div class="property-price">
+                                    <span class="price">R$ 220.000</span>
+                                    <span class="price-per-sqft">R$ 5.500/m²</span>
+                                </div>
+                            </div>
+                            <div class="property-info">
+                                <h3>Studio de Alto Potencial</h3>
+                                <p class="property-location"><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                                <div class="property-details">
+                                    <span><i class="fas fa-ruler-combined"></i> 40m²</span>
+                                    <span><i class="fas fa-bed"></i> 1</span>
+                                    <span><i class="fas fa-bath"></i> 1</span>
+                                    <span><i class="fas fa-car"></i> 1</span>
+                                </div>
+                                
+                                <div class="property-delivery">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Entrega 2025</span>
+                                </div>
+                                <a href="#" class="btn-view-property">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <a href="imoveis.php?filtro=valorizacao" class="btn-view-all">Ver Todos os Imóveis de Valorização</a>
+            </div>
         </div>
-        
-        <div class="cities-carousel-wrapper">
-            <div class="cities-track">
-                <!-- Primeira linha de cidades -->
-                <div class="city-slide">
-                    <div class="city-card-mobile">
+    </section>
+
+
+    <!-- Regiões de Curitiba - Cards em 2 Colunas -->
+    <section class="regioes-curitiba">
+        <div class="container">
+            <div class="section-header">
+                <h2>Regiões de Curitiba</h2>
+                <p>Investimentos na capital paranaense com excelente potencial</p>
+            </div>
+            
+            <div class="regioes-grid">
+                <div class="regiao-card">
+                    <div class="regiao-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="regiao-content">
                         <h3>Centro</h3>
-                        <p>Região central</p>
-                        <span class="city-count">15 Imóveis</span>
+                        <p>Região central com infraestrutura completa e fácil acesso</p>
+                      
+                        <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
                 
-                <div class="city-slide">
-                    <div class="city-card-mobile">
+                <div class="regiao-card">
+                    <div class="regiao-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="regiao-content">
                         <h3>Bairro Alto</h3>
-                        <p>Região nobre</p>
-                        <span class="city-count">12 Imóveis</span>
+                        <p>Região nobre com excelente infraestrutura e valorização constante</p>
+                       
+                        <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
                 
-                <div class="city-slide">
-                    <div class="city-card-mobile">
+                <div class="regiao-card">
+                    <div class="regiao-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="regiao-content">
                         <h3>Água Verde</h3>
-                        <p>Residencial</p>
-                        <span class="city-count">8 Imóveis</span>
+                        <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
+                       
+                        <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
                 
-                <div class="city-slide">
-                    <div class="city-card-mobile">
+                <div class="regiao-card">
+                    <div class="regiao-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="regiao-content">
                         <h3>Região Metropolitana</h3>
-                        <p>Crescimento</p>
-                        <span class="city-count">6 Imóveis</span>
-                    </div>
-                </div>
-                
-                <div class="city-slide">
-                    <div class="city-card-mobile">
-                        <h3>Batel</h3>
-                        <p>Comercial</p>
-                        <span class="city-count">10 Imóveis</span>
-                    </div>
-                </div>
-                
-                <!-- Segunda linha de cidades (duplicada para loop infinito) -->
-                <div class="city-slide">
-                    <div class="city-card-mobile">
-                        <h3>Centro</h3>
-                        <p>Região central</p>
-                        <span class="city-count">15 Imóveis</span>
-                    </div>
-                </div>
-                
-                <div class="city-slide">
-                    <div class="city-card-mobile">
-                        <h3>Bairro Alto</h3>
-                        <p>Região nobre</p>
-                        <span class="city-count">12 Imóveis</span>
-                    </div>
-                </div>
-                
-                <div class="city-slide">
-                    <div class="city-card-mobile">
-                        <h3>Água Verde</h3>
-                        <p>Residencial</p>
-                        <span class="city-count">8 Imóveis</span>
-                    </div>
-                </div>
-                
-                <div class="city-slide">
-                    <div class="city-card-mobile">
-                        <h3>Região Metropolitana</h3>
-                        <p>Crescimento</p>
-                        <span class="city-count">6 Imóveis</span>
-                    </div>
-                </div>
-                
-                <div class="city-slide">
-                    <div class="city-card-mobile">
-                        <h3>Batel</h3>
-                        <p>Comercial</p>
-                        <span class="city-count">10 Imóveis</span>
+                        <p>Cidades da região metropolitana com potencial de crescimento</p>
+                       
+                        <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="regioes.php" class="btn-secondary btn-large">Explorar Regiões</a>
+            
+            <div class="section-footer">
+                <a href="regioes.php" class="btn-view-all">Explorar Todas as Regiões</a>
+            </div>
         </div>
     </section>
 
@@ -640,65 +986,7 @@ include 'includes/header.php';
             </div>
         </div>
     </section>
-    <!-- Agents Mobile - Cards Simples -->
-    <section class="agents-mobile mobile-only">
-        <div class="section-header">
-            <h2>Nossa Equipe</h2>
-            <p>Especialistas em investimentos</p>
-        </div>
-        <div class="agents-grid-mobile">
-            <div class="agent-card-mobile">
-                <div class="agent-avatar-mobile">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h3>João Silva</h3>
-                <div class="agent-role-mobile">Especialista em Investimentos</div>
-                <div class="agent-stats-mobile">
-                    <div class="agent-stat-mobile">
-                        <span class="agent-stat-number">150+</span>
-                        <span>Vendas</span>
-                    </div>
-                    <div class="agent-stat-mobile">
-                        <span class="agent-stat-number">4.9</span>
-                        <span>Avaliação</span>
-                    </div>
-                </div>
-                <div class="agent-contact-mobile">
-                    <a href="https://wa.me/554141410093" class="btn-whatsapp-mobile" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp
-                    </a>
-                </div>
-            </div>
-            <div class="agent-card-mobile">
-                <div class="agent-avatar-mobile">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Maria Santos</h3>
-                <div class="agent-role-mobile">Consultora de Mercado</div>
-                <div class="agent-stats-mobile">
-                    <div class="agent-stat-mobile">
-                        <span class="agent-stat-number">120+</span>
-                        <span>Vendas</span>
-                    </div>
-                    <div class="agent-stat-mobile">
-                        <span class="agent-stat-number">4.8</span>
-                        <span>Avaliação</span>
-                    </div>
-                </div>
-                <div class="agent-contact-mobile">
-                    <a href="https://wa.me/554141410093" class="btn-whatsapp-mobile" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="corretores.php" class="btn-secondary btn-large">Ver Todos os Corretores</a>
-        </div>
-    </section>
-
+   
     <!-- Meet Our Agents Section Desktop -->
     <section class="meet-agents desktop-only">
         <div class="container">
@@ -1026,105 +1314,107 @@ include 'includes/header.php';
             
             <div class="partners-carousel-wrapper">
                 <div class="partners-track">
-                    <!-- Primeira linha de parceiros -->
+                    <!-- Primeira linha de logos -->
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <h3>WILDRIDGE</h3>
-                            <p>Desenvolvimento Sustentável</p>
+                            <img src="assets/images/parceiros/IMG_7549.PNG" alt="Parceiro 1" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7550.PNG" alt="Parceiro 2" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7551.PNG" alt="Parceiro 3" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7552.PNG" alt="Parceiro 4" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7553.PNG" alt="Parceiro 5" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7554.PNG" alt="Parceiro 6" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7555.PNG" alt="Parceiro 7" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7556.PNG" alt="Parceiro 8" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7557.PNG" alt="Parceiro 9" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7558.PNG" alt="Parceiro 10" />
                         </div>
                     </div>
                     
+                    <!-- Segunda linha de logos (duplicada para loop infinito) -->
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-tree"></i>
-                            </div>
-                            <h3>HILLSTROM REAL ESTATE</h3>
-                            <p>Consultoria Imobiliária</p>
+                            <img src="assets/images/parceiros/IMG_7549.PNG" alt="Parceiro 1" />
                         </div>
                     </div>
-                    
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <h3>HORIZON HOMES</h3>
-                            <p>Construção Residencial</p>
+                            <img src="assets/images/parceiros/IMG_7550.PNG" alt="Parceiro 2" />
                         </div>
                     </div>
-                    
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <h3>HOME Real Estate</h3>
-                            <p>SEU PROFISSIONAL IMOBILIÁRIO</p>
+                            <img src="assets/images/parceiros/IMG_7551.PNG" alt="Parceiro 3" />
                         </div>
                     </div>
-                    
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-mountain"></i>
-                            </div>
-                            <h3>CHARLES BENTLEY</h3>
-                            <p>Investimentos de Luxo</p>
+                            <img src="assets/images/parceiros/IMG_7552.PNG" alt="Parceiro 4" />
                         </div>
                     </div>
-                    
-                    <!-- Segunda linha de parceiros (duplicada para loop infinito) -->
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <h3>WILDRIDGE</h3>
-                            <p>Desenvolvimento Sustentável</p>
+                            <img src="assets/images/parceiros/IMG_7553.PNG" alt="Parceiro 5" />
                         </div>
                     </div>
-                    
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-tree"></i>
-                            </div>
-                            <h3>HILLSTROM REAL ESTATE</h3>
-                            <p>Consultoria Imobiliária</p>
+                            <img src="assets/images/parceiros/IMG_7554.PNG" alt="Parceiro 6" />
                         </div>
                     </div>
-                    
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <h3>HORIZON HOMES</h3>
-                            <p>Construção Residencial</p>
+                            <img src="assets/images/parceiros/IMG_7555.PNG" alt="Parceiro 7" />
                         </div>
                     </div>
-                    
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <h3>HOME Real Estate</h3>
-                            <p>SEU PROFISSIONAL IMOBILIÁRIO</p>
+                            <img src="assets/images/parceiros/IMG_7556.PNG" alt="Parceiro 8" />
                         </div>
                     </div>
-                    
                     <div class="partner-slide">
                         <div class="partner-logo">
-                            <div class="partner-icon">
-                                <i class="fas fa-mountain"></i>
-                            </div>
-                            <h3>CHARLES BENTLEY</h3>
-                            <p>Investimentos de Luxo</p>
+                            <img src="assets/images/parceiros/IMG_7557.PNG" alt="Parceiro 9" />
+                        </div>
+                    </div>
+                    <div class="partner-slide">
+                        <div class="partner-logo">
+                            <img src="assets/images/parceiros/IMG_7558.PNG" alt="Parceiro 10" />
                         </div>
                     </div>
                 </div>

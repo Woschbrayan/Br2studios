@@ -238,22 +238,41 @@ include 'includes/header.php';
                     <?php foreach ($imoveis as $imovel_item): ?>
                         <div class="property-card">
                             <div class="property-image">
-                                <?php 
-                                $imagem = isset($imovel_item['imagem_principal']) && !empty($imovel_item['imagem_principal']) 
-                                    ? $imovel_item['imagem_principal'] 
-                                    : 'assets/images/imoveis/Imovel-1.jpeg';
-                                ?>
-                                <img src="<?php echo htmlspecialchars($imagem); ?>" alt="<?php echo htmlspecialchars($imovel_item['titulo']); ?>">
+                                <?php if (!empty($imovel_item['imagem_principal'])): ?>
+                                    <img src="<?php echo htmlspecialchars($imovel_item['imagem_principal']); ?>" 
+                                         alt="<?php echo htmlspecialchars($imovel_item['titulo']); ?>">
+                                <?php else: ?>
+                                    <img src="assets/images/imoveis/Imovel-1.jpeg" 
+                                         alt="Imóvel sem imagem">
+                                <?php endif; ?>
                                 
-                                <div class="property-price-overlay">
-                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
+                                <div class="property-labels">
+                                    <?php if ($imovel_item['destaque'] == 1 || $imovel_item['destaque'] == '1'): ?>
+                                        <span class="property-badge badge-destaque">
+                                            <i class="fas fa-star"></i>
+                                            DESTAQUE
+                                        </span>
+                                    <?php endif; ?>
+                                    <?php if ($imovel_item['maior_valorizacao'] == 1 || $imovel_item['maior_valorizacao'] == '1'): ?>
+                                        <span class="property-badge badge-valorizacao">
+                                            <i class="fas fa-chart-line"></i>
+                                            VALORIZAÇÃO
+                                        </span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($imovel_item['ano_entrega']) && $imovel_item['ano_entrega'] != '' && $imovel_item['ano_entrega'] != '0'): ?>
+                                        <span class="property-badge badge-entrega">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            ENTREGA <?php echo $imovel_item['ano_entrega']; ?>
+                                        </span>
+                                    <?php endif; ?>
                                 </div>
                                 
-                                <?php if (!empty($imovel_item['ano_entrega'])): ?>
-                                    <div class="property-badge">
-                                        Entrega <?php echo $imovel_item['ano_entrega']; ?>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="property-price">
+                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
+                                    <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
+                                        <span class="price-per-sqft">R$ <?php echo number_format($imovel_item['preco'] / $imovel_item['area'], 0, ',', '.'); ?>/m²</span>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                             
                             <div class="property-info">
@@ -276,6 +295,7 @@ include 'includes/header.php';
                                         <span><i class="fas fa-car"></i> <?php echo $imovel_item['vagas']; ?></span>
                                     <?php endif; ?>
                                 </div>
+                                
                                 <a href="produto.php?id=<?php echo $imovel_item['id']; ?>" class="btn-view-property">Ver Detalhes</a>
                             </div>
                         </div>

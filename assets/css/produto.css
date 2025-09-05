@@ -40,6 +40,23 @@
 }
 
 /* ===== RESET E BASE ===== */
+
+/* Esconder seções mobile no desktop */
+.mobile-description-section,
+.mobile-highlights-section,
+.mobile-price-section,
+.mobile-actions-section {
+    display: none;
+}
+
+/* Controle de visibilidade dos títulos */
+.product-title-mobile {
+    display: none; /* Esconder no desktop */
+}
+
+.product-title-desktop {
+    display: block; /* Mostrar no desktop */
+}
 * {
     margin: 0;
     padding: 0;
@@ -1184,17 +1201,104 @@ body {
         padding: 100px 0 80px;
     }
     
-    .product-info h1 {
-        font-size: 2.8rem;
-        text-align: center;
+    /* Reorganizar ordem dos elementos no mobile: título, galeria, descrição, características */
+    .product-hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
     }
     
+    /* Controle de visibilidade dos títulos no mobile */
+    .product-title-mobile {
+        display: block !important;
+        order: 1;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    
+    .product-title-desktop {
+        display: none !important; /* Esconder título desktop no mobile */
+    }
+    
+    .product-gallery {
+        order: 2;
+    }
+    
+    .mobile-description-section {
+        order: 3;
+        display: block;
+    }
+    
+    .mobile-highlights-section {
+        order: 4;
+        display: block;
+    }
+    
+    .mobile-price-section {
+        order: 5;
+        display: block;
+    }
+    
+    .mobile-actions-section {
+        order: 6;
+        display: block;
+    }
+    
+    /* Esconder elementos que não queremos no mobile */
+    .product-subtitle {
+        display: none; /* Esconder descrição do topo no mobile */
+    }
+    
+    /* Esconder características, preço e ações do product-info no mobile */
     .product-highlights {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
+        display: none !important;
+    }
+    
+    .product-price {
+        display: none !important;
     }
     
     .product-actions {
+        display: none !important;
+    }
+    
+    /* Mostrar descrição mobile após a galeria */
+    .mobile-description {
+        display: block !important;
+        margin-top: 30px;
+        padding: 20px;
+        background: var(--bg-primary);
+        border-radius: 15px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .mobile-description p {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        text-align: center;
+        line-height: 1.6;
+        margin: 0;
+    }
+    
+    /* Estilos para as seções mobile */
+    .mobile-highlights-section .product-highlights {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .mobile-price-section .product-price {
+        display: block !important;
+        margin-bottom: 20px;
+    }
+    
+    .mobile-actions-section .product-actions {
+        display: flex !important;
         flex-direction: column;
         gap: 15px;
     }
