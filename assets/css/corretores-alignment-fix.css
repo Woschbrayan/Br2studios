@@ -1,0 +1,263 @@
+/* ===== CORREÇÃO DE ALINHAMENTO DOS CARDS DE CORRETORES ===== */
+
+/* Garantir que todos os cards tenham a mesma altura */
+.brokers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    align-items: stretch; /* Força todos os cards a terem a mesma altura */
+}
+
+/* Estrutura flexbox para o card */
+.broker-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ocupa toda a altura disponível */
+    min-height: 500px; /* Altura mínima para consistência */
+}
+
+/* Header do card - altura fixa */
+.broker-header {
+    flex-shrink: 0; /* Não encolhe */
+    margin-bottom: 25px;
+}
+
+/* Conteúdo do card - ocupa o espaço restante */
+.broker-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ocupa todo o espaço disponível */
+    justify-content: space-between; /* Distribui o conteúdo */
+}
+
+/* Nome e localização - altura fixa */
+.broker-name {
+    margin-bottom: 10px;
+    min-height: 2.5rem; /* Altura mínima para o nome */
+}
+
+.broker-location {
+    margin-bottom: 20px;
+    min-height: 1.5rem; /* Altura mínima para a localização */
+}
+
+/* Detalhes do corretor - altura flexível */
+.broker-details {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Cada item de detalhe com altura consistente */
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    min-height: 2.5rem; /* Altura mínima para cada item */
+}
+
+/* Botões de contato - sempre na parte inferior */
+.broker-contact {
+    display: flex;
+    gap: 12px;
+    margin-top: auto; /* Empurra para a parte inferior */
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    flex-shrink: 0; /* Não encolhe */
+}
+
+/* Botões com altura fixa */
+.btn-whatsapp,
+.btn-email {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px; /* Altura mínima para acessibilidade */
+}
+
+/* ===== CORREÇÃO PARA CARDS DE AGENTES (INDEX.PHP) ===== */
+
+/* Grid de agentes no index */
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: stretch; /* Força todos os cards a terem a mesma altura */
+}
+
+/* Card de agente com estrutura flexbox */
+.agent-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ocupa toda a altura disponível */
+    min-height: 450px; /* Altura mínima para consistência */
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.agent-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #333333 0%, #666666 100%);
+}
+
+.agent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem do agente - altura fixa */
+.agent-image {
+    flex-shrink: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.agent-image img,
+.agent-avatar-fallback {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Conteúdo do agente - ocupa o espaço restante */
+.agent-card h3 {
+    margin-bottom: 10px;
+    min-height: 2.5rem; /* Altura mínima para o nome */
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333333;
+}
+
+.agent-title {
+    margin-bottom: 15px;
+    min-height: 1.5rem; /* Altura mínima para o título */
+    font-size: 1rem;
+    color: #666666;
+    font-weight: 600;
+}
+
+.agent-description {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #555555;
+    min-height: 4rem; /* Altura mínima para a descrição */
+}
+
+/* Stats do agente - altura fixa */
+.agent-stats {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    min-height: 2rem; /* Altura mínima para os stats */
+}
+
+.agent-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+/* Botão de perfil - sempre na parte inferior */
+.btn-view-profile {
+    margin-top: auto; /* Empurra para a parte inferior */
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #333333 0%, #666666 100%);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: block;
+    min-height: 44px; /* Altura mínima para acessibilidade */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-view-profile:hover {
+    background: linear-gradient(135deg, #666666 0%, #333333 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 768px) {
+    .brokers-grid,
+    .agents-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .broker-card,
+    .agent-card {
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .broker-contact {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-whatsapp,
+    .btn-email,
+    .btn-view-profile {
+        width: 100%;
+        min-height: 48px; /* Altura maior no mobile para melhor toque */
+    }
+}
+
+@media (max-width: 480px) {
+    .broker-card,
+    .agent-card {
+        padding: 15px;
+    }
+    
+    .agent-image img,
+    .agent-avatar-fallback {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .agent-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .agent-description {
+        font-size: 0.9rem;
+    }
+}

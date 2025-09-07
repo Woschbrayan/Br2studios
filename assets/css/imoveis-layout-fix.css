@@ -1,0 +1,343 @@
+/* ===== CORREÇÕES DE LAYOUT E ALINHAMENTO - PÁGINA IMOVEIS.PHP ===== */
+
+/* ===== SISTEMA UNIFICADO DE ESPAÇAMENTO ===== */
+:root {
+    --section-padding-top: 80px;
+    --section-padding-bottom: 80px;
+    --section-padding-mobile: 60px;
+    --section-header-margin-bottom: 50px;
+    --section-header-margin-bottom-mobile: 35px;
+    --title-margin-bottom: 20px;
+    --title-margin-bottom-mobile: 15px;
+    --subtitle-margin-bottom: 15px;
+    --subtitle-margin-bottom-mobile: 12px;
+}
+
+/* ===== CORREÇÕES DO BANNER DESKTOP - APENAS ESPAÇAMENTO ===== */
+.page-banner {
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0 !important;
+}
+
+.banner-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 60px !important;
+    min-height: 400px !important;
+}
+
+.banner-text {
+    flex: 1 !important;
+    max-width: 600px !important;
+}
+
+.banner-text h1 {
+    margin-bottom: var(--title-margin-bottom) !important;
+    line-height: 1.1 !important;
+}
+
+.banner-text p {
+    margin-bottom: 40px !important;
+    line-height: 1.6 !important;
+}
+
+.banner-stats {
+    display: flex !important;
+    gap: 40px !important;
+    margin-top: 30px !important;
+}
+
+.stat-item {
+    text-align: center !important;
+}
+
+.stat-number {
+    display: block !important;
+    margin-bottom: 5px !important;
+}
+
+.stat-label {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.banner-visual {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.banner-image {
+    width: 100% !important;
+    max-width: 500px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+.banner-image img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+/* ===== CORREÇÕES DO HEADER MOBILE - APENAS ESPAÇAMENTO ===== */
+.imoveis-header-mobile {
+    padding: var(--section-padding-mobile) 0 !important;
+    text-align: center !important;
+}
+
+.header-mobile-content h1 {
+    margin-bottom: var(--title-margin-bottom-mobile) !important;
+    line-height: 1.2 !important;
+}
+
+.header-mobile-content p {
+    margin-bottom: 25px !important;
+}
+
+.quick-stats-mobile {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 30px !important;
+    flex-wrap: wrap !important;
+}
+
+.quick-stat {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+}
+
+.quick-stat i {
+    font-size: 1rem !important;
+}
+
+/* ===== CORREÇÕES DAS SEÇÕES - APENAS ESPAÇAMENTO ===== */
+.search-section,
+.properties-section,
+.benefits-section,
+.cta-section {
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0 !important;
+}
+
+/* ===== CORREÇÕES DOS HEADERS DAS SEÇÕES ===== */
+.section-header {
+    text-align: center !important;
+    margin-bottom: var(--section-header-margin-bottom) !important;
+    max-width: 800px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.section-header h2 {
+    font-size: 2.8rem !important;
+    font-weight: 700 !important;
+    margin-bottom: var(--title-margin-bottom) !important;
+    line-height: 1.2 !important;
+    color: #333333 !important;
+}
+
+.section-header p {
+    font-size: 1.2rem !important;
+    color: #666666 !important;
+    line-height: 1.6 !important;
+    margin-bottom: 0 !important;
+}
+
+/* ===== CORREÇÕES ESPECÍFICAS DO SEARCH SECTION - APENAS ESPAÇAMENTO ===== */
+.search-header {
+    text-align: center !important;
+    margin-bottom: 40px !important;
+}
+
+.search-header h2 {
+    margin-bottom: var(--title-margin-bottom) !important;
+}
+
+.search-header p {
+    margin-bottom: 0 !important;
+}
+
+/* ===== CORREÇÕES DO CTA SECTION - APENAS ESPAÇAMENTO ===== */
+.cta-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 60px !important;
+    text-align: left !important;
+}
+
+.cta-text {
+    flex: 1 !important;
+    max-width: 600px !important;
+}
+
+.cta-text h2 {
+    margin-bottom: var(--title-margin-bottom) !important;
+}
+
+.cta-text p {
+    margin-bottom: 30px !important;
+    line-height: 1.6 !important;
+}
+
+.cta-actions {
+    display: flex !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+}
+
+.cta-visual {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.cta-visual img {
+    width: 100% !important;
+    max-width: 400px !important;
+    border-radius: 15px !important;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    :root {
+        --section-padding-top: 60px;
+        --section-padding-bottom: 60px;
+        --section-header-margin-bottom: 35px;
+        --title-margin-bottom: 15px;
+        --subtitle-margin-bottom: 12px;
+    }
+    
+    .banner-content {
+        flex-direction: column !important;
+        gap: 40px !important;
+        text-align: center !important;
+        min-height: auto !important;
+    }
+    
+    .banner-text p {
+        margin-bottom: 30px !important;
+    }
+    
+    .banner-stats {
+        gap: 25px !important;
+        justify-content: center !important;
+    }
+    
+    .header-mobile-content p {
+        margin-bottom: 20px !important;
+    }
+    
+    .quick-stats-mobile {
+        gap: 20px !important;
+    }
+    
+    .cta-content {
+        flex-direction: column !important;
+        gap: 40px !important;
+        text-align: center !important;
+    }
+    
+    .cta-text p {
+        margin-bottom: 25px !important;
+    }
+    
+    .cta-actions {
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --section-padding-top: 50px;
+        --section-padding-bottom: 50px;
+        --section-header-margin-bottom: 30px;
+        --title-margin-bottom: 12px;
+        --subtitle-margin-bottom: 10px;
+    }
+    
+    .banner-text p {
+        margin-bottom: 25px !important;
+    }
+    
+    .banner-stats {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .header-mobile-content p {
+        margin-bottom: 18px !important;
+    }
+    
+    .quick-stats-mobile {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .cta-text p {
+        margin-bottom: 20px !important;
+    }
+    
+    .cta-actions {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+}
+
+/* ===== CORREÇÕES ESPECÍFICAS PARA CONTAINER ===== */
+.container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px !important;
+    }
+}
+
+/* ===== GARANTIR ALINHAMENTO PERFEITO ===== */
+.page-banner,
+.imoveis-header-mobile,
+.search-section,
+.properties-section,
+.benefits-section,
+.cta-section {
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* ===== CORREÇÕES DE ESPAÇAMENTO ENTRE SEÇÕES ===== */
+.page-banner + .search-section,
+.imoveis-header-mobile + .search-section {
+    margin-top: 0 !important;
+    padding-top: var(--section-padding-top) !important;
+}
+
+.search-section + .properties-section {
+    margin-top: 0 !important;
+    padding-top: var(--section-padding-top) !important;
+}
+
+.properties-section + .benefits-section {
+    margin-top: 0 !important;
+    padding-top: var(--section-padding-top) !important;
+}
+
+.benefits-section + .cta-section {
+    margin-top: 0 !important;
+    padding-top: var(--section-padding-top) !important;
+}

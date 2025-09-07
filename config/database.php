@@ -4,7 +4,7 @@
  * Sistema Br2Studios
  */
 
-// Configurações do MySQL para Hostgator
+// Configurações do MySQL para XAMPP
 define('DB_HOST', 'localhost:3308');
 define('DB_NAME', 'br2studios');
 define('DB_USERNAME', 'root');

@@ -3,22 +3,41 @@
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/classes/Database.php';
 require_once __DIR__ . '/classes/Imovel.php';
+require_once __DIR__ . '/classes/Corretor.php';
 
 $imoveis_destaque = [];
 $imoveis_valorizacao = [];
+$corretores_destaque = [];
 
 try {
     $imovel = new Imovel();
     
     // Buscar imóveis em destaque (status = 'disponivel' e destaque = 1)
     $filtros_destaque = ['destaque' => 1, 'status' => 'disponivel'];
-    $imoveis_destaque_result = $imovel->listarTodos($filtros_destaque);
+    $imoveis_destaque_result = $imovel->listarTodos($filtros_destaque, 1, 20);
+    
+    // Debug: Log do resultado
+    error_log("Debug - Resultado busca destaque: " . print_r($imoveis_destaque_result, true));
     
     // A classe retorna um array com chave 'imoveis'
     if (is_array($imoveis_destaque_result) && isset($imoveis_destaque_result['imoveis'])) {
         $imoveis_destaque = $imoveis_destaque_result['imoveis'];
+        error_log("Debug - Imóveis em destaque encontrados: " . count($imoveis_destaque));
     } else {
         $imoveis_destaque = [];
+        error_log("Debug - Nenhum imóvel em destaque encontrado");
+    }
+    
+    // Se não encontrou imóveis em destaque, buscar imóveis disponíveis
+    if (empty($imoveis_destaque)) {
+        error_log("Debug - Buscando imóveis disponíveis como fallback para destaque");
+        $filtros_fallback = ['status' => 'disponivel'];
+        $imoveis_fallback_result = $imovel->listarTodos($filtros_fallback, 1, 4);
+        
+        if (is_array($imoveis_fallback_result) && isset($imoveis_fallback_result['imoveis'])) {
+            $imoveis_destaque = $imoveis_fallback_result['imoveis'];
+            error_log("Debug - Imóveis fallback encontrados: " . count($imoveis_destaque));
+        }
     }
     
     // Limitar a 4 imóveis para a seção de destaque
@@ -26,22 +45,57 @@ try {
     
     // Buscar imóveis de maior valorização (status = 'disponivel' e maior_valorizacao = 1)
     $filtros_valorizacao = ['maior_valorizacao' => 1, 'status' => 'disponivel'];
-    $imoveis_valorizacao_result = $imovel->listarTodos($filtros_valorizacao);
+    $imoveis_valorizacao_result = $imovel->listarTodos($filtros_valorizacao, 1, 20);
+    
+    // Debug: Log do resultado
+    error_log("Debug - Resultado busca valorização: " . print_r($imoveis_valorizacao_result, true));
     
     // A classe retorna um array com chave 'imoveis'
     if (is_array($imoveis_valorizacao_result) && isset($imoveis_valorizacao_result['imoveis'])) {
         $imoveis_valorizacao = $imoveis_valorizacao_result['imoveis'];
+        error_log("Debug - Imóveis de valorização encontrados: " . count($imoveis_valorizacao));
     } else {
         $imoveis_valorizacao = [];
+        error_log("Debug - Nenhum imóvel de valorização encontrado");
+    }
+    
+    // Se não encontrou imóveis de valorização, buscar imóveis disponíveis (diferentes dos de destaque)
+    if (empty($imoveis_valorizacao)) {
+        error_log("Debug - Buscando imóveis disponíveis como fallback para valorização");
+        $filtros_fallback = ['status' => 'disponivel'];
+        $imoveis_fallback_result = $imovel->listarTodos($filtros_fallback, 1, 8);
+        
+        if (is_array($imoveis_fallback_result) && isset($imoveis_fallback_result['imoveis'])) {
+            $imoveis_fallback = $imoveis_fallback_result['imoveis'];
+            
+            // Filtrar para não repetir os imóveis de destaque
+            $ids_destaque = array_column($imoveis_destaque, 'id');
+            $imoveis_valorizacao = array_filter($imoveis_fallback, function($imovel) use ($ids_destaque) {
+                return !in_array($imovel['id'], $ids_destaque);
+            });
+            
+            error_log("Debug - Imóveis fallback para valorização encontrados: " . count($imoveis_valorizacao));
+        }
     }
     
     // Limitar a 4 imóveis para a seção de valorização
     $imoveis_valorizacao = array_slice($imoveis_valorizacao, 0, 4);
     
+    // Buscar corretores para a seção "Conheça Nossos Especialistas"
+    $corretor = new Corretor();
+    $corretores_result = $corretor->listarTodos();
+    
+    if (is_array($corretores_result)) {
+        $corretores_destaque = array_slice($corretores_result, 0, 3); // Limitar a 3 corretores
+    } else {
+        $corretores_destaque = [];
+    }
+    
 } catch (Exception $e) {
     error_log("Erro ao buscar imóveis: " . $e->getMessage());
     $imoveis_destaque = [];
     $imoveis_valorizacao = [];
+    $corretores_destaque = [];
 }
 
 $current_page = 'home';
@@ -60,8 +114,46 @@ include 'includes/header.php';
         color: white;
         z-index: 2;
         width: 100%;
-        max-width: 600px;
+        max-width: 700px;
         padding: 0px 24px;
+    }
+    
+    /* Melhorar proporção da hero no desktop */
+    @media (min-width: 769px) {
+        .hero-title {
+            font-size: 3.8rem !important;
+            margin-bottom: 25px !important;
+            line-height: 1.1 !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem !important;
+            margin-bottom: 35px !important;
+            line-height: 1.4 !important;
+        }
+        
+        .hero-slide h2 {
+            font-size: 1.5rem !important;
+            margin-bottom: 15px !important;
+        }
+        
+        .hero-slide p {
+            font-size: 1.1rem !important;
+            line-height: 1.6 !important;
+        }
+        
+        .hero-stats {
+            gap: 35px !important;
+            margin-top: 35px !important;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem !important;
+        }
+        
+        .stat-label {
+            font-size: 1rem !important;
+        }
     }
     
     /* Hero Mobile Responsive */
@@ -185,6 +277,65 @@ include 'includes/header.php';
             font-size: 0.7rem !important;
         }
     }
+    
+    /* Agent Avatar Fallback */
+    .agent-avatar-fallback {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        border-radius: 50%;
+    }
+    
+    /* Correção de Alinhamento dos Cards de Agentes */
+    .agents-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        align-items: stretch;
+    }
+    
+    .agent-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 450px;
+    }
+    
+    .agent-image {
+        flex-shrink: 0;
+        margin-bottom: 20px;
+    }
+    
+    .agent-card h3 {
+        margin-bottom: 10px;
+        min-height: 2.5rem;
+    }
+    
+    .agent-title {
+        margin-bottom: 15px;
+        min-height: 1.5rem;
+    }
+    
+    .agent-description {
+        flex-grow: 1;
+        margin-bottom: 20px;
+        min-height: 4rem;
+    }
+    
+    .agent-stats {
+        margin-bottom: 20px;
+        min-height: 2rem;
+    }
+    
+    .btn-view-profile {
+        margin-top: auto;
+        min-height: 44px;
+    }
 </style>
     <!-- Hero Section -->
     <section class="hero">
@@ -237,7 +388,7 @@ include 'includes/header.php';
             
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number">500+</span>
+                    <span class="stat-number">+500</span>
                     <span class="stat-label">Imóveis Vendidos</span>
                 </div>
                 <div class="stat-item">
@@ -263,10 +414,11 @@ include 'includes/header.php';
 
     <!-- Properties Mobile - Carousel Limpo -->
     <section class="properties-mobile mobile-only">
-        <div class="section-header">
-            <h2>Imóveis em Destaque</h2>
-            <p>Deslize para ver nossas oportunidades</p>
-        </div>
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Imóveis em Destaque</h2>
+                <p>Deslize para ver nossas oportunidades</p>
+            </div>
         <div class="properties-carousel-mobile">
             <?php if (!empty($imoveis_destaque)): ?>
                 <?php foreach ($imoveis_destaque as $imovel): ?>
@@ -358,16 +510,17 @@ include 'includes/header.php';
             <?php endif; ?>
         </div>
         <div style="text-align: center; margin-top: 30px;">
-            <a href="imoveis.php" class="btn-primary btn-large">Ver Todos os Imóveis</a>
+            <a href="imoveis.php?filtro=destaque" class="btn-primary btn-large">Ver Todos os Imóveis em Destaque</a>
         </div>
     </section>
 
     <!-- Imóveis de Maior Valorização Mobile -->
     <section class="properties-mobile valorizacao-mobile mobile-only">
-        <div class="section-header">
-            <h2>Maior Valorização</h2>
-            <p>Oportunidades com excelente potencial</p>
-        </div>
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Maior Valorização</h2>
+                <p>Oportunidades com excelente potencial</p>
+            </div>
         <div class="properties-carousel-mobile">
             <?php if (!empty($imoveis_valorizacao)): ?>
                 <?php foreach ($imoveis_valorizacao as $imovel_valorizacao): ?>
@@ -440,16 +593,17 @@ include 'includes/header.php';
             <?php endif; ?>
         </div>
         <div style="text-align: center; margin-top: 30px;">
-            <a href="imoveis.php?filtro=valorizacao" class="btn-primary btn-large">Ver Todos os Imóveis de Valorização</a>
+            <a href="imoveis.php?filtro=valorizacao" class="btn-primary btn-large">Ver Todos os Imóveis de Maior Valorização</a>
         </div>
     </section>
 
     <!-- Features Section Mobile - Limpa e Organizada -->
     <section class="features-mobile mobile-only">
-        <div class="section-header">
-            <h2>Por que escolher a Br2Studios?</h2>
-            <p>Especialistas em investimentos imobiliários</p>
-        </div>
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Por que escolher a Br2Studios?</h2>
+                <p>Especialistas em investimentos imobiliários</p>
+            </div>
         <div class="features-grid-mobile">
             <div class="feature-card-mobile">
                 <div class="feature-icon-mobile">
@@ -477,7 +631,7 @@ include 'includes/header.php';
 
     <!-- Featured Properties Section Desktop -->
     <section class="featured-properties desktop-only">
-        <div class="container">
+        <div class="section-container">
             <div class="section-header">
                 <h2>Imóveis em Destaque</h2>
                 <p>Descubra as melhores oportunidades de investimento selecionadas pelos nossos especialistas</p>
@@ -621,14 +775,14 @@ include 'includes/header.php';
             </div>
             
             <div class="section-footer">
-                <a href="imoveis.php" class="btn-view-all">Ver Todos os Imóveis</a>
+                <a href="imoveis.php?filtro=destaque" class="btn-view-all">Ver Todos os Imóveis em Destaque</a>
             </div>
         </div>
     </section>
 
     <!-- Imóveis de Maior Valorização Section Desktop -->
     <section class="featured-properties valorizacao-properties desktop-only">
-        <div class="container">
+        <div class="section-container">
             <div class="section-header">
                 <h2>Imóveis de Maior Valorização</h2>
                 <p>Oportunidades com excelente potencial de crescimento e retorno sobre investimento</p>
@@ -743,7 +897,7 @@ include 'includes/header.php';
             </div>
             
             <div class="section-footer">
-                <a href="imoveis.php?filtro=valorizacao" class="btn-view-all">Ver Todos os Imóveis de Valorização</a>
+                <a href="imoveis.php?filtro=valorizacao" class="btn-view-all">Ver Todos os Imóveis de Maior Valorização</a>
             </div>
         </div>
     </section>
@@ -751,13 +905,14 @@ include 'includes/header.php';
 
     <!-- Regiões de Curitiba - Cards em 2 Colunas -->
     <section class="regioes-curitiba">
-        <div class="container">
+        <div class="section-container">
             <div class="section-header">
                 <h2>Regiões de Curitiba</h2>
                 <p>Investimentos na capital paranaense com excelente potencial</p>
             </div>
             
-            <div class="regioes-grid">
+            <!-- Desktop Grid -->
+            <div class="regioes-grid desktop-only">
                 <div class="regiao-card">
                     <div class="regiao-icon">
                         <i class="fas fa-building"></i>
@@ -807,6 +962,69 @@ include 'includes/header.php';
                 </div>
             </div>
             
+            <!-- Mobile Carousel -->
+            <div class="regioes-carousel mobile-only">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="regioes-carousel-track">
+                        <div class="regiao-card">
+                            <div class="regiao-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="regiao-content">
+                                <h3>Centro</h3>
+                                <p>Região central com infraestrutura completa e fácil acesso</p>
+                              
+                                <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-card">
+                            <div class="regiao-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="regiao-content">
+                                <h3>Bairro Alto</h3>
+                                <p>Região nobre com excelente infraestrutura e valorização constante</p>
+                               
+                                <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-card">
+                            <div class="regiao-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="regiao-content">
+                                <h3>Água Verde</h3>
+                                <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
+                               
+                                <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-card">
+                            <div class="regiao-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="regiao-content">
+                                <h3>Região Metropolitana</h3>
+                                <p>Cidades da região metropolitana com potencial de crescimento</p>
+                               
+                                <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                    </div>
+                </div>
+            </div>
+            
             <div class="section-footer">
                 <a href="regioes.php" class="btn-view-all">Explorar Todas as Regiões</a>
             </div>
@@ -815,7 +1033,7 @@ include 'includes/header.php';
 
     <!-- Cities Section Desktop -->
     <section class="cities-section desktop-only">
-        <div class="container">
+        <div class="section-container">
             <div class="section-header">
                 <h2>Investindo em Curitiba e Região</h2>
                 <p>Descubra as melhores oportunidades na região metropolitana de Curitiba</p>
@@ -874,68 +1092,10 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Property Types Section Desktop -->
-    <section class="property-types desktop-only">
-        <div class="container">
-            <div class="section-header">
-                <h2>Tipos de Imóveis</h2>
-                <p>Especialistas em diferentes categorias para atender todas as necessidades</p>
-            </div>
-            
-            <div class="types-grid">
-                <div class="type-card">
-                    <div class="type-image">
-                        <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Studio - Compactos e Funcionais">
-                        <div class="type-overlay">
-                            <span class="properties-count">12 Imóveis</span>
-                            <h3>Studio</h3>
-                            <p>Compactos e funcionais</p>
-                            <a href="#" class="btn-more">Ver Imóveis</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="type-card">
-                    <div class="type-image">
-                        <img src="assets/images/imoveis/imovel-2.jpeg" alt="Apartamento - Conforto e Praticidade">
-                        <div class="type-overlay">
-                            <span class="properties-count">8 Imóveis</span>
-                            <h3>Apartamento</h3>
-                            <p>Conforto e praticidade</p>
-                            <a href="#" class="btn-more">Ver Imóveis</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="type-card">
-                    <div class="type-image">
-                        <img src="assets/images/imoveis/imovel-3.jpeg" alt="Casa - Espaço e Privacidade">
-                        <div class="type-overlay">
-                            <span class="properties-count">5 Imóveis</span>
-                            <h3>Casa</h3>
-                            <p>Espaço e privacidade</p>
-                            <a href="#" class="btn-more">Ver Imóveis</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="type-card">
-                    <div class="type-image">
-                        <img src="assets/images/imoveis/imovel-4.jpeg" alt="Comercial - Para seu Negócio">
-                        <div class="type-overlay">
-                            <span class="properties-count">3 Imóveis</span>
-                            <h3>Comercial</h3>
-                            <p>Para seu negócio</p>
-                            <a href="#" class="btn-more">Ver Imóveis</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
      <!-- Features Section Desktop -->
     <section class="features desktop-only">
-        <div class="container">
+        <div class="section-container">
             <div class="section-header">
                 <h2>Por que escolher a Br2Studios?</h2>
                 <p>Somos especialistas em transformar investimentos imobiliários em oportunidades de crescimento financeiro</p>
@@ -989,76 +1149,127 @@ include 'includes/header.php';
    
     <!-- Meet Our Agents Section Desktop -->
     <section class="meet-agents desktop-only">
-        <div class="container">
+        <div class="section-container">
             <div class="section-header">
                 <h2>Conheça Nossos Especialistas</h2>
                 <p>Equipe qualificada para orientar seus investimentos imobiliários</p>
             </div>
             
             <div class="agents-grid">
-                <div class="agent-card">
-                    <div class="agent-image">
-                        <img src="assets/images/imoveis/Imovel-1.jpeg" alt="João Silva - Especialista em Investimentos">
-                        <div class="agent-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                <?php if (!empty($corretores_destaque)): ?>
+                    <?php foreach ($corretores_destaque as $corretor_item): ?>
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <?php if (!empty($corretor_item['foto'])): ?>
+                                    <img src="<?php echo htmlspecialchars($corretor_item['foto']); ?>" 
+                                         alt="<?php echo htmlspecialchars($corretor_item['nome']); ?> - Especialista em Investimentos"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="agent-avatar-fallback" style="display: none;">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="agent-avatar-fallback">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="agent-social">
+                                    <a href="https://wa.me/55<?php echo preg_replace('/[^0-9]/', '', $corretor_item['telefone']); ?>?text=Olá <?php echo urlencode($corretor_item['nome']); ?>! Vi seu perfil no site da Br2Studios e gostaria de conversar sobre imóveis." target="_blank">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                    <a href="mailto:<?php echo htmlspecialchars($corretor_item['email']); ?>">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3><?php echo htmlspecialchars($corretor_item['nome']); ?></h3>
+                            <p class="agent-title">Especialista em Investimentos</p>
+                            <p class="agent-description">
+                                <?php if (!empty($corretor_item['bio'])): ?>
+                                    <?php echo htmlspecialchars($corretor_item['bio']); ?>
+                                <?php else: ?>
+                                    Especialista em investimentos imobiliários com experiência no mercado de studios e alto retorno.
+                                <?php endif; ?>
+                            </p>
+                            <div class="agent-stats">
+                                <span><i class="fas fa-certificate"></i> CRECI: <?php echo htmlspecialchars($corretor_item['creci'] ?: 'Em processo'); ?></span>
+                                <span><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($corretor_item['cidade'] . ', ' . $corretor_item['estado']); ?></span>
+                            </div>
+                            <a href="corretores.php" class="btn-view-profile">Ver Perfil</a>
                         </div>
-                    </div>
-                    <h3>João Silva</h3>
-                    <p class="agent-title">Especialista em Investimentos</p>
-                    <p class="agent-description">Mais de 10 anos de experiência no mercado imobiliário, especializado em studios e investimentos de alto retorno.</p>
-                    <div class="agent-stats">
-                        <span><i class="fas fa-home"></i> 150+ Vendas</span>
-                        <span><i class="fas fa-star"></i> 4.9/5</span>
-                    </div>
-                    <a href="corretores.php" class="btn-view-profile">Ver Perfil</a>
-                </div>
-                
-                <div class="agent-card">
-                    <div class="agent-image">
-                        <img src="assets/images/imoveis/imovel-2.jpeg" alt="Maria Santos - Consultora de Mercado">
-                        <div class="agent-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <!-- Fallback se não houver corretores no banco -->
+                    <div class="agent-card">
+                        <div class="agent-image">
+                            <div class="agent-avatar-fallback">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="agent-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <h3>Maria Santos</h3>
-                    <p class="agent-title">Consultora de Mercado</p>
-                    <p class="agent-description">Especialista em análise de mercado e identificação de oportunidades de investimento em diferentes regiões.</p>
-                    <div class="agent-stats">
-                        <span><i class="fas fa-home"></i> 120+ Vendas</span>
-                        <span><i class="fas fa-star"></i> 4.8/5</span>
-                    </div>
-                    <a href="corretores.php" class="btn-view-profile">Ver Perfil</a>
-                </div>
-                
-                <div class="agent-card">
-                    <div class="agent-image">
-                        <img src="assets/images/imoveis/imovel-3.jpeg" alt="Pedro Oliveira - Analista de Investimentos">
-                        <div class="agent-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        <h3>João Silva</h3>
+                        <p class="agent-title">Especialista em Investimentos</p>
+                        <p class="agent-description">Mais de 10 anos de experiência no mercado imobiliário, especializado em studios e investimentos de alto retorno.</p>
+                        <div class="agent-stats">
+                            <span><i class="fas fa-home"></i> 150+ Vendas</span>
+                            <span><i class="fas fa-star"></i> 4.9/5</span>
                         </div>
+                        <a href="corretores.php" class="btn-view-profile">Ver Perfil</a>
                     </div>
-                    <h3>Pedro Oliveira</h3>
-                    <p class="agent-title">Analista de Investimentos</p>
-                    <p class="agent-description">Focado em análise de rentabilidade e potencial de valorização de imóveis em todo o Brasil.</p>
-                    <div class="agent-stats">
-                        <span><i class="fas fa-home"></i> 95+ Vendas</span>
-                        <span><i class="fas fa-star"></i> 4.9/5</span>
+                    
+                    <div class="agent-card">
+                        <div class="agent-image">
+                            <div class="agent-avatar-fallback">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="agent-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <h3>Maria Santos</h3>
+                        <p class="agent-title">Consultora de Mercado</p>
+                        <p class="agent-description">Especialista em análise de mercado e identificação de oportunidades de investimento em diferentes regiões.</p>
+                        <div class="agent-stats">
+                            <span><i class="fas fa-home"></i> 120+ Vendas</span>
+                            <span><i class="fas fa-star"></i> 4.8/5</span>
+                        </div>
+                        <a href="corretores.php" class="btn-view-profile">Ver Perfil</a>
                     </div>
-                    <a href="corretores.php" class="btn-view-profile">Ver Perfil</a>
-                </div>
+                    
+                    <div class="agent-card">
+                        <div class="agent-image">
+                            <div class="agent-avatar-fallback">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="agent-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <h3>Pedro Oliveira</h3>
+                        <p class="agent-title">Analista de Investimentos</p>
+                        <p class="agent-description">Focado em análise de rentabilidade e potencial de valorização de imóveis em todo o Brasil.</p>
+                        <div class="agent-stats">
+                            <span><i class="fas fa-home"></i> 95+ Vendas</span>
+                            <span><i class="fas fa-star"></i> 4.9/5</span>
+                        </div>
+                        <a href="corretores.php" class="btn-view-profile">Ver Perfil</a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Mobile - Slider -->
     <section class="testimonials-mobile mobile-only">
-        <div class="section-header">
-            <h2>Depoimentos</h2>
-            <p>O que nossos clientes dizem</p>
-        </div>
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Depoimentos</h2>
+                <p>O que nossos clientes dizem</p>
+            </div>
         <div class="testimonials-slider-mobile">
             <div class="testimonials-track-mobile">
                 <div class="testimonial-slide-mobile active">
@@ -1134,7 +1345,7 @@ include 'includes/header.php';
 
     <!-- Testimonials Section Desktop - Carrossel Melhorado -->
     <section class="testimonials-desktop desktop-only">
-        <div class="container">
+        <div class="section-container">
             <div class="section-header">
                 <h2>O que nossos clientes dizem</h2>
                 <p>Depoimentos reais de investidores que confiaram na Br2Studios</p>
@@ -1292,7 +1503,7 @@ include 'includes/header.php';
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container">
+        <div class="section-container">
             <div class="cta-content">
                 <h2>Pronto para começar seu investimento?</h2>
                 <p>Entre em contato conosco e descubra as melhores oportunidades do mercado imobiliário</p>
@@ -1306,7 +1517,7 @@ include 'includes/header.php';
 
     <!-- Partners Section - Carrossel Automático -->
     <section class="partners-carousel">
-        <div class="container">
+        <div class="section-container">
             <div class="section-header">
                 <h2>Nossos Parceiros</h2>
                 <p>Empresas que confiam na nossa expertise</p>
@@ -1432,5 +1643,6 @@ include 'includes/header.php';
     ?>
     <script src="assets/js/main.js?v=<?php echo $version; ?>"></script>
     <script src="assets/js/mobile-creative.js?v=<?php echo $version; ?>"></script>
+    <script src="assets/js/regioes-carousel.js?v=<?php echo $version; ?>"></script>
 </body>
 </html>

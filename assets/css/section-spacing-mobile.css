@@ -1,0 +1,146 @@
+/* ===== CORREÇÃO DE ESPAÇAMENTO ENTRE SEÇÕES NO MOBILE ===== */
+
+/* Espaçamento entre hero e primeira seção (Imóveis em Destaque) */
+@media (max-width: 768px) {
+    /* Adicionar espaçamento superior na primeira seção após a hero */
+    .hero + .properties-mobile {
+        margin-top: 0px !important;
+        padding-top: 60px !important;
+    }
+    
+    /* Garantir que a seção properties-mobile tenha espaçamento adequado */
+    .properties-mobile {
+        padding: 60px 0 40px 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    .properties-mobile .section-container {
+        padding: 0 20px !important;
+    }
+    
+    /* Melhorar espaçamento do header da seção */
+    .properties-mobile .section-header {
+        text-align: center !important;
+        margin-bottom: 40px !important;
+        padding-top: 20px !important;
+    }
+    
+    .properties-mobile .section-header h2 {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        color: #333333 !important;
+        margin-bottom: 15px !important;
+        line-height: 1.2 !important;
+    }
+    
+    .properties-mobile .section-header p {
+        font-size: 1.1rem !important;
+        color: #666666 !important;
+        margin-bottom: 0 !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* Telas pequenas - ajustar espaçamento */
+@media (max-width: 480px) {
+    .hero + .properties-mobile {
+        margin-top: 50px !important;
+        padding-top: 50px !important;
+    }
+    
+    .properties-mobile {
+        padding: 50px 0 30px 0 !important;
+    }
+    
+    .properties-mobile .section-header {
+        margin-bottom: 30px !important;
+        padding-top: 15px !important;
+    }
+    
+    .properties-mobile .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .properties-mobile .section-header p {
+        font-size: 1rem !important;
+    }
+}
+
+/* Espaçamento entre outras seções no mobile */
+@media (max-width: 768px) {
+    /* Espaçamento entre seções consecutivas */
+    .properties-mobile + .features-mobile,
+    .features-mobile + .testimonials-mobile,
+    .testimonials-mobile + .cta-section {
+        margin-top: 50px !important;
+        padding-top: 50px !important;
+    }
+    
+    /* Garantir espaçamento consistente em todas as seções mobile */
+    .features-mobile,
+    .testimonials-mobile {
+        padding: 50px 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    .features-mobile .section-container,
+    .testimonials-mobile .section-container {
+        padding: 0 20px !important;
+    }
+    
+    /* Headers das seções com espaçamento adequado */
+    .features-mobile .section-header,
+    .testimonials-mobile .section-header {
+        text-align: center !important;
+        margin-bottom: 40px !important;
+    }
+    
+    .features-mobile .section-header h2,
+    .testimonials-mobile .section-header h2 {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        color: #333333 !important;
+        margin-bottom: 15px !important;
+        line-height: 1.2 !important;
+    }
+    
+    .features-mobile .section-header p,
+    .testimonials-mobile .section-header p {
+        font-size: 1.1rem !important;
+        color: #666666 !important;
+        margin-bottom: 0 !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* Telas pequenas - ajustar espaçamento entre seções */
+@media (max-width: 480px) {
+    .properties-mobile + .features-mobile,
+    .features-mobile + .testimonials-mobile,
+    .testimonials-mobile + .cta-section {
+        margin-top: 40px !important;
+        padding-top: 40px !important;
+    }
+    
+    .features-mobile,
+    .testimonials-mobile {
+        padding: 40px 0 !important;
+    }
+    
+    .features-mobile .section-header,
+    .testimonials-mobile .section-header {
+        margin-bottom: 30px !important;
+    }
+    
+    .features-mobile .section-header h2,
+    .testimonials-mobile .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .features-mobile .section-header p,
+    .testimonials-mobile .section-header p {
+        font-size: 1rem !important;
+    }
+}

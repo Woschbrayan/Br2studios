@@ -1,0 +1,503 @@
+/* ===== CORREÇÕES ESPECÍFICAS PARA CARDS DE IMÓVEIS NA PÁGINA IMOVEIS.PHP ===== */
+
+/* ===== REDUÇÃO DO TAMANHO DO PREÇO ===== */
+.property-price .price {
+    font-size: 1rem !important; /* Reduzido de 1.3rem/1.6rem para 1rem */
+    font-weight: 700 !important;
+    margin-bottom: 5px !important;
+}
+
+.property-price .price-per-sqft {
+    font-size: 0.8rem !important; /* Reduzido de 0.95rem para 0.8rem */
+    font-weight: 500 !important;
+    opacity: 0.8 !important;
+}
+
+/* ===== MELHORIAS NOS BADGES ===== */
+.property-labels {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    z-index: 15 !important;
+    max-width: 150px !important;
+    pointer-events: none !important;
+}
+
+.property-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+    padding: 4px 6px !important;
+    border-radius: 10px !important;
+    font-size: 0.6rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    transition: all 0.3s ease !important;
+    white-space: nowrap !important;
+    max-width: 100px !important;
+    text-align: center !important;
+    pointer-events: auto !important;
+    line-height: 1 !important;
+}
+
+.property-badge i {
+    font-size: 0.55rem !important;
+    flex-shrink: 0 !important;
+}
+
+/* ===== CORES ESPECÍFICAS DOS BADGES ===== */
+.badge-destaque {
+    background: linear-gradient(135deg, #ff6b35, #f7931e) !important;
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.badge-valorizacao {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.badge-entrega {
+    background: linear-gradient(135deg, #007bff, #0056b3) !important;
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== HOVER EFFECTS ===== */
+.property-badge:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+/* Desktop Extra Grande - 5+ colunas */
+@media (min-width: 1600px) {
+    .properties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+        gap: 40px !important;
+    }
+}
+
+/* Desktop Grande - 4+ colunas */
+@media (min-width: 1400px) and (max-width: 1599px) {
+    .properties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 35px !important;
+    }
+}
+
+/* Desktop Médio - 3-4 colunas */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .properties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: 30px !important;
+    }
+}
+
+/* Desktop Pequeno - 2-3 colunas */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .properties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+        gap: 25px !important;
+    }
+}
+
+/* Tablet - 2 colunas */
+@media (min-width: 769px) and (max-width: 899px) {
+    .properties-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px !important;
+    }
+    
+    .property-image {
+        height: 240px !important;
+    }
+    
+    .property-price {
+        position: absolute !important;
+        bottom: 18px !important;
+        right: 18px !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        backdrop-filter: blur(15px) !important;
+        padding: 11px 14px !important;
+        border-radius: 13px !important;
+        text-align: right !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        max-width: 130px !important;
+    }
+    
+    .property-price .price {
+        font-size: 0.92rem !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 3px !important;
+        line-height: 1.1 !important;
+    }
+    
+    .property-price .price-per-sqft {
+        font-size: 0.72rem !important;
+        font-weight: 500 !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        line-height: 1.1 !important;
+    }
+    
+    .property-labels {
+        top: 11px !important;
+        left: 11px !important;
+        gap: 3px !important;
+        max-width: 130px !important;
+    }
+    
+    .property-badge {
+        padding: 3px 5px !important;
+        font-size: 0.58rem !important;
+        max-width: 95px !important;
+        border-radius: 9px !important;
+    }
+    
+    .property-badge i {
+        font-size: 0.52rem !important;
+    }
+}
+
+/* Mobile Grande - 2 colunas */
+@media (max-width: 768px) and (min-width: 481px) {
+    .properties-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+    
+    .property-card {
+        min-height: 450px !important;
+    }
+    
+    .property-image {
+        height: 220px !important;
+    }
+    
+    .property-price {
+        position: absolute !important;
+        bottom: 15px !important;
+        right: 15px !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        backdrop-filter: blur(15px) !important;
+        padding: 10px 12px !important;
+        border-radius: 12px !important;
+        text-align: right !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        max-width: 120px !important;
+    }
+    
+    .property-price .price {
+        font-size: 0.9rem !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 2px !important;
+        line-height: 1.1 !important;
+    }
+    
+    .property-price .price-per-sqft {
+        font-size: 0.7rem !important;
+        font-weight: 500 !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        line-height: 1.1 !important;
+    }
+    
+    .property-labels {
+        top: 10px !important;
+        left: 10px !important;
+        gap: 3px !important;
+        max-width: 120px !important;
+    }
+    
+    .property-badge {
+        padding: 3px 5px !important;
+        font-size: 0.55rem !important;
+        max-width: 90px !important;
+        border-radius: 8px !important;
+    }
+    
+    .property-badge i {
+        font-size: 0.5rem !important;
+    }
+    
+    .property-info {
+        padding: 18px !important;
+    }
+    
+    .property-info h3 {
+        font-size: 1.1rem !important;
+        min-height: 2.2rem !important;
+    }
+    
+    .property-details {
+        gap: 10px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .btn-view-property {
+        padding: 10px 16px !important;
+        font-size: 0.85rem !important;
+        min-height: 40px !important;
+    }
+}
+
+/* Mobile Pequeno - 1 coluna */
+@media (max-width: 480px) {
+    .properties-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .property-card {
+        min-height: 400px !important;
+    }
+    
+    .property-image {
+        height: 200px !important;
+    }
+    
+    .property-price {
+        position: absolute !important;
+        bottom: 12px !important;
+        right: 12px !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        backdrop-filter: blur(15px) !important;
+        padding: 8px 10px !important;
+        border-radius: 10px !important;
+        text-align: right !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        max-width: 100px !important;
+    }
+    
+    .property-price .price {
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 2px !important;
+        line-height: 1.1 !important;
+    }
+    
+    .property-price .price-per-sqft {
+        font-size: 0.65rem !important;
+        font-weight: 500 !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        line-height: 1.1 !important;
+    }
+    
+    .property-labels {
+        top: 8px !important;
+        left: 8px !important;
+        gap: 2px !important;
+        max-width: 100px !important;
+    }
+    
+    .property-badge {
+        padding: 2px 4px !important;
+        font-size: 0.5rem !important;
+        max-width: 80px !important;
+        border-radius: 6px !important;
+    }
+    
+    .property-badge i {
+        font-size: 0.45rem !important;
+    }
+    
+    .property-info {
+        padding: 16px !important;
+    }
+    
+    .property-info h3 {
+        font-size: 1rem !important;
+        min-height: 2rem !important;
+    }
+    
+    .property-details {
+        gap: 8px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .btn-view-property {
+        padding: 8px 14px !important;
+        font-size: 0.8rem !important;
+        min-height: 36px !important;
+    }
+}
+
+/* ===== CORREÇÕES ESPECÍFICAS PARA DESKTOP ===== */
+@media (min-width: 769px) {
+    .property-price {
+        position: absolute !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        backdrop-filter: blur(15px) !important;
+        padding: 12px 16px !important;
+        border-radius: 15px !important;
+        text-align: right !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        max-width: 140px !important;
+    }
+    
+    .property-price .price {
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 3px !important;
+        line-height: 1.1 !important;
+    }
+    
+    .property-price .price-per-sqft {
+        font-size: 0.75rem !important;
+        font-weight: 500 !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        line-height: 1.1 !important;
+    }
+}
+
+/* ===== GARANTIR QUE OS BADGES SEJAM VISÍVEIS ===== */
+.property-badge {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-flex !important;
+    position: relative !important;
+    z-index: 20 !important;
+    pointer-events: auto !important;
+}
+
+/* ===== CORREÇÃO PARA EVITAR SOBRESCRITA ===== */
+.properties-grid .property-card .property-labels .property-badge {
+    display: inline-flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* ===== MELHORAR ESPAÇAMENTO DOS CARDS ===== */
+.properties-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 30px !important;
+    align-items: stretch !important;
+}
+
+.property-card {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    background: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 500px !important;
+}
+
+.property-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===== MELHORAR IMAGEM DO CARD ===== */
+.property-image {
+    position: relative !important;
+    height: 250px !important;
+    overflow: hidden !important;
+}
+
+.property-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.3s ease !important;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.05) !important;
+}
+
+/* ===== MELHORAR INFORMAÇÕES DO CARD ===== */
+.property-info {
+    padding: 25px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    height: 100% !important;
+}
+
+.property-info h3 {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    color: #333333 !important;
+    margin-bottom: 10px !important;
+    line-height: 1.3 !important;
+    min-height: 2.5rem !important;
+}
+
+.property-location {
+    font-size: 0.9rem !important;
+    color: #666666 !important;
+    margin-bottom: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    min-height: 1.5rem !important;
+}
+
+.property-location i {
+    font-size: 0.8rem !important;
+    color: #999999 !important;
+}
+
+/* ===== MELHORAR DETALHES DO IMÓVEL ===== */
+.property-details {
+    display: flex !important;
+    gap: 15px !important;
+    margin-bottom: 20px !important;
+    flex-wrap: wrap !important;
+    min-height: 2rem !important;
+}
+
+.property-details span {
+    font-size: 0.85rem !important;
+    color: #666666 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+}
+
+.property-details i {
+    font-size: 0.8rem !important;
+    color: #999999 !important;
+}
+
+/* ===== MELHORAR BOTÃO DE AÇÃO - ALINHAMENTO INFERIOR ===== */
+.btn-view-property {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px 20px !important;
+    background: var(--color-primary) !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    font-size: 0.9rem !important;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+    min-height: 44px !important;
+}
+
+.btn-view-property:hover {
+    background: #333333 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}

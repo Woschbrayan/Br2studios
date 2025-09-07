@@ -1,0 +1,40 @@
+/* ===== CORREÇÃO ESPECÍFICA DE ESPAÇAMENTO ENTRE HEADER E HERO ===== */
+
+/* Apenas remover o espaçamento entre header e hero, mantendo o estilo original do header */
+.hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Garantir que não haja espaçamento entre header e hero */
+.header + .hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Remover qualquer espaçamento que possa existir antes da hero */
+body > .hero:first-of-type {
+    margin-top: 30px !important;
+    padding-top: 0 !important;
+}
+
+/* Garantir que a hero comece imediatamente após o header */
+.hero {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+/* Mobile - Ajustar posicionamento do conteúdo da hero para aparecer abaixo do header */
+@media (max-width: 768px) {
+    .hero-content {
+        padding-top: 120px !important; /* Espaçamento maior para evitar sobreposição do header */
+    }
+}
+
+/* Telas pequenas - ajustar ainda mais */
+@media (max-width: 480px) {
+    .hero-content {
+        padding-top: 110px !important; /* Espaçamento otimizado para telas pequenas */
+    }
+}

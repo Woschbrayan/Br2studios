@@ -7,6 +7,16 @@ $imovel = new Imovel();
 
 // Filtros
 $filters = [];
+
+// Filtro especial para destaque e valorização (vindo do index.php)
+if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
+    if ($_GET['filtro'] == 'destaque') {
+        $filters['destaque'] = 1;
+    } elseif ($_GET['filtro'] == 'valorizacao') {
+        $filters['maior_valorizacao'] = 1;
+    }
+}
+
 if (isset($_GET['status_construcao']) && !empty($_GET['status_construcao'])) {
     $filters['status_construcao'] = $_GET['status_construcao'];
 }
@@ -53,7 +63,22 @@ try {
 
 <?php 
 $current_page = 'imoveis';
-$page_title = 'Imóveis em Curitiba - Br2Studios';
+
+// Definir título da página baseado no filtro
+if (isset($_GET['filtro']) && $_GET['filtro'] == 'destaque') {
+    $page_title = 'Imóveis em Destaque - Br2Studios';
+    $page_subtitle = 'Imóveis em Destaque';
+    $page_description = 'Descubra nossos imóveis em destaque selecionados pelos especialistas';
+} elseif (isset($_GET['filtro']) && $_GET['filtro'] == 'valorizacao') {
+    $page_title = 'Imóveis de Maior Valorização - Br2Studios';
+    $page_subtitle = 'Imóveis de Maior Valorização';
+    $page_description = 'Oportunidades com excelente potencial de crescimento e retorno';
+} else {
+    $page_title = 'Imóveis em Curitiba - Br2Studios';
+    $page_subtitle = 'Portfólio de Imóveis';
+    $page_description = 'Descubra os melhores imóveis em Curitiba e região metropolitana';
+}
+
 $page_css = 'assets/css/imoveis.css';
 include 'includes/header.php'; 
 ?>
@@ -63,8 +88,8 @@ include 'includes/header.php';
         <div class="container">
             <div class="banner-content">
                 <div class="banner-text">
-                    <h1>Portfólio de Imóveis</h1>
-                    <p>Descubra os melhores imóveis em Curitiba e região metropolitana</p>
+                    <h1><?php echo $page_subtitle; ?></h1>
+                    <p><?php echo $page_description; ?></p>
                     <div class="banner-stats">
                         <div class="stat-item">
                             <span class="stat-number"><?php echo count($imoveis); ?>+</span>
@@ -93,7 +118,7 @@ include 'includes/header.php';
     <section class="imoveis-header-mobile mobile-only">
         <div class="container">
             <div class="header-mobile-content">
-                <h1>Nossos Imóveis</h1>
+                <h1><?php echo $page_subtitle; ?></h1>
                 <p><?php echo count($imoveis); ?> oportunidades disponíveis</p>
                 <div class="quick-stats-mobile">
                     <span class="quick-stat">
@@ -118,7 +143,32 @@ include 'includes/header.php';
                     <p>Filtre por status de construção, localização e faixa de preço</p>
                 </div>
                 
+                <!-- Filtros Dinâmicos de Categoria -->
+                <div class="category-filters">
+                    <div class="category-filter-item <?php echo (!isset($_GET['filtro']) || $_GET['filtro'] == '') ? 'active' : ''; ?>">
+                        <a href="imoveis.php" class="category-filter-link">
+                            <i class="fas fa-home"></i>
+                            <span>Todos os Imóveis</span>
+                        </a>
+                    </div>
+                    <div class="category-filter-item <?php echo (isset($_GET['filtro']) && $_GET['filtro'] == 'destaque') ? 'active' : ''; ?>">
+                        <a href="imoveis.php?filtro=destaque" class="category-filter-link">
+                            <i class="fas fa-star"></i>
+                            <span>Em Destaque</span>
+                        </a>
+                    </div>
+                    <div class="category-filter-item <?php echo (isset($_GET['filtro']) && $_GET['filtro'] == 'valorizacao') ? 'active' : ''; ?>">
+                        <a href="imoveis.php?filtro=valorizacao" class="category-filter-link">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Maior Valorização</span>
+                        </a>
+                    </div>
+                </div>
+                
                 <form class="search-form" method="GET">
+                    <?php if (isset($_GET['filtro'])): ?>
+                        <input type="hidden" name="filtro" value="<?php echo htmlspecialchars($_GET['filtro']); ?>">
+                    <?php endif; ?>
                     <div class="search-filters">
                         <div class="filter-group">
                             <label for="status_construcao">Status de Construção</label>
@@ -167,6 +217,28 @@ include 'includes/header.php';
     <!-- Filtros Mobile Simplificados -->
     <section class="filters-mobile mobile-only">
         <div class="container">
+            <!-- Filtros de Categoria Mobile -->
+            <div class="category-filters-mobile">
+                <div class="category-filter-mobile <?php echo (!isset($_GET['filtro']) || $_GET['filtro'] == '') ? 'active' : ''; ?>">
+                    <a href="imoveis.php" class="category-filter-link-mobile">
+                        <i class="fas fa-home"></i>
+                        <span>Todos</span>
+                    </a>
+                </div>
+                <div class="category-filter-mobile <?php echo (isset($_GET['filtro']) && $_GET['filtro'] == 'destaque') ? 'active' : ''; ?>">
+                    <a href="imoveis.php?filtro=destaque" class="category-filter-link-mobile">
+                        <i class="fas fa-star"></i>
+                        <span>Destaque</span>
+                    </a>
+                </div>
+                <div class="category-filter-mobile <?php echo (isset($_GET['filtro']) && $_GET['filtro'] == 'valorizacao') ? 'active' : ''; ?>">
+                    <a href="imoveis.php?filtro=valorizacao" class="category-filter-link-mobile">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Valorização</span>
+                    </a>
+                </div>
+            </div>
+            
             <div class="filters-mobile-container">
                 <button class="filters-toggle-btn" id="filters-toggle">
                     <i class="fas fa-filter"></i>
@@ -176,6 +248,9 @@ include 'includes/header.php';
                 
                 <div class="filters-mobile-panel" id="filters-panel" style="display: none;">
                     <form method="GET" class="filters-form-mobile">
+                        <?php if (isset($_GET['filtro'])): ?>
+                            <input type="hidden" name="filtro" value="<?php echo htmlspecialchars($_GET['filtro']); ?>">
+                        <?php endif; ?>
                         <div class="filter-row-mobile">
                             <label>Status</label>
                             <select name="status_construcao" class="filter-select-mobile">
@@ -217,8 +292,28 @@ include 'includes/header.php';
     <section class="properties-section">
         <div class="container">
             <div class="section-header">
-                <h2>Imóveis Disponíveis</h2>
-                <p>Seleção criteriosa de investimentos com alto potencial de retorno</p>
+                <h2><?php echo $page_subtitle; ?></h2>
+                <p><?php echo $page_description; ?></p>
+                
+                <!-- Indicador de Filtro Ativo -->
+                <?php if (isset($_GET['filtro']) && !empty($_GET['filtro'])): ?>
+                    <div class="filter-indicator">
+                        <i class="fas fa-filter"></i>
+                        <span>
+                            <?php if ($_GET['filtro'] == 'destaque'): ?>
+                                Filtro: Imóveis em Destaque
+                            <?php elseif ($_GET['filtro'] == 'valorizacao'): ?>
+                                Filtro: Maior Valorização
+                            <?php endif; ?>
+                        </span>
+                    </div>
+                <?php endif; ?>
+                
+                <!-- Contador de Resultados -->
+                <div class="results-counter">
+                    <i class="fas fa-home"></i>
+                    <span><?php echo count($imoveis); ?> imóveis encontrados</span>
+                </div>
             </div>
             
             <?php if (empty($imoveis)): ?>
@@ -247,19 +342,19 @@ include 'includes/header.php';
                                 <?php endif; ?>
                                 
                                 <div class="property-labels">
-                                    <?php if ($imovel_item['destaque'] == 1 || $imovel_item['destaque'] == '1'): ?>
+                                    <?php if ($imovel_item['destaque']): ?>
                                         <span class="property-badge badge-destaque">
                                             <i class="fas fa-star"></i>
                                             DESTAQUE
                                         </span>
                                     <?php endif; ?>
-                                    <?php if ($imovel_item['maior_valorizacao'] == 1 || $imovel_item['maior_valorizacao'] == '1'): ?>
+                                    <?php if ($imovel_item['maior_valorizacao']): ?>
                                         <span class="property-badge badge-valorizacao">
                                             <i class="fas fa-chart-line"></i>
                                             VALORIZAÇÃO
                                         </span>
                                     <?php endif; ?>
-                                    <?php if (!empty($imovel_item['ano_entrega']) && $imovel_item['ano_entrega'] != '' && $imovel_item['ano_entrega'] != '0'): ?>
+                                    <?php if (!empty($imovel_item['ano_entrega'])): ?>
                                         <span class="property-badge badge-entrega">
                                             <i class="fas fa-calendar-alt"></i>
                                             ENTREGA <?php echo $imovel_item['ano_entrega']; ?>

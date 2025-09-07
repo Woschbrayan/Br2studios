@@ -129,23 +129,22 @@ $page_title = 'Sobre Nós - Br2Studios Curitiba';
 $page_css = 'assets/css/sobre.css';
 include 'includes/header.php'; 
 ?>
-
-
 <style>
-    .hero-content {
-    top: 14%;
-    display: grid
-;
-    grid-template-columns: 1.3fr 0.7fr;
-    gap: 80px;
-    align-items: start;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 40px;
-    width: 100%;
-}
 
+.hero-section .hero-content {
+    display: grid !important
+;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 60px !important;
+    align-items: center !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 40px !important;
+    width: 100% !important;
+    top: 80px !important;
+}
 </style>
+
     <!-- Hero Section Desktop -->
     <section class="hero-section desktop-only">
         <div class="container">
@@ -171,7 +170,7 @@ include 'includes/header.php';
                 <div class="hero-visual">
                     <div class="hero-image-container">
                         <div class="hero-image">
-                            <img src="assets/images/sobre/3d66012d-6623-4178-9e1a-f33bb2896ac1.jpeg" alt="BR2 Studios - Especialistas em Estúdios">
+                            <img src="assets/images/sobre/b3c6cb8b-6f89-44e9-ae44-44b42c6b32ee.jpeg" alt="BR2 Studios - Especialistas em Estúdios">
                         </div>
                     </div>
                 </div>

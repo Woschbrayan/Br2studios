@@ -23,6 +23,19 @@
     <link rel="stylesheet" href="assets/css/dark-theme-fixes.css?v=<?php echo $version; ?>">
     <link rel="stylesheet" href="assets/css/scroll-fix.css?v=<?php echo $version; ?>">
     <link rel="stylesheet" href="assets/css/hero-mobile-fixes.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/spacing-fixes.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/section-overrides.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/corretores-alignment-fix.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/mobile-responsiveness-fixes.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/features-mobile-fix.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/hero-spacing-fix.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/section-spacing-mobile.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/property-cards-improvements.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/imoveis-cards-fix.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/imoveis-layout-fix.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/dynamic-filters.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/regioes-carousel.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/sobre-fixes.css?v=<?php echo $version; ?>">
 </head>
 <body>
     <!-- Header -->

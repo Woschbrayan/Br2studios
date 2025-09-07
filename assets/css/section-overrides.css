@@ -1,0 +1,862 @@
+/* ===== OVERRIDES ESPECÍFICOS PARA CORRIGIR PROBLEMAS DE ESPAÇAMENTO ===== */
+
+/* Remover espaçamentos conflitantes dos arquivos CSS existentes */
+.features,
+.featured-properties,
+.valorizacao-properties,
+.regioes-curitiba,
+.cities-section,
+.meet-agents,
+.testimonials-desktop,
+.cta-section,
+.partners-carousel,
+.features-mobile,
+.properties-mobile,
+.testimonials-mobile {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Garantir que os containers das seções tenham o espaçamento correto */
+.section-container {
+    padding: 80px 0;
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+    .section-container {
+        padding: 60px 0;
+    }
+}
+
+/* Pequenas telas */
+@media (max-width: 480px) {
+    .section-container {
+        padding: 50px 0;
+    }
+}
+
+/* Corrigir espaçamentos específicos dos grids */
+.features-grid,
+.properties-grid,
+.agents-grid,
+.cities-grid,
+.regioes-grid {
+    margin: 0 !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .features-grid,
+    .properties-grid,
+    .agents-grid,
+    .cities-grid,
+    .regioes-grid {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-grid,
+    .properties-grid,
+    .agents-grid,
+    .cities-grid,
+    .regioes-grid {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos carrosséis */
+.properties-carousel,
+.testimonials-carousel-desktop,
+.partners-carousel-wrapper {
+    margin: 0 !important;
+    padding: 0;
+}
+
+/* Corrigir espaçamentos dos footers de seção */
+.section-footer {
+    margin-top: 60px !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .section-footer {
+        margin-top: 40px !important;
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-footer {
+        margin-top: 30px !important;
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos botões de ação */
+.cta-actions {
+    margin-top: 40px !important;
+}
+
+@media (max-width: 768px) {
+    .cta-actions {
+        margin-top: 30px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos cards mobile */
+.features-grid-mobile,
+.properties-carousel-mobile,
+.testimonials-slider-mobile {
+    margin: 0 !important;
+    padding: 0 16px;
+}
+
+@media (max-width: 480px) {
+    .features-grid-mobile,
+    .properties-carousel-mobile,
+    .testimonials-slider-mobile {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos específicos dos cards */
+.feature-card,
+.property-card,
+.agent-card,
+.city-card,
+.regiao-card,
+.feature-card-mobile,
+.property-card-mobile {
+    margin: 0 !important;
+}
+
+/* Corrigir espaçamentos dos ícones */
+.feature-icon,
+.regiao-icon {
+    margin: 0 auto 32px auto !important;
+}
+
+@media (max-width: 768px) {
+    .feature-icon,
+    .regiao-icon {
+        margin: 0 auto 24px auto !important;
+    }
+}
+
+/* Corrigir espaçamentos dos títulos dos cards */
+.feature-card h3,
+.property-card h3,
+.agent-card h3,
+.city-card h3,
+.regiao-card h3,
+.feature-card-mobile h3,
+.property-card-mobile h3 {
+    margin-bottom: 16px !important;
+}
+
+@media (max-width: 768px) {
+    .feature-card h3,
+    .property-card h3,
+    .agent-card h3,
+    .city-card h3,
+    .regiao-card h3,
+    .feature-card-mobile h3,
+    .property-card-mobile h3 {
+        margin-bottom: 12px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos parágrafos dos cards */
+.feature-card p,
+.property-card p,
+.agent-card p,
+.city-card p,
+.regiao-card p,
+.feature-card-mobile p,
+.property-card-mobile p {
+    margin-bottom: 24px !important;
+}
+
+@media (max-width: 768px) {
+    .feature-card p,
+    .property-card p,
+    .agent-card p,
+    .city-card p,
+    .regiao-card p,
+    .feature-card-mobile p,
+    .property-card-mobile p {
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos preços */
+.property-price,
+.property-price-mobile {
+    margin-bottom: 16px !important;
+}
+
+@media (max-width: 768px) {
+    .property-price,
+    .property-price-mobile {
+        margin-bottom: 12px !important;
+    }
+}
+
+/* Corrigir espaçamentos das localizações */
+.property-location,
+.property-location-mobile {
+    margin-bottom: 20px !important;
+}
+
+@media (max-width: 768px) {
+    .property-location,
+    .property-location-mobile {
+        margin-bottom: 16px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos detalhes das propriedades */
+.property-details,
+.property-features-mobile {
+    margin: 20px 0 !important;
+    padding: 16px 0 !important;
+}
+
+@media (max-width: 768px) {
+    .property-details,
+    .property-features-mobile {
+        margin: 16px 0 !important;
+        padding: 12px 0 !important;
+    }
+}
+
+/* Corrigir espaçamentos das estatísticas dos agentes */
+.agent-stats {
+    margin: 24px 0 !important;
+    padding: 20px 0 !important;
+}
+
+@media (max-width: 768px) {
+    .agent-stats {
+        margin: 20px 0 !important;
+        padding: 16px 0 !important;
+    }
+}
+
+/* Corrigir espaçamentos das estatísticas das regiões */
+.regiao-stats {
+    margin: 20px 0 !important;
+    padding: 16px !important;
+}
+
+@media (max-width: 768px) {
+    .regiao-stats {
+        margin: 16px 0 !important;
+        padding: 12px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos botões de visualização */
+.btn-view-property,
+.btn-view-profile,
+.btn-view-all,
+.property-action-mobile {
+    margin-top: 24px !important;
+}
+
+@media (max-width: 768px) {
+    .btn-view-property,
+    .btn-view-profile,
+    .btn-view-all,
+    .property-action-mobile {
+        margin-top: 20px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos links das regiões */
+.regiao-link {
+    margin-top: 20px !important;
+}
+
+@media (max-width: 768px) {
+    .regiao-link {
+        margin-top: 16px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos controles de carrossel */
+.carousel-controls,
+.testimonials-controls-mobile {
+    margin-top: 40px !important;
+}
+
+@media (max-width: 768px) {
+    .carousel-controls,
+    .testimonials-controls-mobile {
+        margin-top: 30px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos dots de carrossel */
+.carousel-dots,
+.testimonials-dots-mobile {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos textos de depoimentos */
+.testimonial-text,
+.testimonial-text-mobile {
+    margin-bottom: 32px !important;
+}
+
+@media (max-width: 768px) {
+    .testimonial-text,
+    .testimonial-text-mobile {
+        margin-bottom: 24px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos autores de depoimentos */
+.testimonial-author,
+.testimonial-author-mobile {
+    margin: 0 !important;
+}
+
+/* Corrigir espaçamentos dos avatares de depoimentos */
+.author-avatar,
+.testimonial-avatar-mobile {
+    margin: 0 !important;
+}
+
+/* Corrigir espaçamentos das informações dos autores */
+.author-info {
+    margin: 0 !important;
+}
+
+.author-info h4,
+.author-info p,
+.testimonial-author-mobile,
+.testimonial-role-mobile {
+    margin-bottom: 8px !important;
+}
+
+.author-info h4:last-child,
+.author-info p:last-child,
+.testimonial-role-mobile {
+    margin-bottom: 0 !important;
+}
+
+/* Corrigir espaçamentos dos ratings */
+.testimonial-rating,
+.testimonial-rating-mobile {
+    margin-bottom: 24px !important;
+}
+
+@media (max-width: 768px) {
+    .testimonial-rating,
+    .testimonial-rating-mobile {
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos ícones de quote */
+.quote-icon {
+    margin-bottom: 20px !important;
+}
+
+@media (max-width: 768px) {
+    .quote-icon {
+        margin-bottom: 16px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos slides de depoimentos */
+.testimonial-slide,
+.testimonial-slide-mobile {
+    padding: 60px 80px !important;
+}
+
+@media (max-width: 768px) {
+    .testimonial-slide,
+    .testimonial-slide-mobile {
+        padding: 40px 30px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-slide,
+    .testimonial-slide-mobile {
+        padding: 30px 20px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos wrappers de depoimentos */
+.testimonials-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos tracks de depoimentos */
+.testimonials-track,
+.testimonials-track-mobile {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos cards de depoimentos */
+.testimonial-card,
+.testimonial-content-mobile {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos conteúdos de depoimentos */
+.testimonial-content {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos slides de parceiros */
+.partner-slide {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos logos de parceiros */
+.partner-logo {
+    margin: 0 !important;
+    padding: 20px !important;
+}
+
+@media (max-width: 768px) {
+    .partner-logo {
+        padding: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .partner-logo {
+        padding: 12px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos tracks de parceiros */
+.partners-track {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos wrappers de parceiros */
+.partners-carousel-wrapper {
+    margin-top: 40px !important;
+}
+
+@media (max-width: 768px) {
+    .partners-carousel-wrapper {
+        margin-top: 30px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos slides de cidades */
+.city-slide {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos cards de cidades */
+.city-card {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos das imagens de cidades */
+.city-image {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos overlays de cidades */
+.city-overlay {
+    margin: 0 !important;
+    padding: 35px 30px 30px !important;
+}
+
+@media (max-width: 768px) {
+    .city-overlay {
+        padding: 25px 20px 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-overlay {
+        padding: 20px 15px 15px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos títulos de cidades */
+.city-overlay h3 {
+    margin-bottom: 10px !important;
+}
+
+@media (max-width: 768px) {
+    .city-overlay h3 {
+        margin-bottom: 8px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos parágrafos de cidades */
+.city-overlay p {
+    margin-bottom: 20px !important;
+}
+
+@media (max-width: 768px) {
+    .city-overlay p {
+        margin-bottom: 16px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos contadores de propriedades */
+.properties-count {
+    margin: 0 !important;
+    padding: 8px 16px !important;
+}
+
+@media (max-width: 768px) {
+    .properties-count {
+        padding: 6px 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .properties-count {
+        padding: 4px 8px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos slides de tipos de propriedade */
+.type-slide {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos cards de tipos */
+.type-card {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos das imagens de tipos */
+.type-image {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos overlays de tipos */
+.type-overlay {
+    margin: 0 !important;
+    padding: 40px !important;
+}
+
+@media (max-width: 768px) {
+    .type-overlay {
+        padding: 30px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .type-overlay {
+        padding: 20px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos títulos de tipos */
+.type-overlay h3 {
+    margin-bottom: 20px !important;
+}
+
+@media (max-width: 768px) {
+    .type-overlay h3 {
+        margin-bottom: 16px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos parágrafos de tipos */
+.type-overlay p {
+    margin-bottom: 30px !important;
+}
+
+@media (max-width: 768px) {
+    .type-overlay p {
+        margin-bottom: 24px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos botões de mais */
+.btn-more {
+    margin: 0 !important;
+    padding: 14px 28px !important;
+}
+
+@media (max-width: 768px) {
+    .btn-more {
+        padding: 12px 24px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos contadores de tipos */
+.type-overlay .properties-count {
+    margin-bottom: 25px !important;
+}
+
+@media (max-width: 768px) {
+    .type-overlay .properties-count {
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos grids de tipos */
+.types-grid {
+    margin: 0 !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .types-grid {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .types-grid {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos grids de depoimentos */
+.testimonials-grid {
+    margin: 0 !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-grid {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos grids de agentes */
+.agents-grid {
+    margin: 0 !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .agents-grid {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .agents-grid {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos grids de cidades */
+.cities-grid {
+    margin: 0 !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .cities-grid {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cities-grid {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos grids de regiões */
+.regioes-grid {
+    margin: 0 !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .regioes-grid {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .regioes-grid {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos grids de features */
+.features-grid {
+    margin: 0 !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-grid {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos grids de propriedades */
+.properties-grid {
+    margin: 0 !important;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .properties-grid {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .properties-grid {
+        padding: 0 12px;
+    }
+}
+
+/* Corrigir espaçamentos dos carrosséis de propriedades */
+.properties-carousel {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos carrosséis de depoimentos */
+.testimonials-carousel-desktop {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos carrosséis de parceiros */
+.partners-carousel {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos carrosséis de cidades */
+.cities-carousel-wrapper {
+    margin: 0 !important;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .cities-carousel-wrapper {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cities-carousel-wrapper {
+        padding: 0 8px;
+    }
+}
+
+/* Corrigir espaçamentos dos tracks de cidades */
+.cities-track {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos slides de cidades mobile */
+.city-slide {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Corrigir espaçamentos dos cards de cidades mobile */
+.city-card-mobile {
+    margin: 0 !important;
+    padding: 20px 15px !important;
+}
+
+@media (max-width: 768px) {
+    .city-card-mobile {
+        padding: 12px 8px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-card-mobile {
+        padding: 10px 6px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos títulos de cidades mobile */
+.city-card-mobile h3 {
+    margin-bottom: 8px !important;
+}
+
+@media (max-width: 768px) {
+    .city-card-mobile h3 {
+        margin-bottom: 4px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-card-mobile h3 {
+        margin-bottom: 3px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos parágrafos de cidades mobile */
+.city-card-mobile p {
+    margin-bottom: 8px !important;
+}
+
+@media (max-width: 768px) {
+    .city-card-mobile p {
+        margin-bottom: 6px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-card-mobile p {
+        margin-bottom: 4px !important;
+    }
+}
+
+/* Corrigir espaçamentos dos contadores de cidades mobile */
+.city-count {
+    margin: 0 !important;
+    padding: 3px 8px !important;
+}
+
+@media (max-width: 768px) {
+    .city-count {
+        padding: 2px 4px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-count {
+        padding: 1px 3px !important;
+    }
+}

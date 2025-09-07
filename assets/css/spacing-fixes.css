@@ -1,0 +1,681 @@
+/* ===== CORREÇÕES DE ESPAÇAMENTO E ALINHAMENTO - BR2STUDIOS ===== */
+
+/* Reset de espaçamentos problemáticos */
+* {
+    box-sizing: border-box;
+}
+
+/* ===== SISTEMA UNIFICADO DE ESPAÇAMENTO ===== */
+:root {
+    /* Espaçamentos base */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+    --spacing-3xl: 80px;
+    --spacing-4xl: 96px;
+    
+    /* Espaçamentos específicos para seções */
+    --section-padding-top: 80px;
+    --section-padding-bottom: 80px;
+    --section-padding-mobile: 60px;
+    
+    /* Espaçamentos para headers de seção */
+    --section-header-margin-bottom: 60px;
+    --section-header-margin-bottom-mobile: 40px;
+    
+    /* Espaçamentos para títulos */
+    --title-margin-bottom: 20px;
+    --title-margin-bottom-mobile: 16px;
+    
+    /* Espaçamentos para descrições */
+    --description-margin-bottom: 0;
+    --description-margin-bottom-mobile: 0;
+}
+
+/* ===== CORREÇÕES GERAIS DE SEÇÕES ===== */
+
+/* Reset de margens e paddings problemáticos */
+section {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+}
+
+/* Container principal das seções */
+.section-container {
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+    position: relative;
+}
+
+/* ===== HEADERS DE SEÇÃO UNIFICADOS ===== */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--section-header-margin-bottom);
+    padding: 0 var(--spacing-md);
+    position: relative;
+}
+
+.section-header h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: var(--title-margin-bottom);
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--color-gradient);
+    border-radius: 2px;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* ===== CORREÇÕES ESPECÍFICAS POR SEÇÃO ===== */
+
+/* Hero Section */
+.hero {
+    margin-top: 70px;
+    padding: 0 !important;
+}
+
+.hero + section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Features Section */
+.features {
+    background: var(--bg-secondary);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+}
+
+.features .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+}
+
+/* Featured Properties Section */
+.featured-properties {
+    background: var(--bg-primary);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+}
+
+.featured-properties .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* Valorização Properties */
+.valorizacao-properties {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+}
+
+.valorizacao-properties .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+/* Regiões de Curitiba */
+.regioes-curitiba {
+    background: var(--bg-secondary);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+}
+
+.regioes-curitiba .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+.regioes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+}
+
+/* Cities Section */
+.cities-section {
+    background: var(--bg-primary);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+}
+
+.cities-section .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+}
+
+/* Meet Agents Section */
+.meet-agents {
+    background: var(--bg-primary);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+}
+
+.meet-agents .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+}
+
+/* Testimonials Section */
+.testimonials-desktop {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+}
+
+.testimonials-desktop .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--color-gradient);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+    text-align: center;
+}
+
+.cta-section .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+.cta-content h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: var(--title-margin-bottom);
+    color: white;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xl);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Partners Section */
+.partners-carousel {
+    background: var(--bg-primary);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+}
+
+.partners-carousel .section-header {
+    margin-bottom: var(--section-header-margin-bottom);
+}
+
+/* ===== CORREÇÕES PARA MOBILE ===== */
+@media (max-width: 768px) {
+    :root {
+        --section-padding-top: var(--section-padding-mobile);
+        --section-padding-bottom: var(--section-padding-mobile);
+        --section-header-margin-bottom: var(--section-header-margin-bottom-mobile);
+        --title-margin-bottom: var(--title-margin-bottom-mobile);
+    }
+    
+    /* Headers de seção mobile */
+    .section-header {
+        padding: 0 var(--spacing-sm);
+        margin-bottom: var(--section-header-margin-bottom);
+    }
+    
+    .section-header h2 {
+        font-size: 2.2rem;
+        margin-bottom: var(--title-margin-bottom);
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Grids mobile */
+    .features-grid,
+    .properties-grid,
+    .agents-grid,
+    .cities-grid,
+    .regioes-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Seções mobile */
+    .features,
+    .featured-properties,
+    .valorizacao-properties,
+    .regioes-curitiba,
+    .cities-section,
+    .meet-agents,
+    .testimonials-desktop,
+    .cta-section,
+    .partners-carousel {
+        padding: var(--section-padding-mobile) 0;
+    }
+    
+    /* CTA mobile */
+    .cta-content h2 {
+        font-size: 2.2rem;
+        margin-bottom: var(--title-margin-bottom);
+    }
+    
+    .cta-content p {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-lg);
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+/* ===== CORREÇÕES PARA TELAS PEQUENAS ===== */
+@media (max-width: 480px) {
+    .section-header {
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-header p {
+        font-size: 0.95rem;
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .features-grid,
+    .properties-grid,
+    .agents-grid,
+    .cities-grid,
+    .regioes-grid {
+        padding: 0 var(--spacing-xs);
+        gap: var(--spacing-md);
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-content p {
+        font-size: 0.95rem;
+        padding: 0 var(--spacing-xs);
+    }
+}
+
+/* ===== CORREÇÕES ESPECÍFICAS PARA TEMA DARK ===== */
+[data-theme="dark"] .section-header h2 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}
+
+[data-theme="dark"] .section-header p {
+    color: #cccccc !important;
+}
+
+[data-theme="dark"] .features {
+    background: var(--bg-features);
+}
+
+[data-theme="dark"] .featured-properties {
+    background: var(--bg-properties);
+}
+
+[data-theme="dark"] .valorizacao-properties {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+[data-theme="dark"] .regioes-curitiba {
+    background: var(--bg-features);
+}
+
+[data-theme="dark"] .cities-section {
+    background: var(--bg-cities);
+}
+
+[data-theme="dark"] .meet-agents {
+    background: var(--bg-agents);
+}
+
+[data-theme="dark"] .testimonials-desktop {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+[data-theme="dark"] .partners-carousel {
+    background: var(--bg-partners);
+}
+
+/* ===== CORREÇÕES DE ALINHAMENTO ===== */
+
+/* Centralizar todos os elementos de seção */
+.section-header,
+.section-footer {
+    text-align: center;
+}
+
+/* Alinhar grids centralmente */
+.features-grid,
+.properties-grid,
+.agents-grid,
+.cities-grid,
+.regioes-grid {
+    justify-items: center;
+}
+
+/* ===== CORREÇÕES DE ESPAÇAMENTO ENTRE SEÇÕES ===== */
+
+/* Garantir que não haja espaçamento extra entre seções */
+.hero + .features,
+.features + .featured-properties,
+.featured-properties + .valorizacao-properties,
+.valorizacao-properties + .regioes-curitiba,
+.regioes-curitiba + .cities-section,
+.cities-section + .meet-agents,
+.meet-agents + .testimonials-desktop,
+.testimonials-desktop + .cta-section,
+.cta-section + .partners-carousel {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* ===== CORREÇÕES DE FOOTERS DE SEÇÃO ===== */
+.section-footer {
+    text-align: center;
+    margin-top: var(--spacing-2xl);
+    padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .section-footer {
+        margin-top: var(--spacing-xl);
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .section-footer {
+        padding: 0 var(--spacing-xs);
+    }
+}
+
+/* ===== CORREÇÕES DE CONTAINER ===== */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-xs);
+    }
+}
+
+/* ===== CORREÇÕES DE CARDS ===== */
+.feature-card,
+.property-card,
+.agent-card,
+.city-card,
+.regiao-card {
+    margin: 0;
+    padding: var(--spacing-xl);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .feature-card,
+    .property-card,
+    .agent-card,
+    .city-card,
+    .regiao-card {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-card,
+    .property-card,
+    .agent-card,
+    .city-card,
+    .regiao-card {
+        padding: var(--spacing-md);
+    }
+}
+
+/* ===== CORREÇÕES DE BOTÕES ===== */
+.btn-view-all,
+.btn-primary,
+.btn-secondary {
+    margin: 0;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .btn-view-all,
+    .btn-primary,
+    .btn-secondary {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.95rem;
+    }
+}
+
+/* ===== CORREÇÕES DE ESPAÇAMENTO INTERNO DOS CARDS ===== */
+.feature-card h3,
+.property-card h3,
+.agent-card h3,
+.city-card h3,
+.regiao-card h3 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.feature-card p,
+.property-card p,
+.agent-card p,
+.city-card p,
+.regiao-card p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .feature-card h3,
+    .property-card h3,
+    .agent-card h3,
+    .city-card h3,
+    .regiao-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .feature-card p,
+    .property-card p,
+    .agent-card p,
+    .city-card p,
+    .regiao-card p {
+        font-size: 0.95rem;
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+/* ===== CORREÇÕES DE ÍCONES ===== */
+.feature-icon,
+.regiao-icon {
+    margin: 0 auto var(--spacing-lg) auto;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-gradient);
+    color: white;
+    font-size: 32px;
+}
+
+@media (max-width: 768px) {
+    .feature-icon,
+    .regiao-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+/* ===== CORREÇÕES DE ESPAÇAMENTO DE AÇÕES ===== */
+.cta-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+    .cta-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: stretch;
+        margin-top: var(--spacing-lg);
+    }
+}
+
+/* ===== CORREÇÕES FINAIS DE ALINHAMENTO ===== */
+
+/* Garantir que todos os textos estejam alinhados */
+.section-header h2,
+.section-header p,
+.cta-content h2,
+.cta-content p {
+    text-align: center;
+}
+
+/* Garantir que todos os cards tenham o mesmo alinhamento */
+.feature-card,
+.property-card,
+.agent-card,
+.city-card,
+.regiao-card {
+    text-align: center;
+}
+
+/* Garantir que os botões estejam centralizados */
+.section-footer,
+.cta-actions {
+    text-align: center;
+}
+
+/* ===== CORREÇÕES DE ESPAÇAMENTO ENTRE ELEMENTOS ===== */
+
+/* Espaçamento consistente entre elementos de lista */
+.property-details,
+.agent-stats,
+.regiao-stats {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .property-details,
+    .agent-stats,
+    .regiao-stats {
+        margin: var(--spacing-sm) 0;
+        padding: var(--spacing-xs) 0;
+    }
+}
+
+/* ===== CORREÇÕES DE ESPAÇAMENTO DE PREÇOS ===== */
+.property-price {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .property-price {
+        margin-bottom: var(--spacing-sm);
+        font-size: 1.2rem;
+    }
+}
+
+/* ===== CORREÇÕES DE ESPAÇAMENTO DE LOCALIZAÇÃO ===== */
+.property-location,
+.agent-location {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .property-location,
+    .agent-location {
+        margin-bottom: var(--spacing-sm);
+        font-size: 0.9rem;
+    }
+}
