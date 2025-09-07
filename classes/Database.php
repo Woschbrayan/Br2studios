@@ -1,30 +1,114 @@
 <?php
 /**
- * Configurações do Banco de Dados
+ * Classe Database
  * Sistema Br2Studios
  */
 
-// Configurações do MySQL para Hostgator
-define('DB_HOST', 'localhost:3306');
-define('DB_NAME', 'brun3811_br2studios');
-define('DB_USERNAME', 'brun3811_brand');
-define('DB_PASSWORD', 'Br2studio!');
+// Incluir configurações do banco de dados
+require_once __DIR__ . '/../config/database.php';
 
-// Configurações de timezone
-date_default_timezone_set('America/Sao_Paulo');
+class Database {
+    private $host;
+    private $db_name;
+    private $username;
+    private $password;
+    private $conn;
 
-// Configurações de log
-define('LOG_PATH', '../logs/');
-define('LOG_LEVEL', 'INFO'); // DEBUG, INFO, WARNING, ERROR
+    public function __construct() {
+        $this->host = DB_HOST;
+        $this->db_name = DB_NAME;
+        $this->username = DB_USERNAME;
+        $this->password = DB_PASSWORD;
+    }
 
-// Configurações de segurança
-define('PASSWORD_MIN_LENGTH', 8);
-define('LOGIN_MAX_ATTEMPTS', 5);
-define('LOGIN_LOCKOUT_TIME', 900); // 15 minutos
+    public function getConnection() {
+        $this->conn = null;
 
-// Configurações da aplicação
-define('APP_NAME', 'Br2Studios');
-define('APP_VERSION', '1.0.0');
-define('APP_URL', 'https://br2studios.online');
-define('ADMIN_EMAIL', 'admin@br2studios.com.br');
+        try {
+            $this->conn = new PDO(
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                $this->username,
+                $this->password,
+                array(
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+                )
+            );
+        } catch(PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
+        }
+
+        return $this->conn;
+    }
+
+    /**
+     * Busca um único registro
+     */
+    public function fetchOne($sql, $params = []) {
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log("Erro fetchOne: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Busca múltiplos registros
+     */
+    public function fetchAll($sql, $params = []) {
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log("Erro fetchAll: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+     * Insere um registro e retorna o ID
+     */
+    public function insert($sql, $params = []) {
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $this->getConnection()->lastInsertId();
+        } catch(PDOException $e) {
+            error_log("Erro insert: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Atualiza registros e retorna número de linhas afetadas
+     */
+    public function update($sql, $params = []) {
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->rowCount();
+        } catch(PDOException $e) {
+            error_log("Erro update: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Deleta registros e retorna número de linhas afetadas
+     */
+    public function delete($sql, $params = []) {
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->rowCount();
+        } catch(PDOException $e) {
+            error_log("Erro delete: " . $e->getMessage());
+            return false;
+        }
+    }
+}
 ?>
