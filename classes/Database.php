@@ -25,6 +25,7 @@ class Database {
         $this->conn = null;
 
         try {
+            // Tentar conexão principal
             $this->conn = new PDO(
                 "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
                 $this->username,
@@ -35,7 +36,29 @@ class Database {
                 )
             );
         } catch(PDOException $exception) {
-            echo "Connection error: " . $exception->getMessage();
+            // Fallback para configurações alternativas
+            try {
+                $this->conn = new PDO(
+                    "mysql:host=localhost:3306;dbname=br2studios",
+                    'root',
+                    '',
+                    array(
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+                    )
+                );
+            } catch(PDOException $exception2) {
+                // Último fallback
+                $this->conn = new PDO(
+                    "mysql:host=localhost;dbname=br2studios",
+                    'root',
+                    '',
+                    array(
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+                    )
+                );
+            }
         }
 
         return $this->conn;
