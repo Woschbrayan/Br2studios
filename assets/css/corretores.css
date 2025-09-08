@@ -130,7 +130,7 @@
 /* Search Section */
 .search-section {
     background: #f8f9fa;
-    padding: 60px 0;
+    padding: 80px 0;
     border-bottom: 1px solid #e9ecef;
 }
 
@@ -226,7 +226,7 @@
 
 /* Brokers Section */
 .brokers-section {
-    padding: 80px 0;
+    padding: 100px 0;
     background: #ffffff;
 }
 
@@ -527,23 +527,24 @@
 /* Team Highlights */
 .team-highlights {
     background: #f8f9fa;
-    padding: 80px 0;
+    padding: 120px 0 100px 0;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #333333;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .section-header p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #666666;
     max-width: 600px;
     margin: 0 auto;
@@ -596,7 +597,7 @@
 /* CTA Section */
 .cta-section {
     background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
-    padding: 80px 0;
+    padding: 100px 0;
     color: #ffffff;
 }
 
@@ -1144,4 +1145,69 @@
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 800;
     letter-spacing: 1px;
+}
+
+/* ===== CONTADOR DE RESULTADOS ===== */
+.results-counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #007bff;
+}
+
+.results-counter i {
+    color: #007bff;
+    font-size: 1.2rem;
+}
+
+.results-counter span {
+    font-weight: 600;
+    color: #333;
+}
+
+.filter-info {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsividade para contador */
+@media (max-width: 768px) {
+    .results-counter {
+        margin: 0 20px 30px 20px;
+        padding: 12px 15px;
+    }
+    
+    .search-section {
+        padding: 60px 0;
+    }
+    
+    .brokers-section {
+        padding: 80px 0;
+    }
+    
+    .team-highlights {
+        padding: 80px 0;
+    }
+    
+    .cta-section {
+        padding: 80px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 60px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .section-header p {
+        font-size: 1.1rem;
+    }
 }

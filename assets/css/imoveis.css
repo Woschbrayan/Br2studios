@@ -1502,6 +1502,96 @@
     gap: 20px;
 }
 
+/* ===== MELHORIAS PARA FILTROS MOBILE ===== */
+.filters-count {
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 8px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.filter-info {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    margin-left: 8px;
+}
+
+.filters-toggle-btn {
+    position: relative;
+}
+
+/* Melhorar responsividade dos cards no mobile */
+@media (max-width: 768px) {
+    .properties-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .property-card {
+        margin-bottom: 20px;
+    }
+    
+    .property-image {
+        height: 250px;
+    }
+    
+    .property-info {
+        padding: 20px;
+    }
+    
+    .property-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .property-details {
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .property-details span {
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== MELHORIAS PARA MENSAGEM DE NENHUM IMÓVEL ===== */
+.no-properties-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.no-properties-actions .btn-secondary {
+    background: transparent;
+    color: #333;
+    border: 2px solid #333;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.no-properties-actions .btn-secondary:hover {
+    background: #333;
+    color: white;
+    transform: translateY(-2px);
+}
+
 .footer-bottom-content p {
     color: #b0b0b0;
     margin: 0;

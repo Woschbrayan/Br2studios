@@ -17,6 +17,7 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
     }
 }
 
+// Filtros de busca
 if (isset($_GET['status_construcao']) && !empty($_GET['status_construcao'])) {
     $filters['status_construcao'] = $_GET['status_construcao'];
 }
@@ -24,11 +25,14 @@ if (isset($_GET['cidade']) && !empty($_GET['cidade'])) {
     $filters['cidade'] = $_GET['cidade'];
 }
 if (isset($_GET['min_price']) && !empty($_GET['min_price'])) {
-    $filters['min_price'] = floatval($_GET['min_price']);
+    $filters['preco_min'] = floatval($_GET['min_price']);
 }
 if (isset($_GET['max_price']) && !empty($_GET['max_price'])) {
-    $filters['max_price'] = floatval($_GET['max_price']);
+    $filters['preco_max'] = floatval($_GET['max_price']);
 }
+
+// Sempre filtrar apenas imóveis disponíveis
+$filters['status'] = 'disponivel';
 
 // Buscar imóveis do banco de dados
 try {
@@ -41,8 +45,12 @@ try {
         $imoveis = [];
     }
     
-    // Buscar cidades únicas para o filtro
-    $todasCidades_result = $imovel->listarTodos();
+    // Buscar total de imóveis disponíveis (sem filtros)
+    $totalDisponiveis = $imovel->contarTotal(['status' => 'disponivel']);
+    
+    // Buscar cidades únicas para o filtro (apenas imóveis disponíveis)
+    $filtrosCidades = ['status' => 'disponivel'];
+    $todasCidades_result = $imovel->listarTodos($filtrosCidades);
     if (is_array($todasCidades_result) && isset($todasCidades_result['imoveis'])) {
         $todasCidades = $todasCidades_result['imoveis'];
         $cidades = array_unique(array_column($todasCidades, 'cidade'));
@@ -56,6 +64,7 @@ try {
     error_log("Erro ao buscar imóveis: " . $e->getMessage());
     $imoveis = [];
     $cidades = [];
+    $totalDisponiveis = 0;
 }
 
 
@@ -92,12 +101,12 @@ include 'includes/header.php';
                     <p><?php echo $page_description; ?></p>
                     <div class="banner-stats">
                         <div class="stat-item">
-                            <span class="stat-number"><?php echo count($imoveis); ?>+</span>
+                            <span class="stat-number"><?php echo count($imoveis); ?></span>
                             <span class="stat-label">Imóveis</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">4</span>
-                            <span class="stat-label">Regiões</span>
+                            <span class="stat-number"><?php echo count($cidades); ?></span>
+                            <span class="stat-label">Cidades</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">98%</span>
@@ -127,7 +136,7 @@ include 'includes/header.php';
                     </span>
                     <span class="quick-stat">
                         <i class="fas fa-map-marker-alt"></i>
-                        4 Regiões
+                        <?php echo count($cidades); ?> Cidades
                     </span>
                 </div>
             </div>
@@ -313,6 +322,9 @@ include 'includes/header.php';
                 <div class="results-counter">
                     <i class="fas fa-home"></i>
                     <span><?php echo count($imoveis); ?> imóveis encontrados</span>
+                    <?php if (!empty($filters) && count($filters) > 1): ?>
+                        <span class="filter-info">(de <?php echo $totalDisponiveis; ?> disponíveis)</span>
+                    <?php endif; ?>
                 </div>
             </div>
             
@@ -321,11 +333,16 @@ include 'includes/header.php';
                     <div class="no-properties-content">
                         <i class="fas fa-search"></i>
                         <h3>Nenhum imóvel encontrado</h3>
-                        <p>Tente ajustar os filtros de busca ou entre em contato conosco para mais informações.</p>
-                        <a href="contato.php" class="btn-view-all">
-                         
-                            Falar com Corretor
-                        </a>
+                        <?php if (!empty($filters) && count($filters) > 1): ?>
+                            <p>Não encontramos imóveis com os filtros aplicados. Tente ajustar os critérios de busca ou veja todos os <?php echo $totalDisponiveis; ?> imóveis disponíveis.</p>
+                            <div class="no-properties-actions">
+                                <a href="imoveis.php" class="btn-view-all">Ver Todos os Imóveis</a>
+                                <a href="contato.php" class="btn-secondary">Falar com Corretor</a>
+                            </div>
+                        <?php else: ?>
+                            <p>No momento não temos imóveis disponíveis. Entre em contato conosco para ser notificado sobre novas oportunidades.</p>
+                            <a href="contato.php" class="btn-view-all">Falar com Corretor</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php else: ?>
@@ -478,3 +495,70 @@ require_once __DIR__ . '/config/version.php';
 $version = getAssetsVersion();
 ?>
 <script src="assets/js/mobile-creative.js?v=<?php echo $version; ?>"></script>
+<script>
+// Funcionalidade dos filtros mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const filtersToggle = document.getElementById('filters-toggle');
+    const filtersPanel = document.getElementById('filters-panel');
+    const filtersCount = document.querySelector('.filters-count');
+    
+    if (filtersToggle && filtersPanel) {
+        filtersToggle.addEventListener('click', function() {
+            const isVisible = filtersPanel.style.display !== 'none';
+            filtersPanel.style.display = isVisible ? 'none' : 'block';
+            
+            // Atualizar ícone
+            const icon = this.querySelector('i');
+            if (isVisible) {
+                icon.className = 'fas fa-filter';
+            } else {
+                icon.className = 'fas fa-times';
+            }
+        });
+    }
+    
+    // Contar filtros ativos
+    function updateFiltersCount() {
+        if (filtersCount) {
+            const activeFilters = document.querySelectorAll('select[name="status_construcao"], select[name="cidade"]');
+            let count = 0;
+            
+            activeFilters.forEach(filter => {
+                if (filter.value && filter.value !== '') {
+                    count++;
+                }
+            });
+            
+            if (count > 0) {
+                filtersCount.textContent = count;
+                filtersCount.style.display = 'inline';
+            } else {
+                filtersCount.style.display = 'none';
+            }
+        }
+    }
+    
+    // Atualizar contador quando filtros mudarem
+    const filterSelects = document.querySelectorAll('select[name="status_construcao"], select[name="cidade"]');
+    filterSelects.forEach(select => {
+        select.addEventListener('change', updateFiltersCount);
+    });
+    
+    // Atualizar contador na carga inicial
+    updateFiltersCount();
+    
+    // Auto-submit do formulário mobile quando filtros mudarem
+    const mobileForm = document.querySelector('.filters-form-mobile');
+    if (mobileForm) {
+        const mobileSelects = mobileForm.querySelectorAll('select');
+        mobileSelects.forEach(select => {
+            select.addEventListener('change', function() {
+                // Pequeno delay para melhor UX
+                setTimeout(() => {
+                    mobileForm.submit();
+                }, 300);
+            });
+        });
+    }
+});
+</script>

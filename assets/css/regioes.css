@@ -119,7 +119,7 @@
 /* Regions Overview */
 .regions-overview {
     background: var(--bg-secondary);
-    padding: 80px 0;
+    padding: 100px 0 180px 0; /* Aumentado significativamente o padding inferior */
 }
 
 .section-header {
@@ -148,7 +148,7 @@
 .regions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    gap: 3rem; /* Aumentado o gap entre os cards */
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -531,8 +531,9 @@
 /* CTA Section */
 .cta-section {
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-    padding: 80px 0;
+    padding: 120px 0 100px 0; /* Aumentado o padding para mais espaçamento */
     color: var(--text-primary);
+    margin-top: 80px; /* Aumentado significativamente o margin-top para separar mais */
 }
 
 .cta-content {
@@ -636,7 +637,7 @@
     
     .regions-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem; /* Aumentado o gap no mobile */
     }
     
     .strategy-content {
@@ -649,6 +650,15 @@
         grid-template-columns: 1fr;
         text-align: center;
         gap: 3rem;
+    }
+    
+    .regions-overview {
+        padding: 80px 0 140px 0; /* Aumentado o padding inferior para mobile */
+    }
+    
+    .cta-section {
+        padding: 100px 0 80px 0; /* Ajustado para mobile */
+        margin-top: 60px; /* Aumentado para mobile */
     }
     
     .cta-actions {
@@ -682,6 +692,19 @@
     
     .region-metrics {
         grid-template-columns: 1fr;
+    }
+    
+    .regions-grid {
+        gap: 2rem; /* Reduzido para telas muito pequenas */
+    }
+    
+    .regions-overview {
+        padding: 60px 0 120px 0; /* Aumentado o padding inferior para telas muito pequenas */
+    }
+    
+    .cta-section {
+        padding: 80px 0 60px 0; /* Reduzido para telas muito pequenas */
+        margin-top: 40px; /* Aumentado para telas muito pequenas */
     }
     
     .section-header h2 {

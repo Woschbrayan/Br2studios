@@ -4,82 +4,152 @@ require_once __DIR__ . '/classes/Imovel.php';
 $imovel = new Imovel();
 $regiao = $_GET['regiao'] ?? '';
 
+// Função para mapear endereço para região
+function mapearEnderecoParaRegiao($endereco) {
+    $endereco_lower = strtolower($endereco);
+    
+    // Centro
+    if (strpos($endereco_lower, 'centro') !== false || 
+        strpos($endereco_lower, 'visconde de guarapuava') !== false ||
+        strpos($endereco_lower, 'josé loureiro') !== false) {
+        return 'centro';
+    }
+    
+    // Bairro Alto
+    if (strpos($endereco_lower, 'bairro alto') !== false || 
+        strpos($endereco_lower, 'alto da xv') !== false ||
+        strpos($endereco_lower, 'fernando amaro') !== false) {
+        return 'bairro-alto';
+    }
+    
+    // Cristo Rei (parte do Bairro Alto)
+    if (strpos($endereco_lower, 'cristo rei') !== false || 
+        strpos($endereco_lower, 'atílio bório') !== false) {
+        return 'bairro-alto';
+    }
+    
+    // Água Verde e regiões próximas
+    if (strpos($endereco_lower, 'água verde') !== false || 
+        strpos($endereco_lower, 'rebouças') !== false ||
+        strpos($endereco_lower, 'portão') !== false ||
+        strpos($endereco_lower, 'guabirotuba') !== false) {
+        return 'agua-verde';
+    }
+    
+    // Outras regiões de Curitiba
+    if (strpos($endereco_lower, 'novo mundo') !== false || 
+        strpos($endereco_lower, 'lindóia') !== false ||
+        strpos($endereco_lower, 'boa vista') !== false ||
+        strpos($endereco_lower, 'cabral') !== false) {
+        return 'agua-verde';
+    }
+    
+    // Região Metropolitana
+    if (strpos($endereco_lower, 'são josé dos pinhais') !== false || 
+        strpos($endereco_lower, 'pinhais') !== false ||
+        strpos($endereco_lower, 'colombo') !== false ||
+        strpos($endereco_lower, 'araucária') !== false) {
+        return 'regiao-metropolitana';
+    }
+    
+    // Default: Centro se não conseguir mapear
+    return 'centro';
+}
+
+// Definir regiões baseadas nos dados reais do banco
 $regioes = [
     'centro' => [
         'nome' => 'Centro',
         'estado' => 'PR',
         'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
         'descricao' => 'Região central de Curitiba com infraestrutura completa e fácil acesso',
-        'imoveis' => 15,
+        'imoveis' => 0, // Será atualizado com dados reais
         'valorizacao' => 'Alta',
         'destaque' => 'Centro histórico e comercial',
-        'cidades' => ['Centro', 'Centro Cívico', 'Batel', 'Água Verde']
+        'bairros' => ['Centro', 'Centro Cívico', 'Batel', 'Visconde de Guarapuava', 'José Loureiro']
     ],
     'bairro-alto' => [
         'nome' => 'Bairro Alto',
         'estado' => 'PR',
         'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
         'descricao' => 'Região nobre com excelente infraestrutura e valorização constante',
-        'imoveis' => 12,
+        'imoveis' => 0, // Será atualizado com dados reais
         'valorizacao' => 'Alta',
         'destaque' => 'Região nobre e valorizada',
-        'cidades' => ['Bairro Alto', 'Seminário', 'Cristo Rei', 'Juvevê']
+        'bairros' => ['Bairro Alto', 'Seminário', 'Cristo Rei', 'Juvevê', 'Alto da XV', 'Fernando Amaro', 'Atílio Bório']
     ],
     'agua-verde' => [
         'nome' => 'Água Verde',
         'estado' => 'PR',
         'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
         'descricao' => 'Bairro residencial com ótima localização e crescimento imobiliário',
-        'imoveis' => 8,
+        'imoveis' => 0, // Será atualizado com dados reais
         'valorizacao' => 'Média-Alta',
         'destaque' => 'Residencial e bem localizado',
-        'cidades' => ['Água Verde', 'Rebouças', 'Portão', 'Guabirotuba']
+        'bairros' => ['Água Verde', 'Rebouças', 'Portão', 'Guabirotuba', 'Novo Mundo', 'Lindóia', 'Boa Vista', 'Cabral']
     ],
     'regiao-metropolitana' => [
         'nome' => 'Região Metropolitana',
         'estado' => 'PR',
         'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
         'descricao' => 'Cidades da região metropolitana com potencial de crescimento',
-        'imoveis' => 6,
+        'imoveis' => 0, // Será atualizado com dados reais
         'valorizacao' => 'Média',
         'destaque' => 'Crescimento e oportunidades',
-        'cidades' => ['São José dos Pinhais', 'Pinhais', 'Colombo', 'Araucária']
+        'bairros' => ['São José dos Pinhais', 'Pinhais', 'Colombo', 'Araucária']
     ]
 ];
 
 // Buscar imóveis reais do banco de dados para cada região
-require_once __DIR__ . '/config/database.php';
-require_once __DIR__ . '/classes/Database.php';
-require_once __DIR__ . '/classes/Imovel.php';
-
 $imoveis_regiao = [];
+$total_imoveis = 0;
+
 try {
-    $imovel = new Imovel();
+    // Buscar todos os imóveis disponíveis
+    $filtros_gerais = ['status' => 'disponivel'];
+    $resultado_geral = $imovel->listarTodos($filtros_gerais);
     
-    if ($regiao && isset($regioes[$regiao])) {
-        // Buscar imóveis da região selecionada
-        $filtros_regiao = [
-            'cidade' => $regioes[$regiao]['nome'],
-            'status' => 'disponivel'
-        ];
-        $resultado = $imovel->listarTodos($filtros_regiao);
-        if (is_array($resultado) && isset($resultado['imoveis'])) {
-            $imoveis_regiao = $resultado['imoveis'];
+    if (is_array($resultado_geral) && isset($resultado_geral['imoveis'])) {
+        $todos_imoveis = $resultado_geral['imoveis'];
+        $total_imoveis = count($todos_imoveis);
+        
+        // Buscar imóveis da região selecionada baseado no endereço
+        if ($regiao && isset($regioes[$regiao])) {
+            $imoveis_regiao = [];
+            
+            // Filtrar imóveis que pertencem à região selecionada
+            foreach ($todos_imoveis as $imovel_item) {
+                $endereco = $imovel_item['endereco'] ?? '';
+                $regiao_mapeada = mapearEnderecoParaRegiao($endereco);
+                
+                if ($regiao_mapeada === $regiao) {
+                    $imoveis_regiao[] = $imovel_item;
+                }
+            }
         }
-    }
-    
-    // Atualizar contadores de imóveis por região baseado nos dados reais
-    foreach ($regioes as $key => &$regiao_data) {
-        $filtros_contagem = [
-            'cidade' => $regiao_data['nome'],
-            'status' => 'disponivel'
-        ];
-        $resultado_contagem = $imovel->listarTodos($filtros_contagem);
-        $regiao_data['imoveis'] = (is_array($resultado_contagem) && isset($resultado_contagem['imoveis'])) ? count($resultado_contagem['imoveis']) : 0;
+        
+        // Atualizar contadores de imóveis por região baseado nos endereços reais
+        foreach ($regioes as $key => &$regiao_data) {
+            $contador = 0;
+            
+            // Contar imóveis que correspondem à região baseado no endereço
+            foreach ($todos_imoveis as $imovel_item) {
+                $endereco = $imovel_item['endereco'] ?? '';
+                $regiao_mapeada = mapearEnderecoParaRegiao($endereco);
+                
+                // Verificar se o imóvel pertence à região atual
+                if ($regiao_mapeada === $key) {
+                    $contador++;
+                }
+            }
+            
+            $regiao_data['imoveis'] = $contador;
+        }
     }
     
 } catch (Exception $e) {
     error_log("Erro ao buscar imóveis da região: " . $e->getMessage());
+    $total_imoveis = 0;
 }
 ?>
 
@@ -89,7 +159,17 @@ $page_title = 'Regiões de Curitiba - Br2Studios';
 $page_css = 'assets/css/regioes.css';
 include 'includes/header.php'; 
 ?>
+<style>
 
+.section-header h2 {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    margin-bottom: var(--title-margin-bottom) !important;
+    line-height: 1.2 !important;
+    color: #333333 !important;
+    margin-top: 15%;
+}
+</style>
     <!-- Page Banner Desktop -->
     <section class="page-banner desktop-only">
         <div class="container">
@@ -103,7 +183,7 @@ include 'includes/header.php';
                             <span class="stat-label">Regiões</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">41</span>
+                            <span class="stat-number"><?php echo $total_imoveis; ?></span>
                             <span class="stat-label">Imóveis</span>
                         </div>
                         <div class="stat-item">
@@ -138,7 +218,7 @@ include 'includes/header.php';
                     </span>
                     <span class="quick-stat">
                         <i class="fas fa-home"></i>
-                        41+ Imóveis
+                        <?php echo $total_imoveis; ?> Imóveis
                     </span>
                 </div>
             </div>
@@ -243,7 +323,9 @@ include 'includes/header.php';
     </section>
 
   
-
+<div class="divespac" style="    padding: 30px;
+    border: none;
+    box-shadow: none; background: var(--bg-secondary);"></div>
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -278,3 +360,39 @@ require_once __DIR__ . '/config/version.php';
 $version = getAssetsVersion();
 ?>
 <script src="assets/js/mobile-creative.js?v=<?php echo $version; ?>"></script>
+<script>
+// Funcionalidade para explorar região
+function exploreRegion(regiaoKey, regiaoNome) {
+    // Mapear região para bairros correspondentes
+    const regiaoBairros = {
+        'centro': ['Centro', 'Visconde de Guarapuava', 'José Loureiro'],
+        'bairro-alto': ['Bairro Alto', 'Cristo Rei', 'Alto da XV', 'Fernando Amaro', 'Atílio Bório'],
+        'agua-verde': ['Água Verde', 'Novo Mundo', 'Lindóia', 'Boa Vista', 'Cabral'],
+        'regiao-metropolitana': ['São José dos Pinhais', 'Pinhais', 'Colombo', 'Araucária']
+    };
+    
+    // Usar o primeiro bairro da região para o filtro
+    const bairros = regiaoBairros[regiaoKey] || [regiaoNome];
+    const filtroBairro = bairros[0];
+    
+    // Redirecionar para página de imóveis com filtro da região
+    const url = `imoveis.php?cidade=${encodeURIComponent(filtroBairro)}`;
+    window.location.href = url;
+}
+
+// Adicionar efeitos visuais aos cards
+document.addEventListener('DOMContentLoaded', function() {
+    const regionCards = document.querySelectorAll('.region-card, .regiao-card-mobile');
+    
+    regionCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+});
+</script>

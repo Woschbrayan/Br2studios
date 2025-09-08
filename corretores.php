@@ -6,9 +6,17 @@ require_once __DIR__ . '/classes/Corretor.php';
 // Instanciar classe de corretores
 $corretor = new Corretor();
 
+// Filtros de busca - APENAS CRECI
+$filters = [];
+
+// Filtro por CRECI
+if (isset($_GET['creci']) && !empty($_GET['creci'])) {
+    $filters['creci'] = $_GET['creci'];
+}
+
 // Buscar corretores do banco de dados
 try {
-    $corretores_result = $corretor->listarTodos();
+    $corretores_result = $corretor->listarTodos($filters);
     
     // A classe retorna um array direto
     if (is_array($corretores_result)) {
@@ -17,7 +25,7 @@ try {
         $corretores_db = [];
     }
     
-    // Organizar corretores por estado - FILTRAR APENAS REGISTROS VÁLIDOS
+    // Organizar corretores por estado - ACEITAR TODOS OS REGISTROS VÁLIDOS
     $corretores = [];
     
     if (is_array($corretores_db)) {
@@ -27,12 +35,9 @@ try {
                 continue; // Pular corretores sem nome ou email
             }
             
-            // Verificar se tem cidade e estado
-            if (empty($corretor_item['cidade']) || empty($corretor_item['estado'])) {
-                continue; // Pular corretores sem localização
-            }
-            
-            $estado = $corretor_item['estado'];
+            // Usar estado padrão se não tiver
+            $estado = !empty($corretor_item['estado']) ? $corretor_item['estado'] : 'PR';
+            $cidade = !empty($corretor_item['cidade']) ? $corretor_item['cidade'] : 'Curitiba';
             
             if (!isset($corretores[$estado])) {
                 $corretores[$estado] = [
@@ -44,7 +49,7 @@ try {
             // Adicionar dados extras para compatibilidade com o frontend
             $corretores[$estado]['corretores'][] = [
                 'nome' => $corretor_item['nome'],
-                'cidade' => $corretor_item['cidade'],
+                'cidade' => $cidade,
                 'creci' => $corretor_item['creci'] ?? '',
                 'whatsapp' => $corretor_item['telefone'] ?? '',
                 'email' => $corretor_item['email'],
@@ -92,7 +97,17 @@ $page_title = 'Corretores em Curitiba - Br2Studios';
 $page_css = 'assets/css/corretores.css';
 include 'includes/header.php'; 
 ?>
+<style>
 
+.section-header h2 {
+    margin-top: 10%;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: var(--title-margin-bottom) !important;
+    line-height: 1.2 !important;
+    color: #333333 !important;
+}
+</style>
     <!-- Page Banner Desktop -->
     <section class="page-banner desktop-only">
         <div class="container">
@@ -176,43 +191,22 @@ include 'includes/header.php';
             <div class="search-content">
                 <div class="search-header">
                     <h2>Encontre seu Corretor</h2>
-                    <p>Filtre por estado ou busque por nome para encontrar o especialista ideal</p>
+                    <p>Digite o código CRECI para encontrar o especialista ideal</p>
                 </div>
                 
                 <div class="search-filters">
                     <div class="filter-group">
-                        <label for="estado-filter">Estado:</label>
-                        <select id="estado-filter" onchange="filtrarCorretores()">
-                            <option value="">Todos os Estados</option>
-                            <?php foreach ($corretores as $sigla => $estado): ?>
-                                <option value="<?php echo $sigla; ?>" <?php echo $estado_filtro === $sigla ? 'selected' : ''; ?>>
-                                    <?php echo $estado['estado']; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="corretor-search">Buscar Corretor:</label>
+                        <label for="creci-search">Buscar por CRECI:</label>
                         <div class="search-input">
-                            <input type="text" id="corretor-search" placeholder="Digite o nome do corretor..." onkeyup="filtrarCorretores()">
+                            <input type="text" id="creci-search" placeholder="Digite o código CRECI..." onkeyup="filtrarCorretores()" value="<?php echo htmlspecialchars($_GET['creci'] ?? ''); ?>">
                             <i class="fas fa-search"></i>
                         </div>
                     </div>
                     
                     <div class="filter-group">
-                        <label for="foto-filter">Com Foto:</label>
-                        <select id="foto-filter" onchange="filtrarCorretores()">
-                            <option value="">Todos</option>
-                            <option value="com-foto">Apenas com Foto</option>
-                            <option value="sem-foto">Apenas sem Foto</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
                         <button class="btn-clear-filters" onclick="limparFiltros()">
                             <i class="fas fa-times"></i>
-                            Limpar Filtros
+                            Limpar Filtro
                         </button>
                     </div>
                 </div>
@@ -280,10 +274,25 @@ include 'includes/header.php';
     <!-- Brokers Grid Desktop -->
     <section class="brokers-section desktop-only">
         <div class="container">
+            <!-- Contador de Resultados -->
+            <div class="results-counter">
+                <i class="fas fa-users"></i>
+                <span id="results-count"><?php 
+                    $total_corretores = 0;
+                    foreach ($corretores as $estado) {
+                        $total_corretores += count($estado['corretores']);
+                    }
+                    echo $total_corretores;
+                ?> corretores encontrados</span>
+                <?php if (!empty($filters)): ?>
+                    <span class="filter-info">(com filtros aplicados)</span>
+                <?php endif; ?>
+            </div>
+            
             <div class="brokers-grid" id="brokers-grid">
                 <?php foreach ($corretores as $sigla => $estado): ?>
                     <?php foreach ($estado['corretores'] as $corretor): ?>
-                        <div class="broker-card" data-estado="<?php echo $sigla; ?>" data-nome="<?php echo strtolower($corretor['nome']); ?>">
+                        <div class="broker-card" data-estado="<?php echo $sigla; ?>" data-nome="<?php echo strtolower($corretor['nome']); ?>" data-creci="<?php echo strtolower($corretor['creci']); ?>">
                             <div class="broker-header">
                                 <div class="broker-avatar <?php echo (isset($corretor['imagem']) && !empty($corretor['imagem']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $corretor['imagem'])) ? 'has-photo' : ''; ?>">
                                     <?php if (isset($corretor['imagem']) && !empty($corretor['imagem']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $corretor['imagem'])): ?>
@@ -471,3 +480,83 @@ require_once __DIR__ . '/config/version.php';
 $version = getAssetsVersion();
 ?>
 <script src="assets/js/mobile-creative.js?v=<?php echo $version; ?>"></script>
+<script>
+// Funcionalidade dos filtros de corretores - APENAS CRECI
+function filtrarCorretores() {
+    const creci = document.getElementById('creci-search').value;
+    
+    // Construir URL com parâmetros
+    const params = new URLSearchParams();
+    if (creci) params.append('creci', creci);
+    
+    // Redirecionar com filtros
+    const url = params.toString() ? 'corretores.php?' + params.toString() : 'corretores.php';
+    window.location.href = url;
+}
+
+function limparFiltros() {
+    window.location.href = 'corretores.php';
+}
+
+// Filtros em tempo real para desktop - APENAS CRECI
+document.addEventListener('DOMContentLoaded', function() {
+    const creciSearch = document.getElementById('creci-search');
+    
+    // Auto-submit quando filtro mudar (com delay para busca)
+    let searchTimeout;
+    if (creciSearch) {
+        creciSearch.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                filtrarCorretores();
+            }, 500); // 500ms de delay para evitar muitas requisições
+        });
+    }
+    
+    // Mostrar/ocultar resultados baseado no filtro CRECI
+    const brokerCards = document.querySelectorAll('.broker-card');
+    const noResults = document.getElementById('no-results');
+    const resultsCount = document.getElementById('results-count');
+    
+    function updateResults() {
+        const creci = creciSearch ? creciSearch.value.toLowerCase() : '';
+        
+        let visibleCount = 0;
+        
+        brokerCards.forEach(card => {
+            const cardCreci = card.getAttribute('data-creci') || '';
+            
+            let show = true;
+            
+            // Filtro por CRECI
+            if (creci && !cardCreci.includes(creci)) {
+                show = false;
+            }
+            
+            if (show) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Atualizar contador de resultados
+        if (resultsCount) {
+            resultsCount.textContent = `${visibleCount} corretores encontrados`;
+        }
+        
+        // Mostrar/ocultar mensagem de "nenhum resultado"
+        if (noResults) {
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+    }
+    
+    // Executar filtros na carga inicial
+    updateResults();
+});
+</script>

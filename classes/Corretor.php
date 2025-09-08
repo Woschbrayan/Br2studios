@@ -24,7 +24,7 @@ class Corretor {
                 throw new Exception("Nome e email são obrigatórios");
             }
             
-            if (!$this->db->validateEmail($dados['email'])) {
+            if (!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) {
                 throw new Exception("Email inválido");
             }
             
@@ -92,7 +92,7 @@ class Corretor {
             // Verificar se email já existe em outro corretor
             if (isset($dados['email']) && $dados['email'] !== $existente['email']) {
                 $outro = $this->buscarPorEmail($dados['email']);
-                if ($outro && $outro['id'] != $id) {
+                if ($outro && isset($outro['id']) && $outro['id'] != $id) {
                     throw new Exception("Email já cadastrado para outro corretor");
                 }
             }
@@ -153,7 +153,8 @@ class Corretor {
     public function buscarPorEmail($email) {
         try {
             $sql = "SELECT * FROM {$this->table} WHERE email = :email";
-            return $this->db->fetchOne($sql, [':email' => $email]);
+            $result = $this->db->fetchOne($sql, [':email' => $email]);
+            return $result ?: false;
         } catch (Exception $e) {
             error_log("Erro ao buscar corretor por email: " . $e->getMessage());
             return false;
@@ -184,8 +185,9 @@ class Corretor {
             
             // Aplicar filtros
             if (!empty($filtros['nome'])) {
-                $where[] = "nome LIKE :nome";
+                $where[] = "(nome LIKE :nome OR creci LIKE :creci)";
                 $params[':nome'] = '%' . $filtros['nome'] . '%';
+                $params[':creci'] = '%' . $filtros['nome'] . '%';
             }
             
             if (!empty($filtros['cidade'])) {
@@ -196,6 +198,11 @@ class Corretor {
             if (!empty($filtros['estado'])) {
                 $where[] = "estado = :estado";
                 $params[':estado'] = $filtros['estado'];
+            }
+            
+            if (!empty($filtros['creci'])) {
+                $where[] = "creci LIKE :creci";
+                $params[':creci'] = '%' . $filtros['creci'] . '%';
             }
             
             if (!empty($where)) {

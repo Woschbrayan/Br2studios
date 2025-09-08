@@ -18,7 +18,7 @@ try {
     
     // Dados da empresa
     $estatisticas = [
-        'imoveis_vendidos' => $imoveis_vendidos > 0 ? $imoveis_vendidos : 120, // Valor padrão se não há vendidos
+        'imoveis_vendidos' => $imoveis_vendidos > 0 ? $imoveis_vendidos : 500, // Valor padrão se não há vendidos
         'clientes_satisfeitos' => $imoveis_vendidos > 0 ? intval($imoveis_vendidos * 0.8) : 95, // 80% dos vendidos
         'anos_experiencia' => 8, // Valor fixo da empresa
         'corretores_credenciados' => $corretores_credenciados > 0 ? $corretores_credenciados : 5
@@ -29,7 +29,7 @@ try {
     
     // Valores padrão em caso de erro
     $estatisticas = [
-        'imoveis_vendidos' => 120,
+        'imoveis_vendidos' => 500,
         'clientes_satisfeitos' => 95,
         'anos_experiencia' => 8,
         'corretores_credenciados' => 5
@@ -143,6 +143,17 @@ include 'includes/header.php';
     width: 100% !important;
     top: 80px !important;
 }
+.about-section {
+    background: #ffffff !important;
+    padding: 0px 0 !important;
+    margin: 0 !important;
+}
+.sobre-header-mobile .header-mobile-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
 </style>
 
     <!-- Hero Section Desktop -->
@@ -192,7 +203,7 @@ include 'includes/header.php';
                     </span>
                     <span class="quick-stat">
                         <i class="fas fa-home"></i>
-                        <?php echo $estatisticas['imoveis_vendidos']; ?>+ Estúdios
+                        <?php echo $estatisticas['imoveis_vendidos']; ?>+ Imoveis
                     </span>
                     <span class="quick-stat">
                         <i class="fas fa-chart-line"></i>
