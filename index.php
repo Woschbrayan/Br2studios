@@ -164,7 +164,7 @@ include 'includes/header.php';
         }
         
         .hero-content {
-            top: 50% !important;
+            top: 58% !important;
             left: 5% !important;
             max-width: 90% !important;
             transform: translateY(-50%) !important;
@@ -225,7 +225,7 @@ include 'includes/header.php';
         }
         
         .hero-content {
-            top: 50% !important;
+            top: 58% !important;
             left: 3% !important;
             max-width: 94% !important;
             transform: translateY(-50%) !important;
@@ -962,7 +962,7 @@ include 'includes/header.php';
                 </div>
             </div>
             
-            <!-- Mobile Carousel -->
+            <!-- Mobile Carousel Melhorado -->
             <div class="regioes-carousel mobile-only">
                 <div class="carousel-container">
                     <div class="carousel-track" id="regioes-carousel-track">
@@ -973,7 +973,6 @@ include 'includes/header.php';
                             <div class="regiao-content">
                                 <h3>Centro</h3>
                                 <p>Região central com infraestrutura completa e fácil acesso</p>
-                              
                                 <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
                             </div>
                         </div>
@@ -985,7 +984,6 @@ include 'includes/header.php';
                             <div class="regiao-content">
                                 <h3>Bairro Alto</h3>
                                 <p>Região nobre com excelente infraestrutura e valorização constante</p>
-                               
                                 <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
                             </div>
                         </div>
@@ -997,7 +995,6 @@ include 'includes/header.php';
                             <div class="regiao-content">
                                 <h3>Água Verde</h3>
                                 <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
-                               
                                 <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
                             </div>
                         </div>
@@ -1009,13 +1006,12 @@ include 'includes/header.php';
                             <div class="regiao-content">
                                 <h3>Região Metropolitana</h3>
                                 <p>Cidades da região metropolitana com potencial de crescimento</p>
-                               
                                 <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Carousel Indicators -->
+                    <!-- Carousel Indicators Visuais (Apenas para mostrar progresso) -->
                     <div class="carousel-indicators">
                         <span class="indicator active" data-slide="0"></span>
                         <span class="indicator" data-slide="1"></span>

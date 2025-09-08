@@ -1,6 +1,6 @@
 /**
- * Carrossel Automático - Seção Regiões de Curitiba
- * Funcionalidade: Carrossel automático com indicadores e controle manual
+ * Carrossel Automático Contínuo - Seção Regiões de Curitiba
+ * Funcionalidade: Carrossel com rotação contínua automática a cada 2 segundos
  */
 
 class RegioesCarousel {
@@ -10,7 +10,7 @@ class RegioesCarousel {
         this.currentSlide = 0;
         this.totalSlides = 4; // Total de regiões
         this.autoSlideInterval = null;
-        this.autoSlideDelay = 3500; // 3.5 segundos para transição mais dinâmica
+        this.autoSlideDelay = 2000; // 2 segundos para rotação contínua
         this.isAutoSliding = true;
         this.isTransitioning = false;
         
@@ -32,45 +32,20 @@ class RegioesCarousel {
         this.setupEventListeners();
         this.startAutoSlide();
         this.updateIndicators();
+        this.addVisualEffects();
         
         // Pausar animação quando a página não está visível
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 this.stopAutoSlide();
             } else {
-                // Retomar auto-slide quando a página fica visível
                 this.startAutoSlide();
             }
         });
     }
     
     setupEventListeners() {
-        // Indicadores clicáveis
-        this.indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                this.goToSlide(index);
-                
-                // Retomar auto-slide após 5 segundos
-                setTimeout(() => {
-                    this.startAutoSlide();
-                }, 5000);
-            });
-            
-            // Acessibilidade - teclado
-            indicator.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.goToSlide(index);
-                    
-                    // Retomar auto-slide após 5 segundos
-                    setTimeout(() => {
-                        this.startAutoSlide();
-                    }, 5000);
-                }
-            });
-        });
-        
-        // Pausar no hover apenas temporariamente
+        // Apenas pausar no hover (sem controles manuais)
         const carousel = document.querySelector('.regioes-carousel');
         if (carousel) {
             carousel.addEventListener('mouseenter', () => {
@@ -78,15 +53,9 @@ class RegioesCarousel {
             });
             
             carousel.addEventListener('mouseleave', () => {
-                // Retomar auto-slide após 2 segundos
-                setTimeout(() => {
-                    this.startAutoSlide();
-                }, 2000);
+                this.startAutoSlide();
             });
         }
-        
-        // Touch/swipe support
-        this.setupTouchEvents();
         
         // Pausar quando a janela perde o foco
         window.addEventListener('blur', () => {
@@ -94,70 +63,11 @@ class RegioesCarousel {
         });
         
         window.addEventListener('focus', () => {
-            // Retomar auto-slide quando a janela ganha foco
             this.startAutoSlide();
         });
     }
     
-    setupTouchEvents() {
-        let startX = 0;
-        let startY = 0;
-        let isDragging = false;
-        
-        this.track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isDragging = true;
-            this.stopAutoSlide();
-        });
-        
-        this.track.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            
-            const currentX = e.touches[0].clientX;
-            const currentY = e.touches[0].clientY;
-            const diffX = startX - currentX;
-            const diffY = startY - currentY;
-            
-            // Verificar se é um swipe horizontal
-            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-                e.preventDefault();
-                
-                if (diffX > 0) {
-                    // Swipe para esquerda - próximo slide
-                    this.nextSlide();
-                } else {
-                    // Swipe para direita - slide anterior
-                    this.prevSlide();
-                }
-                
-                isDragging = false;
-                
-                // Retomar auto-slide após 5 segundos
-                setTimeout(() => {
-                    this.startAutoSlide();
-                }, 5000);
-            }
-        });
-        
-        this.track.addEventListener('touchend', () => {
-            isDragging = false;
-        });
-    }
-    
-    goToSlide(slideIndex) {
-        if (slideIndex < 0 || slideIndex >= this.totalSlides || this.isTransitioning) return;
-        
-        this.isTransitioning = true;
-        this.currentSlide = slideIndex;
-        this.updateTrackPosition();
-        this.updateIndicators();
-        
-        // Reset transition flag após animação
-        setTimeout(() => {
-            this.isTransitioning = false;
-        }, 800);
-    }
+    // Removido setupTouchEvents e handleUserInteraction - carrossel totalmente automático
     
     nextSlide() {
         if (this.isTransitioning) return;
@@ -170,29 +80,18 @@ class RegioesCarousel {
         // Reset transition flag após animação
         setTimeout(() => {
             this.isTransitioning = false;
-        }, 800);
-    }
-    
-    prevSlide() {
-        if (this.isTransitioning) return;
-        
-        this.isTransitioning = true;
-        this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-        this.updateTrackPosition();
-        this.updateIndicators();
-        
-        // Reset transition flag após animação
-        setTimeout(() => {
-            this.isTransitioning = false;
-        }, 800);
+        }, 500);
     }
     
     updateTrackPosition() {
         if (!this.track) return;
         
-        // Como cada card ocupa 25% da largura total, movemos 25% por slide
+        // Cada card ocupa 25% da largura total
         const translateX = -this.currentSlide * 25;
         this.track.style.transform = `translateX(${translateX}%)`;
+        
+        // Transição mais rápida para rotação contínua
+        this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
     
     updateIndicators() {
@@ -201,12 +100,20 @@ class RegioesCarousel {
         });
     }
     
+    addVisualEffects() {
+        // Adicionar efeitos visuais aos cards
+        const cards = this.track.querySelectorAll('.regiao-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.classList.add('fade-in-up');
+        });
+    }
+    
     startAutoSlide() {
         if (this.autoSlideInterval) {
             clearInterval(this.autoSlideInterval);
         }
         
-        // Sempre iniciar o auto-slide, independente de interação
         this.autoSlideInterval = setInterval(() => {
             if (!this.isTransitioning) {
                 this.nextSlide();
@@ -224,22 +131,11 @@ class RegioesCarousel {
     // Método público para controlar o auto-slide
     setAutoSlide(enabled) {
         this.isAutoSliding = enabled;
-        if (enabled && !this.isUserInteracting) {
+        if (enabled) {
             this.startAutoSlide();
         } else {
             this.stopAutoSlide();
         }
-    }
-    
-    // Método público para ir para um slide específico
-    goToSlidePublic(slideIndex) {
-        this.goToSlide(slideIndex);
-        this.isUserInteracting = true;
-        
-        setTimeout(() => {
-            this.isUserInteracting = false;
-            this.startAutoSlide();
-        }, 10000);
     }
 }
 
@@ -247,15 +143,16 @@ class RegioesCarousel {
 document.addEventListener('DOMContentLoaded', () => {
     // Verificar se estamos na página correta e se o carrossel existe
     if (document.getElementById('regioes-carousel-track')) {
-        window.regioesCarousel = new RegioesCarousel();
-        
-        // Adicionar classe para animação automática
+        // Aguardar um pouco para garantir que todos os elementos estejam carregados
         setTimeout(() => {
+            window.regioesCarousel = new RegioesCarousel();
+            
+            // Adicionar classe para animação automática
             const track = document.getElementById('regioes-carousel-track');
             if (track) {
                 track.classList.add('auto-sliding');
             }
-        }, 1000);
+        }, 500);
     }
 });
 
