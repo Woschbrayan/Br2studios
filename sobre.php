@@ -132,8 +132,7 @@ include 'includes/header.php';
 <style>
 
 .hero-section .hero-content {
-    display: grid !important
-;
+    display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 60px !important;
     align-items: center !important;
@@ -143,11 +142,92 @@ include 'includes/header.php';
     width: 100% !important;
     top: 80px !important;
 }
+
+.hero-visual {
+    width: 100% !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+}
+
+.hero-text {
+    width: 100% !important;
+    text-align: left !important;
+}
 .about-section {
     background: #ffffff !important;
-    padding: 0px 0 !important;
+    padding: 80px 0 !important;
     margin: 0 !important;
 }
+
+.about-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    gap: 40px !important;
+}
+
+.about-text {
+    width: 100% !important;
+}
+
+.about-visual {
+    width: 100% !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+}
+
+.section-header {
+    text-align: center !important;
+    margin-bottom: 50px !important;
+}
+
+.section-header h2 {
+    margin-bottom: 15px !important;
+    font-size: 2.5rem !important;
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+}
+
+.section-header p {
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+    font-size: 1.1rem !important;
+    color: #666 !important;
+    max-width: 600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* CTA Section - Botão vermelho */
+.cta-section .btn-primary {
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    padding: 18px 35px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+}
+
+.cta-section .btn-primary:hover {
+    background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
 .sobre-header-mobile .header-mobile-content {
     text-align: center;
     max-width: 600px;
@@ -197,10 +277,6 @@ include 'includes/header.php';
                 <p class="mobile-subtitle">Especialistas em estúdios, especialistas em investimentos.</p>
                 <p class="mobile-description">Localizada no coração de Curitiba, transformamos investimentos em imóveis em uma experiência segura, rentável e estratégica.</p>
                 <div class="quick-stats-mobile">
-                    <span class="quick-stat">
-                        <i class="fas fa-calendar"></i>
-                        <?php echo $estatisticas['anos_experiencia']; ?>+ Anos
-                    </span>
                     <span class="quick-stat">
                         <i class="fas fa-home"></i>
                         <?php echo $estatisticas['imoveis_vendidos']; ?>+ Imoveis
@@ -313,24 +389,6 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Values Mobile - Cards Simples -->
-    <section class="values-mobile mobile-only">
-        <div class="section-header">
-            <h2>Nossos Valores</h2>
-            <p>O que nos move</p>
-        </div>
-        <div class="values-grid-mobile">
-            <?php foreach ($valores as $valor): ?>
-                <div class="value-card-mobile">
-                    <div class="value-icon-mobile">
-                        <i class="<?php echo $valor['icone']; ?>"></i>
-                    </div>
-                    <h3><?php echo $valor['titulo']; ?></h3>
-                    <p><?php echo $valor['descricao']; ?></p>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </section>
 
     <!-- Diferenciais Section -->
     <section class="diferenciais-section">

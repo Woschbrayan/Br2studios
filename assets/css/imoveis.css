@@ -1,5 +1,365 @@
 /* ===== PÁGINA DE IMÓVEIS - DESIGN MODERNO E CRIATIVO ===== */
 
+/* ===== CORREÇÕES SOLICITADAS ===== */
+
+/* 1. Botões de filtro com cor vermelha quando selecionados */
+.category-filter-item.active .category-filter-link,
+.category-filter-mobile.active .category-filter-link-mobile {
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+}
+
+.category-filter-item .category-filter-link,
+.category-filter-mobile .category-filter-link-mobile {
+    background: #f8f9fa;
+    color: #333;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.category-filter-item .category-filter-link:hover,
+.category-filter-mobile .category-filter-link-mobile:hover {
+    background: #e9ecef;
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+/* 2. Badge de entrega vermelho e maior */
+.badge-entrega {
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    font-size: 0.75rem !important;
+    padding: 8px 12px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.4) !important;
+}
+
+/* 3. Botão Ver Detalhes VERMELHO - MÁXIMA ESPECIFICIDADE */
+.btn-view-property,
+a.btn-view-property,
+.property-info .btn-view-property,
+.property-card .btn-view-property,
+.properties-grid .btn-view-property,
+.properties-section .btn-view-property {
+    background: #dc2626 !important;
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    padding: 15px 30px !important;
+    border-radius: 10px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    text-align: center !important;
+    width: 100% !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+    margin-top: 0 !important;
+}
+
+.btn-view-property:hover,
+a.btn-view-property:hover,
+.property-info .btn-view-property:hover,
+.property-card .btn-view-property:hover,
+.properties-grid .btn-view-property:hover,
+.properties-section .btn-view-property:hover {
+    background: #b91c1c !important;
+    background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    color: white !important;
+    text-decoration: none !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 4. Remover bordas da div de detalhes */
+.property-details {
+    border: none !important;
+    background: transparent !important;
+    padding: 15px 0 !important;
+}
+
+.property-details span {
+    background: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    margin: 0 5px 5px 0 !important;
+}
+
+/* 5. Cards de imóveis completamente reestruturados */
+.properties-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: 30px !important;
+    padding: 20px 0 !important;
+}
+
+.property-card {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid #f0f0f0 !important;
+    position: relative !important;
+    display: block !important;
+}
+
+.property-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.property-image {
+    position: relative !important;
+    height: 250px !important;
+    overflow: hidden !important;
+}
+
+.property-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.3s ease !important;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.05) !important;
+}
+
+.property-info {
+    padding: 25px !important;
+    background: white !important;
+}
+
+.property-info h3 {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    margin-bottom: 15px !important;
+    line-height: 1.3 !important;
+}
+
+.property-location {
+    color: #666 !important;
+    font-size: 1rem !important;
+    margin-bottom: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.property-location i {
+    color: #dc2626 !important;
+    font-size: 16px !important;
+}
+
+.property-details {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-bottom: 25px !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.property-details span {
+    background: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 0.9rem !important;
+    color: #333 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.property-details i {
+    color: #dc2626 !important;
+    font-size: 14px !important;
+}
+
+/* Botão Ver Detalhes - SEMPRE VISÍVEL E VERMELHO */
+.btn-view-property,
+a.btn-view-property,
+.property-info .btn-view-property,
+.property-card .btn-view-property {
+    background: #dc2626 !important;
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    padding: 15px 30px !important;
+    border-radius: 10px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+    margin-top: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+.btn-view-property:hover,
+a.btn-view-property:hover,
+.property-info .btn-view-property:hover,
+.property-card .btn-view-property:hover {
+    background: #b91c1c !important;
+    background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* 6. Ajustar espaçamentos dos títulos das seções */
+.section-header {
+    margin-bottom: 40px !important;
+}
+
+/* 7. CSS específico para desktop - garantir botão visível e VERMELHO */
+@media (min-width: 769px) {
+    .property-card {
+        display: block !important;
+    }
+    
+    .btn-view-property,
+    a.btn-view-property,
+    .property-info .btn-view-property,
+    .property-card .btn-view-property {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        background: #dc2626 !important;
+        background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+        color: white !important;
+        padding: 15px 30px !important;
+        border-radius: 10px !important;
+        text-decoration: none !important;
+        font-weight: 700 !important;
+        font-size: 16px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        text-align: center !important;
+        width: 100% !important;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+        border: none !important;
+        transition: all 0.3s ease !important;
+        margin-top: 0 !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+    
+    .btn-view-property:hover,
+    a.btn-view-property:hover,
+    .property-info .btn-view-property:hover,
+    .property-card .btn-view-property:hover {
+        background: #b91c1c !important;
+        background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+        color: white !important;
+        text-decoration: none !important;
+    }
+}
+
+/* 8. Botão "Falar com Especialista" na seção CTA - VERMELHO */
+.cta-section .btn-primary,
+.cta-section a.btn-primary,
+.cta-actions .btn-primary,
+.cta-actions a.btn-primary {
+    background: #dc2626 !important;
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    border: none !important;
+    padding: 18px 35px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.cta-section .btn-primary:hover,
+.cta-section a.btn-primary:hover,
+.cta-actions .btn-primary:hover,
+.cta-actions a.btn-primary:hover {
+    background: #b91c1c !important;
+    background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.cta-section .btn-primary:before,
+.cta-section a.btn-primary:before,
+.cta-actions .btn-primary:before,
+.cta-actions a.btn-primary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.cta-section .btn-primary:hover:before,
+.cta-section a.btn-primary:hover:before,
+.cta-actions .btn-primary:hover:before,
+.cta-actions a.btn-primary:hover:before {
+    left: 100%;
+}
+
+.section-header h2 {
+    margin-bottom: 15px !important;
+}
+
+.section-header p {
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+.search-header {
+    margin-bottom: 30px !important;
+}
+
+.search-header h2 {
+    margin-bottom: 10px !important;
+}
+
+.search-header p {
+    margin-top: 8px !important;
+    margin-bottom: 0 !important;
+}
+
 /* ===== CARDS DE IMÓVEIS - COPIADOS EXATAMENTE DO HOME-SECTIONS.CSS ===== */
 .properties-grid {
     display: grid;
@@ -43,19 +403,20 @@
 .property-image {
     position: relative;
     height: 280px;
-    overflow: visible;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
 }
 
 .property-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
     border-radius: 15px 15px 0 0;
 }
 
 .property-card:hover .property-image img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .property-labels {
@@ -64,27 +425,27 @@
     left: 15px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     z-index: 15;
-    max-width: 200px;
+    max-width: 250px;
     pointer-events: none;
     width: auto;
     height: auto;
-    min-height: 80px;
+    min-height: 100px;
     overflow: visible;
 }
 
 .property-badge {
     display: inline-flex !important;
     align-items: center;
-    gap: 4px;
-    padding: 5px 8px;
-    border-radius: 12px;
-    font-size: 0.65rem;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
@@ -96,7 +457,7 @@
     visibility: visible !important;
     position: relative;
     z-index: 20;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .property-badge:hover {
@@ -124,16 +485,17 @@
 }
 
 .badge-entrega {
-    background: linear-gradient(135deg, #dc3545, #c82333) !important;
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
     color: white !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     opacity: 1 !important;
     visibility: visible !important;
     display: inline-flex !important;
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.4) !important;
 }
 
 .property-badge i {
-    font-size: 0.65rem;
+    font-size: 1rem;
 }
 
 
@@ -234,25 +596,31 @@
 }
 
 .btn-view-property {
-    background: var(--color-gradient);
-    color: white;
-    padding: 16px 32px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    display: inline-block;
-    transition: all 0.3s ease;
-    text-align: center;
-    width: 100%;
-    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    padding: 15px 30px !important;
+    border-radius: 10px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+    margin-top: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .btn-view-property:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    color: white !important;
 }
 
 /* ===== ESTILOS ESPECÍFICOS DA PÁGINA DE IMÓVEIS ===== */
@@ -543,6 +911,39 @@
     z-index: 10;
 }
 
+/* Filtros de Categoria Desktop */
+.category-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.category-filter-item {
+    flex-shrink: 0;
+}
+
+.category-filter-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.category-filter-link i {
+    font-size: 1.1rem;
+}
+
 .search-container {
     background: #ffffff;
     border-radius: 25px;
@@ -678,22 +1079,22 @@
 }
 
 .properties-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 50px;
-    padding: 20px 0;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: 30px !important;
+    padding: 20px 0 !important;
 }
 
 /* Property Card */
 .property-card {
-    background: #ffffff;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #f8f9fa;
-    position: relative;
-    backdrop-filter: blur(10px);
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid #f0f0f0 !important;
+    position: relative !important;
+    display: block !important;
 }
 
 .property-card::before {
@@ -721,7 +1122,7 @@
 
 .property-image {
     position: relative;
-    height: 320px;
+    height: 280px;
     overflow: hidden;
     border-radius: 30px 30px 0 0;
 }
@@ -730,31 +1131,31 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease;
     filter: brightness(1.05) contrast(1.1);
 }
 
 .property-card:hover .property-image img {
-    transform: scale(1.08);
+    transform: scale(1.05);
     filter: brightness(1.1) contrast(1.15);
 }
 
 .property-badge {
     position: absolute;
-    top: 25px;
-    left: 25px;
+    top: 20px;
+    left: 20px;
     background: linear-gradient(135deg, #333333 0%, #666666 100%);
     color: white;
-    padding: 10px 18px;
-    border-radius: 25px;
-    font-size: 0.8rem;
+    padding: 12px 18px;
+    border-radius: 20px;
+    font-size: 0.9rem;
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     z-index: 3;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
 }
 
@@ -1157,10 +1558,10 @@
     
     .property-badge {
         top: 15px;
-        right: 15px;
-        padding: 8px 12px;
-        font-size: 0.8rem;
-        border-radius: 20px;
+        left: 15px;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        border-radius: 18px;
     }
     
     .property-info {
@@ -1504,7 +1905,7 @@
 
 /* ===== MELHORIAS PARA FILTROS MOBILE ===== */
 .filters-count {
-    background: #e74c3c;
+    background: #dc2626;
     color: white;
     border-radius: 50%;
     width: 20px;
@@ -1518,6 +1919,165 @@
     position: absolute;
     top: -5px;
     right: -5px;
+}
+
+/* Filtros Mobile - Melhorados */
+.filters-mobile {
+    background: #f8f9fa;
+    padding: 20px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.category-filters-mobile {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-filters-mobile::-webkit-scrollbar {
+    display: none;
+}
+
+.category-filter-mobile {
+    flex-shrink: 0;
+}
+
+.category-filter-link-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 16px;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.category-filter-link-mobile i {
+    font-size: 1.2rem;
+}
+
+.filters-mobile-container {
+    padding: 0 15px;
+}
+
+.filters-toggle-btn {
+    width: 100%;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 15px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filters-toggle-btn:hover {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+.filters-mobile-panel {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.filter-row-mobile {
+    margin-bottom: 20px;
+}
+
+.filter-row-mobile label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.filter-select-mobile {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.filter-select-mobile:focus {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.filter-actions-mobile {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-apply-filters {
+    flex: 1;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-apply-filters:hover {
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+    transform: translateY(-2px);
+}
+
+.btn-clear-filters {
+    flex: 1;
+    background: transparent;
+    color: #666;
+    border: 2px solid #e9ecef;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-clear-filters:hover {
+    border-color: #dc2626;
+    color: #dc2626;
 }
 
 .filter-info {
@@ -1534,35 +2094,55 @@
 /* Melhorar responsividade dos cards no mobile */
 @media (max-width: 768px) {
     .properties-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 15px;
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
+        padding: 0 15px !important;
     }
     
     .property-card {
-        margin-bottom: 20px;
+        margin-bottom: 20px !important;
+        max-height: none !important;
     }
     
     .property-image {
-        height: 250px;
+        height: 250px !important;
     }
     
     .property-info {
-        padding: 20px;
+        padding: 20px !important;
     }
     
     .property-info h3 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
+        font-size: 1.2rem !important;
+        margin-bottom: 10px !important;
     }
     
     .property-details {
-        gap: 15px;
-        margin-bottom: 15px;
+        gap: 15px !important;
+        margin-bottom: 15px !important;
     }
     
     .property-details span {
-        font-size: 0.85rem;
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .properties-grid {
+        gap: 20px !important;
+        padding: 0 10px !important;
+    }
+    
+    .property-image {
+        height: 220px !important;
+    }
+    
+    .property-info {
+        padding: 15px !important;
+    }
+    
+    .property-info h3 {
+        font-size: 1.1rem !important;
     }
 }
 
@@ -1633,4 +2213,45 @@
 
 [data-theme="dark"] .footer-bottom {
     background: rgba(0, 0, 0, 0.7);
+}
+
+/* 9. Botão CTA Mobile - VERMELHO */
+@media (max-width: 768px) {
+    .cta-section .btn-primary,
+    .cta-section a.btn-primary,
+    .cta-actions .btn-primary,
+    .cta-actions a.btn-primary {
+        background: #dc2626 !important;
+        background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+        color: white !important;
+        border: none !important;
+        padding: 16px 30px !important;
+        border-radius: 10px !important;
+        text-decoration: none !important;
+        font-weight: 700 !important;
+        font-size: 16px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .cta-section .btn-primary:hover,
+    .cta-section a.btn-primary:hover,
+    .cta-actions .btn-primary:hover,
+    .cta-actions a.btn-primary:hover {
+        background: #b91c1c !important;
+        background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+        color: white !important;
+        text-decoration: none !important;
+    }
 }

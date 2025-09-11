@@ -91,7 +91,30 @@ if (isset($_GET['filtro']) && $_GET['filtro'] == 'destaque') {
 $page_css = 'assets/css/imoveis.css';
 include 'includes/header.php'; 
 ?>
+<style>
+ 
+    .property-badge {
+        padding: 10px 5px !important;
+        font-size: 0.7rem !important;
+        max-width: 116px !important;
+        border-radius: 6px !important;
+    }
+    .property-details {
+    display: flex !important
+;
+    gap: 0px !important;
+    margin-bottom: 0px !important;
+    flex-wrap: wrap !important;
+    min-height: 2rem !important;
+}
+.property-image {
+    position: relative !important;
+    height: 340px !important;
+    overflow: hidden !important;
+}
 
+
+</style>
     <!-- Page Banner Desktop -->
     <section class="page-banner desktop-only">
         <div class="container">
@@ -496,12 +519,13 @@ $version = getAssetsVersion();
 ?>
 <script src="assets/js/mobile-creative.js?v=<?php echo $version; ?>"></script>
 <script>
-// Funcionalidade dos filtros mobile
+// Funcionalidade dos filtros melhorada
 document.addEventListener('DOMContentLoaded', function() {
     const filtersToggle = document.getElementById('filters-toggle');
     const filtersPanel = document.getElementById('filters-panel');
     const filtersCount = document.querySelector('.filters-count');
     
+    // Toggle dos filtros mobile
     if (filtersToggle && filtersPanel) {
         filtersToggle.addEventListener('click', function() {
             const isVisible = filtersPanel.style.display !== 'none';
@@ -520,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contar filtros ativos
     function updateFiltersCount() {
         if (filtersCount) {
-            const activeFilters = document.querySelectorAll('select[name="status_construcao"], select[name="cidade"]');
+            const activeFilters = document.querySelectorAll('select[name="status_construcao"], select[name="cidade"], input[name="min_price"], input[name="max_price"]');
             let count = 0;
             
             activeFilters.forEach(filter => {
@@ -539,9 +563,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Atualizar contador quando filtros mudarem
-    const filterSelects = document.querySelectorAll('select[name="status_construcao"], select[name="cidade"]');
+    const filterSelects = document.querySelectorAll('select[name="status_construcao"], select[name="cidade"], input[name="min_price"], input[name="max_price"]');
     filterSelects.forEach(select => {
         select.addEventListener('change', updateFiltersCount);
+        select.addEventListener('input', updateFiltersCount);
     });
     
     // Atualizar contador na carga inicial
@@ -560,5 +585,80 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Melhorar funcionalidade dos filtros desktop
+    const desktopForm = document.querySelector('.search-form');
+    if (desktopForm) {
+        // Auto-submit quando filtros mudarem (com delay)
+        const desktopSelects = desktopForm.querySelectorAll('select');
+        desktopSelects.forEach(select => {
+            select.addEventListener('change', function() {
+                setTimeout(() => {
+                    desktopForm.submit();
+                }, 500);
+            });
+        });
+        
+        // Validação de preços
+        const minPriceInput = desktopForm.querySelector('input[name="min_price"]');
+        const maxPriceInput = desktopForm.querySelector('input[name="max_price"]');
+        
+        if (minPriceInput && maxPriceInput) {
+            minPriceInput.addEventListener('blur', function() {
+                const minValue = parseFloat(this.value);
+                const maxValue = parseFloat(maxPriceInput.value);
+                
+                if (minValue && maxValue && minValue > maxValue) {
+                    alert('O preço mínimo não pode ser maior que o preço máximo.');
+                    this.value = '';
+                }
+            });
+            
+            maxPriceInput.addEventListener('blur', function() {
+                const minValue = parseFloat(minPriceInput.value);
+                const maxValue = parseFloat(this.value);
+                
+                if (minValue && maxValue && maxValue < minValue) {
+                    alert('O preço máximo não pode ser menor que o preço mínimo.');
+                    this.value = '';
+                }
+            });
+        }
+    }
+    
+    // Melhorar UX dos botões de filtro de categoria
+    const categoryFilters = document.querySelectorAll('.category-filter-link, .category-filter-link-mobile');
+    categoryFilters.forEach(filter => {
+        filter.addEventListener('click', function(e) {
+            // Adicionar loading state
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Carregando...';
+            this.style.pointerEvents = 'none';
+            
+            // Restaurar após 2 segundos se não redirecionar
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.style.pointerEvents = 'auto';
+            }, 2000);
+        });
+    });
+    
+    // Adicionar animação aos cards
+    const propertyCards = document.querySelectorAll('.property-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    propertyCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
 });
 </script>

@@ -154,8 +154,15 @@ include 'includes/header.php';
         .stat-label {
             font-size: 1rem !important;
         }
+        
     }
-    
+    .section-header h2 {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    margin-bottom: var(--title-margin-bottom) !important;
+    line-height: 1.2 !important;
+    color: #333333 !important;
+}
     /* Hero Mobile Responsive */
     @media (max-width: 768px) {
         .hero {
@@ -196,6 +203,20 @@ include 'includes/header.php';
             font-size: 0.9rem !important;
             max-width: 100% !important;
             line-height: 1.4 !important;
+        }
+        
+        /* Diminuir espaçamento entre hero e imóveis em destaque */
+        .properties-mobile {
+            margin-top: 20px !important;
+            padding-top: 20px !important;
+        }
+        
+        .section-header h2 {
+            margin-bottom: 8px !important;
+        }
+        
+        .section-header p {
+            margin-top: 8px !important;
         }
         
         .hero-stats {
@@ -336,6 +357,1168 @@ include 'includes/header.php';
         margin-top: auto;
         min-height: 44px;
     }
+    
+    /* Padronizar cards de imóveis */
+    .property-card-mobile {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .property-image-mobile {
+        height: 200px !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        flex-shrink: 0;
+    }
+    
+    .property-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .property-image {
+        height: 250px !important;
+        overflow: hidden;
+    }
+    
+    .property-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    /* Botões vermelhos premium refinados */
+    .property-action-mobile,
+    .btn-view-property,
+    .btn-primary {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c3c 50%, #991b1b 100%) !important;
+        border: 2px solid rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+        box-shadow: 
+            0 8px 25px rgba(220, 38, 38, 0.4),
+            0 4px 15px rgba(185, 28, 60, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        border-radius: 12px !important;
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 14px !important;
+        letter-spacing: 0.5px !important;
+        text-transform: uppercase !important;
+        text-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.4),
+            0 0 8px rgba(255, 255, 255, 0.1) !important;
+        padding: 12px 24px !important;
+        min-height: 48px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        outline: none !important;
+    }
+    
+    .property-action-mobile:hover,
+    .btn-view-property:hover,
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c3c 100%) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 
+            0 12px 35px rgba(220, 38, 38, 0.6),
+            0 6px 20px rgba(185, 28, 60, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.15) !important;
+        transform: translateY(-3px) scale(1.02) !important;
+        text-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.5),
+            0 0 12px rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .property-action-mobile:active,
+    .btn-view-property:active,
+    .btn-primary:active {
+        transform: translateY(-1px) scale(0.98) !important;
+        border-color: rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 
+            0 4px 15px rgba(220, 38, 38, 0.4),
+            0 2px 8px rgba(185, 28, 60, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    /* Efeito de brilho deslizante */
+    .property-action-mobile::before,
+    .btn-view-property::before,
+    .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(255, 255, 255, 0.4), 
+            rgba(255, 255, 255, 0.6),
+            rgba(255, 255, 255, 0.4),
+            transparent
+        );
+        transition: left 0.6s ease;
+        z-index: 1;
+    }
+    
+    .property-action-mobile:hover::before,
+    .btn-view-property:hover::before,
+    .btn-primary:hover::before {
+        left: 100%;
+    }
+    
+    /* Efeito de ondas pulsantes */
+    .property-action-mobile::after,
+    .btn-view-property::after,
+    .btn-primary::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        animation: ripple 2s infinite;
+        z-index: 0;
+    }
+    
+    /* Keyframes para pulsação premium */
+    @keyframes pulse-premium {
+        0% {
+            box-shadow: 
+                0 8px 25px rgba(220, 38, 38, 0.4),
+                0 4px 15px rgba(185, 28, 60, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: scale(1);
+        }
+        25% {
+            box-shadow: 
+                0 10px 30px rgba(220, 38, 38, 0.5),
+                0 5px 18px rgba(185, 28, 60, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            transform: scale(1.01);
+        }
+        50% {
+            box-shadow: 
+                0 12px 35px rgba(220, 38, 38, 0.6),
+                0 6px 20px rgba(185, 28, 60, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+        75% {
+            box-shadow: 
+                0 10px 30px rgba(220, 38, 38, 0.5),
+                0 5px 18px rgba(185, 28, 60, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            transform: scale(1.01);
+        }
+        100% {
+            box-shadow: 
+                0 8px 25px rgba(220, 38, 38, 0.4),
+                0 4px 15px rgba(185, 28, 60, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: scale(1);
+        }
+    }
+    
+    /* Keyframes para efeito ripple */
+    @keyframes ripple {
+        0% {
+            width: 0;
+            height: 0;
+            opacity: 1;
+        }
+        50% {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+        100% {
+            width: 40px;
+            height: 40px;
+            opacity: 0;
+        }
+    }
+    
+    /* Aplicar animações */
+    .property-action-mobile,
+    .btn-view-property,
+    .btn-primary {
+        animation: pulse-premium 3s ease-in-out infinite !important;
+    }
+    
+    .property-action-mobile:hover,
+    .btn-view-property:hover,
+    .btn-primary:hover {
+        animation: none !important;
+    }
+    
+    /* Refinamentos adicionais para botões */
+    .property-action-mobile:focus,
+    .btn-view-property:focus,
+    .btn-primary:focus {
+        outline: 2px solid rgba(255, 255, 255, 0.3) !important;
+        outline-offset: 2px !important;
+    }
+    
+    /* Responsividade para mobile */
+    @media (max-width: 768px) {
+        .property-action-mobile,
+        .btn-view-property,
+        .btn-primary {
+            font-size: 13px !important;
+            padding: 10px 20px !important;
+            min-height: 44px !important;
+            letter-spacing: 0.3px !important;
+        }
+    }
+    
+    /* Melhorar espaçamento das seções */
+    .section-header h2 {
+        margin-bottom: 10px !important;
+    }
+    
+    .section-header p {
+        margin-top: 10px !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Depoimentos Mobile - Reestruturado e Melhorado */
+    .testimonials-mobile {
+        text-align: center;
+        padding: 50px 0;
+        background: #f8f9fa;
+    }
+    
+    /* Esconder depoimentos mobile no desktop */
+    @media (min-width: 769px) {
+        .testimonials-mobile {
+            display: none !important;
+        }
+    }
+    
+    .testimonials-mobile .section-header {
+        margin-bottom: 30px;
+    }
+    
+    .testimonials-mobile .section-header h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    .testimonials-mobile .section-header p {
+        font-size: 1rem;
+        color: #666;
+    }
+    
+    .testimonials-container-mobile {
+        max-width: 100%;
+        margin: 0 auto;
+        position: relative;
+        padding: 0 20px;
+    }
+    
+    .testimonials-slider-mobile {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        max-width: 280px;
+    }
+    
+    .testimonial-slide-mobile {
+        display: none;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    
+    .testimonial-slide-mobile.active {
+        display: block;
+        opacity: 1;
+    }
+    
+    .testimonial-card-mobile {
+        background: white;
+        border-radius: 15px;
+        padding: 20px 15px;
+        margin: 0 auto;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        text-align: center;
+        position: relative;
+        max-width: 250px;
+    }
+    
+    .testimonial-rating-mobile {
+        margin-bottom: 15px;
+    }
+    
+    .testimonial-rating-mobile i {
+        color: #ffc107;
+        font-size: 14px;
+        margin: 0 2px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial-text-mobile {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 15px;
+        font-style: italic;
+        position: relative;
+    }
+    
+    .testimonial-text-mobile::before {
+        content: '"';
+        font-size: 40px;
+        color: #dc2626;
+        position: absolute;
+        top: -10px;
+        left: -8px;
+        font-family: serif;
+        opacity: 0.2;
+    }
+    
+    .testimonial-text-mobile::after {
+        content: '"';
+        font-size: 40px;
+        color: #dc2626;
+        position: absolute;
+        bottom: -15px;
+        right: -8px;
+        font-family: serif;
+        opacity: 0.2;
+    }
+    
+    .testimonial-author-mobile {
+        font-weight: 700;
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+    
+    .testimonial-role-mobile {
+        font-size: 12px;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    .testimonials-controls-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25px;
+        gap: 15px;
+    }
+    
+    .testimonial-prev-mobile,
+    .testimonial-next-mobile {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid #dc2626;
+        background: white;
+        color: #dc2626;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+    }
+    
+    .testimonial-prev-mobile:hover,
+    .testimonial-next-mobile:hover {
+        background: #dc2626;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    }
+    
+    .testimonials-dots-mobile {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .testimonial-dot-mobile {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .testimonial-dot-mobile.active {
+        background: #dc2626;
+        transform: scale(1.3);
+    }
+    
+    .testimonial-dot-mobile:hover {
+        background: #dc2626;
+        transform: scale(1.1);
+    }
+    
+    /* DEPOIMENTOS DESKTOP - APENAS PRIMEIRO CARD CENTRALIZADO */
+    .testimonials-desktop {
+        padding: 80px 0 !important;
+        background: #f8f9fa !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    
+    /* Esconder depoimentos desktop no mobile */
+    @media (max-width: 768px) {
+        .testimonials-desktop {
+            display: none !important;
+        }
+    }
+    
+    .testimonials-desktop .section-container {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    
+    .testimonials-desktop .section-header {
+        text-align: center !important;
+        margin-bottom: 50px !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .testimonials-desktop .section-header h2 {
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
+        color: #333 !important;
+        margin-bottom: 15px !important;
+        text-align: center !important;
+    }
+    
+    .testimonials-desktop .section-header p {
+        font-size: 1.1rem !important;
+        color: #666 !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+    
+    .testimonials-wrapper-desktop {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 1000px !important;
+        margin: 0 auto !important;
+    }
+    
+    .testimonial-card-desktop {
+        background: white !important;
+        border-radius: 20px !important;
+        padding: 40px 35px !important;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+        display: block !important;
+    }
+    
+    .testimonial-content-desktop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .quote-icon-desktop {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #dc2626, #b91c3c);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        color: white;
+        font-size: 28px;
+        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+    }
+    
+    .testimonial-rating-desktop {
+        margin-bottom: 25px;
+    }
+    
+    .testimonial-rating-desktop i {
+        color: #ffc107;
+        font-size: 20px;
+        margin: 0 2px;
+    }
+    
+    .testimonial-text-desktop {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 35px;
+        font-style: italic;
+        position: relative;
+    }
+    
+    .testimonial-text-desktop::before {
+        content: '"';
+        font-size: 80px;
+        color: #dc2626;
+        position: absolute;
+        top: -30px;
+        left: -20px;
+        font-family: serif;
+        opacity: 0.1;
+        line-height: 1;
+    }
+    
+    .testimonial-text-desktop::after {
+        content: '"';
+        font-size: 80px;
+        color: #dc2626;
+        position: absolute;
+        bottom: -40px;
+        right: -20px;
+        font-family: serif;
+        opacity: 0.1;
+        line-height: 1;
+    }
+    
+    .testimonial-author-desktop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .author-avatar-desktop {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+    }
+    
+    .author-info-desktop h4 {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #333;
+        margin-bottom: 5px;
+    }
+    
+    .author-info-desktop p {
+        font-size: 1.1rem;
+        color: #666;
+        font-weight: 500;
+        margin: 0 0 5px 0;
+    }
+    
+    .author-location-desktop {
+        font-size: 0.9rem;
+        color: #999;
+        font-weight: 400;
+    }
+    
+    .carousel-controls {
+        display: none !important;
+    }
+    
+    
+    
+    /* CTA Section - Apenas espaçamentos e alinhamento */
+    .cta-section {
+        text-align: center;
+    }
+    
+    .cta-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cta-content h2 {
+        margin-bottom: 15px;
+    }
+    
+    .cta-content p {
+        margin-bottom: 20px;
+    }
+    
+    .cta-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+    }
+    
+    @media (max-width: 768px) {
+        .cta-actions {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+    
+    /* REGIÕES - SEÇÃO CENTRALIZADA */
+    .regioes-curitiba {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .regioes-curitiba .section-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .regioes-curitiba .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        padding: 0 20px;
+    }
+    
+    .regioes-curitiba .section-header h2 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .regioes-curitiba .section-header p {
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .regioes-curitiba .section-footer {
+        text-align: center;
+        margin: 40px auto 0 auto;
+        max-width: 800px;
+        padding: 0 20px;
+    }
+    
+    .regioes-curitiba .btn-view-all {
+        display: inline-block;
+        margin: 0 auto;
+    }
+    
+    /* REGIÕES - CARROSSEL CENTRALIZADO */
+    .regioes-carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin: 40px auto 0 auto;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .regioes-track {
+        display: flex;
+        animation: scroll-regioes 20s linear infinite;
+        gap: 30px;
+        align-items: center;
+        width: calc(200% + 30px);
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    .regiao-slide {
+        flex: 0 0 auto;
+        min-width: 200px;
+    }
+    
+    .regiao-card {
+        text-align: center;
+        padding: 20px;
+        border-radius: 15px;
+        transition: all 0.4s ease;
+        border: 2px solid #e5e7eb;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 120px;
+        flex-direction: column;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .regiao-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-color: #dc2626;
+    }
+    
+    .regiao-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg,rgb(35, 35, 35),rgb(17, 17, 17));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        color: white;
+        font-size: 24px;
+        box-shadow: 0 4px 15px rgba(34, 34, 34, 0.3);
+    }
+    
+    .regiao-content h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+    
+    .regiao-content p {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0 0 15px 0;
+        font-weight: 500;
+    }
+    
+    .regiao-link {
+        display: inline-block;
+        background: linear-gradient(135deg, #dc2626, #b91c3c);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    }
+    
+    .regiao-link:hover {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        color: white;
+        text-decoration: none;
+    }
+    
+    /* ANIMAÇÃO QUE FUNCIONA */
+    @keyframes scroll-regioes {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+    
+    /* Pausar no hover */
+    .regioes-carousel-wrapper:hover .regioes-track {
+        animation-play-state: paused;
+    }
+    
+    /* DESKTOP - Grid 2 Colunas CENTRALIZADO */
+    .regioes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin: 50px auto 0 auto;
+        max-width: 1000px;
+        width: 100%;
+        padding: 0 20px;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        place-items: center;
+    }
+    
+    .regioes-grid .regiao-card {
+        padding: 40px 30px;
+        min-height: 280px;
+        text-align: center;
+        border-radius: 20px;
+        transition: all 0.4s ease;
+        border: 2px solid #e5e7eb;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    .regioes-grid .regiao-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-color: #dc2626;
+    }
+    
+    .regioes-grid .regiao-icon {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg,rgb(35, 35, 35),rgb(17, 17, 17));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        color: white;
+        font-size: 36px;
+        box-shadow: 0 6px 20px rgba(34, 34, 34, 0.4);
+        flex-shrink: 0;
+    }
+    
+    .regioes-grid .regiao-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .regioes-grid .regiao-content h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+        line-height: 1.3;
+        text-align: center;
+    }
+    
+    .regioes-grid .regiao-content p {
+        font-size: 1.1rem;
+        color: #666;
+        line-height: 1.6;
+        margin: 0 0 30px 0;
+        font-weight: 500;
+        text-align: center;
+        flex: 1;
+    }
+    
+    .regioes-grid .regiao-link {
+        display: inline-block;
+        background: linear-gradient(135deg, #dc2626, #b91c3c);
+        color: white;
+        padding: 14px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        text-align: center;
+        align-self: center;
+        margin-top: auto;
+    }
+    
+    .regioes-grid .regiao-link:hover {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        color: white;
+        text-decoration: none;
+    }
+    
+    /* MOBILE - CARROSSEL CENTRALIZADO */
+    @media (max-width: 768px) {
+        .regioes-carousel-wrapper {
+            margin: 30px auto 0 auto;
+            padding: 0 15px;
+            max-width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .regioes-track {
+            gap: 20px !important;
+            animation: scroll-regioes 15s linear infinite !important;
+            align-items: stretch !important;
+            justify-content: center !important;
+            margin: 0 auto !important;
+        }
+        
+        .regiao-slide {
+            min-width: 260px !important;
+            flex: 0 0 260px !important;
+            display: flex !important;
+        }
+        
+        .regiao-card {
+            padding: 25px 20px !important;
+            min-height: 220px !important;
+            max-width: 260px !important;
+            width: 260px !important;
+            border-radius: 20px !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+        
+        .regiao-icon {
+            width: 60px !important;
+            height: 60px !important;
+            font-size: 24px !important;
+            margin-bottom: 15px !important;
+            flex-shrink: 0 !important;
+        }
+        
+        .regiao-content {
+            flex: 1 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            width: 100% !important;
+        }
+        
+        .regiao-content h3 {
+            font-size: 1.3rem !important;
+            margin-bottom: 12px !important;
+            text-align: center !important;
+        }
+        
+        .regiao-content p {
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+            flex: 1 !important;
+        }
+        
+        .regiao-link {
+            padding: 10px 20px !important;
+            font-size: 0.9rem !important;
+            border-radius: 25px !important;
+            margin-top: auto !important;
+            align-self: center !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .regioes-carousel-wrapper {
+            padding: 0 10px;
+            margin: 25px auto 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .regioes-track {
+            gap: 15px !important;
+            animation: scroll-regioes 12s linear infinite !important;
+            align-items: stretch !important;
+            justify-content: center !important;
+            margin: 0 auto !important;
+        }
+        
+        .regiao-slide {
+            min-width: 240px !important;
+            flex: 0 0 240px !important;
+            display: flex !important;
+        }
+        
+        .regiao-card {
+            padding: 20px 15px !important;
+            min-height: 200px !important;
+            max-width: 240px !important;
+            width: 240px !important;
+            border-radius: 18px !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+        
+        .regiao-icon {
+            width: 55px !important;
+            height: 55px !important;
+            font-size: 22px !important;
+            margin-bottom: 12px !important;
+            flex-shrink: 0 !important;
+        }
+        
+        .regiao-content {
+            flex: 1 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            width: 100% !important;
+        }
+        
+        .regiao-content h3 {
+            font-size: 1.2rem !important;
+            margin-bottom: 10px !important;
+            text-align: center !important;
+        }
+        
+        .regiao-content p {
+            font-size: 0.85rem !important;
+            line-height: 1.4 !important;
+            margin-bottom: 15px !important;
+            text-align: center !important;
+            flex: 1 !important;
+        }
+        
+        .regiao-link {
+            padding: 8px 16px !important;
+            font-size: 0.85rem !important;
+            border-radius: 20px !important;
+            margin-top: auto !important;
+            align-self: center !important;
+        }
+    }
+    
+    /* Parceiros - Apenas logos sem cards */
+    .partner-logo {
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        min-height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .partner-logo:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+    }
+    
+    .partner-logo img {
+        max-height: 120px !important;
+        width: auto !important;
+        border: none !important;
+        background: none !important;
+        padding: 0 !important;
+        filter: none !important;
+        transition: transform 0.3s ease !important;
+    }
+    
+    .partner-logo:hover img {
+        transform: scale(1.1) !important;
+        filter: none !important;
+    }
+    
+    .partner-slide {
+        min-width: 180px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .partners-track {
+        gap: 50px !important;
+        align-items: center !important;
+    }
+    
+    @media (max-width: 768px) {
+        .partner-logo img {
+            max-height: 90px !important;
+        }
+        
+        .partner-slide {
+            min-width: 150px !important;
+        }
+        
+        .partners-track {
+            gap: 40px !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .partner-logo img {
+            max-height: 70px !important;
+        }
+        
+        .partner-slide {
+            min-width: 120px !important;
+        }
+        
+        .partners-track {
+            gap: 30px !important;
+        }
+    }
+    @media (max-width: 768px) {
+    .cta-content {
+        flex-direction: column !important;
+        gap: 10px !important;
+        text-align: center !important;
+    }
+}
+@media (max-width: 480px) {
+    .regioes-carousel-wrapper {
+        padding: 20px 15px;
+    }
+    .regiao-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #dc2626, #b91c3c);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+}
 </style>
     <!-- Hero Section -->
     <section class="hero">
@@ -514,6 +1697,38 @@ include 'includes/header.php';
         </div>
     </section>
 
+    <!-- Features Section Mobile - Limpa e Organizada -->
+    <section class="features-mobile mobile-only">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Por que escolher a Br2Studios?</h2>
+                <p>Especialistas em investimentos imobiliários</p>
+            </div>
+        <div class="features-grid-mobile">
+            <div class="feature-card-mobile">
+                <div class="feature-icon-mobile">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Investimentos Seguros</h3>
+                <p>Portfólio selecionado em regiões estratégicas com alta liquidez</p>
+            </div>
+            <div class="feature-card-mobile">
+                <div class="feature-icon-mobile">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Alta Rentabilidade</h3>
+                <p>Consultoria especializada para maximizar seus rendimentos</p>
+            </div>
+            <div class="feature-card-mobile">
+                <div class="feature-icon-mobile">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Valorização Acelerada</h3>
+                <p>Projetos com excelente potencial de valorização</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Imóveis de Maior Valorização Mobile -->
     <section class="properties-mobile valorizacao-mobile mobile-only">
         <div class="section-container">
@@ -594,38 +1809,6 @@ include 'includes/header.php';
         </div>
         <div style="text-align: center; margin-top: 30px;">
             <a href="imoveis.php?filtro=valorizacao" class="btn-primary btn-large">Ver Todos os Imóveis de Maior Valorização</a>
-        </div>
-    </section>
-
-    <!-- Features Section Mobile - Limpa e Organizada -->
-    <section class="features-mobile mobile-only">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Por que escolher a Br2Studios?</h2>
-                <p>Especialistas em investimentos imobiliários</p>
-            </div>
-        <div class="features-grid-mobile">
-            <div class="feature-card-mobile">
-                <div class="feature-icon-mobile">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Investimentos Seguros</h3>
-                <p>Portfólio selecionado em regiões estratégicas com alta liquidez</p>
-            </div>
-            <div class="feature-card-mobile">
-                <div class="feature-icon-mobile">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Alta Rentabilidade</h3>
-                <p>Consultoria especializada para maximizar seus rendimentos</p>
-            </div>
-            <div class="feature-card-mobile">
-                <div class="feature-icon-mobile">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <h3>Valorização Acelerada</h3>
-                <p>Projetos com excelente potencial de valorização</p>
-            </div>
         </div>
     </section>
 
@@ -780,6 +1963,60 @@ include 'includes/header.php';
         </div>
     </section>
 
+    <!-- Features Section Desktop -->
+    <section class="features desktop-only">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Por que escolher a Br2Studios?</h2>
+                <p>Somos especialistas em transformar investimentos imobiliários em oportunidades de crescimento financeiro</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Investimentos Seguros</h3>
+                    <p class="feature-description">
+                        Portfólio selecionado de empreendimentos em regiões estratégicas, garantindo liquidez 
+                        e segurança para seus investimentos imobiliários.
+                    </p>
+                    <div class="feature-link">
+                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Gestão Focada no Investidor</h3>
+                    <p class="feature-description">
+                        Consultoria especializada para otimizar seus rendimentos e garantir eficiência em todo o 
+                        processo de investimento e gestão de propriedades.
+                    </p>
+                    <div class="feature-link">
+                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="feature-title">Valorização Acelerada</h3>
+                    <p class="feature-description">
+                        Projetos em construção oferecem excelente potencial de valorização até a entrega, 
+                        maximizando o retorno sobre seu investimento.
+                    </p>
+                    <div class="feature-link">
+                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Imóveis de Maior Valorização Section Desktop -->
     <section class="featured-properties valorizacao-properties desktop-only">
         <div class="section-container">
@@ -911,7 +2148,7 @@ include 'includes/header.php';
                 <p>Investimentos na capital paranaense com excelente potencial</p>
             </div>
             
-            <!-- Desktop Grid -->
+            <!-- Desktop Grid - 2 Colunas Fixas -->
             <div class="regioes-grid desktop-only">
                 <div class="regiao-card">
                     <div class="regiao-icon">
@@ -920,7 +2157,6 @@ include 'includes/header.php';
                     <div class="regiao-content">
                         <h3>Centro</h3>
                         <p>Região central com infraestrutura completa e fácil acesso</p>
-                      
                         <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
@@ -932,7 +2168,6 @@ include 'includes/header.php';
                     <div class="regiao-content">
                         <h3>Bairro Alto</h3>
                         <p>Região nobre com excelente infraestrutura e valorização constante</p>
-                       
                         <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
@@ -944,7 +2179,6 @@ include 'includes/header.php';
                     <div class="regiao-content">
                         <h3>Água Verde</h3>
                         <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
-                       
                         <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
@@ -956,67 +2190,120 @@ include 'includes/header.php';
                     <div class="regiao-content">
                         <h3>Região Metropolitana</h3>
                         <p>Cidades da região metropolitana com potencial de crescimento</p>
-                       
                         <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
             </div>
             
-            <!-- Mobile Carousel Melhorado -->
+            <!-- Mobile Carousel Automático - Estilo Parceiros -->
             <div class="regioes-carousel mobile-only">
-                <div class="carousel-container">
-                    <div class="carousel-track" id="regioes-carousel-track">
-                        <div class="regiao-card">
-                            <div class="regiao-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="regiao-content">
-                                <h3>Centro</h3>
-                                <p>Região central com infraestrutura completa e fácil acesso</p>
-                                <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
-                            </div>
-                        </div>
-                        
-                        <div class="regiao-card">
-                            <div class="regiao-icon">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                            <div class="regiao-content">
-                                <h3>Bairro Alto</h3>
-                                <p>Região nobre com excelente infraestrutura e valorização constante</p>
-                                <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
+                <div class="regioes-carousel-wrapper">
+                    <div class="regioes-track">
+                        <!-- Primeira linha de regiões -->
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Centro</h3>
+                                    <p>Região central com infraestrutura completa e fácil acesso</p>
+                                    <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="regiao-card">
-                            <div class="regiao-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <div class="regiao-content">
-                                <h3>Água Verde</h3>
-                                <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
-                                <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Bairro Alto</h3>
+                                    <p>Região nobre com excelente infraestrutura e valorização constante</p>
+                                    <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="regiao-card">
-                            <div class="regiao-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="regiao-content">
-                                <h3>Região Metropolitana</h3>
-                                <p>Cidades da região metropolitana com potencial de crescimento</p>
-                                <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Água Verde</h3>
+                                    <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
+                                    <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Carousel Indicators Visuais (Apenas para mostrar progresso) -->
-                    <div class="carousel-indicators">
-                        <span class="indicator active" data-slide="0"></span>
-                        <span class="indicator" data-slide="1"></span>
-                        <span class="indicator" data-slide="2"></span>
-                        <span class="indicator" data-slide="3"></span>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Região Metropolitana</h3>
+                                    <p>Cidades da região metropolitana com potencial de crescimento</p>
+                                    <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Segunda linha de regiões (duplicada para loop infinito) -->
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Centro</h3>
+                                    <p>Região central com infraestrutura completa e fácil acesso</p>
+                                    <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Bairro Alto</h3>
+                                    <p>Região nobre com excelente infraestrutura e valorização constante</p>
+                                    <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Água Verde</h3>
+                                    <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
+                                    <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Região Metropolitana</h3>
+                                    <p>Cidades da região metropolitana com potencial de crescimento</p>
+                                    <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1088,60 +2375,6 @@ include 'includes/header.php';
         </div>
     </section>
 
-    
-     <!-- Features Section Desktop -->
-    <section class="features desktop-only">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Por que escolher a Br2Studios?</h2>
-                <p>Somos especialistas em transformar investimentos imobiliários em oportunidades de crescimento financeiro</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Investimentos Seguros</h3>
-                    <p class="feature-description">
-                        Portfólio selecionado de empreendimentos em regiões estratégicas, garantindo liquidez 
-                        e segurança para seus investimentos imobiliários.
-                    </p>
-                    <div class="feature-link">
-                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="feature-title">Gestão Focada no Investidor</h3>
-                    <p class="feature-description">
-                        Consultoria especializada para otimizar seus rendimentos e garantir eficiência em todo o 
-                        processo de investimento e gestão de propriedades.
-                    </p>
-                    <div class="feature-link">
-                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="feature-title">Valorização Acelerada</h3>
-                    <p class="feature-description">
-                        Projetos em construção oferecem excelente potencial de valorização até a entrega, 
-                        maximizando o retorno sobre seu investimento.
-                    </p>
-                    <div class="feature-link">
-                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
    
     <!-- Meet Our Agents Section Desktop -->
     <section class="meet-agents desktop-only">
@@ -1259,87 +2492,38 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Testimonials Mobile - Slider -->
+    <!-- Testimonials Mobile - Reestruturado -->
     <section class="testimonials-mobile mobile-only">
         <div class="section-container">
             <div class="section-header">
-                <h2>Depoimentos</h2>
-                <p>O que nossos clientes dizem</p>
-            </div>
-        <div class="testimonials-slider-mobile">
-            <div class="testimonials-track-mobile">
-                <div class="testimonial-slide-mobile active">
-                    <div class="testimonial-content-mobile">
-                        <div class="testimonial-avatar-mobile">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="testimonial-rating-mobile">
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                        </div>
-                        <div class="testimonial-text-mobile">"Investir em Curitiba com a Br2Studios foi a melhor decisão. Meu studio valorizou 35% em 2 anos!"</div>
-                        <div class="testimonial-author-mobile">Carlos Mendes</div>
-                        <div class="testimonial-role-mobile">Investidor - Água Verde</div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide-mobile">
-                    <div class="testimonial-content-mobile">
-                        <div class="testimonial-avatar-mobile">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="testimonial-rating-mobile">
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                        </div>
-                        <div class="testimonial-text-mobile">"Equipe profissional em Curitiba. Encontrei o imóvel perfeito no Centro com excelente assessoria."</div>
-                        <div class="testimonial-author-mobile">Ana Paula Costa</div>
-                        <div class="testimonial-role-mobile">Investidora - Centro</div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide-mobile">
-                    <div class="testimonial-content-mobile">
-                        <div class="testimonial-avatar-mobile">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="testimonial-rating-mobile">
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                            <i class="fas fa-star star-mobile"></i>
-                        </div>
-                        <div class="testimonial-text-mobile">"Excelente retorno no Bairro Alto. A Br2Studios conhece muito bem o mercado de Curitiba."</div>
-                        <div class="testimonial-author-mobile">Roberto Almeida</div>
-                        <div class="testimonial-role-mobile">Empresário - Bairro Alto</div>
-                    </div>
-                </div>
+                <h2>O que nossos clientes dizem</h2>
+                <p>Depoimentos reais de investidores que confiaram na Br2Studios</p>
             </div>
             
-            <div class="testimonials-controls-mobile">
-                <button class="testimonial-prev-mobile">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="testimonials-dots-mobile">
-                    <span class="testimonial-dot-mobile active" data-slide="0"></span>
-                    <span class="testimonial-dot-mobile" data-slide="1"></span>
-                    <span class="testimonial-dot-mobile" data-slide="2"></span>
+            <div class="testimonials-container-mobile">
+                <div class="testimonials-slider-mobile">
+                    <div class="testimonial-slide-mobile active">
+                        <div class="testimonial-card-mobile">
+                            <div class="testimonial-rating-mobile">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="testimonial-text-mobile">
+                                "Investir em Curitiba com a Br2Studios foi a melhor decisão. Meu studio valorizou 35% em 2 anos!"
+                            </div>
+                            <div class="testimonial-author-mobile">Carlos Mendes</div>
+                            <div class="testimonial-role-mobile">Investidor - Água Verde</div>
+                        </div>
+                    </div>
                 </div>
-                <button class="testimonial-next-mobile">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section Desktop - Carrossel Melhorado -->
+    <!-- Testimonials Section Desktop - Centralizado -->
     <section class="testimonials-desktop desktop-only">
         <div class="section-container">
             <div class="section-header">
@@ -1347,156 +2531,40 @@ include 'includes/header.php';
                 <p>Depoimentos reais de investidores que confiaram na Br2Studios</p>
             </div>
             
-            <div class="testimonials-carousel-desktop">
-                <div class="testimonials-wrapper">
-                    <div class="testimonials-track">
-                        <!-- Depoimento 1 -->
-                        <div class="testimonial-slide active">
-                            <div class="testimonial-card">
-                                <div class="testimonial-content">
-                                    <div class="quote-icon">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <div class="testimonial-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-text">
-                                        "Investir em Curitiba com a Br2Studios foi a melhor decisão que tomei. 
-                                        Meu studio no Água Verde valorizou 35% em apenas 2 anos! A equipe é 
-                                        extremamente profissional e transparente."
-                                    </p>
-                                    <div class="testimonial-author">
-                                        <div class="author-avatar">
-                                            <img src="assets/images/imoveis/Imovel-1.jpeg" alt="Carlos Mendes">
-                                        </div>
-                                        <div class="author-info">
-                                            <h4>Carlos Mendes</h4>
-                                            <p>Investidor - Água Verde</p>
-                                            <span class="author-location">Curitiba, PR</span>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="testimonials-wrapper-desktop">
+                <div class="testimonial-card-desktop">
+                    <div class="testimonial-content-desktop">
+                        <div class="quote-icon-desktop">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-rating-desktop">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text-desktop">
+                            "Investir em Curitiba com a Br2Studios foi a melhor decisão que tomei. 
+                            Meu studio no Água Verde valorizou 35% em apenas 2 anos! A equipe é 
+                            extremamente profissional e transparente."
+                        </p>
+                        <div class="testimonial-author-desktop">
+                            <div class="author-avatar-desktop">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info-desktop">
+                                <h4>Carlos Mendes</h4>
+                                <p>Investidor - Água Verde</p>
+                                <span class="author-location-desktop">Curitiba, PR</span>
                             </div>
                         </div>
-                        
-                        <!-- Depoimento 2 -->
-                        <div class="testimonial-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-content">
-                                    <div class="quote-icon">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <div class="testimonial-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-text">
-                                        "Equipe profissional e transparente. Consegui encontrar o imóvel perfeito 
-                                        no Centro com toda a assessoria necessária. Recomendo para quem busca 
-                                        investimentos seguros e rentáveis."
-                                    </p>
-                                    <div class="testimonial-author">
-                                        <div class="author-avatar">
-                                            <img src="assets/images/imoveis/imovel-2.jpeg" alt="Ana Paula Costa">
-                                        </div>
-                                        <div class="author-info">
-                                            <h4>Ana Paula Costa</h4>
-                                            <p>Investidora - Centro</p>
-                                            <span class="author-location">Curitiba, PR</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Depoimento 3 -->
-                        <div class="testimonial-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-content">
-                                    <div class="quote-icon">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <div class="testimonial-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-text">
-                                        "Excelente retorno no Bairro Alto. A Br2Studios realmente entende do 
-                                        mercado imobiliário de Curitiba e oferece as melhores oportunidades. 
-                                        Superou todas as minhas expectativas!"
-                                    </p>
-                                    <div class="testimonial-author">
-                                        <div class="author-avatar">
-                                            <img src="assets/images/imoveis/imovel-3.jpeg" alt="Roberto Almeida">
-                                        </div>
-                                        <div class="author-info">
-                                            <h4>Roberto Almeida</h4>
-                                            <p>Empresário - Bairro Alto</p>
-                                            <span class="author-location">Curitiba, PR</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Depoimento 4 -->
-                        <div class="testimonial-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-content">
-                                    <div class="quote-icon">
-                                        <i class="fas fa-quote-left"></i>
-                                    </div>
-                                    <div class="testimonial-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-text">
-                                        "Atendimento excepcional desde o primeiro contato. A Br2Studios me ajudou 
-                                        a encontrar o investimento perfeito na região metropolitana. 
-                                        Retorno garantido e processo muito transparente."
-                                    </p>
-                                    <div class="testimonial-author">
-                                        <div class="author-avatar">
-                                            <img src="assets/images/imoveis/imovel-4.jpeg" alt="Mariana Silva">
-                                        </div>
-                                        <div class="author-info">
-                                            <h4>Mariana Silva</h4>
-                                            <p>Investidora - Região Metropolitana</p>
-                                            <span class="author-location">São José dos Pinhais, PR</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Controles do Carrossel -->
-                <div class="carousel-controls">
-                    <div class="carousel-dots">
-                        <span class="dot active" data-slide="0"></span>
-                        <span class="dot" data-slide="1"></span>
-                        <span class="dot" data-slide="2"></span>
-                        <span class="dot" data-slide="3"></span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="section-container">
@@ -1639,6 +2707,13 @@ include 'includes/header.php';
     ?>
     <script src="assets/js/main.js?v=<?php echo $version; ?>"></script>
     <script src="assets/js/mobile-creative.js?v=<?php echo $version; ?>"></script>
-    <script src="assets/js/regioes-carousel.js?v=<?php echo $version; ?>"></script>
+    
+    <script>
+    // DEPOIMENTOS DESKTOP - APENAS UM CARD FIXO (SEM CARROSSEL)
+    
+    // Controle do carrossel de depoimentos mobile
+    // Testimonials Mobile - Apenas um depoimento fixo
+    // Não precisa de JavaScript para carrossel
+    </script>
 </body>
 </html>

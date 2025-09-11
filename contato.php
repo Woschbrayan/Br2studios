@@ -29,6 +29,195 @@ $page_css = 'assets/css/contato.css';
 include 'includes/header.php'; 
 ?>
 
+<style>
+/* Centralizar títulos e melhorar espaçamentos */
+.section-header {
+    text-align: center !important;
+    margin-bottom: 50px !important;
+}
+
+.section-header h2 {
+    margin-bottom: 15px !important;
+    font-size: 2.5rem !important;
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+}
+
+.section-header p {
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+    font-size: 1.1rem !important;
+    color: #666 !important;
+    max-width: 600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Espaçamento entre seções */
+.contact-options,
+.contact-form-section,
+.faq-section,
+.cta-section {
+    padding: 80px 0 !important;
+}
+
+/* Ajustar espaçamento da FAQ */
+.faq-section {
+    padding: 60px 0 !important;
+}
+
+.faq-grid {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+}
+
+.faq-item {
+    margin-bottom: 20px !important;
+}
+
+.faq-question {
+    padding: 20px !important;
+    margin-bottom: 0 !important;
+}
+
+.faq-answer {
+    padding: 0 20px 20px 20px !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.3s ease !important;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px !important;
+}
+
+/* CTA Section igual à home */
+.cta-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 100px 0 !important;
+}
+
+.cta-content {
+    max-width: 600px !important;
+    margin: 0 auto !important;
+}
+
+.cta-content h2 {
+    color: white !important;
+    font-size: 3rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 20px !important;
+}
+
+.cta-content p {
+    color: #e0e0e0 !important;
+    font-size: 1.2rem !important;
+    margin-bottom: 0 !important;
+}
+
+.cta-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    align-items: center !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+}
+
+.cta-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 20px !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    padding: 18px 35px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    width: 100% !important;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.btn-secondary {
+    background: transparent !important;
+    color: white !important;
+    border: 2px solid #ffffff !important;
+    padding: 16px 33px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+}
+
+.btn-secondary:hover {
+    background: white !important;
+    color: #1a1a1a !important;
+    transform: translateY(-3px) !important;
+    text-decoration: none !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2rem !important;
+    }
+    
+    .section-header p {
+        font-size: 1rem !important;
+    }
+    
+    .cta-content h2 {
+        font-size: 2.5rem !important;
+    }
+    
+    .cta-content p {
+        font-size: 1.1rem !important;
+    }
+    
+    .cta-actions {
+        max-width: 250px !important;
+    }
+}
+.faq-answer p {
+    padding: 30px 30px 25px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+</style>
+
 <!-- Hero Section Desktop -->
 <section class="contact-hero-simple desktop-only">
     <div class="hero-bg">
@@ -96,11 +285,6 @@ include 'includes/header.php';
         <div class="whatsapp-info-mobile">
             <h3>WhatsApp Business</h3>
             <p>Atendimento especializado em investimentos imobiliários</p>
-            <div class="whatsapp-features-mobile">
-                <span class="feature-tag">24/7 Disponível</span>
-                <span class="feature-tag">Resposta Imediata</span>
-                <span class="feature-tag">Consultoria Gratuita</span>
-            </div>
         </div>
         <a href="https://wa.me/554141410093" class="whatsapp-btn-mobile" target="_blank">
             <i class="fab fa-whatsapp"></i>
@@ -125,20 +309,6 @@ include 'includes/header.php';
                 <div class="option-content">
                     <h3>WhatsApp Business</h3>
                     <p>Resposta instantânea para suas dúvidas sobre investimentos imobiliários em Curitiba</p>
-                    <div class="option-features">
-                        <div class="feature-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Disponível 24/7</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-reply"></i>
-                            <span>Resposta Imediata</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Consultoria Gratuita</span>
-                        </div>
-                    </div>
                     <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                         Conversar Agora
@@ -300,105 +470,16 @@ include 'includes/header.php';
     </div>
 </section>
 
-<!-- Team Section -->
-<section class="agents">
-    <div class="container">
-        <div class="section-header">
-            <h2>Nossa Equipe de Especialistas</h2>
-            <p>Profissionais experientes e certificados para cuidar dos seus investimentos</p>
-        </div>
-        
-        <div class="agents-grid">
-            <div class="agent-card">
-                <div class="agent-image">
-                    <div class="agent-placeholder">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                </div>
-                <div class="agent-info">
-                    <h3>Ana Silva</h3>
-                    <p class="agent-role">Especialista em Studios</p>
-                    <p class="agent-description">8 anos de experiência no mercado imobiliário, especializada em investimentos de alto retorno.</p>
-                    <div class="agent-contact">
-                        <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="agent-card">
-                <div class="agent-image">
-                    <div class="agent-placeholder">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                </div>
-                <div class="agent-info">
-                    <h3>Carlos Santos</h3>
-                    <p class="agent-role">Consultor de Investimentos</p>
-                    <p class="agent-description">12 anos de experiência, especializado em análise de mercado e estratégias de investimento.</p>
-                    <div class="agent-contact">
-                        <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="agent-card">
-                <div class="agent-image">
-                    <div class="agent-placeholder">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                </div>
-                <div class="agent-info">
-                    <h3>Mariana Costa</h3>
-                    <p class="agent-role">Gerente de Relacionamento</p>
-                    <p class="agent-description">6 anos de experiência, focada em atendimento personalizado e satisfação do cliente.</p>
-                    <div class="agent-contact">
-                        <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- CTA Section -->
-<section class="cta">
-    <div class="container">
+<section class="cta-section">
+    <div class="section-container">
         <div class="cta-content">
-            <div class="cta-text">
-                <h2>Pronto para Investir?</h2>
-                <p>Nossa equipe está pronta para encontrar o investimento perfeito para você</p>
-                <div class="cta-actions">
-                    <a href="imoveis.php" class="btn-primary btn-large">
-                        <i class="fas fa-home"></i>
-                        Ver Imóveis Disponíveis
-                    </a>
-                    <a href="corretores.php" class="btn-secondary btn-large">
-                        <i class="fas fa-users"></i>
-                        Conhecer Nossa Equipe
-                    </a>
-                </div>
-            </div>
-            <div class="cta-visual">
-                <div class="cta-illustration">
-                    <div class="floating-element">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="floating-element">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="floating-element">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                </div>
+            <h2>Pronto para começar<br>seu investimento?</h2>
+            <p>Entre em contato conosco e descubra as melhores oportunidades do mercado imobiliário</p>
+            <div class="cta-actions">
+                <a href="https://wa.me/554141410093" class="btn-primary" target="_blank">Falar com Especialista</a>
+                <a href="imoveis.php" class="btn-secondary">Ver Imóveis</a>
             </div>
         </div>
     </div>
