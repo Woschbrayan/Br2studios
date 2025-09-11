@@ -323,34 +323,7 @@ include 'includes/header.php';
     <!-- Properties Grid -->
     <section class="properties-section">
         <div class="container">
-            <div class="section-header">
-                <h2><?php echo $page_subtitle; ?></h2>
-                <p><?php echo $page_description; ?></p>
-                
-                <!-- Indicador de Filtro Ativo -->
-                <?php if (isset($_GET['filtro']) && !empty($_GET['filtro'])): ?>
-                    <div class="filter-indicator">
-                        <i class="fas fa-filter"></i>
-                        <span>
-                            <?php if ($_GET['filtro'] == 'destaque'): ?>
-                                Filtro: Imóveis em Destaque
-                            <?php elseif ($_GET['filtro'] == 'valorizacao'): ?>
-                                Filtro: Maior Valorização
-                            <?php endif; ?>
-                        </span>
-                    </div>
-                <?php endif; ?>
-                
-                <!-- Contador de Resultados -->
-                <div class="results-counter">
-                    <i class="fas fa-home"></i>
-                    <span><?php echo count($imoveis); ?> imóveis encontrados</span>
-                    <?php if (!empty($filters) && count($filters) > 1): ?>
-                        <span class="filter-info">(de <?php echo $totalDisponiveis; ?> disponíveis)</span>
-                    <?php endif; ?>
-                </div>
-            </div>
-            
+           
             <?php if (empty($imoveis)): ?>
                 <div class="no-properties-message">
                     <div class="no-properties-content">
