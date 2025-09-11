@@ -8,8 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/dark-theme-fixes.css">
-    <link rel="stylesheet" href="../assets/css/admin-imoveis.css">
+    <?php 
+    // Versionamento centralizado para forçar atualização do cache
+    require_once __DIR__ . '/../../config/version.php';
+    $version = getAssetsVersion();
+    ?>
+    <link rel="stylesheet" href="../assets/css/dark-theme-fixes.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="../assets/css/admin-imoveis.css?v=<?php echo $version; ?>">
     <style>
         * {
             margin: 0;
