@@ -425,8 +425,9 @@
         left: 20px;
         font-size: 2rem;
         color: var(--color-primary);
-        opacity: 0.3;
+        opacity: 0.8;
         font-family: serif;
+        font-weight: bold;
     }
     
     .testimonial-avatar-mobile {
@@ -448,6 +449,19 @@
         line-height: 1.5;
         margin-bottom: 15px;
         font-style: italic;
+        position: relative;
+    }
+    
+    .testimonial-text-mobile::after {
+        content: '"';
+        position: absolute;
+        bottom: -5px;
+        right: 10px;
+        font-size: 1.5rem;
+        color: var(--color-primary);
+        opacity: 0.8;
+        font-family: serif;
+        font-weight: bold;
     }
     
     .testimonial-author-mobile {
@@ -2238,7 +2252,8 @@
         position: absolute;
         top: -15px;
         left: -10px;
-        opacity: 0.3;
+        opacity: 0.8;
+        font-weight: bold;
     }
     
     .story-author {

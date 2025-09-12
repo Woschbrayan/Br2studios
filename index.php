@@ -675,27 +675,8 @@ include 'includes/header.php';
         position: relative;
     }
     
-    .testimonial-text-mobile::before {
-        content: '"';
-        font-size: 40px;
-        color: #dc2626;
-        position: absolute;
-        top: -10px;
-        left: -8px;
-        font-family: serif;
-        opacity: 0.2;
-    }
+
     
-    .testimonial-text-mobile::after {
-        content: '"';
-        font-size: 40px;
-        color: #dc2626;
-        position: absolute;
-        bottom: -15px;
-        right: -8px;
-        font-family: serif;
-        opacity: 0.2;
-    }
     
     .testimonial-author-mobile {
         font-weight: 700;
@@ -2158,27 +2139,9 @@ include 'includes/header.php';
         position: relative;
     }
     
-    .testimonial-text-mobile::before {
-        content: '"';
-        font-size: 40px;
-        color: #dc2626;
-        position: absolute;
-        top: -10px;
-        left: -8px;
-        font-family: serif;
-        opacity: 0.2;
-    }
+
     
-    .testimonial-text-mobile::after {
-        content: '"';
-        font-size: 40px;
-        color: #dc2626;
-        position: absolute;
-        bottom: -15px;
-        right: -8px;
-        font-family: serif;
-        opacity: 0.2;
-    }
+
     
     .testimonial-author-mobile {
         font-weight: 700;
@@ -2470,6 +2433,12 @@ include 'includes/header.php';
             flex-direction: column;
             gap: 15px;
         }
+
+        .testimonials-container-mobile {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
     }
     
     /* REGIÕES - SEÇÃO CENTRALIZADA */
@@ -3306,6 +3275,61 @@ include 'includes/header.php';
     z-index: 2;
     position: relative;
 }
+
+.testimonial-text-mobile::before {
+    content: '"';
+    font-size: 40px;
+    color:rgba(220, 38, 38, 0);
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    font-family: serif;
+}
+.testimonial-text-mobile::after {
+    content: '"';
+    font-size: 40px;
+    color:rgba(220, 38, 38, 0);
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    font-family: serif;
+}
+
+/* Botão "Falar com Especialista" VERMELHO */
+.cta-section .btn-primary,
+.cta-section a.btn-primary,
+.cta-actions .btn-primary,
+.cta-actions a.btn-primary {
+    background: #dc2626 !important;
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+    border: none !important;
+    padding: 18px 35px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+.cta-section .btn-primary:hover,
+.cta-section a.btn-primary:hover,
+.cta-actions .btn-primary:hover,
+.cta-actions a.btn-primary:hover {
+    background: #b91c1c !important;
+    background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
 </style>
     <!-- Hero Section -->
     <section class="hero">
@@ -4502,6 +4526,7 @@ include 'includes/header.php';
         </div>
     </section>
     
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="section-container">

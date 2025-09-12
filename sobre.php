@@ -369,6 +369,34 @@ include 'includes/header.php';
     margin: 40px auto;
     padding: 0 20px;
 }
+
+/* Esconder todas as imagens no mobile */
+@media (max-width: 768px) {
+    .hero-visual,
+    .about-visual,
+    .mission-visual,
+    .about-image,
+    .mission-image,
+    img {
+        display: none !important;
+    }
+    
+    /* Ajustar layouts que dependem de imagens */
+    .hero-content {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+    
+    .about-content {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .mission-content {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+}
 </style>
 
     <!-- Hero Section Desktop -->
