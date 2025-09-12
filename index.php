@@ -1052,7 +1052,7 @@ include 'includes/header.php';
     
     .regioes-track {
         display: flex;
-        animation: scroll-regioes 20s linear infinite;
+        animation: scroll-regioes 35s linear infinite;
         gap: 30px;
         align-items: center;
         width: calc(200% + 30px);
@@ -1089,7 +1089,9 @@ include 'includes/header.php';
     .regiao-icon {
         width: 60px;
         height: 60px;
-        background: linear-gradient(135deg,rgb(35, 35, 35),rgb(17, 17, 17));
+        background: #f8f9fa !important;
+        border: 2px solid #e9ecef !important;
+        color: #495057 !important;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1194,7 +1196,9 @@ include 'includes/header.php';
     .regioes-grid .regiao-icon {
         width: 90px;
         height: 90px;
-        background: linear-gradient(135deg,rgb(35, 35, 35),rgb(17, 17, 17));
+        background: #f8f9fa !important;
+        border: 2px solid #e9ecef !important;
+        color: #495057 !important;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1271,7 +1275,7 @@ include 'includes/header.php';
         
         .regioes-track {
             gap: 20px !important;
-            animation: scroll-regioes 15s linear infinite !important;
+            animation: scroll-regioes 30s linear infinite !important;
             align-items: stretch !important;
             justify-content: center !important;
             margin: 0 auto !important;
@@ -1303,6 +1307,9 @@ include 'includes/header.php';
             font-size: 24px !important;
             margin-bottom: 15px !important;
             flex-shrink: 0 !important;
+            background: #f8f9fa !important;
+            border: 2px solid #e9ecef !important;
+            color: #495057 !important;
         }
         
         .regiao-content {
@@ -1347,7 +1354,7 @@ include 'includes/header.php';
         
         .regioes-track {
             gap: 15px !important;
-            animation: scroll-regioes 12s linear infinite !important;
+            animation: scroll-regioes 25s linear infinite !important;
             align-items: stretch !important;
             justify-content: center !important;
             margin: 0 auto !important;
@@ -1379,6 +1386,9 @@ include 'includes/header.php';
             font-size: 22px !important;
             margin-bottom: 12px !important;
             flex-shrink: 0 !important;
+            background: #f8f9fa !important;
+            border: 2px solid #e9ecef !important;
+            color: #495057 !important;
         }
         
         .regiao-content {
@@ -2525,7 +2535,7 @@ include 'includes/header.php';
     
     .regioes-track {
         display: flex;
-        animation: scroll-regioes 20s linear infinite;
+        animation: scroll-regioes 35s linear infinite;
         gap: 30px;
         align-items: center;
         width: calc(200% + 30px);
@@ -2562,7 +2572,9 @@ include 'includes/header.php';
     .regiao-icon {
         width: 60px;
         height: 60px;
-        background: linear-gradient(135deg,rgb(35, 35, 35),rgb(17, 17, 17));
+        background: #f8f9fa !important;
+        border: 2px solid #e9ecef !important;
+        color: #495057 !important;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -2667,7 +2679,9 @@ include 'includes/header.php';
     .regioes-grid .regiao-icon {
         width: 90px;
         height: 90px;
-        background: linear-gradient(135deg,rgb(35, 35, 35),rgb(17, 17, 17));
+        background: #f8f9fa !important;
+        border: 2px solid #e9ecef !important;
+        color: #495057 !important;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -2744,7 +2758,7 @@ include 'includes/header.php';
         
         .regioes-track {
             gap: 20px !important;
-            animation: scroll-regioes 15s linear infinite !important;
+            animation: scroll-regioes 30s linear infinite !important;
             align-items: stretch !important;
             justify-content: center !important;
             margin: 0 auto !important;
@@ -2776,6 +2790,9 @@ include 'includes/header.php';
             font-size: 24px !important;
             margin-bottom: 15px !important;
             flex-shrink: 0 !important;
+            background: #f8f9fa !important;
+            border: 2px solid #e9ecef !important;
+            color: #495057 !important;
         }
         
         .regiao-content {
@@ -2820,7 +2837,7 @@ include 'includes/header.php';
         
         .regioes-track {
             gap: 15px !important;
-            animation: scroll-regioes 12s linear infinite !important;
+            animation: scroll-regioes 25s linear infinite !important;
             align-items: stretch !important;
             justify-content: center !important;
             margin: 0 auto !important;
@@ -2852,6 +2869,9 @@ include 'includes/header.php';
             font-size: 22px !important;
             margin-bottom: 12px !important;
             flex-shrink: 0 !important;
+            background: #f8f9fa !important;
+            border: 2px solid #e9ecef !important;
+            color: #495057 !important;
         }
         
         .regiao-content {
@@ -3038,7 +3058,7 @@ include 'includes/header.php';
 /* Melhorias para os cards das regiões */
 .regioes-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 30px !important;
     margin: 50px auto 0 auto !important;
     max-width: 1200px !important;
@@ -3256,6 +3276,35 @@ include 'includes/header.php';
     .regiao-content p {
         font-size: 0.85rem !important;
     }
+}
+
+/* Classes de responsividade */
+
+.mobile-only {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: block !important;
+    }
+    
+    /* Garantir que os ícones do carousel mobile tenham o padrão correto */
+    .regioes-carousel .regiao-icon {
+        background: #f8f9fa !important;
+        border: 2px solid #e9ecef !important;
+        color: #495057 !important;
+    }
+}
+.regioes-carousel .regiao-icon i {
+    font-size: 1.8rem;
+    color: #4b4b4b;
+    z-index: 2;
+    position: relative;
 }
 </style>
     <!-- Hero Section -->
@@ -3886,8 +3935,8 @@ include 'includes/header.php';
                 <p>Especialistas em investimentos imobiliários em Curitiba - Conheça os bairros onde atuamos</p>
             </div>
             
-            <!-- Desktop Grid - 2 Colunas Fixas -->
-            <div class="regioes-grid desktop-only" style="grid-template-columns: repeat(4, 1fr);">
+            <!-- Desktop Grid - 3 Colunas -->
+            <div class="regioes-grid desktop-only" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="regiao-card">
                     <div class="regiao-icon">
                         <i class="fas fa-tree"></i>
@@ -3901,7 +3950,7 @@ include 'includes/header.php';
                 
                 <div class="regiao-card">
                     <div class="regiao-icon">
-                        <i class="fas fa-building"></i>
+                        <i class="fas fa-leaf"></i>
                     </div>
                     <div class="regiao-content">
                         <h3>Água Verde</h3>
@@ -3912,12 +3961,12 @@ include 'includes/header.php';
                 
                 <div class="regiao-card">
                     <div class="regiao-icon">
-                        <i class="fas fa-leaf"></i>
+                        <i class="fas fa-building"></i>
                     </div>
                     <div class="regiao-content">
-                        <h3>Água Verde</h3>
-                        <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
-                        <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
+                        <h3>Batel</h3>
+                        <p>Bairro nobre com excelente qualidade de vida e valorização</p>
+                        <a href="regioes.php?regiao=batel" class="regiao-link">Explorar Região</a>
                     </div>
                 </div>
                 
@@ -3986,9 +4035,9 @@ include 'includes/header.php';
                                     <i class="fas fa-tree"></i>
                                 </div>
                                 <div class="regiao-content">
-                                    <h3>Centro</h3>
-                                    <p>Região central com infraestrutura completa e fácil acesso</p>
-                                    <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
+                                    <h3>Sítio Cercado</h3>
+                                    <p>Bairro com excelente infraestrutura e crescimento imobiliário</p>
+                                    <a href="regioes.php?regiao=sitio-cercado" class="regiao-link">Explorar Região</a>
                                 </div>
                             </div>
                         </div>
@@ -3999,9 +4048,9 @@ include 'includes/header.php';
                                     <i class="fas fa-building"></i>
                                 </div>
                                 <div class="regiao-content">
-                                    <h3>Bairro Alto</h3>
-                                    <p>Região nobre com excelente infraestrutura e valorização constante</p>
-                                    <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
+                                    <h3>Água Verde</h3>
+                                    <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
+                                    <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
                                 </div>
                             </div>
                         </div>
@@ -4025,9 +4074,9 @@ include 'includes/header.php';
                                     <i class="fas fa-home"></i>
                                 </div>
                                 <div class="regiao-content">
-                                    <h3>Região Metropolitana</h3>
-                                    <p>Cidades da região metropolitana com potencial de crescimento</p>
-                                    <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
+                                    <h3>Batel</h3>
+                                    <p>Bairro nobre com excelente qualidade de vida e valorização</p>
+                                    <a href="regioes.php?regiao=batel" class="regiao-link">Explorar Região</a>
                                 </div>
                             </div>
                         </div>
@@ -4039,9 +4088,9 @@ include 'includes/header.php';
                                     <i class="fas fa-tree"></i>
                                 </div>
                                 <div class="regiao-content">
-                                    <h3>Centro</h3>
-                                    <p>Região central com infraestrutura completa e fácil acesso</p>
-                                    <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
+                                    <h3>Sítio Cercado</h3>
+                                    <p>Bairro com excelente infraestrutura e crescimento imobiliário</p>
+                                    <a href="regioes.php?regiao=sitio-cercado" class="regiao-link">Explorar Região</a>
                                 </div>
                             </div>
                         </div>
@@ -4052,9 +4101,9 @@ include 'includes/header.php';
                                     <i class="fas fa-building"></i>
                                 </div>
                                 <div class="regiao-content">
-                                    <h3>Bairro Alto</h3>
-                                    <p>Região nobre com excelente infraestrutura e valorização constante</p>
-                                    <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
+                                    <h3>Água Verde</h3>
+                                    <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
+                                    <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
                                 </div>
                             </div>
                         </div>
@@ -4078,9 +4127,179 @@ include 'includes/header.php';
                                     <i class="fas fa-home"></i>
                                 </div>
                                 <div class="regiao-content">
-                                    <h3>Região Metropolitana</h3>
-                                    <p>Cidades da região metropolitana com potencial de crescimento</p>
-                                    <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
+                                    <h3>Batel</h3>
+                                    <p>Bairro nobre com excelente qualidade de vida e valorização</p>
+                                    <a href="regioes.php?regiao=batel" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Cabral</h3>
+                                    <p>Bairro tradicional com boa infraestrutura e potencial de valorização</p>
+                                    <a href="regioes.php?regiao=cabral" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-landmark"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Centro Cívico</h3>
+                                    <p>Região administrativa com infraestrutura completa e fácil acesso</p>
+                                    <a href="regioes.php?regiao=centro-civico" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Juvevê</h3>
+                                    <p>Bairro nobre com excelente qualidade de vida e valorização</p>
+                                    <a href="regioes.php?regiao=juveve" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-city"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Centro</h3>
+                                    <p>Região central com infraestrutura completa e fácil acesso</p>
+                                    <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Jardim Botânico</h3>
+                                    <p>Bairro verde com natureza preservada e excelente qualidade de vida</p>
+                                    <a href="regioes.php?regiao=jardim-botanico" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Duplicação para scroll infinito -->
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Sítio Cercado</h3>
+                                    <p>Bairro com excelente infraestrutura e crescimento imobiliário</p>
+                                    <a href="regioes.php?regiao=sitio-cercado" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Água Verde</h3>
+                                    <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
+                                    <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Batel</h3>
+                                    <p>Bairro nobre com excelente qualidade de vida e valorização</p>
+                                    <a href="regioes.php?regiao=batel" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Cabral</h3>
+                                    <p>Bairro tradicional com boa infraestrutura e potencial de valorização</p>
+                                    <a href="regioes.php?regiao=cabral" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-landmark"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Centro Cívico</h3>
+                                    <p>Região administrativa com infraestrutura completa e fácil acesso</p>
+                                    <a href="regioes.php?regiao=centro-civico" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Juvevê</h3>
+                                    <p>Bairro nobre com excelente qualidade de vida e valorização</p>
+                                    <a href="regioes.php?regiao=juveve" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-city"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Centro</h3>
+                                    <p>Região central com infraestrutura completa e fácil acesso</p>
+                                    <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="regiao-slide">
+                            <div class="regiao-card">
+                                <div class="regiao-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="regiao-content">
+                                    <h3>Jardim Botânico</h3>
+                                    <p>Bairro verde com natureza preservada e excelente qualidade de vida</p>
+                                    <a href="regioes.php?regiao=jardim-botanico" class="regiao-link">Explorar Região</a>
                                 </div>
                             </div>
                         </div>
@@ -5094,240 +5313,6 @@ include 'includes/header.php';
     </section>
 
 
-    <!-- Regiões de Curitiba - Cards em 2 Colunas -->
-    <section class="regioes-curitiba">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Nossos Bairros de Atuação</h2>
-                <p>Especialistas em investimentos imobiliários em Curitiba - Conheça os bairros onde atuamos</p>
-            </div>
-            
-            <!-- Desktop Grid - 2 Colunas Fixas -->
-            <div class="regioes-grid desktop-only" style="grid-template-columns: repeat(4, 1fr);">
-                <div class="regiao-card">
-                    <div class="regiao-icon">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <div class="regiao-content">
-                        <h3>Sítio Cercado</h3>
-                        <p>Bairro com excelente infraestrutura e crescimento imobiliário</p>
-                        <a href="regioes.php?regiao=sitio-cercado" class="regiao-link">Explorar Região</a>
-                    </div>
-                </div>
-                
-                <div class="regiao-card">
-                    <div class="regiao-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <div class="regiao-content">
-                        <h3>Água Verde</h3>
-                        <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
-                        <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
-                    </div>
-                </div>
-                
-                <div class="regiao-card">
-                    <div class="regiao-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="regiao-content">
-                        <h3>Água Verde</h3>
-                        <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
-                        <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
-                    </div>
-                </div>
-                
-                <div class="regiao-card">
-                    <div class="regiao-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="regiao-content">
-                        <h3>Cabral</h3>
-                        <p>Bairro tradicional com boa infraestrutura e potencial de valorização</p>
-                        <a href="regioes.php?regiao=cabral" class="regiao-link">Explorar Região</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mobile Carousel Automático - Estilo Parceiros -->
-            <div class="regioes-carousel mobile-only">
-                <div class="regioes-carousel-wrapper">
-                    <div class="regioes-track">
-                        <!-- Primeira linha de regiões -->
-                        <div class="regiao-slide">
-                            <div class="regiao-card">
-                                <div class="regiao-icon">
-                                    <i class="fas fa-tree"></i>
-                                </div>
-                                <div class="regiao-content">
-                                    <h3>Centro</h3>
-                                    <p>Região central com infraestrutura completa e fácil acesso</p>
-                                    <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="regiao-slide">
-                            <div class="regiao-card">
-                                <div class="regiao-icon">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <div class="regiao-content">
-                                    <h3>Bairro Alto</h3>
-                                    <p>Região nobre com excelente infraestrutura e valorização constante</p>
-                                    <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="regiao-slide">
-                            <div class="regiao-card">
-                                <div class="regiao-icon">
-                                    <i class="fas fa-leaf"></i>
-                                </div>
-                                <div class="regiao-content">
-                                    <h3>Água Verde</h3>
-                                    <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
-                                    <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="regiao-slide">
-                            <div class="regiao-card">
-                                <div class="regiao-icon">
-                                    <i class="fas fa-home"></i>
-                                </div>
-                                <div class="regiao-content">
-                                    <h3>Região Metropolitana</h3>
-                                    <p>Cidades da região metropolitana com potencial de crescimento</p>
-                                    <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Segunda linha de regiões (duplicada para loop infinito) -->
-                        <div class="regiao-slide">
-                            <div class="regiao-card">
-                                <div class="regiao-icon">
-                                    <i class="fas fa-tree"></i>
-                                </div>
-                                <div class="regiao-content">
-                                    <h3>Centro</h3>
-                                    <p>Região central com infraestrutura completa e fácil acesso</p>
-                                    <a href="regioes.php?regiao=centro" class="regiao-link">Explorar Região</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="regiao-slide">
-                            <div class="regiao-card">
-                                <div class="regiao-icon">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <div class="regiao-content">
-                                    <h3>Bairro Alto</h3>
-                                    <p>Região nobre com excelente infraestrutura e valorização constante</p>
-                                    <a href="regioes.php?regiao=bairro-alto" class="regiao-link">Explorar Região</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="regiao-slide">
-                            <div class="regiao-card">
-                                <div class="regiao-icon">
-                                    <i class="fas fa-leaf"></i>
-                                </div>
-                                <div class="regiao-content">
-                                    <h3>Água Verde</h3>
-                                    <p>Bairro residencial com ótima localização e crescimento imobiliário</p>
-                                    <a href="regioes.php?regiao=agua-verde" class="regiao-link">Explorar Região</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="regiao-slide">
-                            <div class="regiao-card">
-                                <div class="regiao-icon">
-                                    <i class="fas fa-home"></i>
-                                </div>
-                                <div class="regiao-content">
-                                    <h3>Região Metropolitana</h3>
-                                    <p>Cidades da região metropolitana com potencial de crescimento</p>
-                                    <a href="regioes.php?regiao=regiao-metropolitana" class="regiao-link">Explorar Região</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section-footer">
-                <a href="regioes.php" class="btn-view-all">Explorar Todas as Regiões</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cities Section Desktop -->
-    <section class="cities-section desktop-only">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Investindo em Curitiba e Região</h2>
-                <p>Descubra as melhores oportunidades na região metropolitana de Curitiba</p>
-            </div>
-            
-            <div class="cities-grid">
-                <div class="city-card">
-                    <div class="city-image">
-                        <img src="assets/images/Mapas/Sao_paulo-SP.png" alt="São Paulo - Capital Financeira">
-                        <div class="city-overlay">
-                            <h3>São Paulo</h3>
-                            <p>Capital financeira</p>
-                            <span class="properties-count">3 Imóveis</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="city-card">
-                    <div class="city-image">
-                        <img src="assets/images/Mapas/Rio_De_Janeiro-RJ.png" alt="Rio de Janeiro - Cidade Maravilhosa">
-                        <div class="city-overlay">
-                            <h3>Rio de Janeiro</h3>
-                            <p>Cidade maravilhosa</p>
-                            <span class="properties-count">1 Imóvel</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="city-card">
-                    <div class="city-image">
-                        <img src="assets/images/Mapas/Curitiba-PR.png" alt="Curitiba - Capital Verde">
-                        <div class="city-overlay">
-                            <h3>Curitiba</h3>
-                            <p>Capital verde</p>
-                            <span class="properties-count">1 Imóvel</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="city-card">
-                    <div class="city-image">
-                        <img src="assets/images/Mapas/Fortaleza-CE.png" alt="Fortaleza - Terra da Luz">
-                        <div class="city-overlay">
-                            <h3>Fortaleza</h3>
-                            <p>Terra da luz</p>
-                            <span class="properties-count">1 Imóvel</span>
-                        </div>
-                    </div>
-                </div>
-            
-            </div>
-            
-            <div class="section-footer">
-                <a href="regioes.php" class="btn-view-all">Explorar Todas as Regiões</a>
-            </div>
-        </div>
-    </section>
 
    
     <!-- Meet Our Agents Section Desktop -->
