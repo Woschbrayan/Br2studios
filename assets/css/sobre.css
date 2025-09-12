@@ -2,7 +2,11 @@
 
 /* Hero Section */
 .hero-section {
-    background: #ffffff;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/images/sobre/hero-sobre.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     padding: 100px 0 100px;
     margin-top: 80px;
     position: relative;
@@ -52,7 +56,7 @@
 .hero-text h1 {
     font-size: 3.2rem;
     font-weight: 800;
-    color: #000000;
+    color: #ffffff;
     margin-bottom: 25px;
     line-height: 1.1;
     animation: fadeInUp 0.8s ease-out 0.2s both;
@@ -60,7 +64,7 @@
 
 .hero-text p {
     font-size: 1.15rem;
-    color: #333333;
+    color: #ffffff;
     margin-bottom: 2.5rem;
     line-height: 1.7;
     max-width: 550px;
@@ -70,7 +74,7 @@
 
 .hero-subtitle {
     font-size: 1.4rem;
-    color: #000000;
+    color: #ffffff;
     font-weight: 700;
     margin-bottom: 20px;
     animation: fadeInUp 0.8s ease-out 0.3s both;
@@ -78,7 +82,7 @@
 
 .hero-description {
     font-size: 1rem;
-    color: #333333;
+    color: #ffffff;
     margin-bottom: 1.5rem;
     line-height: 1.7;
     max-width: 600px;
@@ -714,32 +718,39 @@
 }
 
 .btn-primary {
-    background: #000000;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
 }
 
 .btn-primary:hover {
-    background: #333333;
+    background: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary {
     background: transparent;
-    color: #000000;
-    border-color: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
 .btn-secondary:hover {
-    background: #000000;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.3);
 }
 
 /* ===== TEMA DARK ===== */
 [data-theme="dark"] .hero-section {
-    background: #0f0f0f;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/sobre/hero-sobre.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 [data-theme="dark"] .hero-text h1 {
@@ -1031,6 +1042,7 @@
 
 @media (max-width: 768px) {
     .hero-section {
+        background-attachment: scroll;
         padding: 80px 0 80px;
         min-height: auto;
     }

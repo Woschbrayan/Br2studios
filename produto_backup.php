@@ -52,19 +52,7 @@ if (!$imovel_data) {
 $current_page = 'produto';
 include 'includes/header.php'; 
 ?>
-<style>
-    .product-hero-content {
-    display: grid
-;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: start;
-    position: relative;
-    z-index: 2;
-    min-height: 80vh;
-    margin-top: 10%;
-}
-</style>
+
     <!-- Hero Product Section -->
     <section class="product-hero">
         <div class="container">
@@ -496,7 +484,32 @@ include 'includes/header.php';
                     </div>
                 </div>
                 
-              
+                <div class="details-sidebar">
+                    <!-- Ações Rápidas -->
+                    <div class="sidebar-section actions-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-bolt"></i> Entre em Contato</h3>
+                            <p>Fale conosco para mais informações</p>
+                        </div>
+                        
+                        <div class="actions-grid">
+                            <a href="#contato-rapido" class="action-btn primary">
+                                <i class="fas fa-envelope"></i>
+                                <span>Solicitar Informações</span>
+                            </a>
+                            
+                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo'] ?? 'este imóvel'); ?>" target="_blank" class="action-btn whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Falar no WhatsApp</span>
+                            </a>
+                            
+                            <a href="tel:554141410093" class="action-btn phone">
+                                <i class="fas fa-phone"></i>
+                                <span>Ligar Agora</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -561,6 +574,23 @@ include 'includes/header.php';
         </div>
     </section>
 
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para fazer seu investimento?</h2>
+                <p>Entre em contato agora e garanta este imóvel com condições especiais</p>
+                <div class="cta-actions">
+                    <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
+                                    <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data ? $imovel_data['titulo'] : 'o Studio Premium'); ?>" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Falar no WhatsApp
+                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Theme Toggle Button -->
     <div class="theme-toggle">
         <button id="theme-toggle-btn" class="theme-toggle-btn">
@@ -576,7 +606,6 @@ include 'includes/header.php';
     require_once __DIR__ . '/config/version.php';
     $version = getAssetsVersion();
     ?>
-    <script src="assets/js/main.js?v=<?php echo $version; ?>"></script>
     <script src="assets/js/produto.js?v=<?php echo $version; ?>"></script>
 </body>
 </html>

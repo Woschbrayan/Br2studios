@@ -168,10 +168,15 @@ class Imovel {
             $imovel = $this->db->fetchOne($sql, [':id' => $id]);
             
             if ($imovel) {
-                // Buscar categorias do imóvel
-                require_once __DIR__ . '/CategoriaImovel.php';
-                $categoria = new CategoriaImovel();
-                $imovel['categorias'] = $categoria->buscarPorImovel($id);
+                // Buscar categorias do imóvel (temporariamente desabilitado para debug)
+                try {
+                    require_once __DIR__ . '/CategoriaImovel.php';
+                    $categoria = new CategoriaImovel();
+                    $imovel['categorias'] = $categoria->buscarPorImovel($id);
+                } catch (Exception $e) {
+                    error_log("Erro ao buscar categorias: " . $e->getMessage());
+                    $imovel['categorias'] = [];
+                }
             }
             
             return $imovel;

@@ -131,6 +131,14 @@ include 'includes/header.php';
 ?>
 <style>
 
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/images/sobre/hero-sobre.jpeg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
 .hero-section .hero-content {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -152,6 +160,133 @@ include 'includes/header.php';
 .hero-text {
     width: 100% !important;
     text-align: left !important;
+}
+
+.hero-section .hero-text h1 {
+    color: #ffffff !important;
+}
+
+.hero-section .hero-text p {
+    color: #ffffff !important;
+}
+
+.hero-section .hero-subtitle {
+    color: #ffffff !important;
+}
+
+.hero-section .hero-description {
+    color: #ffffff !important;
+}
+
+.btn-primary {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+}
+
+.btn-primary:hover {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.btn-secondary {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.btn-secondary:hover {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* Mobile Styles */
+.sobre-header-mobile {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/images/sobre/hero-sobre.jpeg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    padding: 40px 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.sobre-header-mobile h1 {
+    color: #ffffff !important;
+}
+
+.sobre-header-mobile .mobile-subtitle {
+    color: #ffffff !important;
+}
+
+.sobre-header-mobile .mobile-description {
+    color: #ffffff !important;
+}
+
+.sobre-header-mobile .quick-stat {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #000000 !important;
+    border-radius: 10px !important;
+    padding: 10px 15px !important;
+    margin: 5px !important;
+    display: inline-block !important;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        background-attachment: scroll !important;
+        padding: 80px 0 80px !important;
+        min-height: auto !important;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem !important;
+        text-align: center !important;
+    }
+    
+    .hero-text p {
+        font-size: 1rem !important;
+        text-align: center !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem !important;
+        text-align: center !important;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem !important;
+        text-align: center !important;
+    }
+    
+    .hero-actions {
+        justify-content: center !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
+    }
+    
+    .hero-actions a {
+        width: 100% !important;
+        max-width: 250px !important;
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 60px 0 60px !important;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem !important;
+    }
+    
+    .hero-image {
+        max-width: 100% !important;
+        height: 200px !important;
+    }
 }
 .about-section {
     background: #ffffff !important;
@@ -258,13 +393,6 @@ include 'includes/header.php';
                     </div>
                 </div>
                 
-                <div class="hero-visual">
-                    <div class="hero-image-container">
-                        <div class="hero-image">
-                            <img src="assets/images/sobre/b3c6cb8b-6f89-44e9-ae44-44b42c6b32ee.jpeg" alt="BR2 Studios - Especialistas em Estúdios">
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

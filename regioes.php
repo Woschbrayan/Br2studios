@@ -8,6 +8,40 @@ $regiao = $_GET['regiao'] ?? '';
 function mapearEnderecoParaRegiao($endereco) {
     $endereco_lower = strtolower($endereco);
     
+    // Sítio Cercado
+    if (strpos($endereco_lower, 'sítio cercado') !== false || 
+        strpos($endereco_lower, 'sitio cercado') !== false) {
+        return 'sitio-cercado';
+    }
+    
+    // Água Verde
+    if (strpos($endereco_lower, 'água verde') !== false || 
+        strpos($endereco_lower, 'agua verde') !== false) {
+        return 'agua-verde';
+    }
+    
+    // Batel
+    if (strpos($endereco_lower, 'batel') !== false) {
+        return 'batel';
+    }
+    
+    // Cabral
+    if (strpos($endereco_lower, 'cabral') !== false) {
+        return 'cabral';
+    }
+    
+    // Centro Cívico
+    if (strpos($endereco_lower, 'centro cívico') !== false || 
+        strpos($endereco_lower, 'centro civico') !== false) {
+        return 'centro-civico';
+    }
+    
+    // Juvevê
+    if (strpos($endereco_lower, 'juvevê') !== false || 
+        strpos($endereco_lower, 'juveve') !== false) {
+        return 'juveve';
+    }
+    
     // Centro
     if (strpos($endereco_lower, 'centro') !== false || 
         strpos($endereco_lower, 'visconde de guarapuava') !== false ||
@@ -15,68 +49,27 @@ function mapearEnderecoParaRegiao($endereco) {
         return 'centro';
     }
     
-    // Bairro Alto
-    if (strpos($endereco_lower, 'bairro alto') !== false || 
-        strpos($endereco_lower, 'alto da xv') !== false ||
-        strpos($endereco_lower, 'fernando amaro') !== false) {
-        return 'bairro-alto';
-    }
-    
-    // Cristo Rei (parte do Bairro Alto)
-    if (strpos($endereco_lower, 'cristo rei') !== false || 
-        strpos($endereco_lower, 'atílio bório') !== false) {
-        return 'bairro-alto';
-    }
-    
-    // Água Verde e regiões próximas
-    if (strpos($endereco_lower, 'água verde') !== false || 
-        strpos($endereco_lower, 'rebouças') !== false ||
-        strpos($endereco_lower, 'portão') !== false ||
-        strpos($endereco_lower, 'guabirotuba') !== false) {
-        return 'agua-verde';
-    }
-    
-    // Outras regiões de Curitiba
-    if (strpos($endereco_lower, 'novo mundo') !== false || 
-        strpos($endereco_lower, 'lindóia') !== false ||
-        strpos($endereco_lower, 'boa vista') !== false ||
-        strpos($endereco_lower, 'cabral') !== false) {
-        return 'agua-verde';
-    }
-    
-    // Região Metropolitana
-    if (strpos($endereco_lower, 'são josé dos pinhais') !== false || 
-        strpos($endereco_lower, 'pinhais') !== false ||
-        strpos($endereco_lower, 'colombo') !== false ||
-        strpos($endereco_lower, 'araucária') !== false) {
-        return 'regiao-metropolitana';
+    // Jardim Botânico
+    if (strpos($endereco_lower, 'jardim botânico') !== false || 
+        strpos($endereco_lower, 'jardim botanico') !== false) {
+        return 'jardim-botanico';
     }
     
     // Default: Centro se não conseguir mapear
     return 'centro';
 }
 
-// Definir regiões baseadas nos dados reais do banco
+// Definir regiões baseadas nos bairros de atuação definidos
 $regioes = [
-    'centro' => [
-        'nome' => 'Centro',
+    'sitio-cercado' => [
+        'nome' => 'Sítio Cercado',
         'estado' => 'PR',
         'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
-        'descricao' => 'Região central de Curitiba com infraestrutura completa e fácil acesso',
+        'descricao' => 'Bairro com excelente infraestrutura e crescimento imobiliário',
         'imoveis' => 0, // Será atualizado com dados reais
         'valorizacao' => 'Alta',
-        'destaque' => 'Centro histórico e comercial',
-        'bairros' => ['Centro', 'Centro Cívico', 'Batel', 'Visconde de Guarapuava', 'José Loureiro']
-    ],
-    'bairro-alto' => [
-        'nome' => 'Bairro Alto',
-        'estado' => 'PR',
-        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
-        'descricao' => 'Região nobre com excelente infraestrutura e valorização constante',
-        'imoveis' => 0, // Será atualizado com dados reais
-        'valorizacao' => 'Alta',
-        'destaque' => 'Região nobre e valorizada',
-        'bairros' => ['Bairro Alto', 'Seminário', 'Cristo Rei', 'Juvevê', 'Alto da XV', 'Fernando Amaro', 'Atílio Bório']
+        'destaque' => 'Crescimento e infraestrutura',
+        'bairros' => ['Sítio Cercado']
     ],
     'agua-verde' => [
         'nome' => 'Água Verde',
@@ -84,19 +77,69 @@ $regioes = [
         'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
         'descricao' => 'Bairro residencial com ótima localização e crescimento imobiliário',
         'imoveis' => 0, // Será atualizado com dados reais
-        'valorizacao' => 'Média-Alta',
+        'valorizacao' => 'Alta',
         'destaque' => 'Residencial e bem localizado',
-        'bairros' => ['Água Verde', 'Rebouças', 'Portão', 'Guabirotuba', 'Novo Mundo', 'Lindóia', 'Boa Vista', 'Cabral']
+        'bairros' => ['Água Verde']
     ],
-    'regiao-metropolitana' => [
-        'nome' => 'Região Metropolitana',
+    'batel' => [
+        'nome' => 'Batel',
         'estado' => 'PR',
         'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
-        'descricao' => 'Cidades da região metropolitana com potencial de crescimento',
+        'descricao' => 'Bairro nobre com excelente qualidade de vida e valorização',
         'imoveis' => 0, // Será atualizado com dados reais
-        'valorizacao' => 'Média',
-        'destaque' => 'Crescimento e oportunidades',
-        'bairros' => ['São José dos Pinhais', 'Pinhais', 'Colombo', 'Araucária']
+        'valorizacao' => 'Alta',
+        'destaque' => 'Região nobre e valorizada',
+        'bairros' => ['Batel']
+    ],
+    'cabral' => [
+        'nome' => 'Cabral',
+        'estado' => 'PR',
+        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
+        'descricao' => 'Bairro tradicional com boa infraestrutura e potencial de valorização',
+        'imoveis' => 0, // Será atualizado com dados reais
+        'valorizacao' => 'Média-Alta',
+        'destaque' => 'Tradicional e em crescimento',
+        'bairros' => ['Cabral']
+    ],
+    'centro-civico' => [
+        'nome' => 'Centro Cívico',
+        'estado' => 'PR',
+        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
+        'descricao' => 'Região administrativa com infraestrutura completa e fácil acesso',
+        'imoveis' => 0, // Será atualizado com dados reais
+        'valorizacao' => 'Alta',
+        'destaque' => 'Centro administrativo',
+        'bairros' => ['Centro Cívico']
+    ],
+    'juveve' => [
+        'nome' => 'Juvevê',
+        'estado' => 'PR',
+        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
+        'descricao' => 'Bairro nobre com excelente qualidade de vida e valorização',
+        'imoveis' => 0, // Será atualizado com dados reais
+        'valorizacao' => 'Alta',
+        'destaque' => 'Qualidade de vida premium',
+        'bairros' => ['Juvevê']
+    ],
+    'centro' => [
+        'nome' => 'Centro',
+        'estado' => 'PR',
+        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
+        'descricao' => 'Região central com infraestrutura completa e fácil acesso',
+        'imoveis' => 0, // Será atualizado com dados reais
+        'valorizacao' => 'Alta',
+        'destaque' => 'Centro histórico e comercial',
+        'bairros' => ['Centro']
+    ],
+    'jardim-botanico' => [
+        'nome' => 'Jardim Botânico',
+        'estado' => 'PR',
+        'imagem' => 'assets/images/Mapas/Curitiba-PR.png',
+        'descricao' => 'Bairro verde com natureza preservada e excelente qualidade de vida',
+        'imoveis' => 0, // Será atualizado com dados reais
+        'valorizacao' => 'Alta',
+        'destaque' => 'Natureza e qualidade de vida',
+        'bairros' => ['Jardim Botânico']
     ]
 ];
 
@@ -168,6 +211,22 @@ include 'includes/header.php';
     line-height: 1.2 !important;
     color: #333333 !important;
     margin-top: 15%;
+}.cta-section .btn-primary{
+
+    display: inline-block;
+        background: linear-gradient(135deg, #dc2626, #b91c3c);
+        color: white;
+        padding: 14px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        text-align: center;
+        align-self: center;
+        margin-top: auto;
+
 }
 </style>
     <!-- Page Banner Desktop -->
@@ -229,8 +288,8 @@ include 'includes/header.php';
     <section class="regions-overview">
         <div class="container">
             <div class="section-header">
-                <h2>Nossas Regiões de Atuação</h2>
-                <p>Seleção estratégica de mercados com alto potencial de valorização</p>
+                <h2>Nossos Bairros de Atuação</h2>
+                <p>Especialistas em investimentos imobiliários em Curitiba - Conheça os bairros onde atuamos</p>
             </div>
             
             <div class="regions-grid">
@@ -286,7 +345,7 @@ include 'includes/header.php';
     <!-- Regiões Mobile - Cards Simples -->
     <section class="regioes-mobile mobile-only">
         <div class="section-header">
-            <h2>Regiões de Curitiba</h2>
+            <h2>Nossos Bairros de Atuação</h2>
             <p>Escolha seu bairro ideal</p>
         </div>
         <div class="regioes-grid-mobile">
@@ -294,9 +353,14 @@ include 'includes/header.php';
                 <div class="regiao-card-mobile" onclick="exploreRegion('<?php echo $key; ?>', '<?php echo $regiao_item['nome']; ?>')">
                     <div class="regiao-icon-mobile">
                         <i class="fas fa-<?php 
-                            echo $key === 'sao_paulo' ? 'building' : 
-                                ($key === 'rio_janeiro' ? 'beach' : 
-                                ($key === 'curitiba' ? 'tree' : 'sun')); 
+                            echo $key === 'sitio-cercado' ? 'tree' : 
+                                ($key === 'agua-verde' ? 'leaf' : 
+                                ($key === 'batel' ? 'building' : 
+                                ($key === 'cabral' ? 'home' : 
+                                ($key === 'centro-civico' ? 'landmark' : 
+                                ($key === 'juveve' ? 'heart' : 
+                                ($key === 'centro' ? 'city' : 
+                                ($key === 'jardim-botanico' ? 'seedling' : 'map-marker-alt'))))))); 
                         ?>"></i>
                     </div>
                     <div class="regiao-info-mobile">
@@ -365,10 +429,14 @@ $version = getAssetsVersion();
 function exploreRegion(regiaoKey, regiaoNome) {
     // Mapear região para bairros correspondentes
     const regiaoBairros = {
-        'centro': ['Centro', 'Visconde de Guarapuava', 'José Loureiro'],
-        'bairro-alto': ['Bairro Alto', 'Cristo Rei', 'Alto da XV', 'Fernando Amaro', 'Atílio Bório'],
-        'agua-verde': ['Água Verde', 'Novo Mundo', 'Lindóia', 'Boa Vista', 'Cabral'],
-        'regiao-metropolitana': ['São José dos Pinhais', 'Pinhais', 'Colombo', 'Araucária']
+        'sitio-cercado': ['Sítio Cercado'],
+        'agua-verde': ['Água Verde'],
+        'batel': ['Batel'],
+        'cabral': ['Cabral'],
+        'centro-civico': ['Centro Cívico'],
+        'juveve': ['Juvevê'],
+        'centro': ['Centro'],
+        'jardim-botanico': ['Jardim Botânico']
     };
     
     // Usar o primeiro bairro da região para o filtro

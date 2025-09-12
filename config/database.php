@@ -5,9 +5,10 @@
  */
 
 // Detectar se está rodando local ou na Hostgator
-$is_local = (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || 
-             strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false ||
-             strpos($_SERVER['HTTP_HOST'], '::1') !== false);
+$is_local = (!isset($_SERVER['HTTP_HOST']) || 
+             strpos($_SERVER['HTTP_HOST'] ?? '', 'localhost') !== false || 
+             strpos($_SERVER['HTTP_HOST'] ?? '', '127.0.0.1') !== false ||
+             strpos($_SERVER['HTTP_HOST'] ?? '', '::1') !== false);
 
 if ($is_local) {
     // Configurações para ambiente local (XAMPP)

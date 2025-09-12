@@ -33,12 +33,17 @@ include 'includes/header.php';
 /* Centralizar títulos e melhorar espaçamentos */
 .section-header {
     text-align: center !important;
-    margin-bottom: 50px !important;
+    margin-bottom: 60px !important;
+    margin-top: 0 !important;
+}
+
+.section-header:first-child {
+    margin-top: 0 !important;
 }
 
 .section-header h2 {
     margin-bottom: 15px !important;
-    font-size: 2.5rem !important;
+    font-size: 1.8rem !important;
     font-weight: 800 !important;
     color: #1a1a1a !important;
 }
@@ -54,16 +59,50 @@ include 'includes/header.php';
 }
 
 /* Espaçamento entre seções */
-.contact-options,
-.contact-form-section,
-.faq-section,
-.cta-section {
+.contact-options {
+    padding: 100px 0 80px 0 !important;
+}
+
+.contact-form-section {
     padding: 80px 0 !important;
 }
 
-/* Ajustar espaçamento da FAQ */
 .faq-section {
-    padding: 60px 0 !important;
+    padding: 80px 0 100px 0 !important;
+}
+
+.cta-section {
+    padding: 100px 0 !important;
+}
+
+/* Espaçamento adicional entre seções */
+.contact-options + .contact-form-section {
+    margin-top: 0 !important;
+}
+
+.contact-form-section + .faq-section {
+    margin-top: 0 !important;
+}
+
+.faq-section + .cta-section {
+    margin-top: 0 !important;
+}
+
+/* Espaçamento específico para cada seção */
+.contact-options .section-header {
+    margin-bottom: 50px !important;
+}
+
+.contact-form-section .section-header {
+    margin-bottom: 50px !important;
+}
+
+.faq-section .section-header {
+    margin-bottom: 50px !important;
+}
+
+.cta-section .section-header {
+    margin-bottom: 40px !important;
 }
 
 .faq-grid {
@@ -190,24 +229,210 @@ include 'includes/header.php';
 
 /* Responsividade */
 @media (max-width: 768px) {
+    /* Espaçamento mobile melhorado */
+    .contact-options {
+        padding: 60px 0 50px 0 !important;
+    }
+    
+    .contact-form-section {
+        padding: 50px 0 !important;
+    }
+    
+    .faq-section {
+        padding: 50px 0 60px 0 !important;
+    }
+    
+    .cta-section {
+        padding: 60px 0 !important;
+    }
+    
+    /* Títulos mobile */
+    .section-header {
+        margin-bottom: 40px !important;
+    }
+    
     .section-header h2 {
-        font-size: 2rem !important;
+        font-size: 1.6rem !important;
+        margin-bottom: 12px !important;
     }
     
     .section-header p {
-        font-size: 1rem !important;
+        font-size: 0.95rem !important;
+        margin-top: 8px !important;
     }
     
+    /* CTA mobile */
     .cta-content h2 {
-        font-size: 2.5rem !important;
+        font-size: 2rem !important;
+        margin-bottom: 15px !important;
     }
     
     .cta-content p {
-        font-size: 1.1rem !important;
+        font-size: 1rem !important;
     }
     
     .cta-actions {
         max-width: 250px !important;
+        gap: 15px !important;
+    }
+    
+    /* Espaçamento específico mobile */
+    .contact-options .section-header {
+        margin-bottom: 35px !important;
+    }
+    
+    .contact-form-section .section-header {
+        margin-bottom: 35px !important;
+    }
+    
+    .faq-section .section-header {
+        margin-bottom: 35px !important;
+    }
+    
+    .cta-section .section-header {
+        margin-bottom: 30px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mobile pequeno */
+    .contact-options {
+        padding: 50px 0 40px 0 !important;
+    }
+    
+    .contact-form-section {
+        padding: 40px 0 !important;
+    }
+    
+    .faq-section {
+        padding: 40px 0 50px 0 !important;
+    }
+    
+    .cta-section {
+        padding: 50px 0 !important;
+    }
+    
+    .section-header h2 {
+        font-size: 1.4rem !important;
+    }
+    
+    .section-header p {
+        font-size: 0.9rem !important;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* Ajustes específicos para elementos mobile */
+@media (max-width: 768px) {
+    /* WhatsApp Highlight Mobile - afastar da hero */
+    .whatsapp-highlight-mobile {
+        padding: 60px 0 50px 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    .whatsapp-highlight-mobile .section-header {
+        margin-bottom: 40px !important;
+        text-align: center !important;
+    }
+    
+    .whatsapp-highlight-mobile .section-header h2 {
+        font-size: 1.6rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .whatsapp-highlight-mobile .section-header p {
+        font-size: 0.95rem !important;
+        margin-top: 8px !important;
+    }
+    
+    /* WhatsApp Card Mobile - centralizar e espaçar */
+    .whatsapp-card-mobile {
+        max-width: 320px !important;
+        margin: 0 auto !important;
+        padding: 25px 20px !important;
+        text-align: center !important;
+        background: #ffffff !important;
+        border-radius: 15px !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .whatsapp-icon-mobile {
+        margin: 0 auto 20px auto !important;
+        width: 60px !important;
+        height: 60px !important;
+        background: #25d366 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .whatsapp-icon-mobile i {
+        font-size: 1.8rem !important;
+        color: #ffffff !important;
+    }
+    
+    .whatsapp-info-mobile {
+        margin-bottom: 25px !important;
+    }
+    
+    .whatsapp-info-mobile h3 {
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .whatsapp-info-mobile p {
+        font-size: 0.9rem !important;
+        color: #666 !important;
+        margin: 0 !important;
+        line-height: 1.5 !important;
+    }
+    
+    .whatsapp-btn-mobile {
+        background: #25d366 !important;
+        color: #ffffff !important;
+        padding: 15px 25px !important;
+        border-radius: 10px !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+    }
+    
+    .whatsapp-btn-mobile:hover {
+        background: #128c7e !important;
+        transform: translateY(-2px) !important;
+        text-decoration: none !important;
+    }
+    
+    /* Contact Form Section - melhor espaçamento */
+    .contact-form-section {
+        padding: 50px 0 !important;
+    }
+    
+    .contact-form-section .section-header {
+        margin-bottom: 40px !important;
+        text-align: center !important;
+    }
+    
+    .contact-form-section .section-header h2 {
+        font-size: 1.6rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .contact-form-section .section-header p {
+        font-size: 0.95rem !important;
+        margin-top: 8px !important;
     }
 }
 .faq-answer p {
@@ -215,13 +440,52 @@ include 'includes/header.php';
     color: var(--text-secondary);
     line-height: 1.6;
     margin: 0;
+}.cta-section .btn-primary{
+
+display: inline-block;
+    background: linear-gradient(135deg, #dc2626, #b91c3c);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    text-align: center;
+    align-self: center;
+    margin-top: auto;
+
+}
+.cta-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 0px 0 !important;
+}
+.cta-actions {
+    display: flex !important
+;
+    flex-direction: column !important;
+    gap: 20px !important;
+    align-items: center !important;
+    max-width: 354px !important;
+    margin: 0 auto !important;
+}
+.cta-section .cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0px 0px;
+    position: relative;
+    z-index: 2;
 }
 </style>
 
 <!-- Hero Section Desktop -->
 <section class="contact-hero-simple desktop-only">
     <div class="hero-bg">
-        <img src="assets/images/hero-2.jpg" alt="Contato BR2Studios">
+        <img src="assets/images/contato-hero.jpeg" alt="Contato BR2Studios">
         <div class="hero-overlay"></div>
     </div>
     
@@ -249,7 +513,7 @@ include 'includes/header.php';
 <!-- Hero Mobile -->
 <section class="contact-hero-mobile-simple mobile-only">
     <div class="hero-mobile-bg">
-        <img src="assets/images/hero-2.jpg" alt="Contato BR2Studios">
+        <img src="assets/images/contato-hero.jpeg" alt="Contato BR2Studios">
         <div class="hero-mobile-overlay"></div>
     </div>
     
@@ -478,7 +742,10 @@ include 'includes/header.php';
             <h2>Pronto para começar<br>seu investimento?</h2>
             <p>Entre em contato conosco e descubra as melhores oportunidades do mercado imobiliário</p>
             <div class="cta-actions">
-                <a href="https://wa.me/554141410093" class="btn-primary" target="_blank">Falar com Especialista</a>
+            <a href="contato.php" class="btn-primary btn-large">
+                            <i class="fas fa-phone"></i>
+                            Falar com Especialista
+                        </a>
                 <a href="imoveis.php" class="btn-secondary">Ver Imóveis</a>
             </div>
         </div>

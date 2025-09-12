@@ -107,6 +107,23 @@ include 'includes/header.php';
     line-height: 1.2 !important;
     color: #333333 !important;
 }
+.cta-section .btn-primary{
+
+display: inline-block;
+    background: linear-gradient(135deg, #dc2626, #b91c3c);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    text-align: center;
+    align-self: center;
+    margin-top: auto;
+
+}
 </style>
     <!-- Page Banner Desktop -->
     <section class="page-banner desktop-only">

@@ -92,12 +92,78 @@ $page_css = 'assets/css/imoveis.css';
 include 'includes/header.php'; 
 ?>
 <style>
+/* FORÇA TAMANHO PEQUENO DOS TICKETS - MÁXIMA ESPECIFICIDADE */
+* .property-badge,
+* .property-card .property-badge,
+* .properties-grid .property-badge,
+* .properties-section .property-badge,
+* .imoveis .property-badge,
+* .imoveis .property-card .property-badge,
+* .properties-grid .property-card .property-labels .property-badge,
+* .property-badge[style],
+* .property-badge[style*="height"],
+* .property-badge[style*="font-size"] {
+    height: 18px !important;
+    font-size: 0.4rem !important;
+    width: auto !important;
+    padding: 2px 4px !important;
+    max-width: 60px !important;
+    border-radius: 2px !important;
+    line-height: 1 !important;
+    min-height: 18px !important;
+    max-height: 18px !important;
+}
+.property-labels,
+.property-card .property-labels,
+.properties-grid .property-labels,
+.properties-section .property-labels,
+.imoveis .property-labels,
+.imoveis .property-card .property-labels {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+    margin-bottom: 4px !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    z-index: 10 !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    max-width: none !important;
+    pointer-events: auto !important;
+}
+
+.property-badge,
+.property-card .property-badge,
+.properties-grid .property-badge,
+.properties-section .property-badge,
+.imoveis .property-badge,
+.imoveis .property-card .property-badge,
+.properties-grid .property-card .property-labels .property-badge {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    height: auto !important;
+    font-size: 0.5rem !important;
+    width: auto !important;
+}
  
     .property-badge {
-        padding: 10px 5px !important;
-        font-size: 0.7rem !important;
-        max-width: 116px !important;
-        border-radius: 6px !important;
+        padding: 3px 6px !important;
+        font-size: 0.5rem !important;
+        max-width: 70px !important;
+        border-radius: 3px !important;
     }
     .property-details {
     display: flex !important
@@ -113,6 +179,305 @@ include 'includes/header.php';
     overflow: hidden !important;
 }
 
+/* Cards Mobile - Menores e Padronizados */
+@media (max-width: 768px) {
+    .properties-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        padding: 0 15px !important;
+        max-width: 100% !important;
+    }
+    
+    .property-card {
+        max-width: 280px !important;
+        margin: 0 auto !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .property-card:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    .property-image {
+        height: 160px !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .property-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transition: transform 0.3s ease !important;
+    }
+    
+    .property-card:hover .property-image img {
+        transform: scale(1.05) !important;
+    }
+    
+    .property-info {
+        padding: 15px !important;
+        background: #ffffff !important;
+    }
+    
+    .property-info h3 {
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        margin-bottom: 6px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .property-location {
+        font-size: 0.8rem !important;
+        color: #666 !important;
+        margin-bottom: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+    }
+    
+    .property-location i {
+        color: #666 !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .property-details {
+        margin-bottom: 12px !important;
+        gap: 5px !important;
+        flex-wrap: wrap !important;
+    }
+    
+    .property-details span {
+        font-size: 0.7rem !important;
+        padding: 5px 8px !important;
+        background: #f8f9fa !important;
+        border: 1px solid #e9ecef !important;
+        border-radius: 5px !important;
+        color: #333 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3px !important;
+    }
+    
+    .property-details span i {
+        font-size: 0.65rem !important;
+        color: #666 !important;
+    }
+    
+    /* Valor à esquerda */
+    .property-price {
+        position: absolute !important;
+        top: 12px !important;
+        left: 12px !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+        color: white !important;
+        padding: 6px 10px !important;
+        border-radius: 6px !important;
+        text-align: center !important;
+        z-index: 10 !important;
+    }
+    
+    .property-price .price {
+        font-size: 0.9rem !important;
+        font-weight: 700 !important;
+        display: block !important;
+        margin-bottom: 1px !important;
+    }
+    
+    .property-price .price-per-sqft {
+        font-size: 0.65rem !important;
+        opacity: 0.9 !important;
+    }
+    
+    /* Tickets acima dos ícones - mobile - SOBRESCREVE IMOVEIS.CSS */
+    .property-labels,
+    .property-card .property-labels,
+    .properties-grid .property-labels,
+    .properties-section .property-labels {
+        position: static !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 3px !important;
+        margin-bottom: 6px !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        max-width: none !important;
+        pointer-events: auto !important;
+    }
+    
+    .property-badge,
+    .property-card .property-badge,
+    .properties-grid .property-badge,
+    .properties-section .property-badge {
+        font-size: 0.55rem !important;
+        padding: 3px 6px !important;
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 10 !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+    
+    .property-badge i {
+        font-size: 0.4rem !important;
+    }
+    
+    .btn-view-property {
+        padding: 10px 18px !important;
+        font-size: 0.85rem !important;
+        border-radius: 6px !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .properties-grid {
+        gap: 12px !important;
+        padding: 0 10px !important;
+    }
+    
+    .property-card {
+        max-width: 100% !important;
+    }
+    
+    .property-image {
+        height: 140px !important;
+    }
+    
+    .property-info {
+        padding: 12px !important;
+    }
+    
+    .property-info h3 {
+        font-size: 0.95rem !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .property-location {
+        font-size: 0.75rem !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .property-details {
+        margin-bottom: 10px !important;
+        gap: 4px !important;
+    }
+    
+    .property-details span {
+        font-size: 0.65rem !important;
+        padding: 4px 6px !important;
+    }
+    
+    .property-details span i {
+        font-size: 0.6rem !important;
+    }
+    
+    /* Valor à esquerda - mobile pequeno */
+    .property-price {
+        top: 10px !important;
+        left: 10px !important;
+        padding: 5px 8px !important;
+    }
+    
+    .property-price .price {
+        font-size: 0.85rem !important;
+    }
+    
+    .property-price .price-per-sqft {
+        font-size: 0.6rem !important;
+    }
+    
+    /* Tickets acima dos ícones - mobile pequeno - SOBRESCREVE IMOVEIS.CSS */
+    .property-labels,
+    .property-card .property-labels,
+    .properties-grid .property-labels,
+    .properties-section .property-labels {
+        gap: 2px !important;
+        margin-bottom: 4px !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        position: static !important;
+        z-index: 10 !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        max-width: none !important;
+        pointer-events: auto !important;
+    }
+    
+    .property-badge,
+    .property-card .property-badge,
+    .properties-grid .property-badge,
+    .properties-section .property-badge {
+        font-size: 0.5rem !important;
+        padding: 2px 5px !important;
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 10 !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+    
+    .property-badge i {
+        font-size: 0.4rem !important;
+    }
+    
+    .btn-view-property {
+        padding: 8px 15px !important;
+        font-size: 0.8rem !important;
+    }
+}
+.property-labels {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex
+;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 15;
+    max-width: 350px;
+    pointer-events: none;
+    width: auto;
+    height: 70px;
+    min-height: 20px;
+    overflow: visible;
+}
+* .property-badge, * .property-card .property-badge, * .properties-grid .property-badge, * .properties-section .property-badge, * .imoveis .property-badge, * .imoveis .property-card .property-badge, * .properties-grid .property-card .property-labels .property-badge, * .property-badge[style], * .property-badge[style*="height"], * .property-badge[style*="font-size"] {
+    height: 20px !important;
+    font-size: 0.8rem !important;
+    width: auto !important;
+    padding: 15px 8px !important;
+    max-width: 150px !important;
+    border-radius: 15px !important;
+    line-height: 1 !important;
+    min-height: 18px !important;
+    max-height: 18px !important;
+}
 
 </style>
     <!-- Page Banner Desktop -->
@@ -354,6 +719,22 @@ include 'includes/header.php';
                                          alt="Imóvel sem imagem">
                                 <?php endif; ?>
                                 
+                                <div class="property-price">
+                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
+                                    <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
+                                        <span class="price-per-sqft">R$ <?php echo number_format($imovel_item['preco'] / $imovel_item['area'], 0, ',', '.'); ?>/m²</span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            
+                            <div class="property-info">
+                                <h3><?php echo htmlspecialchars($imovel_item['titulo']); ?></h3>
+                                <p class="property-location">
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    <?php echo htmlspecialchars($imovel_item['cidade'] . ', ' . $imovel_item['estado']); ?>
+                                </p>
+                                
+                                <!-- TICKETS AQUI - ACIMA DOS ÍCONES -->
                                 <div class="property-labels">
                                     <?php if ($imovel_item['destaque']): ?>
                                         <span class="property-badge badge-destaque">
@@ -375,20 +756,6 @@ include 'includes/header.php';
                                     <?php endif; ?>
                                 </div>
                                 
-                                <div class="property-price">
-                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
-                                    <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
-                                        <span class="price-per-sqft">R$ <?php echo number_format($imovel_item['preco'] / $imovel_item['area'], 0, ',', '.'); ?>/m²</span>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            
-                            <div class="property-info">
-                                <h3><?php echo htmlspecialchars($imovel_item['titulo']); ?></h3>
-                                <p class="property-location">
-                                    <i class="fas fa-map-marker-alt"></i> 
-                                    <?php echo htmlspecialchars($imovel_item['cidade'] . ', ' . $imovel_item['estado']); ?>
-                                </p>
                                 <div class="property-details">
                                     <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
                                         <span><i class="fas fa-ruler-combined"></i> <?php echo $imovel_item['area']; ?>m²</span>
