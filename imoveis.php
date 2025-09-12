@@ -92,79 +92,58 @@ $page_css = 'assets/css/imoveis.css';
 include 'includes/header.php'; 
 ?>
 <style>
-/* FORÇA TAMANHO PEQUENO DOS TICKETS - MÁXIMA ESPECIFICIDADE */
-* .property-badge,
-* .property-card .property-badge,
-* .properties-grid .property-badge,
-* .properties-section .property-badge,
-* .imoveis .property-badge,
-* .imoveis .property-card .property-badge,
-* .properties-grid .property-card .property-labels .property-badge,
-* .property-badge[style],
-* .property-badge[style*="height"],
-* .property-badge[style*="font-size"] {
-    height: 18px !important;
-    font-size: 0.4rem !important;
-    width: auto !important;
-    padding: 2px 4px !important;
-    max-width: 60px !important;
-    border-radius: 2px !important;
-    line-height: 1 !important;
-    min-height: 18px !important;
-    max-height: 18px !important;
-}
-.property-labels,
-.property-card .property-labels,
-.properties-grid .property-labels,
-.properties-section .property-labels,
-.imoveis .property-labels,
-.imoveis .property-card .property-labels {
+/* ETIQUETAS DOS CARDS - DESKTOP */
+.property-labels {
+    position: absolute !important;
+    top: 15px !important;
+    left: 15px !important;
     display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    position: static !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 2px !important;
-    margin-bottom: 4px !important;
-    justify-content: flex-start !important;
-    width: 100% !important;
-    z-index: 10 !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    max-width: none !important;
-    pointer-events: auto !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    z-index: 15 !important;
+    max-width: 350px !important;
+    pointer-events: none !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
 }
 
-.property-badge,
-.property-card .property-badge,
-.properties-grid .property-badge,
-.properties-section .property-badge,
-.imoveis .property-badge,
-.imoveis .property-card .property-badge,
-.properties-grid .property-card .property-labels .property-badge {
+.property-badge {
     display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    position: relative !important;
-    z-index: 10 !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px 16px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-radius: 25px !important;
+    white-space: nowrap !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    min-height: 32px !important;
     height: auto !important;
-    font-size: 0.5rem !important;
-    width: auto !important;
 }
- 
-    .property-badge {
-        padding: 3px 6px !important;
-        font-size: 0.5rem !important;
-        max-width: 70px !important;
-        border-radius: 3px !important;
-    }
+
+.badge-destaque {
+    background: linear-gradient(135deg, #ff6b35, #ff8e53) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.badge-valorizacao {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.badge-entrega {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+/* ESTILOS GERAIS DOS CARDS */
     .property-details {
     display: flex !important
 ;
@@ -294,17 +273,14 @@ include 'includes/header.php';
         opacity: 0.9 !important;
     }
     
-    /* Tickets acima dos ícones - mobile - SOBRESCREVE IMOVEIS.CSS */
-    .property-labels,
-    .property-card .property-labels,
-    .properties-grid .property-labels,
-    .properties-section .property-labels {
+    /* ETIQUETAS MOBILE - POSIÇÃO ESTÁTICA ACIMA DOS DETALHES */
+    .property-labels {
         position: static !important;
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
-        gap: 3px !important;
-        margin-bottom: 6px !important;
+        gap: 4px !important;
+        margin-bottom: 8px !important;
         justify-content: flex-start !important;
         width: 100% !important;
         visibility: visible !important;
@@ -316,14 +292,13 @@ include 'includes/header.php';
         bottom: auto !important;
         max-width: none !important;
         pointer-events: auto !important;
+        height: auto !important;
+        overflow: visible !important;
     }
     
-    .property-badge,
-    .property-card .property-badge,
-    .properties-grid .property-badge,
-    .properties-section .property-badge {
-        font-size: 0.55rem !important;
-        padding: 3px 6px !important;
+    .property-badge {
+        font-size: 0.7rem !important;
+        padding: 6px 12px !important;
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -333,10 +308,16 @@ include 'includes/header.php';
         left: auto !important;
         right: auto !important;
         bottom: auto !important;
+        height: auto !important;
+        border-radius: 18px !important;
+        font-weight: 700 !important;
+        min-height: 28px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
     }
     
     .property-badge i {
-        font-size: 0.4rem !important;
+        font-size: 0.5rem !important;
+        margin-right: 3px !important;
     }
     
     .btn-view-property {
@@ -404,13 +385,10 @@ include 'includes/header.php';
         font-size: 0.6rem !important;
     }
     
-    /* Tickets acima dos ícones - mobile pequeno - SOBRESCREVE IMOVEIS.CSS */
-    .property-labels,
-    .property-card .property-labels,
-    .properties-grid .property-labels,
-    .properties-section .property-labels {
-        gap: 2px !important;
-        margin-bottom: 4px !important;
+    /* ETIQUETAS MOBILE PEQUENO - AJUSTES PARA TELAS MENORES */
+    .property-labels {
+        gap: 3px !important;
+        margin-bottom: 6px !important;
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -423,14 +401,14 @@ include 'includes/header.php';
         bottom: auto !important;
         max-width: none !important;
         pointer-events: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        flex-wrap: wrap !important;
     }
     
-    .property-badge,
-    .property-card .property-badge,
-    .properties-grid .property-badge,
-    .properties-section .property-badge {
-        font-size: 0.5rem !important;
-        padding: 2px 5px !important;
+    .property-badge {
+        font-size: 0.65rem !important;
+        padding: 5px 10px !important;
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -440,10 +418,16 @@ include 'includes/header.php';
         left: auto !important;
         right: auto !important;
         bottom: auto !important;
+        height: auto !important;
+        border-radius: 15px !important;
+        font-weight: 700 !important;
+        min-height: 26px !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
     }
     
     .property-badge i {
-        font-size: 0.4rem !important;
+        font-size: 0.45rem !important;
+        margin-right: 2px !important;
     }
     
     .btn-view-property {
@@ -451,33 +435,20 @@ include 'includes/header.php';
         font-size: 0.8rem !important;
     }
 }
-.property-labels {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    display: flex
-;
-    flex-direction: column;
-    gap: 8px;
-    z-index: 15;
-    max-width: 350px;
-    pointer-events: none;
-    width: auto;
-    height: 70px;
-    min-height: 20px;
-    overflow: visible;
-}
-* .property-badge, * .property-card .property-badge, * .properties-grid .property-badge, * .properties-section .property-badge, * .imoveis .property-badge, * .imoveis .property-card .property-badge, * .properties-grid .property-card .property-labels .property-badge, * .property-badge[style], * .property-badge[style*="height"], * .property-badge[style*="font-size"] {
-    height: 20px !important;
+
+
+    .property-badge {
+    padding: 2px 4px !important;
     font-size: 0.8rem !important;
-    width: auto !important;
-    padding: 15px 8px !important;
-    max-width: 150px !important;
+    max-width: 130px !important;
     border-radius: 15px !important;
-    line-height: 1 !important;
-    min-height: 18px !important;
-    max-height: 18px !important;
 }
+.badge-entrega {
+    background: linear-gradient(135deg, #c01e1e, #ee2325) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+/* CSS duplicado removido - regras consolidadas acima */
 
 </style>
     <!-- Page Banner Desktop -->
