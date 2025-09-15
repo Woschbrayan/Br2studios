@@ -1,4 +1,7 @@
 <?php
+// Incluir configurações de email
+require_once __DIR__ . '/config/email_config.php';
+
 // Processar formulário de contato
 $mensagem = '';
 $tipo_mensagem = '';
@@ -12,9 +15,57 @@ if ($_POST) {
     $tipo_contato = $_POST['tipo_contato'] ?? '';
     
     if ($nome && $email && $mensagem_texto) {
-        // Aqui você pode adicionar lógica para salvar no banco ou enviar e-mail
-        $mensagem = "Mensagem enviada com sucesso! Entraremos em contato em breve.";
-        $tipo_mensagem = 'success';
+        try {
+            // Preparar dados para envio
+            $dados_contato = [
+                'nome' => $nome,
+                'email' => $email,
+                'telefone' => $telefone,
+                'assunto' => $assunto,
+                'mensagem' => $mensagem_texto,
+                'tipo_contato' => $tipo_contato
+            ];
+            
+            // Criar templates de email
+            $template_admin = criarTemplateEmailContato($dados_contato);
+            $template_cliente = criarTemplateConfirmacaoCliente($dados_contato);
+            
+            // Assuntos dos emails
+            $assunto_admin = "Novo Contato - BR2Studios: " . ($assunto ? $assunto : $tipo_contato);
+            $assunto_cliente = "Contato Recebido - BR2Studios";
+            
+            // Enviar email para admin (contato@br2imoveis.com.br)
+            $email_admin_enviado = enviarEmail(TO_EMAIL, $assunto_admin, $template_admin, $nome, $email);
+            
+            // Enviar email de confirmação para o cliente
+            $email_cliente_enviado = enviarEmail($email, $assunto_cliente, $template_cliente);
+            
+            if ($email_admin_enviado) {
+                $mensagem = "Mensagem enviada com sucesso! Entraremos em contato em até 2 horas.";
+                $tipo_mensagem = 'success';
+                
+                // Salvar no banco de dados (opcional)
+                try {
+                    require_once __DIR__ . '/config/database.php';
+                    require_once __DIR__ . '/classes/Database.php';
+                    
+                    $db = new Database();
+                    $sql = "INSERT INTO contatos (nome, email, telefone, mensagem, imovel_id, data_cadastro) VALUES (?, ?, ?, ?, NULL, NOW())";
+                    $db->insert($sql, [$nome, $email, $telefone, $mensagem_texto]);
+                } catch (Exception $e) {
+                    // Log do erro, mas não interrompe o processo
+                    error_log("Erro ao salvar contato no banco: " . $e->getMessage());
+                }
+            } else {
+                $mensagem = "Erro ao enviar mensagem. Tente novamente ou entre em contato pelo WhatsApp.";
+                $tipo_mensagem = 'error';
+            }
+            
+        } catch (Exception $e) {
+            $mensagem = "Erro interno. Tente novamente ou entre em contato pelo WhatsApp.";
+            $tipo_mensagem = 'error';
+            error_log("Erro no envio de email: " . $e->getMessage());
+        }
     } else {
         $mensagem = "Por favor, preencha todos os campos obrigatórios.";
         $tipo_mensagem = 'error';

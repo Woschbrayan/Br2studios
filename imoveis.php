@@ -21,8 +21,11 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
 if (isset($_GET['status_construcao']) && !empty($_GET['status_construcao'])) {
     $filters['status_construcao'] = $_GET['status_construcao'];
 }
-if (isset($_GET['cidade']) && !empty($_GET['cidade'])) {
-    $filters['cidade'] = $_GET['cidade'];
+if (isset($_GET['endereco']) && !empty($_GET['endereco'])) {
+    $filters['endereco'] = $_GET['endereco'];
+}
+if (isset($_GET['regiao']) && !empty($_GET['regiao'])) {
+    $filters['regiao'] = $_GET['regiao'];
 }
 if (isset($_GET['min_price']) && !empty($_GET['min_price'])) {
     $filters['preco_min'] = floatval($_GET['min_price']);
@@ -162,18 +165,25 @@ include 'includes/header.php';
 @media (max-width: 768px) {
     .properties-grid {
         grid-template-columns: 1fr !important;
-        gap: 15px !important;
+        gap: 20px !important;
         padding: 0 15px !important;
         max-width: 100% !important;
+        justify-items: center !important;
+        align-items: start !important;
     }
     
     .property-card {
-        max-width: 280px !important;
+        width: 380px !important;
+        min-width: 380px !important;
+        max-width: 380px !important;
+        height: auto !important;
         margin: 0 auto !important;
-        border-radius: 12px !important;
+        border-radius: 20px !important;
         overflow: hidden !important;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
         transition: all 0.3s ease !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     .property-card:hover {
@@ -182,9 +192,10 @@ include 'includes/header.php';
     }
     
     .property-image {
-        height: 160px !important;
+        height: 240px !important;
         position: relative !important;
         overflow: hidden !important;
+        flex-shrink: 0 !important;
     }
     
     .property-image img {
@@ -199,78 +210,87 @@ include 'includes/header.php';
     }
     
     .property-info {
-        padding: 15px !important;
+        padding: 20px !important;
         background: #ffffff !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     .property-info h3 {
-        font-size: 1rem !important;
+        font-size: 1.3rem !important;
         font-weight: 700 !important;
         color: #1a1a1a !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 12px !important;
         line-height: 1.3 !important;
     }
     
     .property-location {
-        font-size: 0.8rem !important;
+        font-size: 0.95rem !important;
         color: #666 !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 15px !important;
         display: flex !important;
         align-items: center !important;
-        gap: 4px !important;
+        gap: 6px !important;
     }
     
     .property-location i {
-        color: #666 !important;
-        font-size: 0.75rem !important;
+        color: #dc2626 !important;
+        font-size: 14px !important;
     }
     
     .property-details {
-        margin-bottom: 12px !important;
-        gap: 5px !important;
+        margin-bottom: 18px !important;
+        gap: 8px !important;
         flex-wrap: wrap !important;
     }
     
     .property-details span {
-        font-size: 0.7rem !important;
-        padding: 5px 8px !important;
+        font-size: 0.9rem !important;
+        padding: 8px 12px !important;
         background: #f8f9fa !important;
         border: 1px solid #e9ecef !important;
-        border-radius: 5px !important;
+        border-radius: 8px !important;
         color: #333 !important;
         display: inline-flex !important;
         align-items: center !important;
-        gap: 3px !important;
+        gap: 6px !important;
     }
     
     .property-details span i {
-        font-size: 0.65rem !important;
-        color: #666 !important;
+        font-size: 14px !important;
+        color: #dc2626 !important;
     }
     
     /* Valor à esquerda */
     .property-price {
         position: absolute !important;
-        top: 12px !important;
-        left: 12px !important;
-        background: rgba(0, 0, 0, 0.8) !important;
+        top: 10px !important;
+        left: 10px !important;
+        background: rgba(0, 0, 0, 0.85) !important;
         color: white !important;
-        padding: 6px 10px !important;
+        padding: 4px 8px !important;
         border-radius: 6px !important;
         text-align: center !important;
         z-index: 10 !important;
+        max-width: 100px !important;
+        min-height: auto !important;
+        height: auto !important;
+        width: auto !important;
     }
     
     .property-price .price {
-        font-size: 0.9rem !important;
+        font-size: 0.7rem !important;
         font-weight: 700 !important;
         display: block !important;
         margin-bottom: 1px !important;
+        line-height: 1.1 !important;
     }
     
     .property-price .price-per-sqft {
-        font-size: 0.65rem !important;
+        font-size: 0.5rem !important;
         opacity: 0.9 !important;
+        line-height: 1 !important;
     }
     
     /* ETIQUETAS MOBILE - POSIÇÃO ESTÁTICA ACIMA DOS DETALHES */
@@ -279,8 +299,8 @@ include 'includes/header.php';
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
-        gap: 4px !important;
-        margin-bottom: 8px !important;
+        gap: 3px !important;
+        margin-bottom: 6px !important;
         justify-content: flex-start !important;
         width: 100% !important;
         visibility: visible !important;
@@ -297,8 +317,8 @@ include 'includes/header.php';
     }
     
     .property-badge {
-        font-size: 0.7rem !important;
-        padding: 6px 12px !important;
+        font-size: 0.65rem !important;
+        padding: 4px 8px !important;
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -309,86 +329,105 @@ include 'includes/header.php';
         right: auto !important;
         bottom: auto !important;
         height: auto !important;
-        border-radius: 18px !important;
+        border-radius: 15px !important;
         font-weight: 700 !important;
-        min-height: 28px !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        min-height: 24px !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
     }
     
     .property-badge i {
-        font-size: 0.5rem !important;
-        margin-right: 3px !important;
+        font-size: 0.45rem !important;
+        margin-right: 2px !important;
     }
     
     .btn-view-property {
-        padding: 10px 18px !important;
-        font-size: 0.85rem !important;
-        border-radius: 6px !important;
+        padding: 12px 25px !important;
+        font-size: 15px !important;
+        border-radius: 10px !important;
         margin-top: 0 !important;
+        background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
     }
 }
 
 @media (max-width: 480px) {
     .properties-grid {
-        gap: 12px !important;
+        gap: 15px !important;
         padding: 0 10px !important;
+        justify-items: center !important;
     }
     
     .property-card {
-        max-width: 100% !important;
+        width: 380px !important;
+        min-width: 380px !important;
+        max-width: 380px !important;
+        height: auto !important;
     }
     
     .property-image {
-        height: 140px !important;
+        height: 200px !important;
     }
     
     .property-info {
-        padding: 12px !important;
+        padding: 15px !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     .property-info h3 {
-        font-size: 0.95rem !important;
-        margin-bottom: 5px !important;
-    }
-    
-    .property-location {
-        font-size: 0.75rem !important;
+        font-size: 1.1rem !important;
         margin-bottom: 8px !important;
     }
     
-    .property-details {
+    .property-location {
+        font-size: 0.85rem !important;
         margin-bottom: 10px !important;
-        gap: 4px !important;
+    }
+    
+    .property-details {
+        margin-bottom: 12px !important;
+        gap: 6px !important;
     }
     
     .property-details span {
-        font-size: 0.65rem !important;
-        padding: 4px 6px !important;
+        font-size: 0.8rem !important;
+        padding: 6px 10px !important;
     }
     
     .property-details span i {
-        font-size: 0.6rem !important;
+        font-size: 12px !important;
     }
     
     /* Valor à esquerda - mobile pequeno */
     .property-price {
-        top: 10px !important;
-        left: 10px !important;
-        padding: 5px 8px !important;
+        top: 8px !important;
+        left: 8px !important;
+        padding: 2px 4px !important;
+        max-width: 80px !important;
+        min-height: auto !important;
+        height: auto !important;
+        width: auto !important;
     }
     
     .property-price .price {
-        font-size: 0.85rem !important;
+        font-size: 0.65rem !important;
+        line-height: 1.1 !important;
     }
     
     .property-price .price-per-sqft {
-        font-size: 0.6rem !important;
+        font-size: 0.45rem !important;
+        line-height: 1 !important;
     }
     
     /* ETIQUETAS MOBILE PEQUENO - AJUSTES PARA TELAS MENORES */
     .property-labels {
-        gap: 3px !important;
-        margin-bottom: 6px !important;
+        gap: 2px !important;
+        margin-bottom: 4px !important;
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -407,8 +446,8 @@ include 'includes/header.php';
     }
     
     .property-badge {
-        font-size: 0.65rem !important;
-        padding: 5px 10px !important;
+        font-size: 0.6rem !important;
+        padding: 3px 6px !important;
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -419,20 +458,26 @@ include 'includes/header.php';
         right: auto !important;
         bottom: auto !important;
         height: auto !important;
-        border-radius: 15px !important;
+        border-radius: 12px !important;
         font-weight: 700 !important;
-        min-height: 26px !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+        min-height: 22px !important;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
     }
     
     .property-badge i {
-        font-size: 0.45rem !important;
-        margin-right: 2px !important;
+        font-size: 0.4rem !important;
+        margin-right: 1px !important;
     }
     
     .btn-view-property {
-        padding: 8px 15px !important;
-        font-size: 0.8rem !important;
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+        background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
     }
 }
 
@@ -449,7 +494,9 @@ include 'includes/header.php';
     border: 2px solid rgba(255, 255, 255, 0.3) !important;
 }
 /* CSS duplicado removido - regras consolidadas acima */
-
+.property-price{
+height: 80px !important;
+}
 </style>
     <!-- Page Banner Desktop -->
     <section class="page-banner desktop-only">
@@ -548,14 +595,17 @@ include 'includes/header.php';
                         </div>
                         
                         <div class="filter-group">
-                            <label for="cidade">Cidade</label>
-                            <select name="cidade" id="cidade" class="filter-select">
-                                <option value="">Todas as cidades</option>
-                                <?php foreach ($cidades as $cidade): ?>
-                                    <option value="<?php echo htmlspecialchars($cidade); ?>" <?php echo (isset($_GET['cidade']) && $_GET['cidade'] == $cidade) ? 'selected' : ''; ?>>
-                                        <?php echo htmlspecialchars($cidade); ?>
-                                    </option>
-                                <?php endforeach; ?>
+                            <label for="regiao">Região</label>
+                            <select name="regiao" id="regiao" class="filter-select">
+                                <option value="">Todas as regiões</option>
+                                <option value="sitio-cercado" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'sitio-cercado') ? 'selected' : ''; ?>>Sítio Cercado</option>
+                                <option value="agua-verde" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'agua-verde') ? 'selected' : ''; ?>>Água Verde</option>
+                                <option value="batel" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'batel') ? 'selected' : ''; ?>>Batel</option>
+                                <option value="cabral" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'cabral') ? 'selected' : ''; ?>>Cabral</option>
+                                <option value="centro-civico" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'centro-civico') ? 'selected' : ''; ?>>Centro Cívico</option>
+                                <option value="juveve" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'juveve') ? 'selected' : ''; ?>>Juvevê</option>
+                                <option value="centro" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'centro') ? 'selected' : ''; ?>>Centro</option>
+                                <option value="jardim-botanico" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'jardim-botanico') ? 'selected' : ''; ?>>Jardim Botânico</option>
                             </select>
                         </div>
                         
@@ -629,14 +679,17 @@ include 'includes/header.php';
                         </div>
                         
                         <div class="filter-row-mobile">
-                            <label>Cidade</label>
-                            <select name="cidade" class="filter-select-mobile">
+                            <label>Região</label>
+                            <select name="regiao" class="filter-select-mobile">
                                 <option value="">Todas</option>
-                                <?php foreach ($cidades as $cidade): ?>
-                                    <option value="<?php echo htmlspecialchars($cidade); ?>" <?php echo (isset($_GET['cidade']) && $_GET['cidade'] == $cidade) ? 'selected' : ''; ?>>
-                                        <?php echo htmlspecialchars($cidade); ?>
-                                    </option>
-                                <?php endforeach; ?>
+                                <option value="sitio-cercado" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'sitio-cercado') ? 'selected' : ''; ?>>Sítio Cercado</option>
+                                <option value="agua-verde" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'agua-verde') ? 'selected' : ''; ?>>Água Verde</option>
+                                <option value="batel" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'batel') ? 'selected' : ''; ?>>Batel</option>
+                                <option value="cabral" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'cabral') ? 'selected' : ''; ?>>Cabral</option>
+                                <option value="centro-civico" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'centro-civico') ? 'selected' : ''; ?>>Centro Cívico</option>
+                                <option value="juveve" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'juveve') ? 'selected' : ''; ?>>Juvevê</option>
+                                <option value="centro" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'centro') ? 'selected' : ''; ?>>Centro</option>
+                                <option value="jardim-botanico" <?php echo (isset($_GET['regiao']) && $_GET['regiao'] == 'jardim-botanico') ? 'selected' : ''; ?>>Jardim Botânico</option>
                             </select>
                         </div>
                         
@@ -855,7 +908,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contar filtros ativos
     function updateFiltersCount() {
         if (filtersCount) {
-            const activeFilters = document.querySelectorAll('select[name="status_construcao"], select[name="cidade"], input[name="min_price"], input[name="max_price"]');
+            const activeFilters = document.querySelectorAll('select[name="status_construcao"], select[name="regiao"], input[name="min_price"], input[name="max_price"]');
             let count = 0;
             
             activeFilters.forEach(filter => {
@@ -874,7 +927,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Atualizar contador quando filtros mudarem
-    const filterSelects = document.querySelectorAll('select[name="status_construcao"], select[name="cidade"], input[name="min_price"], input[name="max_price"]');
+    const filterSelects = document.querySelectorAll('select[name="status_construcao"], select[name="regiao"], input[name="min_price"], input[name="max_price"]');
     filterSelects.forEach(select => {
         select.addEventListener('change', updateFiltersCount);
         select.addEventListener('input', updateFiltersCount);
@@ -972,4 +1025,5 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 });
+
 </script>

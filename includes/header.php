@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="assets/css/dynamic-filters.css?v=<?php echo $version; ?>">
     <link rel="stylesheet" href="assets/css/regioes-carousel.css?v=<?php echo $version; ?>">
     <link rel="stylesheet" href="assets/css/sobre-fixes.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/logo-fix.css?v=<?php echo $version; ?>">
 </head>
 <body>
     <!-- Header -->
@@ -44,8 +45,7 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-container">
-                        <i class="fas fa-building logo-icon"></i>
-                        <span class="logo-text">Br2Imóveis</span>
+                        <img src="assets/images/logo/logoBLACK (1).png" alt="Br2Studios" class="logo-image">
                     </div>
                 </div>
                 

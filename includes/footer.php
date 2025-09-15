@@ -103,7 +103,7 @@
                         <h5>Newsletter</h5>
                         <p>Receba as melhores oportunidades de investimento</p>
                         <form class="newsletter-form" id="newsletter-form">
-                            <input type="email" placeholder="Seu e-mail" required>
+                            <input type="email" name="email" placeholder="Seu e-mail" required>
                             <button type="submit">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
@@ -147,10 +147,58 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             const email = this.querySelector('input[type="email"]').value;
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
             
-            // Simulação de envio (substitua por sua lógica real)
-            alert('Obrigado! Você foi inscrito em nossa newsletter.');
-            this.reset();
+            // Mostrar loading
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            button.disabled = true;
+            
+            // Enviar para o servidor
+            fetch('newsletter_simples.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'email=' + encodeURIComponent(email)
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+                }
+                
+                return response.text(); // Primeiro como texto para debug
+            })
+            .then(text => {
+                console.log('Response text:', text);
+                
+                try {
+                    const data = JSON.parse(text);
+                    
+                    if (data.success) {
+                        alert('✅ ' + data.message);
+                        this.reset();
+                    } else {
+                        alert('❌ ' + data.message);
+                    }
+                } catch (parseError) {
+                    console.error('Erro ao fazer parse do JSON:', parseError);
+                    console.error('Texto recebido:', text);
+                    alert('❌ Resposta inválida do servidor. Verifique o console.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro completo:', error);
+                alert('❌ Erro ao processar inscrição: ' + error.message);
+            })
+            .finally(() => {
+                // Restaurar botão
+                button.innerHTML = originalText;
+                button.disabled = false;
+            });
         });
     }
 });

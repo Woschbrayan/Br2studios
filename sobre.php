@@ -107,8 +107,8 @@ $conquistas = [
 $diferenciais = [
     [
         'icone' => 'fas fa-home',
-        'titulo' => 'Foco exclusivo em estúdios',
-        'descricao' => 'Não somos uma imobiliária genérica. Nosso trabalho é totalmente dedicado ao mercado de estúdios, permitindo análises profundas e decisões mais assertivas.'
+        'titulo' => 'Foco exclusivo em Studios',
+        'descricao' => 'Não somos uma imobiliária genérica. Nosso trabalho é totalmente dedicado ao mercado de Studios, permitindo análises profundas e decisões mais assertivas.'
     ],
     [
         'icone' => 'fas fa-brain',
@@ -295,23 +295,27 @@ include 'includes/header.php';
 }
 
 .about-content {
-    display: flex !important;
-    flex-direction: column !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 60px !important;
     align-items: center !important;
-    text-align: center !important;
-    max-width: 800px !important;
+    max-width: 1200px !important;
     margin: 0 auto !important;
-    gap: 40px !important;
+    padding: 0 20px !important;
 }
 
 .about-text {
     width: 100% !important;
+    text-align: left !important;
 }
 
 .about-visual {
     width: 100% !important;
     max-width: 500px !important;
     margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 .section-header {
@@ -388,7 +392,12 @@ include 'includes/header.php';
     }
     
     .about-content {
-        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        text-align: center !important;
+    }
+    
+    .about-text {
         text-align: center !important;
     }
     
@@ -405,9 +414,9 @@ include 'includes/header.php';
             <div class="hero-content">
                 <div class="hero-text">
                    
-                    <h1>Sobre a BR2 Estúdios</h1>
-                    <p class="hero-subtitle">Especialistas em estúdios, especialistas em investimentos.</p>
-                    <p class="hero-description">Localizada no coração de Curitiba, a BR2 Estúdios nasceu com um propósito claro: transformar o investimento em imóveis em uma experiência segura, rentável e estratégica. Nossa atuação é 100% focada em estúdios, um dos segmentos mais promissores do mercado imobiliário.</p>
+                    <h1>Sobre a Br2Studios</h1>
+                    <p class="hero-subtitle">Especialistas em Studios, especialistas em investimentos.</p>
+                    <p class="hero-description">Localizada no coração de Curitiba, a BR2 Studios nasceu com um propósito claro: transformar o investimento em imóveis em uma experiência segura, rentável e estratégica. Nossa atuação é 100% focada em Studios, um dos segmentos mais promissores do mercado imobiliário.</p>
                     
                     <div class="hero-actions">
                         <a href="contato.php" class="btn-primary">
@@ -429,8 +438,8 @@ include 'includes/header.php';
     <section class="sobre-header-mobile mobile-only">
         <div class="container">
             <div class="header-mobile-content">
-                <h1>Sobre a BR2 Estúdios</h1>
-                <p class="mobile-subtitle">Especialistas em estúdios, especialistas em investimentos.</p>
+                <h1>Sobre a Br2Studios</h1>
+                <p class="mobile-subtitle">Especialistas em Studios, especialistas em investimentos.</p>
                 <p class="mobile-description">Localizada no coração de Curitiba, transformamos investimentos em imóveis em uma experiência segura, rentável e estratégica.</p>
                 <div class="quick-stats-mobile">
                     <span class="quick-stat">
@@ -450,15 +459,15 @@ include 'includes/header.php';
     <section class="about-mobile mobile-only">
         <div class="section-header">
             <h2>Nossa Especialização</h2>
-            <p>Foco exclusivo em estúdios</p>
+            <p>Foco exclusivo em Studios</p>
         </div>
         <div class="about-content-mobile">
             <div class="about-card-mobile">
                 <div class="about-icon-mobile">
                     <i class="fas fa-home"></i>
                 </div>
-                <h3>Foco em Estúdios</h3>
-                <p>100% dedicados ao mercado de estúdios, com análises profundas e decisões assertivas</p>
+                <h3>Foco em Studios</h3>
+                <p>100% dedicados ao mercado de Studios, com análises profundas e decisões assertivas</p>
             </div>
             
             <div class="about-card-mobile">
@@ -492,13 +501,13 @@ include 'includes/header.php';
             <div class="about-content">
                 <div class="about-text">
                     <h2>Nossa Especialização</h2>
-                    <p>Aqui, cada detalhe é pensado para investidores que buscam oportunidades reais de valorização e retorno. Nossa equipe é formada por profissionais altamente treinados para analisar cenários, identificar tendências e indicar as melhores opções de estúdios na região central de Curitiba.</p>
+                    <p>Aqui, cada detalhe é pensado para investidores que buscam oportunidades reais de valorização e retorno. Nossa equipe é formada por profissionais altamente treinados para analisar cenários, identificar tendências e indicar as melhores opções de Studios na região central de Curitiba.</p>
                     <p>Com suporte completo em todas as etapas do processo, oferecemos confiança, transparência e resultados sólidos — para que você invista com segurança e colha o melhor que o mercado imobiliário pode oferecer.</p>
                     
                     <div class="about-features">
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>Foco exclusivo em estúdios</span>
+                            <span>Foco exclusivo em Studios</span>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
@@ -516,7 +525,7 @@ include 'includes/header.php';
                 </div>
                 <div class="about-visual">
                     <div class="about-image">
-                        <img src="assets/images/sobre/66b9df37-63c3-462f-8666-25c431c03d99.jpeg" alt="BR2 Studios - Nossa Especialização">
+                        <img src="assets/images/sobre/listagem-1.jpeg" alt="BR2 Studios - Nossa Especialização">
                     </div>
                 </div>
             </div>

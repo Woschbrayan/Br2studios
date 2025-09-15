@@ -221,6 +221,59 @@ class Imovel {
                 $params[':cidade'] = '%' . $filtros['cidade'] . '%';
             }
             
+            if (!empty($filtros['endereco'])) {
+                // Suporte para múltiplos termos de busca separados por vírgula
+                $termosEndereco = explode(',', $filtros['endereco']);
+                $condicoesEndereco = [];
+                
+                foreach ($termosEndereco as $index => $termo) {
+                    $termo = trim($termo);
+                    if (!empty($termo)) {
+                        $condicoesEndereco[] = "endereco LIKE :endereco{$index}";
+                        $params[":endereco{$index}"] = '%' . $termo . '%';
+                    }
+                }
+                
+                if (!empty($condicoesEndereco)) {
+                    $where[] = "(" . implode(' OR ', $condicoesEndereco) . ")";
+                }
+            }
+            
+            if (!empty($filtros['regiao'])) {
+                // Mapear região para termos de busca no endereço
+                $regiaoEnderecos = [
+                    'sitio-cercado' => ['Sítio Cercado', 'sitio cercado', 'Sitio Cercado'],
+                    'agua-verde' => ['Água Verde', 'agua verde', 'Agua Verde'],
+                    'batel' => ['Batel', 'batel'],
+                    'cabral' => ['Cabral', 'cabral', 'Boa Vista'],
+                    'centro-civico' => ['Centro Cívico', 'centro cívico', 'centro civico', 'Centro Civico'],
+                    'juveve' => ['Juvevê', 'juvevê', 'juveve', 'Juveve'],
+                    'centro' => [
+                        'Centro', 'centro', 
+                        'Visconde de Guarapuava', 'visconde de guarapuava',
+                        'José Loureiro', 'jose loureiro', 'Jose Loureiro',
+                        'Conselheiro Laurindo', 'conselheiro laurindo',
+                        'Alto da XV', 'alto da xv', 'Alto da 15'
+                    ],
+                    'jardim-botanico' => ['Jardim Botânico', 'jardim botânico', 'jardim botanico', 'Jardim Botanico']
+                ];
+                
+                $termosRegiao = $regiaoEnderecos[$filtros['regiao']] ?? [$filtros['regiao']];
+                $condicoesRegiao = [];
+                
+                foreach ($termosRegiao as $index => $termo) {
+                    $termo = trim($termo);
+                    if (!empty($termo)) {
+                        $condicoesRegiao[] = "endereco LIKE :regiao{$index}";
+                        $params[":regiao{$index}"] = '%' . $termo . '%';
+                    }
+                }
+                
+                if (!empty($condicoesRegiao)) {
+                    $where[] = "(" . implode(' OR ', $condicoesRegiao) . ")";
+                }
+            }
+            
             if (!empty($filtros['estado'])) {
                 $where[] = "estado = :estado";
                 $params[':estado'] = $filtros['estado'];

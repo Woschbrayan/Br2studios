@@ -1,0 +1,70 @@
+/* ===== LOGO IMAGE STYLES ===== */
+
+.logo-image {
+    height: 50px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.logo-container:hover .logo-image {
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 40px;
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        height: 35px;
+        max-width: 120px;
+    }
+}
+
+/* Dark theme */
+[data-theme="dark"] .logo-image {
+    filter: brightness(0) invert(1);
+}
+
+/* ===== HERO LOGO STYLES ===== */
+
+.hero-logo {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hero-logo-image {
+    height: 120px;
+    width: auto;
+    max-width: 400px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1); /* Logo branca na hero */
+}
+
+.hero-logo:hover .hero-logo-image {
+    transform: scale(1.05);
+}
+
+/* Responsividade da hero logo */
+@media (max-width: 768px) {
+    .hero-logo-image {
+        height: 90px;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-logo-image {
+        height: 70px;
+        max-width: 250px;
+    }
+}

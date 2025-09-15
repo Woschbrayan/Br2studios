@@ -6,3 +6,5 @@
 [2025-09-04 14:31:08] IP: ::1 | Email: admin@br2studios.com.br | Success: NO | Message: Erro PDO: SQLSTATE[HY000] [2002] Connection refused
 [2025-09-04 14:31:19] IP: ::1 | Email: admin@br2studios.com.br | Success: NO | Message: Tentativa de login iniciada
 [2025-09-04 14:31:19] IP: ::1 | Email: admin@br2studios.com.br | Success: YES | Message: Login bem-sucedido
+[2025-09-15 09:57:59] IP: ::1 | Email: admin@br2studios.com.br | Success: NO | Message: Tentativa de login iniciada
+[2025-09-15 09:57:59] IP: ::1 | Email: admin@br2studios.com.br | Success: YES | Message: Login bem-sucedido

@@ -54,16 +54,57 @@ include 'includes/header.php';
 ?>
 <style>
     .product-hero-content {
-    display: grid
-;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: start;
-    position: relative;
-    z-index: 2;
-    min-height: 80vh;
-    margin-top: 10%;
-}
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+        position: relative;
+        z-index: 2;
+        min-height: auto;
+        margin-top: 5%;
+    }
+    
+    /* Forçar valores específicos para desktop */
+    @media (min-width: 769px) {
+        .product-hero {
+            padding: 100px 0 80px !important;
+            min-height: auto !important;
+        }
+        
+        .product-info h1 {
+            font-size: 2.8rem !important;
+            margin-bottom: 20px !important;
+        }
+        
+        .product-subtitle {
+            font-size: 1.1rem !important;
+            margin-bottom: 25px !important;
+        }
+        
+        .product-highlights {
+            gap: 20px !important;
+            margin-bottom: 30px !important;
+        }
+        
+        .product-price {
+            padding: 25px !important;
+            margin-bottom: 30px !important;
+        }
+        
+        .price-value {
+            font-size: 2.5rem !important;
+        }
+        
+        .main-image img {
+            height: 400px !important;
+        }
+        
+        .btn-primary,
+        .btn-whatsapp {
+            padding: 16px 28px !important;
+            font-size: 1rem !important;
+        }
+    }
 </style>
     <!-- Hero Product Section -->
     <section class="product-hero">
@@ -134,7 +175,6 @@ include 'includes/header.php';
                         </div>
                         
                         <div class="product-actions">
-                            <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
                             <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
@@ -436,6 +476,21 @@ include 'includes/header.php';
                             <?php endif; ?>
                         </div>
                     </div>
+                    
+                    <!-- Características Detalhadas -->
+                    <?php if ($imovel_data && !empty($imovel_data['caracteristicas'])): ?>
+                    <div class="details-section characteristics-section">
+                        <h3>Características Detalhadas</h3>
+                        
+                        <div class="characteristics-content">
+                            <?php 
+                            // Converter quebras de linha para HTML
+                            $caracteristicas_formatadas = nl2br(htmlspecialchars($imovel_data['caracteristicas']));
+                            echo $caracteristicas_formatadas;
+                            ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                     
                     <!-- Amenidades -->
                     <?php if ($imovel_data && !empty($imovel_data['categorias']) && is_array($imovel_data['categorias'])): ?>

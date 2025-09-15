@@ -3354,7 +3354,9 @@ include 'includes/header.php';
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
-            <h1 class="hero-title">Br2Studios</h1>
+            <div class="hero-logo">
+                <img src="assets/images/logo/logoBLACK (1).png" alt="Br2Studios" class="hero-logo-image">
+            </div>
             <p class="hero-subtitle">Transformando sonhos em investimentos lucrativos</p>
             
             <div class="hero-slides">
@@ -3792,9 +3794,7 @@ include 'includes/header.php';
                         Portfólio selecionado de empreendimentos em regiões estratégicas, garantindo liquidez 
                         e segurança para seus investimentos imobiliários.
                     </p>
-                    <div class="feature-link">
-                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                 
                 </div>
                 
                 <div class="feature-card">
@@ -3806,9 +3806,7 @@ include 'includes/header.php';
                         Consultoria especializada para otimizar seus rendimentos e garantir eficiência em todo o 
                         processo de investimento e gestão de propriedades.
                     </p>
-                    <div class="feature-link">
-                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                    </div>
+            
                 </div>
                 
                 <div class="feature-card">
@@ -3820,9 +3818,7 @@ include 'includes/header.php';
                         Projetos em construção oferecem excelente potencial de valorização até a entrega, 
                         maximizando o retorno sobre seu investimento.
                     </p>
-                    <div class="feature-link">
-                        <a href="#">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                
                 </div>
             </div>
         </div>

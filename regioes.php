@@ -427,24 +427,32 @@ $version = getAssetsVersion();
 <script>
 // Funcionalidade para explorar região
 function exploreRegion(regiaoKey, regiaoNome) {
-    // Mapear região para bairros correspondentes
-    const regiaoBairros = {
-        'sitio-cercado': ['Sítio Cercado'],
-        'agua-verde': ['Água Verde'],
-        'batel': ['Batel'],
-        'cabral': ['Cabral'],
-        'centro-civico': ['Centro Cívico'],
-        'juveve': ['Juvevê'],
-        'centro': ['Centro'],
-        'jardim-botanico': ['Jardim Botânico']
+    // Mapear região para termos de busca no endereço (busca mais robusta)
+    const regiaoEnderecos = {
+        'sitio-cercado': ['Sítio Cercado', 'sitio cercado', 'Sitio Cercado'],
+        'agua-verde': ['Água Verde', 'agua verde', 'Agua Verde'],
+        'batel': ['Batel', 'batel'],
+        'cabral': ['Cabral', 'cabral', 'Boa Vista'],
+        'centro-civico': ['Centro Cívico', 'centro cívico', 'centro civico', 'Centro Civico'],
+        'juveve': ['Juvevê', 'juvevê', 'juveve', 'Juveve'],
+        'centro': [
+            'Centro', 'centro', 
+            'Visconde de Guarapuava', 'visconde de guarapuava',
+            'José Loureiro', 'jose loureiro', 'Jose Loureiro',
+            'Conselheiro Laurindo', 'conselheiro laurindo',
+            'Alto da XV', 'alto da xv', 'Alto da 15'
+        ],
+        'jardim-botanico': ['Jardim Botânico', 'jardim botânico', 'jardim botanico', 'Jardim Botanico']
     };
     
-    // Usar o primeiro bairro da região para o filtro
-    const bairros = regiaoBairros[regiaoKey] || [regiaoNome];
-    const filtroBairro = bairros[0];
+    // Usar múltiplos termos da região para busca mais robusta
+    const termos = regiaoEnderecos[regiaoKey] || [regiaoNome];
     
-    // Redirecionar para página de imóveis com filtro da região
-    const url = `imoveis.php?cidade=${encodeURIComponent(filtroBairro)}`;
+    // Criar string com múltiplos termos separados por vírgula para busca mais ampla
+    const termosBusca = termos.join(',');
+    
+    // Redirecionar para página de imóveis com filtro da região/bairro
+    const url = `imoveis.php?endereco=${encodeURIComponent(termosBusca)}`;
     window.location.href = url;
 }
 
