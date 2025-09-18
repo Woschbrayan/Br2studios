@@ -165,19 +165,7 @@ include 'includes/header.php';
 }
     /* Hero Mobile Responsive */
     @media (max-width: 768px) {
-        .hero {
-            height: 100vh !important;
-            min-height: 600px !important;
-        }
-        
-        .hero-content {
-            top: 58% !important;
-            left: 5% !important;
-            max-width: 90% !important;
-            transform: translateY(-50%) !important;
-            padding: 0 20px !important;
-        }
-        
+   
         .hero-title {
             font-size: 2.8rem !important;
             margin-bottom: 15px !important;
@@ -240,13 +228,10 @@ include 'includes/header.php';
     }
     
     @media (max-width: 480px) {
-        .hero {
-            height: 100vh !important;
-            min-height: 500px !important;
-        }
+
         
         .hero-content {
-            top: 58% !important;
+            top: 54% !important;
             left: 3% !important;
             max-width: 94% !important;
             transform: translateY(-50%) !important;
@@ -1629,19 +1614,6 @@ include 'includes/header.php';
 }
     /* Hero Mobile Responsive */
     @media (max-width: 768px) {
-        .hero {
-            height: 100vh !important;
-            min-height: 600px !important;
-        }
-        
-        .hero-content {
-            top: 58% !important;
-            left: 5% !important;
-            max-width: 90% !important;
-            transform: translateY(-50%) !important;
-            padding: 0 20px !important;
-        }
-        
         .hero-title {
             font-size: 2.8rem !important;
             margin-bottom: 15px !important;
@@ -1704,19 +1676,8 @@ include 'includes/header.php';
     }
     
     @media (max-width: 480px) {
-        .hero {
-            height: 100vh !important;
-            min-height: 500px !important;
-        }
-        
-        .hero-content {
-            top: 58% !important;
-            left: 3% !important;
-            max-width: 94% !important;
-            transform: translateY(-50%) !important;
-            padding: 0 15px !important;
-        }
-        
+
+    
         .hero-title {
             font-size: 2.2rem !important;
             margin-bottom: 12px !important;
@@ -3329,7 +3290,12 @@ include 'includes/header.php';
     color: white !important;
     text-decoration: none !important;
 }
-
+@media (max-width: 480px) {
+    .hero {
+        height: 100vh !important;
+        min-height: 568px !important;
+    }
+}
 </style>
     <!-- Hero Section -->
     <section class="hero">
@@ -3388,7 +3354,7 @@ include 'includes/header.php';
                     <span class="stat-label">Imóveis Vendidos</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">4</span>
+                    <span class="stat-number">8</span>
                     <span class="stat-label">Regiões</span>
                 </div>
                 <div class="stat-item">

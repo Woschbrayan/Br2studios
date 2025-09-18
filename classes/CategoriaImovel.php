@@ -127,7 +127,7 @@ class CategoriaImovel {
                 ':categoria_id' => $categoria_id
             ];
             
-            return $this->db->executeQuery($sql, $params);
+            return $this->db->delete($sql, $params);
         } catch (Exception $e) {
             error_log("Erro ao remover categoria do imóvel: " . $e->getMessage());
             throw $e;
@@ -141,7 +141,7 @@ class CategoriaImovel {
         try {
             // Primeiro remove todas as categorias atuais
             $sql_remove = "DELETE FROM imovel_categorias WHERE imovel_id = :imovel_id";
-            $this->db->executeQuery($sql_remove, [':imovel_id' => $imovel_id]);
+            $this->db->delete($sql_remove, [':imovel_id' => $imovel_id]);
             
             // Depois adiciona as novas categorias
             if (!empty($categorias_ids)) {

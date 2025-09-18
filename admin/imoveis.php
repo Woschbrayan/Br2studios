@@ -116,6 +116,7 @@ if ($_POST) {
             'status' => trim($_POST['status'] ?? 'disponivel'),
             'caracteristicas' => trim($_POST['caracteristicas'] ?? ''),
             'destaque' => isset($_POST['destaque']) ? 1 : 0,
+            'maior_valorizacao' => isset($_POST['maior_valorizacao']) ? 1 : 0,
             'categorias' => isset($_POST['categorias']) ? $_POST['categorias'] : []
         ];
         
@@ -352,6 +353,7 @@ include 'includes/header.php';
                             <th>Construção</th>
                             <th>Categorias</th>
                             <th>Status</th>
+                            <th>Valorização</th>
                             <th>Data Cadastro</th>
                             <th>Ações</th>
                         </tr>
@@ -456,6 +458,15 @@ include 'includes/header.php';
                                           style="padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">
                                         <?php echo ucfirst($imovel_item['status']); ?>
                                     </span>
+                                </td>
+                                <td>
+                                    <?php if ($imovel_item['maior_valorizacao']): ?>
+                                        <span style="background: #28a745; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 500;">
+                                            <i class="fas fa-chart-line"></i> Maior Valorização
+                                        </span>
+                                    <?php else: ?>
+                                        <span style="color: #6c757d; font-size: 0.8rem;">Padrão</span>
+                                    <?php endif; ?>
                                 </td>
                                 <td><?php echo date('d/m/Y', strtotime($imovel_item['data_cadastro'])); ?></td>
                                 <td>
@@ -850,16 +861,30 @@ include 'includes/header.php';
                         Configurações Finais
                     </h3>
                     
-                    <div class="form-group">
-                        <label style="display: flex; align-items: center; gap: 10px; padding: 15px; background: white; border-radius: 8px; border: 1px solid #dee2e6;">
-                            <input type="checkbox" name="destaque" value="1" 
-                                   <?php echo ($imovel_edicao['destaque'] ?? 0) ? 'checked' : ''; ?>
-                                   style="transform: scale(1.2);">
-                            <div>
-                                <div style="font-weight: 500;">Marcar como destaque</div>
-                                <small style="color: #6c757d;">Este imóvel aparecerá em destaque na página inicial</small>
-                            </div>
-                        </label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 10px; padding: 15px; background: white; border-radius: 8px; border: 1px solid #dee2e6;">
+                                <input type="checkbox" name="destaque" value="1" 
+                                       <?php echo ($imovel_edicao['destaque'] ?? 0) ? 'checked' : ''; ?>
+                                       style="transform: scale(1.2);">
+                                <div>
+                                    <div style="font-weight: 500;">Marcar como destaque</div>
+                                    <small style="color: #6c757d;">Este imóvel aparecerá em destaque na página inicial</small>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 10px; padding: 15px; background: white; border-radius: 8px; border: 1px solid #dee2e6;">
+                                <input type="checkbox" name="maior_valorizacao" value="1" 
+                                       <?php echo ($imovel_edicao['maior_valorizacao'] ?? 0) ? 'checked' : ''; ?>
+                                       style="transform: scale(1.2);">
+                                <div>
+                                    <div style="font-weight: 500;">Maior valorização</div>
+                                    <small style="color: #6c757d;">Este imóvel possui maior potencial de valorização</small>
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 

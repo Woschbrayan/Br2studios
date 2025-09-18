@@ -161,6 +161,230 @@ include 'includes/header.php';
     overflow: hidden !important;
 }
 
+/* Desktop - Mesmo formato do mobile com mais colunas */
+@media (min-width: 769px) {
+    .properties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+        gap: 25px !important;
+        padding: 20px 0 !important;
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        justify-content: center !important;
+        align-items: start !important;
+    }
+    
+    .property-card {
+        width: 100% !important;
+        min-width: 350px !important;
+        max-width: 400px !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        border-radius: 20px !important;
+        overflow: hidden !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.3s ease !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .property-card:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    .property-image {
+        height: 240px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .property-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transition: transform 0.3s ease !important;
+    }
+    
+    .property-card:hover .property-image img {
+        transform: scale(1.05) !important;
+    }
+    
+    .property-info {
+        padding: 20px !important;
+        background: #ffffff !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .property-info h3 {
+        font-size: 1.3rem !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        margin-bottom: 12px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .property-location-container {
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        text-align: left !important;
+    }
+    
+    .property-location {
+        font-size: 0.95rem !important;
+        color: #666 !important;
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        text-align: left !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+    }
+    
+    .property-location i {
+        color: #666 !important;
+        font-size: 14px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Valor abaixo da localização no desktop também */
+    .property-price {
+        position: static !important;
+        background: transparent !important;
+        color: #1a1a1a !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        text-align: left !important;
+        z-index: auto !important;
+        max-width: none !important;
+        min-height: auto !important;
+        height: auto !important;
+        width: auto !important;
+        margin-bottom: 12px !important;
+        font-weight: 700 !important;
+        box-shadow: none !important;
+    }
+    
+    .property-price .price {
+        font-size: 1.3rem !important;
+        font-weight: 700 !important;
+        display: block !important;
+        margin-bottom: 0 !important;
+        line-height: 1.2 !important;
+        color: #1a1a1a !important;
+        text-shadow: none !important;
+    }
+    
+    .property-details {
+        margin-bottom: 18px !important;
+        gap: 6px !important;
+        flex-wrap: wrap !important;
+        display: flex !important;
+    }
+    
+    .property-details span {
+        font-size: 0.85rem !important;
+        padding: 6px 10px !important;
+        background: #f1f3f4 !important;
+        border: none !important;
+        border-radius: 15px !important;
+        color: #5f6368 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        font-weight: 500 !important;
+    }
+    
+    .property-details span i {
+        font-size: 12px !important;
+        color: #5f6368 !important;
+    }
+    
+    /* ETIQUETAS DESKTOP - SOBRE A IMAGEM */
+    .property-labels {
+        position: absolute !important;
+        top: 10px !important;
+        left: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+        z-index: 15 !important;
+        max-width: 200px !important;
+        pointer-events: none !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+    }
+    
+    .property-badge {
+        font-size: 0.65rem !important;
+        padding: 6px 10px !important;
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 10 !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        height: auto !important;
+        border-radius: 15px !important;
+        font-weight: 700 !important;
+        min-height: 26px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        backdrop-filter: blur(10px) !important;
+    }
+    
+    .property-badge i {
+        font-size: 0.45rem !important;
+        margin-right: 2px !important;
+    }
+    
+    .btn-view-property {
+        padding: 14px 28px !important;
+        font-size: 16px !important;
+        border-radius: 12px !important;
+        margin-top: 0 !important;
+        background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+        width: 100% !important;
+        text-align: center !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .btn-view-property:hover {
+        background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    }
+}
+
+/* Breakpoints específicos para otimizar colunas */
+@media (min-width: 1200px) {
+    .properties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+        max-width: 1600px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .properties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        max-width: 1800px !important;
+    }
+}
+
 /* Cards Mobile - Menores e Padronizados */
 @media (max-width: 768px) {
     .properties-grid {
@@ -215,6 +439,7 @@ include 'includes/header.php';
         flex: 1 !important;
         display: flex !important;
         flex-direction: column !important;
+        text-align: left !important;
     }
     
     .property-info h3 {
@@ -225,100 +450,103 @@ include 'includes/header.php';
         line-height: 1.3 !important;
     }
     
+    .property-location-container {
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        text-align: left !important;
+    }
+    
     .property-location {
         font-size: 0.95rem !important;
         color: #666 !important;
-        margin-bottom: 15px !important;
+        margin: 0 !important;
         display: flex !important;
         align-items: center !important;
         gap: 6px !important;
+        text-align: left !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
     }
     
     .property-location i {
-        color: #dc2626 !important;
+        color: #666 !important;
         font-size: 14px !important;
+        flex-shrink: 0 !important;
     }
     
     .property-details {
         margin-bottom: 18px !important;
-        gap: 8px !important;
+        gap: 6px !important;
         flex-wrap: wrap !important;
+        display: flex !important;
     }
     
     .property-details span {
-        font-size: 0.9rem !important;
-        padding: 8px 12px !important;
-        background: #f8f9fa !important;
-        border: 1px solid #e9ecef !important;
-        border-radius: 8px !important;
-        color: #333 !important;
+        font-size: 0.85rem !important;
+        padding: 6px 10px !important;
+        background: #f1f3f4 !important;
+        border: none !important;
+        border-radius: 15px !important;
+        color: #5f6368 !important;
         display: inline-flex !important;
         align-items: center !important;
-        gap: 6px !important;
+        gap: 4px !important;
+        font-weight: 500 !important;
     }
     
     .property-details span i {
-        font-size: 14px !important;
-        color: #dc2626 !important;
+        font-size: 12px !important;
+        color: #5f6368 !important;
     }
     
-    /* Valor à esquerda */
+    /* Valor abaixo da localização no mobile */
     .property-price {
-        position: absolute !important;
-        top: 10px !important;
-        left: 10px !important;
-        background: rgba(0, 0, 0, 0.85) !important;
-        color: white !important;
-        padding: 4px 8px !important;
-        border-radius: 6px !important;
-        text-align: center !important;
-        z-index: 10 !important;
-        max-width: 100px !important;
+        position: static !important;
+        background: transparent !important;
+        color: #1a1a1a !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        text-align: left !important;
+        z-index: auto !important;
+        max-width: none !important;
         min-height: auto !important;
         height: auto !important;
         width: auto !important;
+        margin-bottom: 12px !important;
+        font-weight: 700 !important;
+        box-shadow: none !important;
     }
     
     .property-price .price {
-        font-size: 0.7rem !important;
+        font-size: 1.3rem !important;
         font-weight: 700 !important;
         display: block !important;
-        margin-bottom: 1px !important;
-        line-height: 1.1 !important;
+        margin-bottom: 0 !important;
+        line-height: 1.2 !important;
+        color: #1a1a1a !important;
+        text-shadow: none !important;
     }
     
-    .property-price .price-per-sqft {
-        font-size: 0.5rem !important;
-        opacity: 0.9 !important;
-        line-height: 1 !important;
-    }
-    
-    /* ETIQUETAS MOBILE - POSIÇÃO ESTÁTICA ACIMA DOS DETALHES */
+    /* ETIQUETAS MOBILE - SOBRE A IMAGEM */
     .property-labels {
-        position: static !important;
+        position: absolute !important;
+        top: 10px !important;
+        left: 10px !important;
         display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        gap: 3px !important;
-        margin-bottom: 6px !important;
-        justify-content: flex-start !important;
-        width: 100% !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        z-index: 10 !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        max-width: none !important;
-        pointer-events: auto !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+        z-index: 15 !important;
+        max-width: 200px !important;
+        pointer-events: none !important;
+        width: auto !important;
         height: auto !important;
+        min-height: auto !important;
         overflow: visible !important;
     }
     
     .property-badge {
         font-size: 0.65rem !important;
-        padding: 4px 8px !important;
+        padding: 6px 10px !important;
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -331,8 +559,9 @@ include 'includes/header.php';
         height: auto !important;
         border-radius: 15px !important;
         font-weight: 700 !important;
-        min-height: 24px !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+        min-height: 26px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        backdrop-filter: blur(10px) !important;
     }
     
     .property-badge i {
@@ -341,9 +570,9 @@ include 'includes/header.php';
     }
     
     .btn-view-property {
-        padding: 12px 25px !important;
-        font-size: 15px !important;
-        border-radius: 10px !important;
+        padding: 14px 28px !important;
+        font-size: 16px !important;
+        border-radius: 12px !important;
         margin-top: 0 !important;
         background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
         color: white !important;
@@ -351,6 +580,17 @@ include 'includes/header.php';
         text-transform: uppercase !important;
         letter-spacing: 0.5px !important;
         box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+        width: 100% !important;
+        text-align: center !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .btn-view-property:hover {
+        background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
     }
 }
 
@@ -384,70 +624,102 @@ include 'includes/header.php';
         margin-bottom: 8px !important;
     }
     
+    .property-location-container {
+        width: 100% !important;
+        margin-bottom: 10px !important;
+        text-align: left !important;
+    }
+    
     .property-location {
         font-size: 0.85rem !important;
-        margin-bottom: 10px !important;
+        margin: 0 !important;
+        color: #666 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        text-align: left !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+    }
+    
+    .property-location i {
+        color: #666 !important;
+        font-size: 12px !important;
+        flex-shrink: 0 !important;
     }
     
     .property-details {
         margin-bottom: 12px !important;
-        gap: 6px !important;
+        gap: 4px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
     }
     
     .property-details span {
         font-size: 0.8rem !important;
-        padding: 6px 10px !important;
+        padding: 5px 8px !important;
+        background: #f1f3f4 !important;
+        border: none !important;
+        border-radius: 12px !important;
+        color: #5f6368 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3px !important;
+        font-weight: 500 !important;
     }
     
     .property-details span i {
-        font-size: 12px !important;
+        font-size: 11px !important;
+        color: #5f6368 !important;
     }
     
-    /* Valor à esquerda - mobile pequeno */
+    /* Valor abaixo da localização - mobile pequeno */
     .property-price {
-        top: 8px !important;
-        left: 8px !important;
-        padding: 2px 4px !important;
-        max-width: 80px !important;
+        position: static !important;
+        background: transparent !important;
+        color: #1a1a1a !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        text-align: left !important;
+        z-index: auto !important;
+        max-width: none !important;
         min-height: auto !important;
         height: auto !important;
         width: auto !important;
+        margin-bottom: 10px !important;
+        font-weight: 700 !important;
+        box-shadow: none !important;
     }
     
     .property-price .price {
-        font-size: 0.65rem !important;
-        line-height: 1.1 !important;
+        font-size: 1.2rem !important;
+        line-height: 1.2 !important;
+        color: #1a1a1a !important;
+        font-weight: 700 !important;
+        margin-bottom: 0 !important;
+        text-shadow: none !important;
     }
     
-    .property-price .price-per-sqft {
-        font-size: 0.45rem !important;
-        line-height: 1 !important;
-    }
-    
-    /* ETIQUETAS MOBILE PEQUENO - AJUSTES PARA TELAS MENORES */
+    /* ETIQUETAS MOBILE PEQUENO - SOBRE A IMAGEM */
     .property-labels {
-        gap: 2px !important;
-        margin-bottom: 4px !important;
+        position: absolute !important;
+        top: 8px !important;
+        left: 8px !important;
         display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        width: 100% !important;
-        position: static !important;
-        z-index: 10 !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        max-width: none !important;
-        pointer-events: auto !important;
+        flex-direction: column !important;
+        gap: 3px !important;
+        z-index: 15 !important;
+        max-width: 180px !important;
+        pointer-events: none !important;
+        width: auto !important;
         height: auto !important;
+        min-height: auto !important;
         overflow: visible !important;
-        flex-wrap: wrap !important;
     }
     
     .property-badge {
         font-size: 0.6rem !important;
-        padding: 3px 6px !important;
+        padding: 5px 8px !important;
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -460,8 +732,9 @@ include 'includes/header.php';
         height: auto !important;
         border-radius: 12px !important;
         font-weight: 700 !important;
-        min-height: 22px !important;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+        min-height: 24px !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+        backdrop-filter: blur(8px) !important;
     }
     
     .property-badge i {
@@ -470,14 +743,26 @@ include 'includes/header.php';
     }
     
     .btn-view-property {
-        padding: 10px 20px !important;
-        font-size: 14px !important;
+        padding: 12px 24px !important;
+        font-size: 15px !important;
         background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
         color: white !important;
         font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.5px !important;
         box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+        width: 100% !important;
+        text-align: center !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        border-radius: 10px !important;
+    }
+    
+    .btn-view-property:hover {
+        background: linear-gradient(135deg, #b91c1c, #991b1b) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
     }
 }
 
@@ -743,22 +1028,7 @@ height: 80px !important;
                                          alt="Imóvel sem imagem">
                                 <?php endif; ?>
                                 
-                                <div class="property-price">
-                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
-                                    <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
-                                        <span class="price-per-sqft">R$ <?php echo number_format($imovel_item['preco'] / $imovel_item['area'], 0, ',', '.'); ?>/m²</span>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            
-                            <div class="property-info">
-                                <h3><?php echo htmlspecialchars($imovel_item['titulo']); ?></h3>
-                                <p class="property-location">
-                                    <i class="fas fa-map-marker-alt"></i> 
-                                    <?php echo htmlspecialchars($imovel_item['cidade'] . ', ' . $imovel_item['estado']); ?>
-                                </p>
-                                
-                                <!-- TICKETS AQUI - ACIMA DOS ÍCONES -->
+                                <!-- ETIQUETAS NO TOPO ESQUERDO DA IMAGEM -->
                                 <div class="property-labels">
                                     <?php if ($imovel_item['destaque']): ?>
                                         <span class="property-badge badge-destaque">
@@ -779,6 +1049,68 @@ height: 80px !important;
                                         </span>
                                     <?php endif; ?>
                                 </div>
+                                
+                                <div class="property-price">
+                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
+                                    <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>
+                                        <span class="price-per-sqft">R$ <?php echo number_format($imovel_item['preco'] / $imovel_item['area'], 0, ',', '.'); ?>/m²</span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            
+                            <div class="property-info">
+                                <h3><?php echo htmlspecialchars($imovel_item['titulo']); ?></h3>
+                                
+                                <div class="property-location-container">
+                                    <p class="property-location">
+                                        <i class="fas fa-map-marker-alt"></i> 
+                                        <?php 
+                                        // Usar campo bairro do banco de dados
+                                        $bairro = $imovel_item['bairro'] ?? '';
+                                        $cidade = $imovel_item['cidade'] ?? '';
+                                        $estado = $imovel_item['estado'] ?? '';
+                                        
+                                        // Se tem bairro, mostrar bairro + cidade + estado
+                                        if (!empty($bairro)) {
+                                            $localizacao = $bairro . ', ' . $cidade . ', ' . $estado;
+                                        } else {
+                                            // Fallback: tentar extrair do endereço
+                                            $endereco = $imovel_item['endereco'] ?? '';
+                                            $regiao = '';
+                                            
+                                            // Mapear regiões conhecidas
+                                            $regioes = [
+                                                'sitio-cercado' => 'Sítio Cercado',
+                                                'agua-verde' => 'Água Verde', 
+                                                'batel' => 'Batel',
+                                                'cabral' => 'Cabral',
+                                                'centro-civico' => 'Centro Cívico',
+                                                'juveve' => 'Juvevê',
+                                                'centro' => 'Centro',
+                                                'jardim-botanico' => 'Jardim Botânico'
+                                            ];
+                                            
+                                            // Tentar identificar região pelo endereço
+                                            foreach ($regioes as $key => $nome) {
+                                                if (stripos($endereco, $nome) !== false) {
+                                                    $regiao = $nome;
+                                                    break;
+                                                }
+                                            }
+                                            
+                                            $localizacao = $regiao ? $regiao . ', ' . $cidade . ', ' . $estado : $cidade . ', ' . $estado;
+                                        }
+                                        
+                                        echo htmlspecialchars($localizacao); 
+                                        ?>
+                                    </p>
+                                </div>
+                                
+                                <!-- Valor do imóvel abaixo da localização no mobile -->
+                                <div class="property-price">
+                                    <span class="price">R$ <?php echo number_format($imovel_item['preco'], 0, ',', '.'); ?></span>
+                                </div>
+                                
                                 
                                 <div class="property-details">
                                     <?php if (!empty($imovel_item['area']) && $imovel_item['area'] > 0): ?>

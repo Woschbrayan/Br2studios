@@ -133,5 +133,19 @@ class Database {
             return false;
         }
     }
+
+    /**
+     * Executa comandos SQL (DDL, DML) sem retorno específico
+     */
+    public function execute($sql, $params = []) {
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return true;
+        } catch(PDOException $e) {
+            error_log("Erro execute: " . $e->getMessage());
+            throw $e;
+        }
+    }
 }
 ?>

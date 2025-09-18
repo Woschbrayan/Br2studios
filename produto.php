@@ -105,6 +105,101 @@ include 'includes/header.php';
             font-size: 1rem !important;
         }
     }
+    
+    /* Estilos do Mapa */
+    .map-container {
+        position: relative;
+        margin-top: 20px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        background: #f8f9fa;
+    }
+    
+    .map-container iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+        border-radius: 15px;
+    }
+    
+    .map-overlay {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+    }
+    
+    .map-info h4 {
+        margin: 0 0 8px 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a1a1a;
+    }
+    
+    .map-info p {
+        margin: 0 0 10px 0;
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.4;
+    }
+    
+    .btn-map-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: #dc2626;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-map-link:hover {
+        background: #b91c1c;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    }
+    
+    .btn-map-link i {
+        font-size: 0.8rem;
+    }
+    
+    /* Responsividade do mapa */
+    @media (max-width: 768px) {
+        .map-container iframe {
+            height: 250px;
+        }
+        
+        .map-overlay {
+            position: static;
+            margin-top: 15px;
+            max-width: none;
+            background: #ffffff;
+        }
+        .product-title-mobile {
+        display: block !important;
+        font-size: 2.2rem;
+        text-align: center !important;
+        margin: 0 auto 25px auto;
+        color: var(--text-primary);
+        font-weight: 700;
+        line-height: 1.2;
+        width: 100%;
+        padding: 0 20px;
+        word-wrap: break-word;
+        max-width: 100%;
+        margin-top: 17%;
+    }
+    }
 </style>
     <!-- Hero Product Section -->
     <section class="product-hero">
@@ -547,6 +642,61 @@ include 'includes/header.php';
                                     <span>Vila Madalena, São Paulo - SP</span>
                                 </div>
                             <?php endif; ?>
+                        </div>
+                        
+                        <!-- Mapa do Google Maps -->
+                        <div class="map-container">
+                            <?php 
+                            // Preparar endereço para o Google Maps
+                            if ($imovel_data) {
+                                $endereco_maps = '';
+                                if (!empty($imovel_data['endereco'])) {
+                                    $endereco_maps .= $imovel_data['endereco'];
+                                }
+                                if (!empty($imovel_data['cidade'])) {
+                                    $endereco_maps .= ($endereco_maps ? ', ' : '') . $imovel_data['cidade'];
+                                }
+                                if (!empty($imovel_data['estado'])) {
+                                    $endereco_maps .= ($endereco_maps ? ', ' : '') . $imovel_data['estado'];
+                                }
+                                if (!empty($imovel_data['cep'])) {
+                                    $endereco_maps .= ($endereco_maps ? ', ' : '') . $imovel_data['cep'];
+                                }
+                                $endereco_maps = $endereco_maps ?: 'Curitiba, PR';
+                                $titulo_maps = $imovel_data['titulo'];
+                            } else {
+                                $endereco_maps = 'Vila Madalena, São Paulo, SP';
+                                $titulo_maps = 'Studio Premium em São Paulo';
+                            }
+                            
+                            // URL simples do Google Maps
+                            $endereco_url = urlencode($endereco_maps);
+                            $maps_url = "https://maps.google.com/maps?q=" . $endereco_url . "&t=&z=15&ie=UTF8&iwloc=&output=embed";
+                            ?>
+                            
+                            <iframe 
+                                src="<?php echo $maps_url; ?>" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 15px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Localização do Imóvel">
+                            </iframe>
+                            
+                            <div class="map-overlay">
+                                <div class="map-info">
+                                    <h4>Localização do Imóvel</h4>
+                                    <p><?php echo htmlspecialchars($endereco_maps); ?></p>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=<?php echo $endereco_url; ?>" 
+                                       target="_blank" 
+                                       class="btn-map-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Abrir no Google Maps
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

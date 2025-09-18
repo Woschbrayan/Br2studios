@@ -761,17 +761,7 @@ display: inline-block;
                     <p>Aceitamos todas as formas de pagamento: à vista, financiamento bancário, consórcio e até mesmo troca por outros imóveis. Analisamos cada caso individualmente.</p>
                 </div>
             </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h3>Vocês atendem em todo o Brasil?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Sim! Temos corretores credenciados em todos os estados brasileiros, oferecendo oportunidades de investimento em todo o território nacional.</p>
-                </div>
-            </div>
-            
+
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <h3>Qual o prazo para resposta?</h3>

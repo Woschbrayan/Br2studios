@@ -31,15 +31,15 @@ try {
         
         try {
             if (strpos($command, 'CREATE TABLE') !== false) {
-                $db->executeQuery($command);
+                $db->execute($command);
                 $tables_created++;
                 echo "✅ Tabela criada com sucesso\n";
             } elseif (strpos($command, 'INSERT INTO') !== false) {
-                $db->executeQuery($command);
+                $db->execute($command);
                 $categories_inserted++;
                 echo "✅ Categoria inserida com sucesso\n";
             } else {
-                $db->executeQuery($command);
+                $db->execute($command);
                 echo "✅ Comando executado com sucesso\n";
             }
         } catch (Exception $e) {
