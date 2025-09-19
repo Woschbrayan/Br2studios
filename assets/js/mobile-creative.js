@@ -567,9 +567,7 @@ class TestimonialsSlider {
 
 // Inicialização quando DOM carregado
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar sliders de depoimentos
-    new TestimonialsSlider(false); // Desktop
-    new TestimonialsSlider(true);  // Mobile
+    // Sliders de depoimentos são inicializados no main.js
     
     // Verificar se está em mobile para outras funcionalidades
     if (window.innerWidth <= 768) {

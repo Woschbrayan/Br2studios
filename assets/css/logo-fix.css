@@ -1,5 +1,10 @@
 /* ===== LOGO IMAGE STYLES ===== */
 
+.logo-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
 .logo-image {
     height: 50px;
     width: auto;

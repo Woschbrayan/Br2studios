@@ -199,6 +199,14 @@ include 'includes/header.php';
         max-width: 100%;
         margin-top: 17%;
     }
+    .location-section {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    padding: 25px;
+    margin-bottom: 30px;
+    margin-top: -15%;
+}
     }
 </style>
     <!-- Hero Product Section -->
@@ -608,12 +616,9 @@ include 'includes/header.php';
                     <div class="details-section description-section">
                         <div class="section-header">
                             <h3><i class="fas fa-file-alt"></i> Descrição</h3>
-                            <p>Informações detalhadas sobre o imóvel</p>
+                          
                         </div>
-                        
-                        <div class="description-content">
-                            <p><?php echo nl2br(htmlspecialchars($imovel_data['descricao'])); ?></p>
-                        </div>
+                       
                     </div>
                     <?php endif; ?>
                     

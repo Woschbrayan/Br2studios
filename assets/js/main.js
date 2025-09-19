@@ -372,138 +372,7 @@ function animateOnScroll() {
     });
 }
 
-// Carrossel de Depoimentos Desktop
-class TestimonialsCarousel {
-    constructor() {
-        this.carousel = document.querySelector('.testimonials-carousel-desktop');
-        this.track = document.querySelector('.testimonials-carousel-desktop .testimonials-track');
-        this.slides = document.querySelectorAll('.testimonials-carousel-desktop .testimonial-slide');
-        this.dots = document.querySelectorAll('.testimonials-carousel-desktop .dot');
-        this.currentSlide = 0;
-        this.autoPlayInterval = null;
-        this.autoPlayDelay = 5000; // 5 segundos
-        
-        this.init();
-    }
-    
-    init() {
-        if (this.carousel && this.slides.length > 0) {
-            console.log('TestimonialsCarousel: Inicializando com', this.slides.length, 'slides');
-            this.startAutoPlay();
-            this.bindEvents();
-            this.updateCarousel();
-        } else {
-            console.log('TestimonialsCarousel: Elementos não encontrados');
-        }
-    }
-    
-    startAutoPlay() {
-        this.autoPlayInterval = setInterval(() => {
-            this.nextSlide();
-        }, this.autoPlayDelay);
-    }
-    
-    stopAutoPlay() {
-        if (this.autoPlayInterval) {
-            clearInterval(this.autoPlayInterval);
-        }
-    }
-    
-    nextSlide() {
-        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-        this.updateCarousel();
-    }
-    
-    prevSlide() {
-        this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
-        this.updateCarousel();
-    }
-    
-    goToSlide(index) {
-        this.currentSlide = index;
-        this.updateCarousel();
-        this.resetAutoPlay();
-    }
-    
-    updateCarousel() {
-        // Atualizar posição do track
-        const translateX = -this.currentSlide * 100;
-        this.track.style.transform = `translateX(${translateX}%)`;
-        
-        // Atualizar slides ativos
-        this.slides.forEach((slide, index) => {
-            slide.classList.toggle('active', index === this.currentSlide);
-        });
-        
-        // Atualizar dots
-        this.dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.currentSlide);
-        });
-    }
-    
-    resetAutoPlay() {
-        this.stopAutoPlay();
-        this.startAutoPlay();
-    }
-    
-    bindEvents() {
-        // Dots de navegação
-        this.dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                this.goToSlide(index);
-            });
-        });
-        
-        // Pausar autoplay no hover
-        if (this.carousel) {
-            this.carousel.addEventListener('mouseenter', () => {
-                this.stopAutoPlay();
-            });
-            
-            this.carousel.addEventListener('mouseleave', () => {
-                this.startAutoPlay();
-            });
-        }
-        
-        // Touch/swipe support
-        this.addTouchSupport();
-    }
-    
-    addTouchSupport() {
-        let startX = 0;
-        let endX = 0;
-        let isDragging = false;
-        
-        this.track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-            this.stopAutoPlay();
-        });
-        
-        this.track.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            endX = e.touches[0].clientX;
-        });
-        
-        this.track.addEventListener('touchend', () => {
-            if (!isDragging) return;
-            isDragging = false;
-            
-            const diffX = startX - endX;
-            const threshold = 50;
-            
-            if (Math.abs(diffX) > threshold) {
-                if (diffX > 0) {
-                    this.nextSlide();
-                } else {
-                    this.prevSlide();
-                }
-            }
-            
-            this.resetAutoPlay();
-        });
-    }
-}
+// Classe DepoimentosCarousel removida - agora usa testimonials-new.js
 
 // Carrossel de Parceiros
 class PartnersCarousel {
@@ -638,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new AnimatedCounter();
     new MobileMenu();
     new LazyLoading();
-    new TestimonialsCarousel();
+    // DepoimentosCarousel removido - agora usa testimonials-new.js
     new PartnersCarousel();
     new CitiesCarousel();
     

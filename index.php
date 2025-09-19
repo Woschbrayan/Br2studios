@@ -4,10 +4,12 @@ require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/classes/Database.php';
 require_once __DIR__ . '/classes/Imovel.php';
 require_once __DIR__ . '/classes/Corretor.php';
+require_once __DIR__ . '/classes/Depoimento.php';
 
 $imoveis_destaque = [];
 $imoveis_valorizacao = [];
 $corretores_destaque = [];
+$depoimentos_destaque = [];
 
 try {
     $imovel = new Imovel();
@@ -89,19 +91,31 @@ try {
         $corretores_destaque = array_slice($corretores_result, 0, 3); // Limitar a 3 corretores
     } else {
         $corretores_destaque = [];
+$depoimentos_destaque = [];
     }
+    // Buscar depoimentos em destaque
+    $depoimento = new Depoimento();
+    $depoimentos_result = $depoimento->listarDestaques(10); // Buscar até 10 depoimentos em destaque
     
+    if (is_array($depoimentos_result)) {
+        $depoimentos_destaque = $depoimentos_result;
+    } else {
+        $depoimentos_destaque = [];
+    }    
 } catch (Exception $e) {
     error_log("Erro ao buscar imóveis: " . $e->getMessage());
     $imoveis_destaque = [];
     $imoveis_valorizacao = [];
     $corretores_destaque = [];
+$depoimentos_destaque = [];
 }
 
 $current_page = 'home';
 $page_title = 'Br2Imóveis - Imóveis de Qualidade em Todo o Brasil';
 $page_css = 'assets/css/home-sections.css';
-include 'includes/header.php'; 
+include 'includes/header.php';
+?>
+<?php 
 ?>
 <style>
     /* Hero Content - Desktop */
@@ -572,354 +586,11 @@ include 'includes/header.php';
         margin-bottom: 0 !important;
     }
     
-    /* Depoimentos Mobile - Reestruturado e Melhorado */
-    .testimonials-mobile {
-        text-align: center;
-        padding: 50px 0;
-        background: #f8f9fa;
-    }
-    
-    /* Esconder depoimentos mobile no desktop */
-    @media (min-width: 769px) {
-        .testimonials-mobile {
-            display: none !important;
-        }
-    }
-    
-    .testimonials-mobile .section-header {
-        margin-bottom: 30px;
-    }
-    
-    .testimonials-mobile .section-header h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #333;
-        margin-bottom: 10px;
-    }
-    
-    .testimonials-mobile .section-header p {
-        font-size: 1rem;
-        color: #666;
-    }
-    
-    .testimonials-container-mobile {
-        max-width: 100%;
-        margin: 0 auto;
-        position: relative;
-        padding: 0 20px;
-    }
-    
-    .testimonials-slider-mobile {
-        position: relative;
-        overflow: hidden;
-        margin: 0 auto;
-        max-width: 280px;
-    }
-    
-    .testimonial-slide-mobile {
-        display: none;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-    
-    .testimonial-slide-mobile.active {
-        display: block;
-        opacity: 1;
-    }
-    
-    .testimonial-card-mobile {
-        background: white;
-        border-radius: 15px;
-        padding: 20px 15px;
-        margin: 0 auto;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        text-align: center;
-        position: relative;
-        max-width: 250px;
-    }
-    
-    .testimonial-rating-mobile {
-        margin-bottom: 15px;
-    }
-    
-    .testimonial-rating-mobile i {
-        color: #ffc107;
-        font-size: 14px;
-        margin: 0 2px;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-    
-    .testimonial-text-mobile {
-        font-size: 14px;
-        line-height: 1.5;
-        color: #333;
-        margin-bottom: 15px;
-        font-style: italic;
-        position: relative;
-    }
-    
-
-    
-    
-    .testimonial-author-mobile {
-        font-weight: 700;
-        font-size: 16px;
-        color: #333;
-        margin-bottom: 5px;
-    }
-    
-    .testimonial-role-mobile {
-        font-size: 12px;
-        color: #666;
-        font-weight: 500;
-    }
-    
-    .testimonials-controls-mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 25px;
-        gap: 15px;
-    }
-    
-    .testimonial-prev-mobile,
-    .testimonial-next-mobile {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 2px solid #dc2626;
-        background: white;
-        color: #dc2626;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 14px;
-    }
-    
-    .testimonial-prev-mobile:hover,
-    .testimonial-next-mobile:hover {
-        background: #dc2626;
-        color: white;
-        transform: scale(1.1);
-        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-    }
-    
-    .testimonials-dots-mobile {
-        display: flex;
-        gap: 8px;
-    }
-    
-    .testimonial-dot-mobile {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #ddd;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .testimonial-dot-mobile.active {
-        background: #dc2626;
-        transform: scale(1.3);
-    }
-    
-    .testimonial-dot-mobile:hover {
-        background: #dc2626;
-        transform: scale(1.1);
-    }
-    
-    /* DEPOIMENTOS DESKTOP - APENAS PRIMEIRO CARD CENTRALIZADO */
-    .testimonials-desktop {
-        padding: 80px 0 !important;
-        background: #f8f9fa !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
-    
-    /* Esconder depoimentos desktop no mobile */
-    @media (max-width: 768px) {
-        .testimonials-desktop {
-            display: none !important;
-        }
-    }
-    
-    .testimonials-desktop .section-container {
-        max-width: 1200px !important;
-        margin: 0 auto !important;
-        padding: 0 20px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
-    
-    .testimonials-desktop .section-header {
-        text-align: center !important;
-        margin-bottom: 50px !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    .testimonials-desktop .section-header h2 {
-        font-size: 2.5rem !important;
-        font-weight: 700 !important;
-        color: #333 !important;
-        margin-bottom: 15px !important;
-        text-align: center !important;
-    }
-    
-    .testimonials-desktop .section-header p {
-        font-size: 1.1rem !important;
-        color: #666 !important;
-        max-width: 600px !important;
-        margin: 0 auto !important;
-        text-align: center !important;
-    }
-    
-    .testimonials-wrapper-desktop {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 1000px !important;
-        margin: 0 auto !important;
-    }
-    
-    .testimonial-card-desktop {
-        background: white !important;
-        border-radius: 20px !important;
-        padding: 40px 35px !important;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
-        border: 1px solid rgba(0, 0, 0, 0.05) !important;
-        text-align: center !important;
-        width: 100% !important;
-        max-width: 600px !important;
-        margin: 0 auto !important;
-        position: relative !important;
-        display: block !important;
-    }
-    
-    .testimonial-content-desktop {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-    
-    .quote-icon-desktop {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(135deg, #dc2626, #b91c3c);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 25px;
-        color: white;
-        font-size: 28px;
-        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
-    }
-    
-    .testimonial-rating-desktop {
-        margin-bottom: 25px;
-    }
-    
-    .testimonial-rating-desktop i {
-        color: #ffc107;
-        font-size: 20px;
-        margin: 0 2px;
-    }
-    
-    .testimonial-text-desktop {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        color: #333;
-        margin-bottom: 35px;
-        font-style: italic;
-        position: relative;
-    }
-    
-    .testimonial-text-desktop::before {
-        content: '"';
-        font-size: 80px;
-        color: #dc2626;
-        position: absolute;
-        top: -30px;
-        left: -20px;
-        font-family: serif;
-        opacity: 0.1;
-        line-height: 1;
-    }
-    
-    .testimonial-text-desktop::after {
-        content: '"';
-        font-size: 80px;
-        color: #dc2626;
-        position: absolute;
-        bottom: -40px;
-        right: -20px;
-        font-family: serif;
-        opacity: 0.1;
-        line-height: 1;
-    }
-    
-    .testimonial-author-desktop {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-    }
-    
-    .author-avatar-desktop {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #dc2626, #b91c1c);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 24px;
-        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
-    }
-    
-    .author-info-desktop h4 {
-        font-weight: 700;
-        font-size: 1.3rem;
-        color: #333;
-        margin-bottom: 5px;
-    }
-    
-    .author-info-desktop p {
-        font-size: 1.1rem;
-        color: #666;
-        font-weight: 500;
-        margin: 0 0 5px 0;
-    }
-    
-    .author-location-desktop {
-        font-size: 0.9rem;
-        color: #999;
-        font-weight: 400;
-    }
-    
-    .carousel-controls {
-        display: none !important;
-    }
     
     
     
+    
+        
     /* CTA Section - Apenas espaçamentos e alinhamento */
     .cta-section {
         text-align: center;
@@ -1453,10 +1124,12 @@ require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/classes/Database.php';
 require_once __DIR__ . '/classes/Imovel.php';
 require_once __DIR__ . '/classes/Corretor.php';
+require_once __DIR__ . '/classes/Depoimento.php';
 
 $imoveis_destaque = [];
 $imoveis_valorizacao = [];
 $corretores_destaque = [];
+$depoimentos_destaque = [];
 
 try {
     $imovel = new Imovel();
@@ -1538,6 +1211,7 @@ try {
         $corretores_destaque = array_slice($corretores_result, 0, 3); // Limitar a 3 corretores
     } else {
         $corretores_destaque = [];
+$depoimentos_destaque = [];
     }
     
 } catch (Exception $e) {
@@ -1545,12 +1219,15 @@ try {
     $imoveis_destaque = [];
     $imoveis_valorizacao = [];
     $corretores_destaque = [];
+$depoimentos_destaque = [];
 }
 
 $current_page = 'home';
 $page_title = 'Br2Imóveis - Imóveis de Qualidade em Todo o Brasil';
 $page_css = 'assets/css/home-sections.css';
-include 'includes/header.php'; 
+include 'includes/header.php';
+?>
+<?php 
 ?>
 <style>
     /* Hero Content - Desktop */
@@ -2012,166 +1689,7 @@ include 'includes/header.php';
         margin-bottom: 0 !important;
     }
     
-    /* Depoimentos Mobile - Reestruturado e Melhorado */
-    .testimonials-mobile {
-        text-align: center;
-        padding: 50px 0;
-        background: #f8f9fa;
-    }
     
-    /* Esconder depoimentos mobile no desktop */
-    @media (min-width: 769px) {
-        .testimonials-mobile {
-            display: none !important;
-        }
-    }
-    
-    .testimonials-mobile .section-header {
-        margin-bottom: 30px;
-    }
-    
-    .testimonials-mobile .section-header h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #333;
-        margin-bottom: 10px;
-    }
-    
-    .testimonials-mobile .section-header p {
-        font-size: 1rem;
-        color: #666;
-    }
-    
-    .testimonials-container-mobile {
-        max-width: 100%;
-        margin: 0 auto;
-        position: relative;
-        padding: 0 20px;
-    }
-    
-    .testimonials-slider-mobile {
-        position: relative;
-        overflow: hidden;
-        margin: 0 auto;
-        max-width: 280px;
-    }
-    
-    .testimonial-slide-mobile {
-        display: none;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-    
-    .testimonial-slide-mobile.active {
-        display: block;
-        opacity: 1;
-    }
-    
-    .testimonial-card-mobile {
-        background: white;
-        border-radius: 15px;
-        padding: 20px 15px;
-        margin: 0 auto;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        text-align: center;
-        position: relative;
-        max-width: 250px;
-    }
-    
-    .testimonial-rating-mobile {
-        margin-bottom: 15px;
-    }
-    
-    .testimonial-rating-mobile i {
-        color: #ffc107;
-        font-size: 14px;
-        margin: 0 2px;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-    
-    .testimonial-text-mobile {
-        font-size: 14px;
-        line-height: 1.5;
-        color: #333;
-        margin-bottom: 15px;
-        font-style: italic;
-        position: relative;
-    }
-    
-
-    
-
-    
-    .testimonial-author-mobile {
-        font-weight: 700;
-        font-size: 16px;
-        color: #333;
-        margin-bottom: 5px;
-    }
-    
-    .testimonial-role-mobile {
-        font-size: 12px;
-        color: #666;
-        font-weight: 500;
-    }
-    
-    .testimonials-controls-mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 25px;
-        gap: 15px;
-    }
-    
-    .testimonial-prev-mobile,
-    .testimonial-next-mobile {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 2px solid #dc2626;
-        background: white;
-        color: #dc2626;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 14px;
-    }
-    
-    .testimonial-prev-mobile:hover,
-    .testimonial-next-mobile:hover {
-        background: #dc2626;
-        color: white;
-        transform: scale(1.1);
-        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-    }
-    
-    .testimonials-dots-mobile {
-        display: flex;
-        gap: 8px;
-    }
-    
-    .testimonial-dot-mobile {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #ddd;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .testimonial-dot-mobile.active {
-        background: #dc2626;
-        transform: scale(1.3);
-    }
-    
-    .testimonial-dot-mobile:hover {
-        background: #dc2626;
-        transform: scale(1.1);
-    }
     
     /* DEPOIMENTOS DESKTOP - APENAS PRIMEIRO CARD CENTRALIZADO */
     .testimonials-desktop {
@@ -2236,19 +1754,7 @@ include 'includes/header.php';
         margin: 0 auto !important;
     }
     
-    .testimonial-card-desktop {
-        background: white !important;
-        border-radius: 20px !important;
-        padding: 40px 35px !important;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
-        border: 1px solid rgba(0, 0, 0, 0.05) !important;
-        text-align: center !important;
-        width: 100% !important;
-        max-width: 600px !important;
-        margin: 0 auto !important;
-        position: relative !important;
-        display: block !important;
-    }
+    
     
     .testimonial-content-desktop {
         display: flex;
@@ -4415,78 +3921,477 @@ include 'includes/header.php';
         </div>
     </section>
 
-    <!-- Testimonials Mobile - Reestruturado -->
-    <section class="testimonials-mobile mobile-only">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>O que nossos clientes dizem</h2>
-                <p>Depoimentos reais de investidores que confiaram na Br2Studios</p>
+    <!-- Seção de Depoimentos - DESKTOP E MOBILE SEPARADOS -->
+    <?php
+    // Buscar depoimentos de forma independente para evitar conflitos
+    $testimonials_data = [];
+    try {
+        $testimonial_obj = new Depoimento();
+        $testimonials_result = $testimonial_obj->listarDestaques(10);
+        if (is_array($testimonials_result)) {
+            $testimonials_data = $testimonials_result;
+        }
+    } catch (Exception $e) {
+        error_log("Erro ao buscar depoimentos: " . $e->getMessage());
+        $testimonials_data = [];
+    }
+    ?>
+    
+    <!-- VERSÃO DESKTOP -->
+    <section class="testimonials-desktop" style="padding: 100px 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); text-align: center; position: relative; overflow: hidden;">
+        <!-- Background decorativo -->
+        <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: linear-gradient(45deg, rgba(220, 38, 38, 0.05), rgba(220, 38, 38, 0.1)); border-radius: 50%; z-index: 1;"></div>
+        <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: linear-gradient(45deg, rgba(220, 38, 38, 0.03), rgba(220, 38, 38, 0.08)); border-radius: 50%; z-index: 1;"></div>
+        
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 30px; position: relative; z-index: 2;">
+            <!-- Header desktop -->
+            <div style="margin-bottom: 80px;">
+                <h2 style="font-size: 3.2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 20px; letter-spacing: -0.02em; line-height: 1.1;">
+                    O que nossos <span style="color: #dc2626;">clientes</span> dizem
+                </h2>
+                <p style="font-size: 1.3rem; color: #6b7280; margin-bottom: 0; font-weight: 400; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                    Depoimentos reais de investidores que confiaram na Br2Studios e transformaram seus sonhos em realidade
+                </p>
             </div>
             
-            <div class="testimonials-container-mobile">
-                <div class="testimonials-slider-mobile">
-                    <div class="testimonial-slide-mobile active">
-                        <div class="testimonial-card-mobile">
-                            <div class="testimonial-rating-mobile">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+            <!-- Carrossel desktop -->
+            <div id="testimonials-desktop-container" style="position: relative; overflow: hidden; max-width: 900px; margin: 0 auto; border-radius: 30px;">
+                <div id="testimonials-desktop-track" style="display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <?php if (!empty($testimonials_data)): ?>
+                        <?php foreach ($testimonials_data as $idx => $testimonial): ?>
+                            <div class="testimonial-desktop-item" style="min-width: 100%; padding: 0 25px; box-sizing: border-box;">
+                                <div style="background: white; border-radius: 30px; padding: 60px 50px; box-shadow: 0 25px 60px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05); text-align: center; position: relative; border: 1px solid rgba(220, 38, 38, 0.1); min-height: 450px; display: flex; flex-direction: column; justify-content: center;">
+                                    <!-- Aspas decorativas -->
+                                    <div style="font-size: 120px; color: #dc2626; position: absolute; top: 30px; left: 40px; opacity: 0.08; font-family: serif; line-height: 1;">"</div>
+                                    
+                                    <!-- Avaliação com estrelas -->
+                                    <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 35px; color: #fbbf24;">
+                                        <?php for ($star = 1; $star <= 5; $star++): ?>
+                                            <i class="fas fa-star<?php echo $star <= $testimonial['avaliacao'] ? '' : '-o'; ?>" style="font-size: 24px; filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));"></i>
+                                        <?php endfor; ?>
+                                    </div>
+                                    
+                                    <!-- Texto do depoimento -->
+                                    <div style="font-size: 1.4rem; line-height: 1.8; color: #374151; margin-bottom: 45px; font-style: italic; position: relative; z-index: 2; font-weight: 400;">
+                                        "<?php echo htmlspecialchars($testimonial['depoimento']); ?>"
+                                    </div>
+                                    
+                                    <!-- Informações do autor -->
+                                    <div style="display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: auto;">
+                                        <!-- Avatar -->
+                                        <div style="width: 85px; height: 85px; border-radius: 50%; background: linear-gradient(135deg, #dc2626, #b91c1c); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; border: 4px solid white; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.25); overflow: hidden; position: relative;">
+                                            <?php if (!empty($testimonial['foto'])): ?>
+                                                <img src="<?php echo htmlspecialchars($testimonial['foto']); ?>" alt="<?php echo htmlspecialchars($testimonial['nome']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                                            <?php else: ?>
+                                                <i class="fas fa-user"></i>
+                                            <?php endif; ?>
+                                        </div>
+                                        
+                                        <!-- Dados do autor -->
+                                        <div style="text-align: left;">
+                                            <h4 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 8px; letter-spacing: -0.01em;"><?php echo htmlspecialchars($testimonial['nome']); ?></h4>
+                                            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 6px; font-weight: 500;"><?php echo htmlspecialchars($testimonial['cargo']); ?></p>
+                                            <span style="font-size: 1rem; color: #9ca3af; font-weight: 400; display: flex; align-items: center; gap: 5px;">
+                                                <i class="fas fa-map-marker-alt" style="font-size: 12px;"></i>
+                                                <?php echo htmlspecialchars($testimonial['cidade']); ?>, <?php echo htmlspecialchars($testimonial['estado']); ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="testimonial-text-mobile">
-                                "Investir em Curitiba com a Br2Studios foi a melhor decisão. Meu studio valorizou 35% em 2 anos!"
-                            </div>
-                            <div class="testimonial-author-mobile">Carlos Mendes</div>
-                            <div class="testimonial-role-mobile">Investidor - Água Verde</div>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
+                
+                <?php if (count($testimonials_data) > 1): ?>
+                    <!-- Controles desktop -->
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 60px;">
+                        <button id="testimonials-desktop-prev" style="width: 70px; height: 70px; border-radius: 50%; background: white; border: 3px solid #dc2626; color: #dc2626; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-size: 24px; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15); position: relative; overflow: hidden;">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div id="testimonials-desktop-dots" style="display: flex; gap: 15px;">
+                            <?php foreach ($testimonials_data as $idx => $testimonial): ?>
+                                <span class="testimonials-desktop-dot <?php echo $idx === 0 ? 'active' : ''; ?>" data-slide="<?php echo $idx; ?>" style="width: 16px; height: 16px; border-radius: 50%; background: <?php echo $idx === 0 ? '#dc2626' : '#d1d5db'; ?>; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); <?php echo $idx === 0 ? 'transform: scale(1.4); box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);' : ''; ?>"></span>
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <button id="testimonials-desktop-next" style="width: 70px; height: 70px; border-radius: 50%; background: white; border: 3px solid #dc2626; color: #dc2626; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-size: 24px; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15); position: relative; overflow: hidden;">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section Desktop - Centralizado -->
-    <section class="testimonials-desktop desktop-only">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>O que nossos clientes dizem</h2>
-                <p>Depoimentos reais de investidores que confiaram na Br2Studios</p>
+    <!-- VERSÃO MOBILE COMPACTA -->
+    <section class="testimonials-mobile" style="padding: 40px 0; background: #f8f9fa; text-align: center; display: none;">
+        <div style="max-width: 100%; margin: 0 auto; padding: 0 15px;">
+            <!-- Header mobile compacto -->
+            <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 1.8rem; font-weight: 700; color: #1a1a1a; margin-bottom: 10px;">
+                    O que nossos <span style="color: #dc2626;">clientes</span> dizem
+                </h2>
+                <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 0; line-height: 1.4;">
+                    Depoimentos reais de investidores
+                </p>
             </div>
             
-            <div class="testimonials-wrapper-desktop">
-                <div class="testimonial-card-desktop">
-                    <div class="testimonial-content-desktop">
-                        <div class="quote-icon-desktop">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <div class="testimonial-rating-desktop">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text-desktop">
-                            "Investir em Curitiba com a Br2Studios foi a melhor decisão que tomei. 
-                            Meu studio no Água Verde valorizou 35% em apenas 2 anos! A equipe é 
-                            extremamente profissional e transparente."
-                        </p>
-                        <div class="testimonial-author-desktop">
-                            <div class="author-avatar-desktop">
-                                <i class="fas fa-user"></i>
+            <!-- Carrossel mobile compacto -->
+            <div id="testimonials-mobile-container" style="position: relative; overflow: hidden; margin: 0 auto;">
+                <div id="testimonials-mobile-track" style="display: flex; transition: transform 0.4s ease;">
+                    <?php if (!empty($testimonials_data)): ?>
+                        <?php foreach ($testimonials_data as $idx => $testimonial): ?>
+                            <div class="testimonial-mobile-item" style="min-width: 100%; padding: 0 10px; box-sizing: border-box;">
+                                <div style="background: white; border-radius: 15px; padding: 20px 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; position: relative; border: 1px solid rgba(220, 38, 38, 0.1);">
+                                    <!-- Aspas pequenas -->
+                                    <div style="font-size: 40px; color: #dc2626; position: absolute; top: 8px; left: 12px; opacity: 0.1; font-family: serif; line-height: 1;">"</div>
+                                    
+                                    <!-- Estrelas pequenas -->
+                                    <div style="display: flex; justify-content: center; gap: 3px; margin-bottom: 12px; color: #fbbf24;">
+                                        <?php for ($star = 1; $star <= 5; $star++): ?>
+                                            <i class="fas fa-star<?php echo $star <= $testimonial['avaliacao'] ? '' : '-o'; ?>" style="font-size: 12px;"></i>
+                                        <?php endfor; ?>
+                                    </div>
+                                    
+                                    <!-- Texto compacto -->
+                                    <div style="font-size: 0.85rem; line-height: 1.4; color: #374151; margin-bottom: 15px; font-style: italic; position: relative; z-index: 2; font-weight: 400;">
+                                        "<?php echo htmlspecialchars(substr($testimonial['depoimento'], 0, 120)) . (strlen($testimonial['depoimento']) > 120 ? '...' : ''); ?>"
+                                    </div>
+                                    
+                                    <!-- Autor compacto -->
+                                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                                        <!-- Avatar pequeno -->
+                                        <div style="width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(135deg, #dc2626, #b91c1c); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; border: 2px solid white; box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2); overflow: hidden;">
+                                            <?php if (!empty($testimonial['foto'])): ?>
+                                                <img src="<?php echo htmlspecialchars($testimonial['foto']); ?>" alt="<?php echo htmlspecialchars($testimonial['nome']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                                            <?php else: ?>
+                                                <i class="fas fa-user"></i>
+                                            <?php endif; ?>
+                                        </div>
+                                        
+                                        <!-- Dados compactos -->
+                                        <div style="text-align: left;">
+                                            <h4 style="font-size: 0.8rem; font-weight: 600; color: #1f2937; margin-bottom: 2px;"><?php echo htmlspecialchars($testimonial['nome']); ?></h4>
+                                            <p style="font-size: 0.7rem; color: #6b7280; margin-bottom: 0; font-weight: 400;"><?php echo htmlspecialchars($testimonial['cidade']); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="author-info-desktop">
-                                <h4>Carlos Mendes</h4>
-                                <p>Investidor - Água Verde</p>
-                                <span class="author-location-desktop">Curitiba, PR</span>
-                            </div>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
+                
+                <?php if (count($testimonials_data) > 1): ?>
+                    <!-- Controles mobile compactos -->
+                    <div style="display: flex;    padding: 15px;
+                    
+                    justify-content: center; align-items: center; gap: 20px; margin-top: 20px;">
+                        <button id="testimonials-mobile-prev" style="width: 35px; height: 35px; border-radius: 50%; background: white; border: 2px solid #dc2626; color: #dc2626; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; font-size: 12px; box-shadow: 0 2px 8px rgba(220, 38, 38, 0.15);">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div id="testimonials-mobile-dots" style="display: flex; gap: 6px;">
+                            <?php foreach ($testimonials_data as $idx => $testimonial): ?>
+                                <span class="testimonials-mobile-dot <?php echo $idx === 0 ? 'active' : ''; ?>" data-slide="<?php echo $idx; ?>" style="width: 8px; height: 8px; border-radius: 50%; background: <?php echo $idx === 0 ? '#dc2626' : '#d1d5db'; ?>; cursor: pointer; transition: all 0.2s ease; <?php echo $idx === 0 ? 'transform: scale(1.2);' : ''; ?>"></span>
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <button id="testimonials-mobile-next" style="width: 35px; height: 35px; border-radius: 50%; background: white; border: 2px solid #dc2626; color: #dc2626; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; font-size: 12px; box-shadow: 0 2px 8px rgba(220, 38, 38, 0.15);">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
+
+    <style>
+    /* Controle de visibilidade desktop/mobile */
+    @media (max-width: 768px) {
+        .testimonials-desktop {
+            display: none !important;
+        }
+        
+        .testimonials-mobile {
+            display: block !important;
+        }
+    }
+    
+    @media (min-width: 769px) {
+        .testimonials-desktop {
+            display: block !important;
+        }
+        
+        .testimonials-mobile {
+            display: none !important;
+        }
+    }
+    
+    /* Efeitos hover para desktop */
+    #testimonials-desktop-prev:hover,
+    #testimonials-desktop-next:hover {
+        background: #dc2626 !important;
+        color: white !important;
+        transform: scale(1.1) !important;
+        box-shadow: 0 12px 35px rgba(220, 38, 38, 0.25) !important;
+    }
+    
+    .testimonials-desktop-dot:hover {
+        background: #dc2626 !important;
+        transform: scale(1.2) !important;
+    }
+    
+    /* Efeitos hover para mobile */
+    #testimonials-mobile-prev:hover,
+    #testimonials-mobile-next:hover {
+        background: #dc2626 !important;
+        color: white !important;
+        transform: scale(1.05) !important;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2) !important;
+    }
+    
+    .testimonials-mobile-dot:hover {
+        background: #dc2626 !important;
+        transform: scale(1.1) !important;
+    }
+    
+    /* Animação suave para os cards */
+    .testimonial-desktop-item,
+    .testimonial-mobile-item {
+        transition: all 0.3s ease !important;
+    }
+    
+    .testimonial-desktop-item:hover {
+        transform: translateY(-5px) !important;
+    }
+    
+    .testimonial-mobile-item:hover {
+        transform: translateY(-2px) !important;
+    }
+    </style>
+
+    <script>
+    // CARROSSEL DE DEPOIMENTOS - DESKTOP E MOBILE SEPARADOS
+    document.addEventListener('DOMContentLoaded', function() {
+        const testimonialsTotalItems = <?php echo count($testimonials_data); ?>;
+        
+        // ===== CARROSSEL DESKTOP =====
+        const desktopTrack = document.getElementById('testimonials-desktop-track');
+        const desktopPrevBtn = document.getElementById('testimonials-desktop-prev');
+        const desktopNextBtn = document.getElementById('testimonials-desktop-next');
+        const desktopDots = document.querySelectorAll('.testimonials-desktop-dot');
+        
+        let desktopCurrentIndex = 0;
+        let desktopAutoPlayInterval;
+        
+        function updateDesktopCarousel() {
+            if (!desktopTrack) return;
+            
+            const translateX = -desktopCurrentIndex * 100;
+            desktopTrack.style.transform = `translateX(${translateX}%)`;
+            
+            // Atualizar dots desktop
+            desktopDots.forEach((dot, index) => {
+                if (index === desktopCurrentIndex) {
+                    dot.style.background = '#dc2626';
+                    dot.style.transform = 'scale(1.4)';
+                    dot.style.boxShadow = '0 4px 15px rgba(220, 38, 38, 0.3)';
+                } else {
+                    dot.style.background = '#d1d5db';
+                    dot.style.transform = 'scale(1)';
+                    dot.style.boxShadow = 'none';
+                }
+            });
+        }
+        
+        function desktopNextSlide() {
+            desktopCurrentIndex = (desktopCurrentIndex + 1) % testimonialsTotalItems;
+            updateDesktopCarousel();
+        }
+        
+        function desktopPrevSlide() {
+            desktopCurrentIndex = desktopCurrentIndex === 0 ? testimonialsTotalItems - 1 : desktopCurrentIndex - 1;
+            updateDesktopCarousel();
+        }
+        
+        function desktopGoToSlide(index) {
+            desktopCurrentIndex = index;
+            updateDesktopCarousel();
+        }
+        
+        function desktopStartAutoPlay() {
+            desktopAutoPlayInterval = setInterval(desktopNextSlide, 6000);
+        }
+        
+        function desktopStopAutoPlay() {
+            clearInterval(desktopAutoPlayInterval);
+        }
+        
+        // Event listeners desktop
+        if (desktopNextBtn) {
+            desktopNextBtn.addEventListener('click', () => {
+                desktopNextBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => { desktopNextBtn.style.transform = ''; }, 150);
+                desktopNextSlide();
+                desktopStopAutoPlay();
+                desktopStartAutoPlay();
+            });
+        }
+        
+        if (desktopPrevBtn) {
+            desktopPrevBtn.addEventListener('click', () => {
+                desktopPrevBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => { desktopPrevBtn.style.transform = ''; }, 150);
+                desktopPrevSlide();
+                desktopStopAutoPlay();
+                desktopStartAutoPlay();
+            });
+        }
+        
+        desktopDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                desktopGoToSlide(index);
+                desktopStopAutoPlay();
+                desktopStartAutoPlay();
+            });
+        });
+        
+        // ===== CARROSSEL MOBILE =====
+        const mobileTrack = document.getElementById('testimonials-mobile-track');
+        const mobilePrevBtn = document.getElementById('testimonials-mobile-prev');
+        const mobileNextBtn = document.getElementById('testimonials-mobile-next');
+        const mobileDots = document.querySelectorAll('.testimonials-mobile-dot');
+        
+        let mobileCurrentIndex = 0;
+        let mobileAutoPlayInterval;
+        
+        function updateMobileCarousel() {
+            if (!mobileTrack) return;
+            
+            const translateX = -mobileCurrentIndex * 100;
+            mobileTrack.style.transform = `translateX(${translateX}%)`;
+            
+            // Atualizar dots mobile
+            mobileDots.forEach((dot, index) => {
+                if (index === mobileCurrentIndex) {
+                    dot.style.background = '#dc2626';
+                    dot.style.transform = 'scale(1.2)';
+                } else {
+                    dot.style.background = '#d1d5db';
+                    dot.style.transform = 'scale(1)';
+                }
+            });
+        }
+        
+        function mobileNextSlide() {
+            mobileCurrentIndex = (mobileCurrentIndex + 1) % testimonialsTotalItems;
+            updateMobileCarousel();
+        }
+        
+        function mobilePrevSlide() {
+            mobileCurrentIndex = mobileCurrentIndex === 0 ? testimonialsTotalItems - 1 : mobileCurrentIndex - 1;
+            updateMobileCarousel();
+        }
+        
+        function mobileGoToSlide(index) {
+            mobileCurrentIndex = index;
+            updateMobileCarousel();
+        }
+        
+        function mobileStartAutoPlay() {
+            mobileAutoPlayInterval = setInterval(mobileNextSlide, 5000); // Mais rápido no mobile
+        }
+        
+        function mobileStopAutoPlay() {
+            clearInterval(mobileAutoPlayInterval);
+        }
+        
+        // Event listeners mobile
+        if (mobileNextBtn) {
+            mobileNextBtn.addEventListener('click', () => {
+                mobileNextBtn.style.transform = 'scale(0.9)';
+                setTimeout(() => { mobileNextBtn.style.transform = ''; }, 100);
+                mobileNextSlide();
+                mobileStopAutoPlay();
+                mobileStartAutoPlay();
+            });
+        }
+        
+        if (mobilePrevBtn) {
+            mobilePrevBtn.addEventListener('click', () => {
+                mobilePrevBtn.style.transform = 'scale(0.9)';
+                setTimeout(() => { mobilePrevBtn.style.transform = ''; }, 100);
+                mobilePrevSlide();
+                mobileStopAutoPlay();
+                mobileStartAutoPlay();
+            });
+        }
+        
+        mobileDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                mobileGoToSlide(index);
+                mobileStopAutoPlay();
+                mobileStartAutoPlay();
+            });
+        });
+        
+        // ===== CONTROLE GERAL =====
+        function startAutoPlay() {
+            if (window.innerWidth > 768) {
+                desktopStartAutoPlay();
+                mobileStopAutoPlay();
+            } else {
+                mobileStartAutoPlay();
+                desktopStopAutoPlay();
+            }
+        }
+        
+        function stopAutoPlay() {
+            desktopStopAutoPlay();
+            mobileStopAutoPlay();
+        }
+        
+        // Pausar no hover
+        const desktopContainer = document.getElementById('testimonials-desktop-container');
+        const mobileContainer = document.getElementById('testimonials-mobile-container');
+        
+        if (desktopContainer) {
+            desktopContainer.addEventListener('mouseenter', desktopStopAutoPlay);
+            desktopContainer.addEventListener('mouseleave', () => {
+                if (window.innerWidth > 768) desktopStartAutoPlay();
+            });
+        }
+        
+        if (mobileContainer) {
+            mobileContainer.addEventListener('mouseenter', mobileStopAutoPlay);
+            mobileContainer.addEventListener('mouseleave', () => {
+                if (window.innerWidth <= 768) mobileStartAutoPlay();
+            });
+        }
+        
+        // Pausar quando a página não está visível
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoPlay();
+            } else {
+                startAutoPlay();
+            }
+        });
+        
+        // Resize handler
+        window.addEventListener('resize', () => {
+            startAutoPlay();
+        });
+        
+        // Iniciar auto-play
+        if (testimonialsTotalItems > 1) {
+            startAutoPlay();
+            console.log('Carrosséis de depoimentos iniciados com', testimonialsTotalItems, 'itens');
+        }
+    });
+    </script>
     
 
     <!-- CTA Section -->
@@ -4631,13 +4536,5 @@ include 'includes/header.php';
     ?>
     <script src="assets/js/main.js?v=<?php echo $version; ?>"></script>
     <script src="assets/js/mobile-creative.js?v=<?php echo $version; ?>"></script>
-    
-    <script>
-    // DEPOIMENTOS DESKTOP - APENAS UM CARD FIXO (SEM CARROSSEL)
-    
-    // Controle do carrossel de depoimentos mobile
-    // Testimonials Mobile - Apenas um depoimento fixo
-    // Não precisa de JavaScript para carrossel
-    </script>
 </body>
 </html>

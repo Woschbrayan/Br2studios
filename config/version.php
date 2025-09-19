@@ -7,7 +7,7 @@
 
 // Versão atual dos assets
 // Incremente este valor sempre que fizer alterações nos arquivos CSS/JS
-$ASSETS_VERSION = '1.2.1';
+$ASSETS_VERSION = '1.2.3';
 
 // Função para obter a versão atual
 function getAssetsVersion() {

@@ -44,9 +44,11 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-container">
-                        <img src="assets/images/logo/logoBLACK (1).png" alt="Br2Studios" class="logo-image">
-                    </div>
+                    <a href="index.php" class="logo-link">
+                        <div class="logo-container">
+                            <img src="assets/images/logo/logoBLACK (1).png" alt="Br2Studios" class="logo-image">
+                        </div>
+                    </a>
                 </div>
                 
                 <nav class="nav">
