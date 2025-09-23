@@ -13,16 +13,16 @@
                         Especialistas em imóveis de qualidade em Curitiba e região metropolitana. CRECI 10.007 - Sua confiança, nosso compromisso.
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">
+                        <a href="https://www.facebook.com/br2imoveis" target="_blank" class="social-link" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
+                        <a href="https://www.instagram.com/br2imoveis" target="_blank" class="social-link" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/br2imoveis" target="_blank" class="social-link" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="WhatsApp">
+                        <a href="https://wa.me/554141410093" target="_blank" class="social-link" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -41,43 +41,7 @@
                     </ul>
                 </div>
                 
-                <!-- Coluna 3: Área Administrativa -->
-                <div class="footer-col">
-                    <h4>Área Administrativa</h4>
-                    <ul class="footer-links">
-                        <li><a href="admin/" class="admin-link">
-                            <i class="fas fa-user-shield"></i>
-                            Painel Administrativo
-                        </a></li>
-                        <li><a href="admin/dashboard.php" class="admin-link">
-                            <i class="fas fa-chart-dashboard"></i>
-                            Dashboard
-                        </a></li>
-                        <li><a href="admin/imoveis.php" class="admin-link">
-                            <i class="fas fa-home"></i>
-                            Gerenciar Imóveis
-                        </a></li>
-                        <li><a href="admin/corretores.php" class="admin-link">
-                            <i class="fas fa-users"></i>
-                            Gerenciar Corretores
-                        </a></li>
-                    </ul>
-                </div>
-
-                <!-- Coluna 4: Serviços -->
-                <div class="footer-col">
-                    <h4>Nossos Serviços</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Investimentos Imobiliários</a></li>
-                        <li><a href="#">Studios de Alta Rentabilidade</a></li>
-                        <li><a href="#">Assessoria Completa</a></li>
-                        <li><a href="#">Análise de Mercado</a></li>
-                        <li><a href="#">Financiamento</a></li>
-                        <li><a href="#">Consultoria Especializada</a></li>
-                    </ul>
-                </div>
-
-                <!-- Coluna 4: Contato e Newsletter -->
+                <!-- Coluna 3: Contato e Newsletter -->
                 <div class="footer-col">
                     <h4>Contato</h4>
                     <div class="contact-info-footer">
@@ -117,12 +81,9 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="footer-bottom-content">
-                <p>&copy; 2024 - Br2Imóveis - CRECI 10.007. Todos os direitos reservados.</p>
+                <p>&copy; 2025 - Br2Imóveis - CRECI 10.007. Todos os direitos reservados.</p>
                 <div class="footer-bottom-links">
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Termos de Uso</a>
-                    <a href="#">Cookies</a>
-                    <a href="#">Mapa do Site</a>
+                    <a href="sitemap.php">Mapa do Site</a>
                 </div>
             </div>
         </div>
