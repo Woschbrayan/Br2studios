@@ -20,7 +20,7 @@ define('REPLY_TO_EMAIL', 'contato@br2imoveis.com.br');
 define('REPLY_TO_NAME', 'BR2Studios');
 
 // Configurações de debug
-define('EMAIL_DEBUG', true);
+define('EMAIL_DEBUG', false);
 define('EMAIL_LOG_FILE', __DIR__ . '/../logs/email.log');
 
 /**
