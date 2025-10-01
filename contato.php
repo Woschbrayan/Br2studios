@@ -41,9 +41,6 @@ if ($_POST) {
             $email_cliente_enviado = enviarEmail($email, $assunto_cliente, $template_cliente);
             
             if ($email_admin_enviado) {
-                $mensagem = "Mensagem enviada com sucesso! Entraremos em contato em até 2 horas.";
-                $tipo_mensagem = 'success';
-                
                 // Salvar no banco de dados (opcional)
                 try {
                     require_once __DIR__ . '/config/database.php';
@@ -56,6 +53,10 @@ if ($_POST) {
                     // Log do erro, mas não interrompe o processo
                     error_log("Erro ao salvar contato no banco: " . $e->getMessage());
                 }
+                
+                // Redirecionar para página de agradecimento
+                header('Location: obrigado.php');
+                exit();
             } else {
                 $mensagem = "Erro ao enviar mensagem. Tente novamente ou entre em contato pelo WhatsApp.";
                 $tipo_mensagem = 'error';
