@@ -7,7 +7,7 @@
  */
 
 // Configurações do WhatsApp
-$whatsapp_number = '554141410093';
+$whatsapp_number = '554188049999';
 $default_message = 'Olá! Gostaria de saber mais sobre os investimentos da Br2Studios em Curitiba';
 
 // Mensagem personalizada por página

@@ -219,11 +219,11 @@ function criarTemplateConfirmacaoCliente($dados) {
                 <p>Enquanto isso, você pode:</p>
                 <ul>
                     <li>Conhecer nossos <a href='https://br2studios.com.br/imoveis.php'>imóveis disponíveis</a></li>
-                    <li>Falar conosco via <a href='https://wa.me/554141410093'>WhatsApp</a></li>
+                    <li>Falar conosco via <a href='https://wa.me/554188049999'>WhatsApp</a></li>
                     <li>Conhecer nossas <a href='https://br2studios.com.br/regioes.php'>regiões de atuação</a></li>
                 </ul>
                 
-                <p>Se você tem alguma urgência, não hesite em nos contatar pelo WhatsApp: <strong>(41) 4141-0093</strong></p>
+                <p>Se você tem alguma urgência, não hesite em nos contatar pelo WhatsApp: <strong>(41) 8804-9999</strong></p>
                 
                 <p>Atenciosamente,<br>
                 <strong>Equipe BR2Studios</strong></p>
@@ -231,7 +231,7 @@ function criarTemplateConfirmacaoCliente($dados) {
             
             <div class='footer'>
                 <p>BR2Studios - Especialistas em Studios e Investimentos Imobiliários</p>
-                <p>WhatsApp: (41) 4141-0093 | Email: contato@br2imoveis.com.br</p>
+                <p>WhatsApp: (41) 8804-9999 | Email: contato@br2imoveis.com.br</p>
             </div>
         </div>
     </body>

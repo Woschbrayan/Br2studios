@@ -159,7 +159,7 @@ require_once __DIR__ . '/includes/header.php';
     <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
         <h3>Contato</h3>
         <p><strong>BR2Studios - CRECI 10.007</strong></p>
-        <p><i class="fas fa-phone"></i> (41) 4141-0093</p>
+        <p><i class="fas fa-phone"></i> (41) 8804-9999</p>
         <p><i class="fas fa-envelope"></i> contato@br2imoveis.com.br</p>
         <p><i class="fas fa-map-marker-alt"></i> Travessa Rafael Francisco Greca, nº. 41-B, Bairro Água Verde, Curitiba - PR</p>
     </div>

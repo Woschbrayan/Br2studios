@@ -22,7 +22,7 @@
                         <a href="https://www.linkedin.com/company/br2imoveis" target="_blank" class="social-link" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://wa.me/554141410093" target="_blank" class="social-link" aria-label="WhatsApp">
+                        <a href="https://wa.me/554188049999" target="_blank" class="social-link" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -47,7 +47,7 @@
                     <div class="contact-info-footer">
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>(41) 4141-0093</span>
+                            <span>(41) 8804-9999</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>

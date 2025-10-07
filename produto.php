@@ -278,7 +278,7 @@ include 'includes/header.php';
                         </div>
                         
                         <div class="product-actions">
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
                             </a>
@@ -315,7 +315,7 @@ include 'includes/header.php';
                         
                         <div class="product-actions">
                             <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
                             </a>
@@ -483,7 +483,7 @@ include 'includes/header.php';
                     <?php if ($imovel_data): ?>
                         <div class="product-actions">
                             <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
                             </a>
@@ -491,7 +491,7 @@ include 'includes/header.php';
                     <?php else: ?>
                         <div class="product-actions">
                             <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
                             </a>

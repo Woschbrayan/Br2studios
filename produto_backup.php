@@ -123,7 +123,7 @@ include 'includes/header.php';
                         
                         <div class="product-actions">
                             <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
                             </a>
@@ -160,7 +160,7 @@ include 'includes/header.php';
                         
                         <div class="product-actions">
                             <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
                             </a>
@@ -328,7 +328,7 @@ include 'includes/header.php';
                     <?php if ($imovel_data): ?>
                         <div class="product-actions">
                             <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo']); ?>" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
                             </a>
@@ -336,7 +336,7 @@ include 'includes/header.php';
                     <?php else: ?>
                         <div class="product-actions">
                             <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre o Studio Premium em São Paulo" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 Falar no WhatsApp
                             </a>
@@ -498,12 +498,12 @@ include 'includes/header.php';
                                 <span>Solicitar Informações</span>
                             </a>
                             
-                            <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo'] ?? 'este imóvel'); ?>" target="_blank" class="action-btn whatsapp">
+                            <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data['titulo'] ?? 'este imóvel'); ?>" target="_blank" class="action-btn whatsapp">
                                 <i class="fab fa-whatsapp"></i>
                                 <span>Falar no WhatsApp</span>
                             </a>
                             
-                            <a href="tel:554141410093" class="action-btn phone">
+                            <a href="tel:554188049999" class="action-btn phone">
                                 <i class="fas fa-phone"></i>
                                 <span>Ligar Agora</span>
                             </a>
@@ -582,7 +582,7 @@ include 'includes/header.php';
                 <p>Entre em contato agora e garanta este imóvel com condições especiais</p>
                 <div class="cta-actions">
                     <a href="#contato-rapido" class="btn-primary">QUERO INVESTIR AGORA</a>
-                                    <a href="https://wa.me/554141410093?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data ? $imovel_data['titulo'] : 'o Studio Premium'); ?>" target="_blank" class="btn-whatsapp">
+                                    <a href="https://wa.me/554188049999?text=Olá! Gostaria de saber mais sobre <?php echo urlencode($imovel_data ? $imovel_data['titulo'] : 'o Studio Premium'); ?>" target="_blank" class="btn-whatsapp">
                     <i class="fab fa-whatsapp"></i>
                     Falar no WhatsApp
                 </a>

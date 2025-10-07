@@ -88,7 +88,7 @@ if ($_POST && isset($_POST['email'])) {
                             
                             <div class='footer'>
                                 <p>BR2Studios - Especialistas em Studios e Investimentos Imobiliários</p>
-                                <p>WhatsApp: (41) 4141-0093 | Email: contato@br2imoveis.com.br</p>
+                                <p>WhatsApp: (41) 8804-9999 | Email: contato@br2imoveis.com.br</p>
                             </div>
                         </div>
                     </body>

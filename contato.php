@@ -548,7 +548,7 @@ display: inline-block;
                 <p>Nossa equipe de especialistas em estúdios está pronta para ajudar você a encontrar o investimento perfeito em Curitiba.</p>
                 
                 <div class="hero-buttons">
-                    <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/554188049999" class="btn-whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                         WhatsApp
                     </a>
@@ -575,7 +575,7 @@ display: inline-block;
             <p>Especialistas em estúdios prontos para ajudar seu investimento em Curitiba.</p>
             
             <div class="hero-mobile-buttons">
-                <a href="https://wa.me/554141410093" class="btn-mobile-whatsapp" target="_blank">
+                <a href="https://wa.me/554188049999" class="btn-mobile-whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     WhatsApp
                 </a>
@@ -602,7 +602,7 @@ display: inline-block;
             <h3>WhatsApp Business</h3>
             <p>Atendimento especializado em investimentos imobiliários</p>
         </div>
-        <a href="https://wa.me/554141410093" class="whatsapp-btn-mobile" target="_blank">
+        <a href="https://wa.me/554188049999" class="whatsapp-btn-mobile" target="_blank">
             <i class="fab fa-whatsapp"></i>
             Conversar Agora
         </a>
@@ -625,7 +625,7 @@ display: inline-block;
                 <div class="option-content">
                     <h3>WhatsApp Business</h3>
                     <p>Resposta instantânea para suas dúvidas sobre investimentos imobiliários em Curitiba</p>
-                    <a href="https://wa.me/554141410093" class="btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/554188049999" class="btn-whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                         Conversar Agora
                     </a>

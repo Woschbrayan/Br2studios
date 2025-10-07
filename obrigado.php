@@ -291,7 +291,7 @@
                     Voltar ao Início
                 </a>
                 
-                <a href="https://wa.me/554141410093" class="btn-whatsapp-thank" target="_blank">
+                <a href="https://wa.me/554188049999" class="btn-whatsapp-thank" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     Falar no WhatsApp
                 </a>

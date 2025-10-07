@@ -77,7 +77,7 @@
                 <div class="header-actions">
                     <div class="contact-info">
                         <i class="fas fa-phone"></i>
-                        <span>(41) 4141-0093</span>
+                        <span>(41) 8804-9999</span>
                     </div>
              
                     <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">

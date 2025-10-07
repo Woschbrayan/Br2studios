@@ -31,11 +31,11 @@ include 'includes/header.php';
                 <h3>Precisa de ajuda?</h3>
                 <p>Entre em contato conosco:</p>
                 <div class="contact-info">
-                    <a href="tel:554141410093" class="contact-item">
+                    <a href="tel:554188049999" class="contact-item">
                         <i class="fas fa-phone"></i>
-                        (41) 4141-0093
+                        (41) 8804-9999
                     </a>
-                    <a href="https://wa.me/554141410093" target="_blank" class="contact-item">
+                    <a href="https://wa.me/554188049999" target="_blank" class="contact-item">
                         <i class="fab fa-whatsapp"></i>
                         WhatsApp
                     </a>
