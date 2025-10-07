@@ -290,7 +290,7 @@ $estados = [
 ];
 
 // Tipos de imóvel
-$tipos = ['studio', 'apartamento', 'casa', 'cobertura', 'loft', 'flat', 'kitnet'];
+$tipos = ['studio', 'apartamento', 'casa', 'cobertura', 'loft', 'flat', 'kitnet', 'terreno'];
 
 // Status
 $status_options = ['disponivel' => 'Disponível', 'vendido' => 'Vendido', 'reservado' => 'Reservado'];
@@ -622,7 +622,7 @@ include 'includes/header.php';
                         </div>
                     </div>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;" class="campos-construcao">
                         <div class="form-group">
                             <label for="quartos" class="form-label">Quartos</label>
                             <input type="number" id="quartos" name="quartos" class="form-control" min="0"
@@ -641,6 +641,12 @@ include 'includes/header.php';
                                    value="<?php echo htmlspecialchars($imovel_edicao['vagas'] ?? ''); ?>">
                         </div>
                     </div>
+                    
+                    <!-- Mensagem para terrenos -->
+                    <div class="info-terreno" style="display: none; padding: 15px; background: #e3f2fd; border-left: 4px solid #2196f3; border-radius: 4px; margin-top: 15px;">
+                        <i class="fas fa-info-circle" style="color: #2196f3;"></i>
+                        <strong>Informação:</strong> Para terrenos, os campos de quartos, banheiros e vagas foram ocultados pois não se aplicam.
+                    </div>
                 </div>
                 
                 <!-- Seção de Localização -->
@@ -651,21 +657,26 @@ include 'includes/header.php';
                     </h3>
                     
                     <div class="form-group">
-                        <label for="endereco" class="form-label">Endereço</label>
-                        <input type="text" id="endereco" name="endereco" class="form-control"
-                               value="<?php echo htmlspecialchars($imovel_edicao['endereco'] ?? ''); ?>">
+                        <label for="endereco" class="form-label">
+                            <span id="endereco-label">Endereço *</span>
+                            <span id="endereco-opcional" style="display: none;">Endereço (Opcional)</span>
+                        </label>
+                        <input type="text" id="endereco" name="endereco" class="form-control" required
+                               value="<?php echo htmlspecialchars($imovel_edicao['endereco'] ?? ''); ?>"
+                               placeholder="Rua, número, bairro">
                     </div>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                         <div class="form-group">
-                            <label for="cidade" class="form-label">Cidade</label>
-                            <input type="text" id="cidade" name="cidade" class="form-control"
-                                   value="<?php echo htmlspecialchars($imovel_edicao['cidade'] ?? ''); ?>">
+                            <label for="cidade" class="form-label">Cidade *</label>
+                            <input type="text" id="cidade" name="cidade" class="form-control" required
+                                   value="<?php echo htmlspecialchars($imovel_edicao['cidade'] ?? ''); ?>"
+                                   placeholder="Ex: Curitiba">
                         </div>
                         
                         <div class="form-group">
-                            <label for="estado" class="form-label">Estado</label>
-                            <select id="estado" name="estado" class="form-control">
+                            <label for="estado" class="form-label">Estado *</label>
+                            <select id="estado" name="estado" class="form-control" required>
                                 <option value="">Selecione um estado</option>
                                 <?php foreach ($estados as $sigla => $nome): ?>
                                     <option value="<?php echo $sigla; ?>" 
@@ -693,8 +704,8 @@ include 'includes/header.php';
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
-                            <label for="tipo" class="form-label">Tipo de Imóvel</label>
-                            <select id="tipo" name="tipo" class="form-control">
+                            <label for="tipo" class="form-label">Tipo de Imóvel *</label>
+                            <select id="tipo" name="tipo" class="form-control" required onchange="ajustarCamposPorTipo()">
                                 <option value="">Selecione o tipo</option>
                                 <?php foreach ($tipos as $tipo): ?>
                                     <option value="<?php echo $tipo; ?>" 
@@ -1178,6 +1189,48 @@ document.getElementById('imovelForm').addEventListener('submit', function() {
         hiddenInput.value = JSON.stringify(removedImages);
         this.appendChild(hiddenInput);
     }
+});
+
+// Função para ajustar campos baseado no tipo de imóvel
+function ajustarCamposPorTipo() {
+    const tipoSelecionado = document.getElementById('tipo').value;
+    const camposConstrucao = document.querySelector('.campos-construcao');
+    const infoTerreno = document.querySelector('.info-terreno');
+    const enderecoInput = document.getElementById('endereco');
+    const enderecoLabel = document.getElementById('endereco-label');
+    const enderecoOpcional = document.getElementById('endereco-opcional');
+    
+    if (tipoSelecionado === 'terreno') {
+        // Ocultar campos de construção
+        camposConstrucao.style.display = 'none';
+        infoTerreno.style.display = 'block';
+        
+        // Limpar valores dos campos ocultos
+        document.getElementById('quartos').value = '0';
+        document.getElementById('banheiros').value = '0';
+        document.getElementById('vagas').value = '0';
+        
+        // Tornar endereço opcional
+        enderecoInput.removeAttribute('required');
+        enderecoLabel.style.display = 'none';
+        enderecoOpcional.style.display = 'inline';
+        enderecoInput.placeholder = 'Localização ou bairro (opcional)';
+    } else {
+        // Mostrar campos de construção
+        camposConstrucao.style.display = 'grid';
+        infoTerreno.style.display = 'none';
+        
+        // Tornar endereço obrigatório
+        enderecoInput.setAttribute('required', 'required');
+        enderecoLabel.style.display = 'inline';
+        enderecoOpcional.style.display = 'none';
+        enderecoInput.placeholder = 'Rua, número, bairro';
+    }
+}
+
+// Executar ao carregar a página (para modo de edição)
+document.addEventListener('DOMContentLoaded', function() {
+    ajustarCamposPorTipo();
 });
 </script>
 

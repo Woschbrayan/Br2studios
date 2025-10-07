@@ -24,8 +24,24 @@ class Imovel {
                 throw new Exception("Título e tipo são obrigatórios");
             }
             
-            if (empty($dados['endereco']) || empty($dados['cidade']) || empty($dados['estado']) || empty($dados['preco'])) {
-                throw new Exception("Endereço, cidade, estado e preço são obrigatórios");
+            // Validações condicionais baseadas no tipo
+            if (empty($dados['preco'])) {
+                throw new Exception("Preço é obrigatório");
+            }
+            
+            // Para terrenos, alguns campos são opcionais
+            $ehTerreno = ($dados['tipo'] === 'terreno');
+            
+            if (!$ehTerreno) {
+                // Para imóveis construídos, endereço completo é obrigatório
+                if (empty($dados['endereco']) || empty($dados['cidade']) || empty($dados['estado'])) {
+                    throw new Exception("Endereço, cidade e estado são obrigatórios");
+                }
+            } else {
+                // Para terrenos, apenas cidade e estado são obrigatórios
+                if (empty($dados['cidade']) || empty($dados['estado'])) {
+                    throw new Exception("Cidade e estado são obrigatórios");
+                }
             }
             
             $sql = "INSERT INTO {$this->table} (
