@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="assets/css/regioes-carousel.css?v=<?php echo $version; ?>">
     <link rel="stylesheet" href="assets/css/sobre-fixes.css?v=<?php echo $version; ?>">
     <link rel="stylesheet" href="assets/css/logo-fix.css?v=<?php echo $version; ?>">
+    <link rel="stylesheet" href="assets/css/clickable-cards.css?v=<?php echo $version; ?>">
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->

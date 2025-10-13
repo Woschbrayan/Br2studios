@@ -1,0 +1,127 @@
+/**
+ * Estilos para Cards Clicáveis - Br2Studios
+ * Melhora a UX dos cards de imóveis tornando-os interativos
+ */
+
+/* Cards Clicáveis - Desktop e Mobile */
+.clickable-card {
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+}
+
+/* Efeito hover no card inteiro - Desktop */
+.clickable-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Efeito hover no card - Mobile (menos pronunciado) */
+@media (max-width: 768px) {
+    .clickable-card:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12) !important;
+    }
+}
+
+/* Garantir que imagens não quebrem o layout */
+.clickable-card .property-image,
+.clickable-card .property-image-mobile {
+    pointer-events: none !important;
+}
+
+/* Permitir interação com badges */
+.clickable-card .property-labels,
+.clickable-card .property-badges-mobile {
+    pointer-events: auto !important;
+}
+
+/* Botões mantém seu próprio hover */
+.clickable-card .btn-view-property,
+.clickable-card .property-action-mobile {
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
+}
+
+/* Efeito de hover específico para o botão (sobrescreve o hover do card) */
+.clickable-card .btn-view-property:hover,
+.clickable-card .property-action-mobile:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+}
+
+/* Feedback visual ao clicar no card */
+.clickable-card:active {
+    transform: translateY(-2px) !important;
+}
+
+/* Indicação visual sutil de que o card é clicável */
+.clickable-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    transition: background 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Overlay sutil ao passar o mouse */
+.clickable-card:hover::before {
+    background: rgba(220, 38, 38, 0.02);
+}
+
+/* Garantir que o conteúdo do card fique acima do overlay */
+.clickable-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Acessibilidade - Focus para navegação por teclado */
+.clickable-card:focus {
+    outline: 2px solid #dc2626;
+    outline-offset: 2px;
+}
+
+/* Garantir que links internos funcionem */
+.clickable-card a {
+    position: relative;
+    z-index: 10;
+}
+
+/* Melhorar a área clicável em mobile */
+@media (max-width: 768px) {
+    .clickable-card {
+        -webkit-tap-highlight-color: rgba(220, 38, 38, 0.1);
+    }
+}
+
+/* Animação suave para transições */
+.clickable-card,
+.clickable-card * {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Prevenir seleção de texto ao clicar no card */
+.clickable-card {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Permitir seleção de texto em títulos e descrições */
+.clickable-card h3,
+.clickable-card p,
+.clickable-card .property-title-mobile {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+

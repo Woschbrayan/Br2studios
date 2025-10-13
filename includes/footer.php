@@ -97,6 +97,7 @@ require_once __DIR__ . '/../config/version.php';
 $version = getAssetsVersion();
 ?>
 <script src="assets/js/main.js?v=<?php echo $version; ?>"></script>
+<script src="assets/js/clickable-cards.js?v=<?php echo $version; ?>"></script>
 
 <!-- Script para Newsletter -->
 <script>
