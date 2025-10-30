@@ -3248,6 +3248,40 @@ include 'includes/header.php';
         </div>
     </section>
 
+    <!-- Video Section -->
+    <section class="promo-video">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Conheça a Br2Studios</h2>
+                <p>Assista ao nosso vídeo institucional</p>
+            </div>
+            <div class="video-card">
+                <div class="video-layout">
+                    <div class="video-pane">
+                        <div class="video-embed">
+                            <iframe 
+                                src="https://www.youtube.com/embed/or4N3AI8OoY?rel=0&modestbranding=1&color=white"
+                                title="Br2Studios - Vídeo institucional"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <aside class="video-info">
+                        <h3>Investir com estratégia, crescer com segurança</h3>
+                        <p>Veja em 60 segundos como a Br2Studios seleciona oportunidades imobiliárias com alto potencial de valorização e renda.</p>
+                        <ul class="video-highlights">
+                            <li><i class="fas fa-check"></i> Curadoria em regiões estratégicas</li>
+                            <li><i class="fas fa-check"></i> Análise de risco e performance</li>
+                            <li><i class="fas fa-check"></i> Acompanhamento do investimento</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section Desktop -->
     <section class="features desktop-only">
         <div class="section-container">
