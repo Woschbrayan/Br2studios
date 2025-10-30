@@ -7,7 +7,7 @@
 
 // Versão atual dos assets
 // Incremente este valor sempre que fizer alterações nos arquivos CSS/JS
-$ASSETS_VERSION = '1.2.6'; // Botão "Ler Mais" - cor do tema mantida
+$ASSETS_VERSION = '1.2.7'; // Cache-bust: vídeo/YouTube e GTM atualizados
 
 // Função para obter a versão atual
 function getAssetsVersion() {
